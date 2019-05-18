@@ -8,3 +8,6 @@ Then run energy_calculation.py, it will calculate MIN, MAX, and GUESSED energy c
 chart_API.py creates web-server which returns data needed for Chart
 
 Index.html and server.js are to run the page 
+
+API 134.209.182.57:5000
+Chart 134.209.182.57:7077
