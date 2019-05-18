@@ -5,6 +5,7 @@ First run hash_rate_scrapper.py, it will create Data.db with the Difficulty, Has
 OR you can make it crom:
 
 15 * * * * cd /home/YOUR_PATH && $(which python3) hash_rate_scrapper.py --price 0.066 >> ~cron_hash.log 2>&1
+
 16 * * * * cd /home/YOUR_PATH && $(which python3) energy_calculation.py >> ~cron_energy.log 2>&1
 
 api folder contains chart_API.py creates web-server which returns data needed for Chart
