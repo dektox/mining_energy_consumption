@@ -4,7 +4,10 @@ Created on Tue May 14 17:11:26 2019
 
 @author: Anton
 """
+import logging
 import sqlite3
+
+LOGGER = logging.getLogger()
 
 #connecting to DBs, downloading data
 conn = sqlite3.connect('data.db')
@@ -25,10 +28,10 @@ miners=c2.fetchall()
 
 # Creating table. timestamp is a PRIMARY KEY, values are unique
 c3.execute(f"CREATE TABLE IF NOT EXISTS energy_consumption"
-               f" (timestamp INT PRIMARY KEY, date TEXT, max_consumption REAL, min_consumption REAL, guess_consumption REAL);")
+               f" (timestamp INT PRIMARY KEY, date TEXT, max_consumption REAL, min_consumption REAL, guess_consumption REAL, all_prof_eqp TEXT);")
 inserted_count = 0
 # Template of the query to paste a row to a table
-insert_sql = f"INSERT INTO energy_consumption ('timestamp', 'date', 'max_consumption', 'min_consumption', 'guess_consumption') VALUES (?, ?, ?, ?, ?);"
+insert_sql = f"INSERT INTO energy_consumption ('timestamp', 'date', 'max_consumption', 'min_consumption', 'guess_consumption', 'all_prof_eqp') VALUES (?, ?, ?, ?, ?, ?);"
 
 prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
 exist_eqp = []  # temprorary var for the list of existing equipment efficiency at moment when mining is not profitable
@@ -59,16 +62,17 @@ for i in range(0, len(prof_threshold)):
         exist_eqp = []
     timestamp = prof_threshold[i][0]
     date = prof_threshold[i][1]
+    prof_eqp = str(prof_eqp).strip('[]')
     try:
-        c3.execute(insert_sql, (timestamp, date, max_consumption, min_consumption, guess_consumption))
+        c3.execute(insert_sql, (timestamp, date, max_consumption, min_consumption, guess_consumption, prof_eqp))
     # If the row with this timestamp already exist, ignore it
     except sqlite3.IntegrityError:
         pass
     else:
         inserted_count += 1
     prof_eqp = []
-    ### working with Energy D
-            
+    
+LOGGER.info(f"ENERGY: Saved {inserted_count} new values")            
 #closing connections to DBs
 conn.close()
 conn2.close()

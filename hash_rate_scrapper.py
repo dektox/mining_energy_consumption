@@ -90,7 +90,7 @@ def main(database, log_level, price):
         save_values(((timestamp, data['block-reward']) for timestamp, data in all_data.items()),
                     connection, 'block_reward')
 
-        # Progitability threshold calculation
+        # Profitability threshold calculation
         for timestamp, data in all_data.items():
             try:
                 data['prof-threshold'] = 1.0e+09 / (2 ** 32 * data['difficulty']) * data['block-reward']\
