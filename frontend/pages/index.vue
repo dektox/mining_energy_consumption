@@ -96,9 +96,9 @@
             formatter: function () {
               const point = this.points[0]
               return charts.dateFormat('%A %B %e %Y', this.x) + '<br/>' +
-              '<b>' + this.points[0].series.name + '</b>' + ': ' + charts.numberFormat(this.points[0].y, 2) + '<br/>' +
               '<b>' + this.points[1].series.name + '</b>' + ': ' + charts.numberFormat(this.points[1].y, 2) + '<br/>' +
-              '<b>' + this.points[2].series.name + '</b>' + ': ' + charts.numberFormat(this.points[2].y, 2);
+              '<b>' + this.points[2].series.name + '</b>' + ': ' + charts.numberFormat(this.points[2].y, 2) + '<br/>' +
+              '<b>' + this.points[0].series.name + '</b>' + ': ' + charts.numberFormat(this.points[0].y, 2);
             },
             shared: true
         },
