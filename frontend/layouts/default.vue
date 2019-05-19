@@ -7,10 +7,7 @@
         </v-flex>
         <v-divider vertical/>
         <v-flex mx-4>
-          Cambridge <br/>
-          <b>Centre <br/>
-          For Alternative <br/>
-          Finance</b>
+          <img src="~static/logo2.png" height="80">
         </v-flex>
         <v-spacer />
         <v-flex>
