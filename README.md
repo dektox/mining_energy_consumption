@@ -13,6 +13,7 @@ You can make it run automatically by following the instructions https://www.digi
 
 If something changes to frontend, make first
 > git pull 
+
 then in the /frontend directory execute 
 > npm run build
 
