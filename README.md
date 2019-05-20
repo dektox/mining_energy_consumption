@@ -10,6 +10,8 @@ OR you can make it crom:
 
 api folder contains chart_API.py which is Flask app for API. Default port is 127.0.0.1/api/{endpoint}. Endpoints: data, min, max, guess
 
-You can make it run automatically by following the instructions https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+You can make it run automatically by following the instructions https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04 (don't forget to install additional libraries in venv)
 
-Index.html and server.js are to run the webpage 
+If something changes to frontend, make git pull first, then in the /frontend directory execute 
+> npm run build
+
