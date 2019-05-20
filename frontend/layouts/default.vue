@@ -12,7 +12,7 @@
         <v-spacer />
         <v-flex>
           <span style="font-size: 32px">
-            Bitcoin Energy Consumption Index
+            Cambridge Bitcoin Energy Consumption Index
           </span>
         </v-flex>
       </v-layout>
