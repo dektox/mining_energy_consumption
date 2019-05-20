@@ -20,14 +20,14 @@
         <v-flex ma-3>
           <v-card elevation="5">
             <v-flex pa-4 class="text-xs-center">
-              <span><b>MAX</b></span>
+              <span><b>MIN</b></span>
               <br/><br/>
               <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
               <span v-else style="font-size: 32px">
-                <b>{{ numbers[2].toFixed(2) }}</b>
+                <b>{{ numbers[1].toFixed(2) }}</b>
               </span>
               <br/>
-              <span>TWh yearly</span>
+              <span>TWh per year</span>
             </v-flex>
           </v-card>
         </v-flex>
@@ -41,21 +41,21 @@
                 <b>{{ numbers[0].toFixed(2) }}</b>
               </span>
               <br/>
-              <span>TWh yearly</span>
+              <span>TWh per year</span>
             </v-flex>
           </v-card>
         </v-flex>
         <v-flex ma-3>
           <v-card elevation="5">
             <v-flex pa-4 class="text-xs-center">
-              <span><b>MIN</b></span>
+              <span><b>MAX</b></span>
               <br/><br/>
               <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
               <span v-else style="font-size: 32px">
-                <b>{{ numbers[1].toFixed(2) }}</b>
+                <b>{{ numbers[2].toFixed(2) }}</b>
               </span>
               <br/>
-              <span>TWh yearly</span>
+              <span>TWh per year</span>
             </v-flex>
           </v-card>
         </v-flex>
