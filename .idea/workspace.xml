@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f401a42-573a-4baf-a942-fbc02398dcee" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/mining_energy_consumption.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="50">
-              <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -193,7 +187,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558444350244</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="removed .idea">
+      <created>1558444390509</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558444390509</updated>
+    </task>
+    <task id="LOCAL-00003" summary="gitignore, readme">
+      <created>1558444440131</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1558444440131</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -201,8 +209,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="86" y="-11" width="1845" height="1102" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -229,7 +238,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="added .gitignore" />
+    <MESSAGE value="removed .idea" />
+    <MESSAGE value="gitignore, readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore, readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -327,7 +338,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
