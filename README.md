@@ -12,7 +12,7 @@ api folder contains chart_API.py which is Flask app for API. Default port is 127
 You can make it run automatically by following the instructions https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04 (don't forget to install additional libraries in venv)
 
 If something changes to frontend, make first
-> git pull 
+> git pull
 
 then in the /frontend directory execute 
 > npm run build
