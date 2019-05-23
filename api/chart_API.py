@@ -71,7 +71,66 @@ def min_API():
     hashrate = requests.get("https://blockchain.info/q/hashrate").json()
     MIN = min(prof_eqp)*hashrate*364.24*24*60*60/3600000000000000
     MIN_str = str(MIN)
-    return MIN_str    
+    return MIN_str
+
+@app.route('/api/data/<value>')
+def recalculate_data(value):
+    conn = sqlite3.connect('data.db')
+    conn2 = sqlite3.connect('miners.db')
+    c = conn.cursor()
+    c2 = conn2.cursor()
+    c.execute('SELECT * FROM prof_threshold')
+    prof_threshold=c.fetchall()
+    c.execute('SELECT * FROM hash_rate')
+    hash_rate=c.fetchall()
+    c2.execute('SELECT * FROM miners')
+    miners=c2.fetchall()
+    
+    price = float(value)
+    k = 0.066/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
+    
+    prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
+    exist_eqp = []  # temprorary var for the list of existing equipment efficiency at moment when mining is not profitable
+    all_prof_eqp = []  # list of lists of profitable equipment efficiency in all the dates
+    all_exist_eqp = [] 
+    max_consumption_all = []
+    min_consumption_all = []
+    guess_consumption_all = []
+    response = []
+
+    for i in range(0, len(prof_threshold)):
+        for miner in miners:
+            if prof_threshold[i][0]>miner[1] and prof_threshold[i][2]*k>miner[2]: prof_eqp.append(miner[2])
+            # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
+        all_prof_eqp.append(prof_eqp)
+        try:
+            max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
+            min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000    
+        except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+            for miner in miners:
+                if prof_threshold[i][0]>miner[1]: exist_eqp.append(miner[2])
+            all_exist_eqp.append(exist_eqp)
+            unprof_consumption = sum(exist_eqp)/len(exist_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
+            max_consumption = unprof_consumption
+            min_consumption = unprof_consumption
+            guess_consumption = unprof_consumption
+            exist_eqp = []
+        max_consumption_all.append(max_consumption)
+        min_consumption_all.append(min_consumption)
+        guess_consumption_all.append(guess_consumption)
+        timestamp = prof_threshold[i][0]
+        date = prof_threshold[i][1]
+        response.append({
+                'date': date,
+                'guess_consumption': guess_consumption,
+                'max_consumption': max_consumption, 
+                'min_consumption': min_consumption, 
+                'timestamp': timestamp,
+                })
+    conn.close()
+    conn2.close()
+    return jsonify(data=response)
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', use_reloader=True)  
