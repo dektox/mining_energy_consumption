@@ -75,8 +75,8 @@ def min_API():
 
 @app.route('/api/data/<value>')
 def recalculate_data(value):
-    conn = sqlite3.connect('data.db')
-    conn2 = sqlite3.connect('miners.db')
+    conn = sqlite3.connect('../data.db')
+    conn2 = sqlite3.connect('../miners.db')
     c = conn.cursor()
     c2 = conn2.cursor()
     c.execute('SELECT * FROM prof_threshold')
