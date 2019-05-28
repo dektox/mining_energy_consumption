@@ -7,7 +7,7 @@
   >
     <v-flex my-3>
           <span style="font-size: 32px">
-            Bitcoin mining energy consumption index
+            Cambridge Bitcoin Energy Consumption Index
           </span>
     </v-flex>
     <v-flex mb-3>
