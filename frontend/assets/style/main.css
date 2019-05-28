@@ -1,0 +1,15 @@
+input.highcharts-range-selector:focus {
+    background-color: white;
+}
+
+.v-input--slider{
+    width: 400px;
+}
+
+.v-input__append-outer, .v-input__prepend-outer {
+    width: 40px;
+}
+
+.pointer {
+    cursor: pointer;
+}
