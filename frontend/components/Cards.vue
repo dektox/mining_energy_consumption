@@ -4,14 +4,14 @@
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span><b>MAX</b></span>
+                        <span><b>MIN</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 32px">
-                <b>{{(numbers[2] * pue).toFixed(2) }}</b>
-              </span>
+                            <b>{{(numbers[1] * pue).toFixed(2) }}</b>
+                        </span>
                         <br/>
-                        <span>TWh yearly</span>
+                        <span>TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -22,24 +22,24 @@
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="70" :width="7"/>
                         <span v-else style="font-size: 54px">
-                <b>{{(numbers[0] * pue).toFixed(2) }}</b>
-              </span>
+                            <b>{{(numbers[0] * pue).toFixed(2) }}</b>
+                        </span>
                         <br/>
-                        <span>TWh yearly</span>
+                        <span>TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span><b>MIN</b></span>
+                        <span><b>MAX</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 32px">
-                <b>{{(numbers[1] * pue).toFixed(2) }}</b>
-              </span>
+                            <b>{{(numbers[2] * pue).toFixed(2) }}</b>
+                        </span>
                         <br/>
-                        <span>TWh yearly</span>
+                        <span>TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -48,39 +48,41 @@
 </template>
 
 <script>
-import axios from 'axios'
+    import axios from 'axios'
 
-export default {
-    name: 'Cards',
-    data() {
-        return {
-            progress: false,
-        }
-    },
-    created () {
-        const self = this
-        setInterval(function(){ self.getNewData() }, 30000)
-    },
-    computed: {
-        numbers() {
-            return this.$store.getters.GET_NUMBERS || [0,0,0]
+    export default {
+        name: 'Cards',
+        data() {
+            return {
+                progress: false,
+            }
         },
-        pue() {
-            return this.$store.getters.GET_PUE
+        created() {
+            const self = this
+            setInterval(function () {
+                self.getNewData()
+            }, 30000)
         },
-        price() {
-            return this.$store.getters.GET_PRICE
-        }
-    },
-    methods: {
-        async getNewData() {
-            this.progress = true
-            const estimated = await axios.get(`https://www.ccaf.tech/api/guess/${this.price}`)
-            const min = await axios.get(`https://www.ccaf.tech/api/min/${this.price}`)
-            const max = await axios.get(`https://www.ccaf.tech/api/max/${this.price}`)
-            await this.$store.commit('SET_NUMBERS', [estimated.data, min.data, max.data])
-            this.progress = false
+        computed: {
+            numbers() {
+                return this.$store.getters.GET_NUMBERS || [0, 0, 0]
+            },
+            pue() {
+                return this.$store.getters.GET_PUE
+            },
+            price() {
+                return this.$store.getters.GET_PRICE
+            }
+        },
+        methods: {
+            async getNewData() {
+                this.progress = true
+                const estimated = await axios.get(`https://www.ccaf.tech/api/guess/${this.price}`)
+                const min = await axios.get(`https://www.ccaf.tech/api/min/${this.price}`)
+                const max = await axios.get(`https://www.ccaf.tech/api/max/${this.price}`)
+                await this.$store.commit('SET_NUMBERS', [estimated.data, min.data, max.data])
+                this.progress = false
+            }
         }
     }
-}
 </script>
