@@ -223,6 +223,15 @@ def recalculate_guess(value):
         guess_consumption = 'mining is not profitable'
     return jsonify(guess_consumption)
 
+@app.route("/api/countries", methods=['GET','POST'])
+def countries():
+     
+    conn = sqlite3.connect('../countries.db', timeout=1)
+    c3 = conn.cursor()
+    c3.execute('SELECT * FROM countries')
+    countries=c3.fetchall()
+    conn.close()
+    return jsonify(data=countries)
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', use_reloader=True)  
