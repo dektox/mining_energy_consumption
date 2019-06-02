@@ -26,4 +26,7 @@ export const mutations = {
 }
 
 export const actions = {
+    nuxtServerInit ({ commit }, { req }) {
+        commit('SET_NUMBERS', [2,3,4])
+    }
 }

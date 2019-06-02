@@ -33,6 +33,13 @@ export default {
         try {
             const res = await $axios.get(`https://ccaf.tech/api/countries`)
             await store.commit('SET_COUNTRIES', res.data.data)
+            if (!store.state.numbers[0]) {
+                const price = await store.getters.GET_PRICE
+                const estimated = await $axios.get(`https://www.ccaf.tech/api/guess/${price}`)
+                const min = await $axios.get(`https://www.ccaf.tech/api/min/${price}`)
+                const max = await $axios.get(`https://www.ccaf.tech/api/max/${price}`)
+                await store.commit('SET_NUMBERS', [estimated.data, min.data, max.data])
+            }
         } catch (e) {
             alert(e)
         }
