@@ -13,3 +13,43 @@ input.highcharts-range-selector:focus {
 .pointer {
     cursor: pointer;
 }
+
+.logo{
+    max-width: 230px !important;
+}
+
+.menu{
+    padding-left: 30px;
+    position: fixed;
+    max-width: 300px;
+    top: 200px;
+    z-index: 100;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #BBB;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.menu div {
+    padding-top: 20px;
+}
+
+.menu a:hover, .menu a.active{
+    text-decoration: line-through;
+    color: #111;
+}
+
+.country-img{
+    width: 90px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.country-img-large{
+    width: 135px;
+    height: 90px;
+    object-fit: contain;
+}

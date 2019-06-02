@@ -5,11 +5,6 @@
     align-center
     id="container"
   >
-    <v-flex my-3>
-          <span style="font-size: 32px">
-            Cambridge Bitcoin Energy Consumption Index
-          </span>
-    </v-flex>
     <v-flex mb-3>
       <v-layout row align-center>
         <v-flex mr-3>
@@ -21,6 +16,7 @@
       </v-layout>
     </v-flex>
     <cards />
+    <span style="line-height: 45px">You can adjust the variables that influence CBECI:</span>
     <controllers />
     <chart />
   </v-layout>

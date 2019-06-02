@@ -1,12 +1,18 @@
 <template>
-    <v-flex mb-3>
+    <v-flex my-3>
         <v-card elevation="5">
             <v-toolbar
                     card
                     dense
             >
                 <v-toolbar-title>
-                    <span class="subheading">PUE</span>
+                    <span class="subheading">PUE - Power Usage Effectiveness</span>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-icon v-on="on">help</v-icon>
+                        </template>
+                        <span>Tooltip</span>
+                    </v-tooltip>
                 </v-toolbar-title>
             </v-toolbar>
             <v-flex pa-3>
@@ -32,6 +38,12 @@
             >
                 <v-toolbar-title>
                     <span class="subheading">Electricity cost</span>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-icon v-on="on">help</v-icon>
+                        </template>
+                        <span>Tooltip</span>
+                    </v-tooltip>
                 </v-toolbar-title>
             </v-toolbar>
             <v-flex pa-3>

@@ -13,7 +13,7 @@
             enabled: false
         },
         title: {
-            text: 'Energy consumption chart',
+            text: 'Energy consumption chart, TWh per year',
             align: 'left'
         },
         subtitle: {
@@ -28,7 +28,8 @@
                 text: null
             },
             max: 100,
-            maxZoom: 0.1
+            maxZoom: 0.1,
+            opposite: false
         },
         tooltip: {
             formatter: function () {
