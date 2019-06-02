@@ -11,7 +11,7 @@
                         <template v-slot:activator="{ on }">
                             <v-icon v-on="on">help</v-icon>
                         </template>
-                        <span>Tooltip</span>
+                        <span>PUE is the ratio of the total amount of energy used by a computer data centre facility to the energy delivered to computing equipment; it shows how much energy is used by the computing equipment in contrast to cooling and other overhead. An ideal PUE is 1.0; Google’s PUE is reportedly 1.11 as of 2019.</span>
                     </v-tooltip>
                 </v-toolbar-title>
             </v-toolbar>
@@ -37,12 +37,12 @@
                     dense
             >
                 <v-toolbar-title>
-                    <span class="subheading">Electricity cost</span>
+                    <span class="subheading">Electricity Cost</span>
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
                             <v-icon v-on="on">help</v-icon>
                         </template>
-                        <span>Tooltip</span>
+                        <span>The average price miners pay for electricity, USD cents per kWh</span>
                     </v-tooltip>
                 </v-toolbar-title>
             </v-toolbar>
