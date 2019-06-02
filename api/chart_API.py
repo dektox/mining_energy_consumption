@@ -22,10 +22,10 @@ def recalculate_data(value):
     c2 = conn2.cursor()
     c.execute('SELECT * FROM prof_threshold')
     prof_threshold=c.fetchall()
-    prof_threshold=prof_threshold[466:-1]    
+    prof_threshold=prof_threshold[500:-1]    
     c.execute('SELECT * FROM hash_rate')
     hash_rate=c.fetchall()
-    hash_rate=hash_rate[466:-1]
+    hash_rate=hash_rate[500:-1]
     c2.execute('SELECT * FROM miners')
     miners=c2.fetchall()
     
