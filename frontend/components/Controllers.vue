@@ -108,10 +108,10 @@ export default {
             } catch (e) {
                 console.log(e)
             }
-        }, 100, {leading:false, trailing:true}),
+        }, 1500, {leading:false, trailing:true}),
         changePUE: _.debounce(async function(newVal) {
             this.$store.commit('SET_PUE', newVal)
-        }, 100, {leading:false, trailing:true})
+        }, 1500, {leading:false, trailing:true})
     }
 }
 </script>
