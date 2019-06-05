@@ -1,8 +1,8 @@
 <template>
     <v-flex my-3>
         <v-card elevation="5">
-            <v-layout row wrap>
-                <v-flex (xs12 | sm12 | md6 | lg6)>
+            <v-layout v-bind="binding" align-center justify-center wrap>
+                <v-flex>
                     <v-toolbar card dense>
                         <v-toolbar-title>
                             <span class="subheading">PUE - Power Usage Effectiveness</span>
@@ -26,6 +26,7 @@
                                 max="2"
                                 thumb-label="always"
                                 color="#ffb81c"
+                                @end="changePUE"
                         >
                             <template v-slot:prepend>
                                 1
@@ -36,7 +37,7 @@
                         </v-slider>
                     </v-flex>
                 </v-flex>
-                <v-flex (xs12 | sm12 | md6 | lg6)>
+                <v-flex>
                     <v-toolbar
                             card
                             dense
@@ -59,6 +60,7 @@
                                 max="20"
                                 color="#ffb81c"
                                 thumb-label="always"
+                                @end="changePrice"
                         >
                             <template v-slot:prepend>
                                 1 ¢
@@ -75,39 +77,28 @@
 </template>
 
 <script>
-import _ from 'lodash'
-
 export default {
     name: 'Controllers',
     data() {
         return {
+            pue: this.$store.state.pue,
+            price: (this.$store.state.price * 100).toFixed(1)
         }
     },
     computed: {
-        pue: {
-            get() {
-                return this.$store.getters.GET_PUE
-            },
-            set(newVal) {
-                this.changePUE(newVal)
-            }
-        },
-        price: {
-            get() {
-                return (this.$store.getters.GET_PRICE * 100).toFixed(1)
-            },
-            set(newVal) {
-                this.changePrice(newVal/100)
-            }
+        binding() {
+            const binding = {}
+            if (this.$vuetify.breakpoint.smAndDown) binding.column = true
+            return binding
         }
     },
     methods: {
-        changePrice: _.debounce(async function(newVal) {
-            this.$store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', newVal)
-        }, 400),
-        changePUE: _.debounce(async function(newVal) {
-            this.$store.commit('SET_PUE', newVal)
-        }, 400)
+        changePrice() {
+            this.$store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', this.price / 100)
+        },
+        changePUE() {
+            this.$store.commit('SET_PUE', this.pue)
+        },
     }
 }
 </script>

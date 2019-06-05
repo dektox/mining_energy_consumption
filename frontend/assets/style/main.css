@@ -76,7 +76,14 @@ input.highcharts-range-selector:focus {
 }
 
 .card-text{
-    font-size: 24px
+    font-size: 18px;
+}
+.qa-title{
+    font-size: 20px;
+}
+.v-card__text.qa-text{
+    padding: 16px 24px;
+    font-size: 18px;
 }
 
 .header .v-toolbar__content{
@@ -124,6 +131,12 @@ input.highcharts-range-selector:focus {
     }
     .card-lg{
         font-size: 24px;
+    }
+    .qa-title{
+        font-size: 18px;
+    }
+    .qa-text{
+        font-size: 14px;
     }
 }
 

@@ -1,12 +1,17 @@
 <template>
-    <v-layout justify-center align-left>
-        <v-flex xs12 md10>
+    <v-layout id="wrap-container2" column justify-center align-center>
+        <v-flex my-3>
+          <span style="font-size: 32px">
+            Methodology
+          </span>
+        </v-flex>
+        <v-flex xs12 md10 my-3 class="card-text">
             <b>
                 What is the CBECI?
             </b>
             <span>
-            The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by Marc Bevand.1 The CBECI calculates a range limited by a lower-bound (absolute minimum energy expenditure) and an upper-bound estimate (realistic maximum energy expenditure).
-        </span>
+                The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by Marc Bevand.1 The CBECI calculates a range limited by a lower-bound (absolute minimum energy expenditure) and an upper-bound estimate (realistic maximum energy expenditure).
+            </span>
             Parameters taken into account:
             <ul>
                 <li>
@@ -77,16 +82,21 @@
         </span><br>
             <b>List main estimates and briefly explain how they differ</b>
         </v-flex>
+        <chart />
     </v-layout>
 </template>
 
 <script>
+import Chart2 from '~/components/Chart2'
 
-    export default {
-        name: 'methodology',
-        data() {
-            return {
-            }
+export default {
+    name: 'methodology',
+    components: {
+        chart: Chart2
+    },
+    data() {
+        return {
         }
     }
+}
 </script>

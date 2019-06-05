@@ -6,17 +6,17 @@
           </span>
         </v-flex>
         <v-layout justify-center align-center>
-            <v-flex xs12 md10>
+            <v-flex my-3 xs12 md10>
                 <v-expansion-panel>
                     <v-expansion-panel-content
                             v-for="(item,i) in items"
                             :key="i"
                     >
                         <template v-slot:header>
-                            <div>{{ item.title }}</div>
+                            <div class="qa-title">{{ item.title }}</div>
                         </template>
                         <v-card>
-                            <v-card-text v-html="item.text">
+                            <v-card-text class="qa-text" v-html="item.text">
                             </v-card-text>
                         </v-card>
                     </v-expansion-panel-content>
@@ -35,7 +35,7 @@
                 items: [
                     {
                         "title": "What is Bitcoin?",
-                        "text": "<b>Bitcoin</b> is a software protocol and peer-to-peer (P2P) network that enables the permissionless digital transfer of value globally without relying on trusted intermediaries. Bitcoin is an open and permissionless system: anyone can participate in the network, as well as send, store, and receive payments without having to ask anyone for permission.<br><br> Bitcoin has its own, native cryptocurrency called bitcoin (BTC). BTC is the digital asset that users can transfer over the network. New bitcoins are issued on average every 10 minutes through a process called mining. While the Bitcoin protocol specifies that a maximum of 21 million bitcoin will ever be created, it is worth mentioning that one bitcoin can be subdivided into 8 decimals: the smallest unit is called a satoshi and corresponds to 0.00000001 BTC."
+                        "text": "<b>Bitcoin</b> is a software protocol and peer-to-peer (P2P) network that enables the permissionless digital transfer of value globally without relying on trusted intermediaries. Bitcoin is an open and permissionless system: anyone can participate in the network, as well as send, store, and receive payments without having to ask anyone for permission.<br><br> Bitcoin has its own, native cryptocurrency called <b>bitcoin</b> (BTC). BTC is the digital asset that users can transfer over the network. New bitcoins are issued on average every 10 minutes through a process called <b>mining</b>. While the Bitcoin protocol specifies that a maximum of 21 million bitcoin will ever be created, it is worth mentioning that one bitcoin can be subdivided into 8 decimals: the smallest unit is called a <b>satoshi</b> and corresponds to 0.00000001 BTC."
                     },
                     {
                         "title": "What is the blockchain?",
@@ -43,7 +43,7 @@
                     },
                     {
                         "title": "What is Proof-of-Work (PoW) mining?",
-                        "text": "Imagine Alice has 10 BTC that she wants to send to Bob. Shortly after, she changes her mind and now wants to send the same 10 BTC to Charlie instead. While both transactions are valid, only one can get processed as Alice only has 10 BTC, not 20 BTC. The question now becomes: in a decentralised system like Bitcoin with no central authority, who decides which of the two valid but conflicting transactions will get processed? <br><br> Enter Bitcoin mining: instead of simply letting participants vote, the idea is to attach a financial cost to the vote. Anyone who wants to participate in the vote (miner) needs to prove that they performed some “work” – hence the term “Proof-of-Work”. This work consists of finding the solution to a cryptographic puzzle, which in simple terms can be thought of as guessing a random number. The only way of finding the random number (nonce) is to brute force all possible configurations: this way, the work cannot be faked but is trivial to verify by other network participants. <br><br> Miners are in constant competition between themselves: whoever finds the solution to the puzzle first obtains the right to add his block to the global ledger and gets rewarded for his efforts with newly minted bitcoin."
+                        "text": "Imagine Alice has 10 BTC that she wants to send to Bob. Shortly after, she changes her mind and now wants to send the same 10 BTC to Charlie instead. While both transactions are valid, only one can get processed as Alice only has 10 BTC, not 20 BTC. The question now becomes: in a decentralised system like Bitcoin with no central authority, who decides which of the two valid but conflicting transactions will get processed? <br><br> Enter Bitcoin mining: instead of simply letting participants vote, the idea is to attach a financial cost to the vote. Anyone who wants to participate in the vote <b>(miner)</b> needs to prove that they performed some “work” – hence the term “Proof-of-Work”. This work consists of finding the solution to a cryptographic puzzle, which in simple terms can be thought of as guessing a random number. The only way of finding the random number <b>(nonce)</b> is to brute force all possible configurations: this way, the work cannot be faked but is trivial to verify by other network participants. <br><br> Miners are in constant competition between themselves: whoever finds the solution to the puzzle first obtains the right to add his block to the global ledger and gets rewarded for his efforts with newly minted bitcoin."
                     },
                     {
                         "title": "Why does Bitcoin consume energy?",
