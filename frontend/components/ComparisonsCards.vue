@@ -1,6 +1,6 @@
 <template>
     <v-flex mb-3>
-        <v-layout row align-center justify-center>
+        <v-layout align-center justify-center>
             <!--<v-flex xs4 ma-3 class="text-xs-center">-->
                 <!--<span>-->
                     <!--World total electricity<br/>-->
@@ -30,7 +30,7 @@
                 </span>
             </v-flex>
         </v-layout>
-        <v-layout row align-center>
+        <v-layout v-bind="binding" align-center>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
@@ -159,6 +159,11 @@
                 } else {
                     return [arr[index + 2], arr[index + 1], arr[index], arr[index - 1]]
                 }
+            },
+            binding() {
+                const binding = {}
+                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                return binding
             }
         }
     }

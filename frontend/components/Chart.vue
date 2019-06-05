@@ -3,12 +3,12 @@
         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
         <highcharts v-else :constructor-type="'stockChart'" :options="{
         chart: {
-          marginBottom: 120,
+          marginBottom: (containerWidth > 400) ? 120 : 0,
           reflow: false,
-          marginLeft: 100,
-          marginRight: 100,
-          height: containerWidth * 0.5,
-          width: containerWidth * 0.9
+          marginLeft: (containerWidth > 400) ? 100 : 0,
+          marginRight: (containerWidth > 400) ? 100 : 0,
+          height: (containerWidth > 400) ? '56%' : 300,
+          width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
         },
         credits: {
             enabled: false
@@ -18,7 +18,7 @@
             align: 'left'
         },
         subtitle: {
-            text: 'Select an area by dragging across the lower chart',
+            text: (containerWidth > 400) ? 'Select an area by dragging across the lower chart' : '',
             align: 'left'
         },
         xAxis: {
@@ -47,7 +47,7 @@
         },
         plotOptions: {
             series: {
-                showInNavigator: true,
+                showInNavigator: (containerWidth > 400),
                 marker: {
                     enabled: false,
                     states: {
@@ -63,9 +63,14 @@
             series: {
                 dataGrouping: {
                 }
-            }
+            },
+            enabled: (containerWidth > 400)
+        },
+        scrollbar: {
+            enabled: (containerWidth > 400)
         },
         rangeSelector: {
+            enabled: (containerWidth > 400),
             buttonTheme: { // styles for the buttons
                 fill: 'none',
                 stroke: 'none',
@@ -87,8 +92,11 @@
                 }
             },
             inputBoxBorderColor: 'gray',
-            inputBoxWidth: 120,
+            inputBoxWidth: 90,
             inputBoxHeight: 18,
+            inputPosition: {
+                x: -90
+            },
             inputStyle: {
                 color: '#ffb81c',
                 fontWeight: 'bold'
@@ -144,7 +152,7 @@ export default {
         }
     },
     async mounted() {
-        this.containerWidth = document.getElementById("container").getBoundingClientRect().width
+        this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
     },
     computed: {
         pue() {

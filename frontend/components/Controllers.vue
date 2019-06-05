@@ -1,8 +1,8 @@
 <template>
     <v-flex my-3>
         <v-card elevation="5">
-            <v-layout row>
-                <v-flex>
+            <v-layout row wrap>
+                <v-flex (xs12 | sm12 | md6 | lg6)>
                     <v-toolbar card dense>
                         <v-toolbar-title>
                             <span class="subheading">PUE - Power Usage Effectiveness</span>
@@ -36,7 +36,7 @@
                         </v-slider>
                     </v-flex>
                 </v-flex>
-                <v-flex>
+                <v-flex (xs12 | sm12 | md6 | lg6)>
                     <v-toolbar
                             card
                             dense

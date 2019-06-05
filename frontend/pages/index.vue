@@ -1,10 +1,5 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-    id="container"
-  >
+  <v-layout column justify-center align-center id="wrap-container">
     <v-flex mb-3>
       <v-layout row align-center>
         <v-flex mr-3>

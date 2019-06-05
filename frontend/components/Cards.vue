@@ -1,45 +1,45 @@
 <template>
     <v-flex mb-3>
-        <v-layout row align-center>
+        <v-layout v-bind="binding" align-center justify-space-around wrap>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span><b>MIN</b></span>
+                        <span class="card-text"><b>MIN</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
-                        <span v-else style="font-size: 32px">
+                        <span v-else class="card-sm">
                             <b>{{ numbers[1] | decimals }}</b>
                         </span>
                         <br/>
-                        <span>TWh per year</span>
+                        <span class="card-text">TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex class="text-xs-center" pa-4>
-                        <span><b>{{ 'Estimated'.toUpperCase() }}</b></span>
+                        <span class="card-text"><b>{{ 'Estimated'.toUpperCase() }}</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="70" :width="7"/>
-                        <span v-else style="font-size: 54px">
+                        <span v-else class="card-lg">
                             <b>{{ numbers[0] | decimals }}</b>
                         </span>
                         <br/>
-                        <span>TWh per year</span>
+                        <span class="card-text">TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span><b>MAX</b></span>
+                        <span class="card-text"><b>MAX</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
-                        <span v-else style="font-size: 32px">
+                        <span v-else class="card-sm">
                             <b>{{ numbers[2] | decimals }}</b>
                         </span>
                         <br/>
-                        <span>TWh per year</span>
+                        <span class="card-text">TWh per year</span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -73,6 +73,11 @@
             },
             progress() {
                 return this.$store.state.progress
+            },
+            binding() {
+                const binding = {}
+                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                return binding
             }
         },
         methods: {
