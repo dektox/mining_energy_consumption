@@ -28,18 +28,27 @@ input.highcharts-range-selector:focus {
 
 .menu a{
     text-decoration: none;
-    color: #BBB;
+    color: #666;
     text-transform: uppercase;
     cursor: pointer;
+    padding-left: 10px;
 }
 
 .menu div {
     padding-top: 20px;
 }
 
-.menu a:hover, .menu a.active{
-    text-decoration: line-through;
-    color: #111;
+.menu a.active, .menu a.active:hover{
+    opacity: 1;
+    font-weight: bold;
+    color: #ffb81c;
+    border-left: 3px solid #ffb81c; /* Параметры линии */
+}
+
+.menu a:hover{
+    opacity: 0.5;
+    color: #ffb81c;
+    border-left: 2px solid #ffb81c; /* Параметры линии */
 }
 
 .country-img{
@@ -53,3 +62,28 @@ input.highcharts-range-selector:focus {
     height: 90px;
     object-fit: contain;
 }
+
+@media only screen and (min-width: 960px) {
+    .container {
+        max-width: 750px !important;
+    }
+}
+
+@media only screen and (min-width: 1264px) {
+    .container {
+        max-width: 1050px !important;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .container {
+        max-width: 1400px !important;
+    }
+}
+
+@media only screen and (min-width: 1904px) {
+    .container {
+        max-width: 1650px !important;
+    }
+}
+

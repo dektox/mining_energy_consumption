@@ -12,7 +12,7 @@
                     <!--Bitcoin represents-->
                 <!--</span><br/>-->
                 <!--<span style="font-size: 32px">-->
-                    <!--<b>{{(numbers[0] / 25082 * 100).toFixed(2) }} %</b>-->
+                    <!--<b>{{(numbers[0] * pue / 25082 * 100).toFixed(2) }} %</b>-->
                 <!--</span>-->
             <!--</v-flex>-->
             <v-flex xs4 ma-3 class="text-xs-center">
@@ -26,7 +26,7 @@
                     Bitcoin represents
                 </span><br/>
                 <span style="font-size: 32px">
-                    <b>{{(numbers[0] / 21778 * 100).toFixed(2) }} %</b>
+                    <b>{{ numbers[0] / 21778 * 100 | decimals | percentage }}</b>
                 </span>
             </v-flex>
         </v-layout>
@@ -75,8 +75,9 @@
                             Bitcoin
                         </span>
                         <br/>
-                        <span style="font-size: 54px">
-                            <b>{{(numbers[0] * pue).toFixed(2) }}</b>
+                        <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
+                        <span v-else style="font-size: 54px">
+                            <b>{{ numbers[0] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
@@ -125,32 +126,35 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import {percentage, decimals} from '~/assets/js/filters.js'
 
     export default {
-        name: 'Cards',
+        name: 'ComparisonsCards',
+        filters: {
+            percentage,
+            decimals
+        },
         data() {
             return {
-                progress: false,
             }
         },
         computed: {
             numbers() {
                 return this.$store.getters.GET_NUMBERS || [0, 0, 0]
             },
-            pue() {
-                return this.$store.getters.GET_PUE
+            progress() {
+                return this.$store.state.progress
             },
             country() {
                 const arr = this.$store.getters.GET_COUNTRIES
                 const arrsort = arr.map(el => {
                     return {
                         'index': el[0],
-                        'value': Math.abs(el[3] - this.numbers[0] * this.pue)
+                        'value': Math.abs(el[3] - this.numbers[0])
                     }
                 }).sort((a, b) => a.value - b.value)
                 const index = arrsort[0].index - 1
-                if ((arr[index][3] - this.numbers[0] * this.pue) < 0) {
+                if ((arr[index][3] - this.numbers[0]) < 0) {
                     return [arr[index + 1], arr[index], arr[index - 1], arr[index - 2]]
                 } else {
                     return [arr[index + 2], arr[index + 1], arr[index], arr[index - 1]]

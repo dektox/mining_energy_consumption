@@ -40,17 +40,7 @@ export default {
     }
   },
   async fetch ({ $axios, store }) {
-    try {
-      const price = await store.getters.GET_PRICE
-      const res = await $axios.get(`https://ccaf.tech/api/data/${price}`)
-      await store.commit('SET_DATA', res.data)
-      const estimated = await $axios.get(`https://www.ccaf.tech/api/guess/${price}`)
-      const min = await $axios.get(`https://www.ccaf.tech/api/min/${price}`)
-      const max = await $axios.get(`https://www.ccaf.tech/api/max/${price}`)
-      await store.commit('SET_NUMBERS', [estimated.data, min.data, max.data])
-    } catch (e) {
-      alert(e)
-    }
+      store.dispatch('INITIALIZATION')
   },
   methods: {
   }

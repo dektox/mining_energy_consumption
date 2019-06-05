@@ -8,7 +8,7 @@
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 32px">
-                            <b>{{(numbers[1] * pue).toFixed(2) }}</b>
+                            <b>{{ numbers[1] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
@@ -22,7 +22,7 @@
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="70" :width="7"/>
                         <span v-else style="font-size: 54px">
-                            <b>{{(numbers[0] * pue).toFixed(2) }}</b>
+                            <b>{{ numbers[0] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
@@ -36,7 +36,7 @@
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 32px">
-                            <b>{{(numbers[2] * pue).toFixed(2) }}</b>
+                            <b>{{ numbers[2] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
@@ -49,12 +49,16 @@
 
 <script>
     import axios from 'axios'
+    import {percentage, decimals} from '~/assets/js/filters.js'
 
     export default {
         name: 'Cards',
+        filters: {
+            percentage,
+            decimals
+        },
         data() {
             return {
-                progress: false,
             }
         },
         created() {
@@ -67,21 +71,13 @@
             numbers() {
                 return this.$store.getters.GET_NUMBERS || [0, 0, 0]
             },
-            pue() {
-                return this.$store.getters.GET_PUE
-            },
-            price() {
-                return this.$store.getters.GET_PRICE
+            progress() {
+                return this.$store.state.progress
             }
         },
         methods: {
             async getNewData() {
-                this.progress = true
-                const estimated = await axios.get(`https://www.ccaf.tech/api/guess/${this.price}`)
-                const min = await axios.get(`https://www.ccaf.tech/api/min/${this.price}`)
-                const max = await axios.get(`https://www.ccaf.tech/api/max/${this.price}`)
-                await this.$store.commit('SET_NUMBERS', [estimated.data, min.data, max.data])
-                this.progress = false
+                await this.$store.dispatch('LOAD_NUMBERS')
             }
         }
     }

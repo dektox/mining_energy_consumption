@@ -1,29 +1,28 @@
 <template>
-    <v-layout
-            column
-            justify-center
-            align-center
-            ref="container"
-    >
+    <v-layout column justify-center align-center>
         <v-flex my-3>
           <span style="font-size: 32px">
             Q&A
           </span>
         </v-flex>
-        <v-expansion-panel>
-            <v-expansion-panel-content
-                    v-for="(item,i) in items"
-                    :key="i"
-            >
-                <template v-slot:header>
-                    <div>{{ item.title }}</div>
-                </template>
-                <v-card>
-                    <v-card-text v-html="item.text">
-                    </v-card-text>
-                </v-card>
-            </v-expansion-panel-content>
-        </v-expansion-panel>
+        <v-layout justify-center align-center>
+            <v-flex xs12 md10>
+                <v-expansion-panel>
+                    <v-expansion-panel-content
+                            v-for="(item,i) in items"
+                            :key="i"
+                    >
+                        <template v-slot:header>
+                            <div>{{ item.title }}</div>
+                        </template>
+                        <v-card>
+                            <v-card-text v-html="item.text">
+                            </v-card-text>
+                        </v-card>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+            </v-flex>
+        </v-layout>
     </v-layout>
 </template>
 

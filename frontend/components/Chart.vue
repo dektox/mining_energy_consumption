@@ -1,6 +1,7 @@
 <template>
     <v-flex>
-        <highcharts :constructor-type="'stockChart'" :options="{
+        <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
+        <highcharts v-else :constructor-type="'stockChart'" :options="{
         chart: {
           marginBottom: 120,
           reflow: false,
@@ -175,6 +176,9 @@ export default {
         },
         charts() {
             return charts
+        },
+        progress() {
+            return this.$store.state.progress2
         }
     }
 }
