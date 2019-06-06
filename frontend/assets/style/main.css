@@ -163,3 +163,10 @@ input.highcharts-range-selector:focus {
         max-width: 1500px !important;
     }
 }
+
+.highcharts-plot-line-label{
+    font-weight: bold;
+    letter-spacing: 1.8px;
+    font-family: Arial;
+    color: rgb(170,170,170) !important;
+}

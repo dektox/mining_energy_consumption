@@ -16,6 +16,16 @@
         },
         xAxis: {
             type: 'datetime',
+            plotLines: [{
+                color: 'rgb(170,170,170)',
+                dashStyle: 'solid',
+                value: (new Date()).getTime(), // Value of where the line will appear
+                width: 1,
+                label: {
+                    text: 'Today',
+                    verticalAlign: 'middle'
+                }
+             }]
         },
         yAxis: {
             title: {
