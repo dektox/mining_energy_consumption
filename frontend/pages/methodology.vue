@@ -6,13 +6,16 @@
           </span>
         </v-flex>
         <v-flex xs12 md10 my-3 class="card-text">
-            <b>
-                What is the CBECI?
-            </b>
+            <p><b> What is the CBECI?</b></p>
             <span>
-                The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by Marc Bevand.1 The CBECI calculates a range limited by a lower-bound (absolute minimum energy expenditure) and an upper-bound estimate (realistic maximum energy expenditure).
-            </span>
-            Parameters taken into account:
+                The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by <a href="http://blog.zorinaq.com/bitcoin-electricity-consumption/" target="_blank">Marc Bevand</a>.
+            </span><br>
+            <span>
+                The CBECI calculates a range limited by a lower-bound (absolute minimum energy expenditure) and an upper-bound estimate (realistic maximum energy expenditure).
+            </span><br>
+            <span>
+                Parameters taken into account:
+            </span><br>
             <ul>
                 <li>
                     Hashrate
@@ -27,72 +30,105 @@
                     Different mining equipment types
                 </li>
                 <li>
-                    Electricity cost
+                    Electricity cost [adjustable]
                 </li>
                 <li>
-                    Datacentre efficiency: PUE
+                    Datacentre efficiency: PUE [adjustable]
+                </li>
+                <li>
+                    Mining equipment efficiency (Joules per Gigahash)
                 </li>
             </ul><br>
-            <b>
-                Constructing the lower-bound estimate
-            </b>
+            <p><b>Mining equipment efficiency</b></p>
             <span>
-            Lower-bound: easy to calculate – Assumption 1: all miners run the most efficient hardware available at each time period.
-            Provide a table with the hardware used for each time period?
-        </span><br>
-            <b>
-                Constructing the upper-bound estimate
-            </b>
+                CBECI covers the period from Oct 2014 – when ASICs became popular and displaced CPUs and FPGAs. If the 1000 W device solves 10’000 Gh per second, its efficiency is 0.1 J/Gh (Joules per Gigahash). The mining equipment efficiency over time is given below:
+            </span><br><br>
+            <v-layout column justify-center align-center>
+                <chart2/>
+            </v-layout><br>
+            <p><b>Calculating the profitability threshold</b></p>
             <span>
-            Upper-bound: a bit harder – inspired by Marc Bevand’s methodology: Assumption 2: all miners use the least efficient hardware available at that time period as long as that equipment is still profitable taking into account solely electricity costs.
-        </span>
-            Steps to construct the upper bound:
-            <ul>
-                <li>
-                    Step 1: scrape hashrate, BTC price in USD, difficulty, and block reward (subsidy + transaction fee) from coinmetrics.io;
-                </li>
-                <li>
-                    Step 2: collect all mining hardware available to hashers for each of the covered time periods, including energy efficiency parameters
-                </li>
-                <li>
-                    Step 3: calculate the profitability of each mining hardware type:
-                </li>
-            </ul><br>
+                The underlying idea of the CBECI model is that miners will run the equipment as long as it is still profitable taking into account solely electricity costs, not taking into account cooling costs or CapEx or maintenance fees.
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md9>
+                    <img src="~static/fun1.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
             <span>
-            Assumption 3: price of electricity ($ per KwH – can be customised)
-        </span>
+                Profitability threshold calculated as follows:
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs3 md1>
+                    <img src="~static/fun2.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
             <span>
-            Assumption x: geographic location of data centres → energy consumed to cool down the machines
-        </span>
+                For Pel = 0.05 USD/kWh, the profitability threshold over time is as follows:
+            </span><br><br>
+            <v-layout column justify-center align-center>
+                <chart3/>
+            </v-layout><br>
             <span>
-            Simulate the profitability of each hardware type throughout Bitcoin’s lifecycle given the actual Hashrate
-        </span>
+                At any given moment for any given price exists a list of profitable equipment:
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md3>
+                    <img src="~static/fun3.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
+            <p><b>Constructing the lower-bound estimate</b></p>
             <span>
-            Assumption 4: Whenever the least efficient hardware becomes unprofitable, miners switch to the second least efficient hardware that is still profitable in terms of electricity costs.
-        </span><br>
-            <b>Constructing our “best guess”</b>
+                The lower-bound estimate is easy to calculate – it derives from the <b>Assumption 1</b>: all miners run the most efficient hardware available at each time period:
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md4>
+                    <img src="~static/fun4.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
             <span>
-            Best guess: an estimate within the lower and upper bound range that is most realistic
-        </span>
+                Pmin is power. The figures demonstrated on the website are electricity consumption per year adjusted to take account of power usage effectiveness by data centre:
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md6>
+                    <img src="~static/fun5.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
+            <p><b>Constructing the upper-bound estimate</b></p>
             <span>
-            Explain details
-        </span>
+                <b>Assumption 2</b>: all miners use the least efficient hardware available at that time period as long as that equipment is still profitable taking into account solely electricity costs.
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md5>
+                    <img src="~static/fun6.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
+            <p><b>Constructing our “best guess”</b></p>
             <span>
-            How does the CBECI compare to other estimates?
-        </span><br>
-            <b>List main estimates and briefly explain how they differ</b>
+                Best guess: an estimate within the lower and upper bound range that is most realistic:
+            </span><br><br>
+            <v-layout justify-center align-center>
+                <v-flex xs12 md4>
+                    <img src="~static/fun7.png" object-fit="contain" width="100%">
+                </v-flex>
+            </v-layout><br>
+            <p><b>Unprofitable mining</b></p>
+            <span>
+                During unprofitable periods, the CBECI model returns the last known “profitable” figure assuming that the miners (who stay online) are not changing their equipment.
+            </span><br>
         </v-flex>
-        <chart />
     </v-layout>
 </template>
 
 <script>
 import Chart2 from '~/components/Chart2'
+import Chart3 from '~/components/Chart3'
 
 export default {
     name: 'methodology',
     components: {
-        chart: Chart2
+        chart2: Chart2,
+        chart3: Chart3
     },
     data() {
         return {
