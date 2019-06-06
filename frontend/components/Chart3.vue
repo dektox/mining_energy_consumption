@@ -26,7 +26,7 @@
         tooltip: {
             formatter: function () {
               const point = this.points[0]
-              return charts.dateFormat('%A %B %e %Y', this.x) + '<br/>' +
+              return charts.dateFormat('%B %Y', this.x) + '<br/>' +
               '<b>' + point.series.name + '</b>' + ': ' + charts.numberFormat(point.y, 2) + ' J/Gh' + '<br/>';
               // '<b>' + 'BTC price' + '</b>' + ': $' + point.nameBtc;
             },

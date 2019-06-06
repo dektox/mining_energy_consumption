@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f401a42-573a-4baf-a942-fbc02398dcee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/components/Chart3.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/fun7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/assets/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/style/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/components/Chart2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/Chart2.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/methodology.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/methodology.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="51" />
+              <caret line="37" column="51" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -63,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/components/Chart2.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="176" column="10" selection-start-line="176" selection-start-column="10" selection-end-line="176" selection-end-column="10" />
+            <state relative-caret-position="100">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="40" />
               <folding>
                 <element signature="e#4053#4089#0" expanded="true" />
               </folding>
@@ -72,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/components/Chart3.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="29" column="110" selection-start-line="29" selection-start-column="110" selection-end-line="29" selection-end-column="110" />
+            <state relative-caret-position="170">
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding>
                 <element signature="e#4053#4089#0" expanded="true" />
               </folding>
@@ -96,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/pages/methodology.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+            <state relative-caret-position="-986">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="e#5879#5919#0" expanded="true" />
               </folding>
@@ -129,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/assets/style/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="162" column="37" lean-forward="true" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
+            <state relative-caret-position="236">
+              <caret line="168" column="26" lean-forward="true" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -189,10 +179,10 @@
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" />
         <option value="$PROJECT_DIR$/frontend/components/Controllers.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/qanda.vue" />
-        <option value="$PROJECT_DIR$/frontend/assets/style/main.css" />
-        <option value="$PROJECT_DIR$/frontend/components/Chart2.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/methodology.vue" />
         <option value="$PROJECT_DIR$/frontend/components/Chart3.vue" />
+        <option value="$PROJECT_DIR$/frontend/components/Chart2.vue" />
+        <option value="$PROJECT_DIR$/frontend/assets/style/main.css" />
       </list>
     </option>
   </component>
@@ -274,7 +264,7 @@
       <workItem from="1559051978635" duration="368000" />
       <workItem from="1559473721920" duration="45000" />
       <workItem from="1559475957659" duration="20802000" />
-      <workItem from="1559732739225" duration="35418000" />
+      <workItem from="1559732739225" duration="37423000" />
     </task>
     <task id="LOCAL-00001" summary="ads">
       <created>1558309358910</created>
@@ -353,11 +343,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559760948484</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="task 5-8 06-06 methodology">
+      <created>1559784718583</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1559784718583</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75562000" />
+    <option name="totallyTimeSpent" value="77567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -393,7 +390,8 @@
     <MESSAGE value="task 5-8 02-06*2" />
     <MESSAGE value="task 5-8 05-06" />
     <MESSAGE value="task 5-8 05-06 mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="task 5-8 05-06 mobile" />
+    <MESSAGE value="task 5-8 06-06 methodology" />
+    <option name="LAST_COMMIT_MESSAGE" value="task 5-8 06-06 methodology" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
@@ -480,13 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/pages/qanda.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/components/Controllers.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -508,47 +499,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/assets/style/main.css">
+    <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="162" column="37" lean-forward="true" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
+        <state relative-caret-position="168">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/Chart3.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <folding>
+            <element signature="e#4053#4089#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/pages/methodology.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        <state relative-caret-position="-986">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding>
             <element signature="e#5879#5919#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/pages/qanda.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="48" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/components/Chart2.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="176" column="10" selection-start-line="176" selection-start-column="10" selection-end-line="176" selection-end-column="10" />
+        <state relative-caret-position="100">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="40" />
           <folding>
             <element signature="e#4053#4089#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
+    <entry file="file://$PROJECT_DIR$/frontend/assets/style/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/Chart3.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="29" column="110" selection-start-line="29" selection-start-column="110" selection-end-line="29" selection-end-column="110" />
-          <folding>
-            <element signature="e#4053#4089#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="236">
+          <caret line="168" column="26" lean-forward="true" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
         </state>
       </provider>
     </entry>
