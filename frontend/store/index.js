@@ -36,7 +36,7 @@ export const actions = {
 
     LOAD_COUNTRIES: async ({ commit }) => {
         try {
-            const res = await axios.get(`https://ccaf.tech/api/countries`)
+            const res = await axios.get(`https://cbeci.org/api/countries`)
             await commit('SET_COUNTRIES', res.data.data)
         } catch (e) { alert(e) }
     },
@@ -44,7 +44,7 @@ export const actions = {
     LOAD_DATA: async ({ commit }, price) => {
         try {
             await commit('SET_PROGRESS2', true)
-            const res = await axios.get(`https://ccaf.tech/api/data/${price}`)
+            const res = await axios.get(`https://cbeci.org/api/data/${price}`)
             await commit('SET_DATA', res.data)
             await commit('SET_PROGRESS2', false)
         } catch (e) { alert(e) }
@@ -55,9 +55,9 @@ export const actions = {
             if (!price) price = state.price
             await commit('SET_PROGRESS', true)
             const [estimated, min, max] = await Promise.all([
-                axios.get(`https://www.ccaf.tech/api/guess/${price}`),
-                axios.get(`https://www.ccaf.tech/api/min/${price}`),
-                axios.get(`https://www.ccaf.tech/api/max/${price}`)
+                axios.get(`https://www.cbeci.org/api/guess/${price}`),
+                axios.get(`https://www.cbeci.org/api/min/${price}`),
+                axios.get(`https://www.cbeci.org/api/max/${price}`)
             ])
             await commit('SET_NUMBERS', [estimated.data, min.data, max.data])
             await commit('SET_PROGRESS', false)
