@@ -2,7 +2,7 @@
     <v-flex mb-3>
         <v-layout align-center justify-center my-3>
           <span style="font-size: 24px">
-            Total World Production & Consumption
+            <br />Total World Production & Consumption
           </span>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
