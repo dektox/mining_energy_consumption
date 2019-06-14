@@ -23,7 +23,7 @@
         </v-flex>
         <v-flex xs12 md10 my-3>
             <v-layout justify-center align-center>
-                <span style="font-size: 24px">Electricity Consumption</span>
+                <span style="font-size: 24px"><br />Electricity Consumption</span>
             </v-layout>
         </v-flex>
         <v-flex xs12 md10 my-3>
@@ -44,7 +44,7 @@
         </v-flex>
         <v-flex xs12 md10 my-3>
             <v-layout justify-center align-center>
-                <span style="font-size: 24px">Common Misconceptions</span>
+                <span style="font-size: 24px"><br />Common Misconceptions</span>
             </v-layout>
         </v-flex>
         <v-flex my-3 xs12 md10>
