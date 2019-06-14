@@ -3,12 +3,12 @@
         <!--<v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>-->
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
-          marginBottom: (containerWidth > 400) ? 120 : 0,
+          marginBottom: (containerWidth > 1200) ? 100 : 10,
           reflow: false,
-          marginLeft: (containerWidth > 1200) ? 100 : 0,
-          marginRight: (containerWidth > 1200) ? 100 : 0,
+          marginLeft: (containerWidth > 1200) ? 100 : 10,
+          marginRight: (containerWidth > 1200) ? 100 : 10,
           height: (containerWidth > 1200) ? '56%' : 400,
-          width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
+          width: (containerWidth > 1200) ? containerWidth * 0.9 : containerWidth
         },
         credits: {
             enabled: false
