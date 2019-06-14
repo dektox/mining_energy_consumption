@@ -11,7 +11,8 @@
       </v-layout>
     </v-flex>
     <cards />
-    <chart />
+    <chartLoading v-if="progress"/>
+    <chart v-else/>
     <span style="line-height: 45px">You can adjust the variables that influence CBECI:</span>
     <controllers />
   </v-layout>
@@ -22,18 +23,25 @@ import axios from 'axios'
 import Controllers from '~/components/Controllers'
 import Cards from '~/components/Cards'
 import ChartLoading from '~/components/ChartLoading'
+import Chart from '~/components/Chart'
 
 export default {
   name: 'index',
   components: {
     controllers: Controllers,
     cards: Cards,
-    chart: () => ({ component: import('~/components/Chart'), loading: ChartLoading, delay: 400 })
+    chartLoading: ChartLoading,
+    chart: Chart
   },
   data() {
     return {
     }
   },
+    computed: {
+        progress() {
+            return this.$store.state.progress2
+        },
+    },
   fetch ({ $axios, store }) {
       store.dispatch('INITIALIZATION')
   },

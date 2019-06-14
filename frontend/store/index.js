@@ -45,10 +45,8 @@ export const actions = {
 
     LOAD_DATA: async ({ commit }, price) => {
         try {
-            await commit('SET_PROGRESS2', true)
             const res = await axios.get(`${api}/data/${price}`)
             await commit('SET_DATA', res.data)
-            await commit('SET_PROGRESS2', false)
         } catch (e) { alert(e) }
     },
 
@@ -66,11 +64,15 @@ export const actions = {
         } catch (e) { alert(e) }
     },
 
-    INITIALIZATION: ({ commit, dispatch, state }) => {
+    INITIALIZATION: async ({ commit, dispatch, state }) => {
         if (!_.isEmpty(state.numbers)) return
         try {
-            dispatch('LOAD_DATA', state.price)
-            dispatch('LOAD_NUMBERS', state.price)
+            await commit('SET_PROGRESS2', true)
+            await Promise.all([
+                dispatch('LOAD_DATA', state.price),
+                dispatch('LOAD_NUMBERS', state.price)
+            ])
+            await commit('SET_PROGRESS2', false)
         } catch (e) { alert(e) }
     },
 
