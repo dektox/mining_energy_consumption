@@ -14,7 +14,7 @@
             enabled: false
         },
         title: {
-            text: 'Energy consumption chart, TWh per year',
+            text: 'Electricity consumption chart, TWh per year',
             align: 'left'
         },
         subtitle: {
