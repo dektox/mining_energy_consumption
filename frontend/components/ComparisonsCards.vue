@@ -1,8 +1,8 @@
 <template>
     <v-flex mb-3>
         <v-layout align-center justify-center my-3>
-          <span style="font-size: 32px">
-            Country Ranking
+          <span style="font-size: 24px">
+            <br />Country Ranking
           </span>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>

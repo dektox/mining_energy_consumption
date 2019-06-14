@@ -12,7 +12,7 @@
                                 </template>
                                 <span>
                             <p style="text-align: center;">
-                                <strong>PUE</strong> is the ratio of the total amount of energy used by a computer&nbsp;data <br />centre&nbsp;facility&nbsp;to the&nbsp;energy&nbsp;delivered to computing equipment; <br />it shows how much energy is used by the computing equipment <br />in contrast&nbsp;to cooling and other overhead. <br />An ideal PUE is 1.0; Google&rsquo;s PUE is reportedly 1.11 as of 2019.
+                                PUE is a measure of data centre energy efficiency: data centres generally consume more energy than is required to simply run equipment like servers because of cooling and other overhead. The higher the ratio, the less efficiently energy is used.</span><br /><span style="font-weight: 400;">Data centres with PUE ratios below 1.2 are generally considered efficient. For reference, </span><a href="https://www.google.com/about/datacenters/efficiency/internal/"><span style="font-weight: 400;">Google&rsquo;s average PUE</span></a><span style="font-weight: 400;"> is 1.11, whereas the average PUE of most data centres </span><a href="https://www.datacenterknowledge.com/archives/2011/05/10/uptime-institute-the-average-pue-is-1-8/"><span style="font-weight: 400;">corresponds to 1.8</span></a><span style="font-weight: 400;"> or more.
                             </p>
                         </span>
                             </v-tooltip>
@@ -44,7 +44,7 @@
                                 <template v-slot:activator="{ on }">
                                     <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                                 </template>
-                                <span>The average price miners pay for electricity, USD cents per kWh</span>
+                                <span>This variable corresponds to the average price per kWh paid by miners globally (in USD cents). The CBECI uses this variable to model the lifetime of mining hardware in terms of economic profitability.</span>
                             </v-tooltip>
                         </v-toolbar-title>
                     </v-toolbar>
@@ -70,7 +70,7 @@
                     <template v-slot:activator="{ on }">
                         <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                     </template>
-                    <span>Sometext</span>
+                    <span>We use a default PUE ratio of 1.1 and an average price of 0.05 USD per kWh of electricity. The rationale for these assumptions is explained in the </span><a href="https://cbeci.org/methodology"><span style="font-weight: 400;">Methodology</span></a><span style="font-weight: 400;"> section.</span>
                 </v-tooltip>
             </v-layout>
         </v-card>

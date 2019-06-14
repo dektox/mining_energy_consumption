@@ -1,15 +1,15 @@
 <template>
     <v-flex mb-3>
         <v-layout align-center justify-center my-3>
-          <span style="font-size: 32px">
-            Total World Production & Consumption
+          <span style="font-size: 24px">
+            <br />Total World Production & Consumption
           </span>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
             <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span>Total electricity production</span><br/><br/>
+                        <span><strong>Total electricity production</strong></span><br/><br/>
                         <img src="~static/images/comparisons/production.png" object-fit="contain" width="30%"><br/>
                         <span><b>25 082 TWh</b></span><br/><br/>
                         <v-layout align-center justify-center>
@@ -25,7 +25,7 @@
             <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span>Total electricity consumption</span><br/><br/>
+                        <span><strong>Total electricity consumption</strong></span><br/><br/>
                         <img src="~static/images/comparisons/consumption.png" object-fit="contain" width="30%"><br/>
                         <span><b>20 863 TWh</b></span><br/><br/>
                         <v-layout align-center justify-center>

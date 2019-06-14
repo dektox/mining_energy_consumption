@@ -14,7 +14,7 @@
             enabled: false
         },
         title: {
-            text: 'Energy consumption chart, TWh per year',
+            text: 'Electricity consumption chart, TWh per year',
             align: 'left'
         },
         subtitle: {
@@ -110,19 +110,19 @@
         },
         series: [
           {
-            name: 'MIN consumption',
+            name: 'Lower Bound Consumption',
             color: '#f2d596',
             data: dataSerieaMIN,
             lineWidth: 1.5
           },
           {
-            name: 'MAX consumption',
+            name: 'Upper Bound Consumption',
             color: 'grey',
             data: dataSerieaMAX,
             lineWidth: 1.5
           },
           {
-            name: 'ESTIMATED consumption',
+            name: 'Estimated Consumption',
             color: '#ffb81c',
             data: dataSerieaESTIMATED,
             lineWidth: 2.5
