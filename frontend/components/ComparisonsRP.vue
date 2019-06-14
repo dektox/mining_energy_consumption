@@ -9,7 +9,7 @@
             <v-flex xs3 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span>Biofuel and waste electricity generation</span><br/><br/>
+                        <span><strong>Biofuel and waste electricity generation</strong></span><br/><br/>
                         <img src="~static/images/comparisons/biofuel.png" object-fit="contain" width="30%"><br/>
                         <span><b>577 TWh</b></span><br/><br/>
                         <span>Could power the entire Bitcoin network</span><br/><br/>
@@ -25,7 +25,7 @@
             <v-flex xs3 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span>Solar, wind, and geothermal</span><br/><br/>
+                        <span><strong>Solar, wind, and geothermal</strong></span><br/><br/>
                         <img src="~static/images/comparisons/alternative.png" object-fit="contain" width="30%"><br/>
                         <span><b>1 405 TWh</b></span><br/><br/>
                         <span>Could power the entire Bitcoin network</span><br/><br/>
@@ -41,7 +41,7 @@
             <v-flex xs3 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span>Hydro</span><br/><br/>
+                        <span><strong>Hydro</strong></span><br/><br/>
                         <img src="~static/images/comparisons/hydro.png" object-fit="contain" width="30%"><br/>
                         <span><b>4 164 TWh</b></span><br/><br/>
                         <span>Could power the entire Bitcoin network</span><br/><br/>
