@@ -1,7 +1,7 @@
 {
-  "name": "Cambridge Bitcoin Electricity Consumption Index (CBECI)",
+  "name": "mining",
   "version": "1.0.0",
-  "description": "The Cambridge Bitcoin Electricity Consumption Index (CBECI) provides a real-time estimate of the total electricity consumption of the Bitcoin network. The CBECI is maintained by the Cambridge Centre for Alternative Finance (CCAF) at Judge Business School, University of Cambridge.",
+  "description": "mining",
   "author": "Dektox",
   "private": true,
   "scripts": {
