@@ -5,8 +5,8 @@
         chart: {
           marginBottom: (containerWidth > 400) ? 120 : 0,
           reflow: false,
-          marginLeft: (containerWidth > 400) ? 100 : 0,
-          marginRight: (containerWidth > 400) ? 100 : 0,
+          marginLeft: (containerWidth > 1200) ? 100 : 0,
+          marginRight: (containerWidth > 1200) ? 100 : 0,
           height: (containerWidth > 400) ? '56%' : 300,
           width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
         },
