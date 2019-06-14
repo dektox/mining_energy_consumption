@@ -28,7 +28,7 @@ export default {
   components: {
     controllers: Controllers,
     cards: Cards,
-    chart: () => ({ component: import('~/components/Chart'), loading: ChartLoading })
+    chart: () => ({ component: import('~/components/Chart'), loading: ChartLoading, delay: 400 })
   },
   data() {
     return {
