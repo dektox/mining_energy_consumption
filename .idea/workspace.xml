@@ -4,6 +4,7 @@
     <list default="true" id="9f401a42-573a-4baf-a942-fbc02398dcee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/components/Chart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/Chart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/ChartLoading.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ChartLoading.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,8 +41,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            <state relative-caret-position="170">
+              <caret line="10" column="80" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="10" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/components/ChartLoading.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+              <folding>
+                <element signature="n#style#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,7 +141,6 @@
         <option value="$PROJECT_DIR$/frontend/store/index.js" />
         <option value="$PROJECT_DIR$/frontend/components/Controllers.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/index.vue" />
-        <option value="$PROJECT_DIR$/frontend/components/ChartLoading.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsPC.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsRP.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" />
@@ -138,6 +150,7 @@
         <option value="$PROJECT_DIR$/frontend/layouts/default.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/qanda.vue" />
         <option value="$PROJECT_DIR$/frontend/components/Chart.vue" />
+        <option value="$PROJECT_DIR$/frontend/components/ChartLoading.vue" />
       </list>
     </option>
   </component>
@@ -243,7 +256,7 @@
       <workItem from="1559475957659" duration="20802000" />
       <workItem from="1559732739225" duration="38634000" />
       <workItem from="1560472538332" duration="244000" />
-      <workItem from="1560473096456" duration="17254000" />
+      <workItem from="1560473096456" duration="17789000" />
     </task>
     <task id="LOCAL-00001" summary="ads">
       <created>1558309358910</created>
@@ -357,17 +370,31 @@
       <option name="project" value="LOCAL" />
       <updated>1560491132544</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="task new 14-06">
+      <created>1560491438550</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1560491438550</updated>
+    </task>
+    <task id="LOCAL-00018" summary="task new 14-06">
+      <created>1560491654916</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1560491654916</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96276000" />
+    <option name="totallyTimeSpent" value="96811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -379,7 +406,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -475,16 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/ChartLoading.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -617,10 +634,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/ChartLoading.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+          <folding>
+            <element signature="n#style#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        <state relative-caret-position="170">
+          <caret line="10" column="80" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="10" selection-end-column="80" />
         </state>
       </provider>
     </entry>
