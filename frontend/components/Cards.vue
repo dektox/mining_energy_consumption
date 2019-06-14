@@ -4,7 +4,7 @@
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span class="card-text"><b>MIN</b></span>
+                        <span class="card-text"><b>Lower bound</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else class="card-sm">
@@ -18,7 +18,7 @@
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex class="text-xs-center" pa-4>
-                        <span class="card-text"><b>{{ 'Estimated'.toUpperCase() }}</b></span>
+                        <span class="card-text"><b>Estimated</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="70" :width="7"/>
                         <span v-else class="card-lg">
@@ -32,7 +32,7 @@
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
-                        <span class="card-text"><b>MAX</b></span>
+                        <span class="card-text"><b>Upper bound</b></span>
                         <br/><br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else class="card-sm">

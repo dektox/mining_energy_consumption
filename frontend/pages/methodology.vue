@@ -52,7 +52,7 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md9>
-                    <img src="~static/fun1.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun1.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <span>
@@ -60,7 +60,7 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs3 md1>
-                    <img src="~static/fun2.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun2.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <span>
@@ -74,16 +74,16 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md3>
-                    <img src="~static/fun3.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun3.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
-            <p><b>Constructing the lower-bound estimate</b></p>
+            <p id="2"><b>Constructing the lower-bound estimate</b></p>
             <span>
                 The lower-bound estimate is easy to calculate – it derives from the <b>Assumption 1</b>: all miners run the most efficient hardware available at each time period:
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md4>
-                    <img src="~static/fun4.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun4.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <span>
@@ -91,7 +91,7 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md6>
-                    <img src="~static/fun5.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun5.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <p><b>Constructing the upper-bound estimate</b></p>
@@ -100,7 +100,7 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md5>
-                    <img src="~static/fun6.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun6.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <p><b>Constructing our “best guess”</b></p>
@@ -109,7 +109,7 @@
             </span><br><br>
             <v-layout justify-center align-center>
                 <v-flex xs12 md4>
-                    <img src="~static/fun7.png" object-fit="contain" width="100%">
+                    <img src="~static/images/methodology-functions/fun7.png" object-fit="contain" width="100%">
                 </v-flex>
             </v-layout><br>
             <p><b>Unprofitable mining</b></p>

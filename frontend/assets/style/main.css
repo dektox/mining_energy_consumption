@@ -49,6 +49,16 @@ input.highcharts-range-selector:focus {
     border-left: 3px solid #ffb81c; /* Параметры линии */
 }
 
+.menu a.sub{
+    margin-left: 30px;
+}
+.menu a.active.sub{
+    opacity: 1;
+    color: #ffb81c;
+    margin-left: 30px;
+    border-left: 2px solid #ffb81c; /* Параметры линии */
+}
+
 .menu a:hover{
     opacity: 0.5;
     color: #ffb81c;
@@ -169,4 +179,39 @@ input.highcharts-range-selector:focus {
     letter-spacing: 1.8px;
     font-family: Arial;
     color: rgb(170,170,170) !important;
+}
+
+.loading{
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background-color: black;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+}
+
+.image-cropper {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.image-pic {
+    display: inline;
+    margin: 0 auto 0 -25%;
+    height: 100%;
+    width: auto;
+}
+.image-cropper-sm {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
 }

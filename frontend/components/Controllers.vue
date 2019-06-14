@@ -8,7 +8,7 @@
                             <span class="subheading">PUE - Power Usage Effectiveness</span>
                             <v-tooltip bottom>
                                 <template v-slot:activator="{ on }">
-                                    <v-icon v-on="on">help</v-icon>
+                                    <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                                 </template>
                                 <span>
                             <p style="text-align: center;">
@@ -28,12 +28,8 @@
                                 color="#ffb81c"
                                 @end="changePUE"
                         >
-                            <template v-slot:prepend>
-                                1
-                            </template>
-                            <template v-slot:append>
-                                2
-                            </template>
+                            <template v-slot:prepend>1</template>
+                            <template v-slot:append>2</template>
                         </v-slider>
                     </v-flex>
                 </v-flex>
@@ -46,7 +42,7 @@
                             <span class="subheading">Electricity Cost</span>
                             <v-tooltip bottom>
                                 <template v-slot:activator="{ on }">
-                                    <v-icon v-on="on">help</v-icon>
+                                    <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                                 </template>
                                 <span>The average price miners pay for electricity, USD cents per kWh</span>
                             </v-tooltip>
@@ -62,15 +58,20 @@
                                 thumb-label="always"
                                 @end="changePrice"
                         >
-                            <template v-slot:prepend>
-                                1 ¢
-                            </template>
-                            <template v-slot:append>
-                                20 ¢
-                            </template>
+                            <template v-slot:prepend>1 ¢</template>
+                            <template v-slot:append>20 ¢</template>
                         </v-slider>
                     </v-flex>
                 </v-flex>
+            </v-layout>
+            <v-layout align-center justify-center wrap pa-3>
+                <span><a @click="updateValues">Click here</a> to restore default assumptions </span>
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <v-icon style="cursor: pointer" v-on="on">help</v-icon>
+                    </template>
+                    <span>Sometext</span>
+                </v-tooltip>
             </v-layout>
         </v-card>
     </v-flex>
@@ -99,6 +100,12 @@ export default {
         changePUE() {
             this.$store.commit('SET_PUE', this.pue)
         },
+        updateValues() {
+            this.price = 5
+            this.pue = 1.1
+            this.$store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', this.price / 100)
+            this.$store.commit('SET_PUE', this.pue)
+        }
     }
 }
 </script>

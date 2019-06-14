@@ -1,36 +1,11 @@
 <template>
     <v-flex mb-3>
-        <v-layout align-center justify-center>
-            <!--<v-flex xs4 ma-3 class="text-xs-center">-->
-                <!--<span>-->
-                    <!--World total electricity<br/>-->
-                <!--</span><br/>-->
-                <!--<span>-->
-                    <!--<b>25 082 TWh</b>-->
-                <!--</span><br/><br/>-->
-                <!--<span>-->
-                    <!--Bitcoin represents-->
-                <!--</span><br/>-->
-                <!--<span style="font-size: 32px">-->
-                    <!--<b>{{(numbers[0] * pue / 25082 * 100).toFixed(2) }} %</b>-->
-                <!--</span>-->
-            <!--</v-flex>-->
-            <v-flex xs4 ma-3 class="text-xs-center">
-                <span>
-                    World total electricity<br/> consumption
-                </span><br/>
-                <span>
-                    <b>21 778 TWh</b>
-                </span><br/><br/>
-                <span>
-                    Bitcoin represents
-                </span><br/>
-                <span style="font-size: 32px">
-                    <b>{{ numbers[0] / 21778 * 100 | decimals | percentage }}</b>
-                </span>
-            </v-flex>
+        <v-layout align-center justify-center my-3>
+          <span style="font-size: 32px">
+            Country Ranking
+          </span>
         </v-layout>
-        <v-layout v-bind="binding" align-center>
+        <v-layout v-bind="binding" align-center justify-center>
             <v-flex ma-3>
                 <v-card elevation="5">
                     <v-flex pa-4 class="text-xs-center">
@@ -119,9 +94,12 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <span style="text-align: left; font-size: 16px">
-            Electricity consumption data - CIA Factbook, 2016 est.
-        </span>
+        <v-layout my-3>
+          <span>
+              <b>Source:</b><br/>
+              Countries data - CIA <a src="">Factbook</a>, 2016 est.
+          </span>
+        </v-layout>
     </v-flex>
 </template>
 
@@ -147,6 +125,7 @@
             },
             country() {
                 const arr = this.$store.getters.GET_COUNTRIES
+                if(!this.numbers[0] || !arr) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
                 const arrsort = arr.map(el => {
                     return {
                         'index': el[0],

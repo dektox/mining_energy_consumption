@@ -1,5 +1,6 @@
 <template>
-    <v-flex>
+    <v-flex style="position: relative">
+        <v-layout class="loading" justify-center align-center><v-flex>Loading data ...</v-flex></v-layout>
         <!--<v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>-->
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
@@ -30,8 +31,7 @@
             },
             max: 100,
             maxZoom: 0.1,
-            opposite: false,
-            tickInterval: 20
+            opposite: false
         },
         tooltip: {
             formatter: function () {
@@ -136,59 +136,59 @@
 </template>
 
 <script>
-import {Chart} from 'highcharts-vue'
-import charts from 'highcharts'
-import stockInit from 'highcharts/modules/stock'
+    import {Chart} from 'highcharts-vue'
+    import charts from 'highcharts'
+    import stockInit from 'highcharts/modules/stock'
 
-stockInit(charts)
+    stockInit(charts)
 
-export default {
-    name: 'Chart',
-    components: {
-        highcharts: Chart,
-    },
-    data() {
-        return {
-            containerWidth: 1000
-        }
-    },
-    mounted() {
-        this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
-    },
-    computed: {
-        pue() {
-            return this.$store.getters.GET_PUE
+    export default {
+        name: 'Loading',
+        components: {
+            highcharts: Chart,
         },
-        dataSerieaMIN() {
-            const data  = this.$store.getters.GET_DATA || []
-            const res = []
-            data.forEach((el) => {
-                res.push([el.timestamp * 1000, el.min_consumption * this.pue])
-            })
-            return res
+        data() {
+            return {
+                containerWidth: 1000
+            }
         },
-        dataSerieaMAX() {
-            const data  = this.$store.getters.GET_DATA || []
-            const res = []
-            data.forEach((el) => {
-                res.push([el.timestamp * 1000, el.max_consumption * this.pue])
-            })
-            return res
+        mounted() {
+            this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
         },
-        dataSerieaESTIMATED() {
-            const data  = this.$store.getters.GET_DATA || []
-            const res = []
-            data.forEach((el) => {
-                res.push([el.timestamp * 1000, el.guess_consumption * this.pue])
-            })
-            return res
-        },
-        charts() {
-            return charts
-        },
-        progress() {
-            return this.$store.state.progress2
+        computed: {
+            pue() {
+                return this.$store.getters.GET_PUE
+            },
+            dataSerieaMIN() {
+                const data  = this.$store.getters.GET_DATA || []
+                const res = []
+                data.forEach((el) => {
+                    res.push([el.timestamp * 1000, el.min_consumption * this.pue])
+                })
+                return res
+            },
+            dataSerieaMAX() {
+                const data  = this.$store.getters.GET_DATA || []
+                const res = []
+                data.forEach((el) => {
+                    res.push([el.timestamp * 1000, el.max_consumption * this.pue])
+                })
+                return res
+            },
+            dataSerieaESTIMATED() {
+                const data  = this.$store.getters.GET_DATA || []
+                const res = []
+                data.forEach((el) => {
+                    res.push([el.timestamp * 1000, el.guess_consumption * this.pue])
+                })
+                return res
+            },
+            charts() {
+                return charts
+            },
+            progress() {
+                return this.$store.state.progress2
+            }
         }
     }
-}
 </script>
