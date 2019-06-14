@@ -7,7 +7,7 @@
           reflow: false,
           marginLeft: (containerWidth > 1200) ? 100 : 0,
           marginRight: (containerWidth > 1200) ? 100 : 0,
-          height: (containerWidth > 400) ? '56%' : 300,
+          height: (containerWidth > 1200) ? '56%' : 400,
           width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
         },
         credits: {
@@ -96,7 +96,7 @@
             inputBoxWidth: 90,
             inputBoxHeight: 18,
             inputPosition: {
-                x: -90
+                x: (containerWidth > 1200) ? -90 : 0
             },
             inputStyle: {
                 color: '#ffb81c',

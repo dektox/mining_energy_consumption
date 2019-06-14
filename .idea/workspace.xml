@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f401a42-573a-4baf-a942-fbc02398dcee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/components/ChartLoading.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/ComparisonsPC.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/ComparisonsRP.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/comparisons/alternative.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/comparisons/biofuel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/comparisons/consumption.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/comparisons/hydro.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/comparisons/production.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/style/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/Cards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/Cards.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/components/Chart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/Chart.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/Controllers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/Controllers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/comparisons.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/comparisons.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/methodology.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/methodology.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/qanda.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/qanda.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun1.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun2.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun3.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun4.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun5.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun6.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/fun7.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/images/methodology-functions/fun7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/store/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -62,6 +37,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/pages/qanda.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -145,7 +129,6 @@
         <option value="$PROJECT_DIR$/frontend/components/Controllers.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/index.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ChartLoading.vue" />
-        <option value="$PROJECT_DIR$/frontend/components/Chart.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsPC.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsRP.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" />
@@ -154,6 +137,7 @@
         <option value="$PROJECT_DIR$/frontend/assets/style/main.css" />
         <option value="$PROJECT_DIR$/frontend/layouts/default.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/qanda.vue" />
+        <option value="$PROJECT_DIR$/frontend/components/Chart.vue" />
       </list>
     </option>
   </component>
@@ -179,6 +163,12 @@
               <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -253,7 +243,7 @@
       <workItem from="1559475957659" duration="20802000" />
       <workItem from="1559732739225" duration="38634000" />
       <workItem from="1560472538332" duration="244000" />
-      <workItem from="1560473096456" duration="16531000" />
+      <workItem from="1560473096456" duration="17254000" />
     </task>
     <task id="LOCAL-00001" summary="ads">
       <created>1558309358910</created>
@@ -353,11 +343,25 @@
       <option name="project" value="LOCAL" />
       <updated>1559786860562</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="task new 14-06">
+      <created>1560490728712</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1560490728712</updated>
+    </task>
+    <task id="LOCAL-00016" summary="task new 14-06">
+      <created>1560491132544</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560491132544</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95553000" />
+    <option name="totallyTimeSpent" value="96276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -416,7 +420,8 @@
     <MESSAGE value="task 5-8 05-06 mobile" />
     <MESSAGE value="task 5-8 06-06 methodology" />
     <MESSAGE value="task 5-8 06-06 today" />
-    <option name="LAST_COMMIT_MESSAGE" value="task 5-8 06-06 today" />
+    <MESSAGE value="task new 14-06" />
+    <option name="LAST_COMMIT_MESSAGE" value="task new 14-06" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
@@ -480,13 +485,6 @@
           <folding>
             <element signature="n#style#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -616,6 +614,13 @@
             <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-flex#4;n#v-layout#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#v-expansion-panel#0;n#v-layout#0;n#v-flex#5;n#v-layout#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/Chart.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
         </state>
       </provider>
     </entry>
