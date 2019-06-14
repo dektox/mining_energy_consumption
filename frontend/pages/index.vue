@@ -6,7 +6,7 @@
           <img src="~static/live.png" height="40">
         </v-flex>
         <v-flex>
-          <span style="line-height: 45px">Yearly energy consumption rate</span>
+          <span style="line-height: 45px">Yearly electricity consumption rate</span>
         </v-flex>
       </v-layout>
     </v-flex>
