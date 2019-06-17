@@ -48,14 +48,14 @@ for i in range(0, len(prof_threshold)):
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     all_prof_eqp.append(prof_eqp)
     try:
-        max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
-        min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
-        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000    
+        max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3.6e+15
+        min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3.6e+15
+        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3.6e+15    
     except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
         for miner in miners:
             if prof_threshold[i][0]>miner[1]: exist_eqp.append(miner[2])
         all_exist_eqp.append(exist_eqp)
-        unprof_consumption = sum(exist_eqp)/len(exist_eqp)*hash_rate[i][2]*1000*364.24*24*60*60/3600000000000000
+        unprof_consumption = sum(exist_eqp)/len(exist_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3.6e+15
         max_consumption = unprof_consumption
         min_consumption = unprof_consumption
         guess_consumption = unprof_consumption
