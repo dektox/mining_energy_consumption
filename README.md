@@ -7,7 +7,8 @@ OR you can make it crom:
 > 15 * * * * cd /home/YOUR_PATH && $(which python3) hash_rate_scrapper.py --price 0.066 >> ~cron_hash.log 2>&1
 > 16 * * * * cd /home/YOUR_PATH && $(which python3) energy_calculation.py >> ~cron_energy.log 2>&1
 
-api folder contains chart_API.py which is Flask app for API. Default port is 127.0.0.1/api/{endpoint}. Endpoints: data, min, max, guess
+api folder contains chart_API.py which is Flask app for API. Default port is 127.0.0.1/api/{endpoint}/{your_price_guess}. 
+Endpoints: data, min, max, guess, countries
 
 You can make it run automatically by following the instructions https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04 (don't forget to install additional libraries in venv)
 
