@@ -8,11 +8,12 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Cambridge Bitcoin Electricity Consumption Index (CBECI)',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'keywords', name: 'keywords', content: 'Bitcoin, Cryptocurrency, Electricity, Energy, Mining, Efficiency, PoW, ASIC, Proof-of-work, Environmental, Blockchain, Index' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
