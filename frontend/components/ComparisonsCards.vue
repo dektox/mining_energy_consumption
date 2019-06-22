@@ -118,14 +118,14 @@
         },
         computed: {
             numbers() {
-                return this.$store.getters.GET_NUMBERS || [0, 0, 0]
+                return this.$store.state.numbers
             },
             progress() {
                 return this.$store.state.progress
             },
             country() {
                 const arr = this.$store.getters.GET_COUNTRIES
-                if(!this.numbers[0] || !arr) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
+                if(!this.numbers[0] || _.isEmpty(arr)) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
                 const arrsort = arr.map(el => {
                     return {
                         'index': el[0],

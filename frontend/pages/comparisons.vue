@@ -22,14 +22,17 @@ All comparisons are based on our best estimate of Bitcoin's total energy consump
 </template>
 
 <script>
-import axios from 'axios'
+import countriesCards from '~/components/ComparisonsCards'
+import PC from '~/components/ComparisonsPC'
+import RP from '~/components/ComparisonsRP'
+
 
 export default {
     name: 'comparisons',
     components: {
-        comparisonsCards: () => import('~/components/ComparisonsCards'),
-        comparisonsPC: () => import('~/components/ComparisonsPC'),
-        comparisonsRP: () => import('~/components/ComparisonsRP'),
+        comparisonsCards: countriesCards,
+        comparisonsPC: PC,
+        comparisonsRP: RP,
     },
     data() {
         return {}
@@ -37,7 +40,6 @@ export default {
     async fetch ({ store }) {
         try {
             await store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', 0.05)
-            await store.commit('SET_PUE', 1.1)
             await store.dispatch('INITIALIZATION')
             store.dispatch('LOAD_COUNTRIES')
         } catch (e) {

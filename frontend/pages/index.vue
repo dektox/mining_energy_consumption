@@ -1,29 +1,36 @@
 <template>
   <v-layout column justify-center align-center id="wrap-container">
-    <v-flex mb-3>
-      <v-layout row align-center>
-        <v-flex mr-3>
-          <img src="~static/live.png" height="40">
-        </v-flex>
-        <v-flex>
-          <span style="line-height: 45px">Yearly electricity consumption rate</span>
-        </v-flex>
-      </v-layout>
-    </v-flex>
+    <v-layout row align-center my-4>
+      <v-flex pa-3>
+        <img src="~static/live.png" height="40">
+      </v-flex>
+      <v-flex pa-3>
+        <v-layout column>
+          <span class="index-text">Bitcoin network power</span>
+          <v-layout row>
+            <v-icon class="icon-custom">
+              updated
+            </v-icon>
+            <span class="index-subtext">updated every 30 seconds</span>
+          </v-layout>
+        </v-layout>
+      </v-flex>
+    </v-layout>
     <cards />
     <chartLoading v-if="progress"/>
     <chart v-else/>
-    <span style="line-height: 45px">You can adjust the variables that influence CBECI:</span>
+    <v-layout row align-center my-4>
+      <span>You can adjust the variables that influence CBECI:</span>
+    </v-layout>
     <controllers />
   </v-layout>
 </template>
 
 <script>
-import axios from 'axios'
-import Controllers from '~/components/Controllers'
-import Cards from '~/components/Cards'
-import ChartLoading from '~/components/ChartLoading'
-import Chart from '~/components/Chart'
+import Controllers from '~/components/index/Controllers'
+import Cards from '~/components/index/Cards'
+import ChartLoading from '~/components/index/ChartLoading'
+import Chart from '~/components/index/Chart'
 
 export default {
   name: 'index',
@@ -42,7 +49,7 @@ export default {
             return this.$store.state.progress2
         },
     },
-  fetch ({ $axios, store }) {
+  fetch ({ store }) {
       store.dispatch('INITIALIZATION')
   },
   methods: {

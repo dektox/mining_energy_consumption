@@ -1,21 +1,21 @@
 <template>
-    <v-flex style="position: relative">
-        <v-layout class="loading" justify-center align-center><v-flex>Loading data ...</v-flex></v-layout>
+    <v-flex my-4 pa-3>
         <!--<v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>-->
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
-          marginBottom: (containerWidth > 1000) ? 100 : 20,
+          marginBottom: (containerWidth > 1000) ? 100 : 30,
           reflow: false,
-          marginLeft: (containerWidth > 1000) ? 100 : 20,
-          marginRight: (containerWidth > 1000) ? 100 : 20,
+          marginLeft: (containerWidth > 1000) ? 100 : 30,
+          marginRight: (containerWidth > 1000) ? 100 : 30,
           height: (containerWidth > 1000) ? '56%' : 400,
-          width: (containerWidth > 1000) ? containerWidth * 0.9 : containerWidth
+          width: (containerWidth > 1000) ? containerWidth * 0.9 : containerWidth,
+          zoomType: 'x'
         },
         credits: {
             enabled: false
         },
         title: {
-            text: 'Energy consumption chart, TWh per year',
+            text: 'Electricity consumption chart, TWh (annualised)',
             align: 'left'
         },
         subtitle: {
@@ -27,11 +27,13 @@
         },
         yAxis: {
             title: {
-                text: null
+                text: 'TWh ( annualised )',
+                style: { fontWeight: 'bold' },
             },
             max: 100,
             maxZoom: 0.1,
-            opposite: false
+            opposite: false,
+            tickInterval: 20
         },
         tooltip: {
             formatter: function () {
@@ -96,7 +98,7 @@
             inputBoxWidth: 90,
             inputBoxHeight: 18,
             inputPosition: {
-                x: -90
+                x: (containerWidth > 1200) ? -90 : 0
             },
             inputStyle: {
                 color: '#ffb81c',
@@ -110,19 +112,19 @@
         },
         series: [
           {
-            name: 'MIN consumption',
+            name: 'Lower Bound Consumption',
             color: '#f2d596',
             data: dataSerieaMIN,
             lineWidth: 1.5
           },
           {
-            name: 'MAX consumption',
+            name: 'Upper Bound Consumption',
             color: 'grey',
             data: dataSerieaMAX,
             lineWidth: 1.5
           },
           {
-            name: 'ESTIMATED consumption',
+            name: 'Estimated Consumption',
             color: '#ffb81c',
             data: dataSerieaESTIMATED,
             lineWidth: 2.5
@@ -136,59 +138,56 @@
 </template>
 
 <script>
-    import {Chart} from 'highcharts-vue'
-    import charts from 'highcharts'
-    import stockInit from 'highcharts/modules/stock'
+import {Chart} from 'highcharts-vue'
+import charts from 'highcharts'
+import stockInit from 'highcharts/modules/stock'
 
-    stockInit(charts)
+stockInit(charts)
 
-    export default {
-        name: 'Loading',
-        components: {
-            highcharts: Chart,
+export default {
+    name: 'Chart',
+    components: {
+        highcharts: Chart,
+    },
+    data() {
+        return {
+            containerWidth: 1000
+        }
+    },
+    mounted() {
+        this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
+    },
+    computed: {
+        dataSerieaMIN() {
+            const data  = this.$store.getters.GET_DATA || []
+            const res = []
+            data.forEach((el) => {
+                res.push([el.timestamp * 1000, el.min_consumption])
+            })
+            return res
         },
-        data() {
-            return {
-                containerWidth: 1000
-            }
+        dataSerieaMAX() {
+            const data  = this.$store.getters.GET_DATA || []
+            const res = []
+            data.forEach((el) => {
+                res.push([el.timestamp * 1000, el.max_consumption])
+            })
+            return res
         },
-        mounted() {
-            this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
+        dataSerieaESTIMATED() {
+            const data  = this.$store.getters.GET_DATA || []
+            const res = []
+            data.forEach((el) => {
+                res.push([el.timestamp * 1000, el.guess_consumption])
+            })
+            return res
         },
-        computed: {
-            pue() {
-                return this.$store.getters.GET_PUE
-            },
-            dataSerieaMIN() {
-                const data  = this.$store.getters.GET_DATA || []
-                const res = []
-                data.forEach((el) => {
-                    res.push([el.timestamp * 1000, el.min_consumption * this.pue])
-                })
-                return res
-            },
-            dataSerieaMAX() {
-                const data  = this.$store.getters.GET_DATA || []
-                const res = []
-                data.forEach((el) => {
-                    res.push([el.timestamp * 1000, el.max_consumption * this.pue])
-                })
-                return res
-            },
-            dataSerieaESTIMATED() {
-                const data  = this.$store.getters.GET_DATA || []
-                const res = []
-                data.forEach((el) => {
-                    res.push([el.timestamp * 1000, el.guess_consumption * this.pue])
-                })
-                return res
-            },
-            charts() {
-                return charts
-            },
-            progress() {
-                return this.$store.state.progress2
-            }
+        charts() {
+            return charts
+        },
+        progress() {
+            return this.$store.state.progress2
         }
     }
+}
 </script>

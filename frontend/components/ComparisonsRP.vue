@@ -79,7 +79,7 @@
         },
         computed: {
             numbers() {
-                return this.$store.getters.GET_NUMBERS || [0, 0, 0]
+                return this.$store.state.numbers
             },
             binding() {
                 const binding = {}

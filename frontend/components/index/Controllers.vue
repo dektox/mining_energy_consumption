@@ -1,41 +1,7 @@
 <template>
-    <v-flex my-3>
+    <v-layout my-4>
         <v-card elevation="5">
             <v-layout v-bind="binding" align-center justify-center wrap>
-                <v-flex>
-                    <v-toolbar card dense>
-                        <v-toolbar-title>
-                            <span class="subheading">PUE - Power Usage Effectiveness</span>
-                            <v-tooltip max-width="400" bottom>
-                                <template v-slot:activator="{ on }">
-                                    <v-icon style="cursor: pointer" v-on="on">help</v-icon>
-                                </template>
-                                <span>
-                                    <span style="text-align: center;">PUE is a measure of data centre energy efficiency: data centres generally consume more energy than is required to simply run equipment like servers because of cooling and other overhead. The higher the ratio, the less efficiently energy is used.</span><br/>
-                                    <span style="font-weight: 400;">Data centres with PUE ratios below 1.2 are generally considered efficient. For reference,</span>
-                                    <a style="font-weight: 400;" href="https://www.google.com/about/datacenters/efficiency/internal/">Google&rsquo;s average PUE</a>
-                                    <span style="font-weight: 400;"> is 1.11, whereas the average PUE of most data centres </span>
-                                    <a style="font-weight: 400;" href="https://www.datacenterknowledge.com/archives/2011/05/10/uptime-institute-the-average-pue-is-1-8/">corresponds to 1.8</a>
-                                    <span style="font-weight: 400;"> or more.</span>
-                                </span>
-                            </v-tooltip>
-                        </v-toolbar-title>
-                    </v-toolbar>
-                    <v-flex pa-3>
-                        <v-slider
-                                v-model="pue"
-                                min="1"
-                                step="0.01"
-                                max="2"
-                                thumb-label="always"
-                                color="#ffb81c"
-                                @end="changePUE"
-                        >
-                            <template v-slot:prepend>1</template>
-                            <template v-slot:append>2</template>
-                        </v-slider>
-                    </v-flex>
-                </v-flex>
                 <v-flex>
                     <v-toolbar
                             card
@@ -73,13 +39,13 @@
                     <template v-slot:activator="{ on }">
                         <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                     </template>
-                    <span>We use a default PUE ratio of 1.1 and an average price of 0.05 USD per kWh of electricity. The rationale for these assumptions is explained in the </span><a
+                    <span>We use a default average price of 0.05 USD per kWh of electricity. The rationale for these assumptions is explained in the </span><a
                         href="https://cbeci.org/methodology"><span style="font-weight: 400;">Methodology</span></a><span
                         style="font-weight: 400;"> section.</span>
                 </v-tooltip>
             </v-layout>
         </v-card>
-    </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -87,7 +53,6 @@
         name: 'Controllers',
         data() {
             return {
-                pue: this.$store.state.pue,
                 price: (this.$store.state.price * 100).toFixed(1)
             }
         },
@@ -102,14 +67,9 @@
             changePrice() {
                 this.$store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', this.price / 100)
             },
-            changePUE() {
-                this.$store.commit('SET_PUE', this.pue)
-            },
             updateValues() {
                 this.price = 5
-                this.pue = 1.1
                 this.$store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', this.price / 100)
-                this.$store.commit('SET_PUE', this.pue)
             }
         }
     }

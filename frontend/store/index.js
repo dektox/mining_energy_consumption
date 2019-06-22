@@ -6,8 +6,7 @@ const api = 'https://cbeci.org/api'
 
 export const state = () => ({
   data: [],
-  numbers: [],
-  pue: 1.1,
+  numbers: [0,0,0],
   price: 0.05,
   countries: [],
   progress: true,
@@ -16,18 +15,12 @@ export const state = () => ({
 
 export const getters = {
   GET_DATA: state => state.data,
-  GET_NUMBERS: (state) => {
-      return state.numbers.map(el => el * state.pue)
-  },
-  GET_PUE: state => state.pue,
-  GET_PRICE: state => state.price,
   GET_COUNTRIES: state => state.countries
 }
 
 export const mutations = {
   SET_DATA(state, payload) { state.data = payload.data },
   SET_NUMBERS(state, [estimated, min, max]) { state.numbers = [estimated, min, max]},
-  SET_PUE(state, payload) { state.pue = payload },
   SET_PRICE(state, payload) { state.price = payload },
   SET_COUNTRIES(state, payload) { state.countries = payload},
   SET_PROGRESS(state, payload) { state.progress = payload},
@@ -65,7 +58,7 @@ export const actions = {
     },
 
     INITIALIZATION: async ({ commit, dispatch, state }) => {
-        if (!_.isEmpty(state.numbers)) return
+        if (state.numbers[0] !== 0) return
         try {
             await commit('SET_PROGRESS2', true)
             await Promise.all([
