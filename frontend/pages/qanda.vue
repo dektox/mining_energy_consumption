@@ -1,8 +1,8 @@
 <template>
-    <div style="border: 4px solid red;">
-    <h3 style="text-align: center;">This is a sample page. To review the FAQ section, please, follow this link <a href="http://review.cbeci.org">review.cbeci.org</a></h3>
-    </div>
     <v-layout justify-center align-center wrap>
+        <div style="border: 4px solid red;">
+        <h3 style="text-align: center;">This is a sample page. To review the FAQ section, please, follow this link <a href="http://review.cbeci.org">review.cbeci.org</a></h3>
+        </div>
         <v-flex xs12 md10 my-3>
             <v-layout justify-center align-center>
                 <span style="font-size: 24px">Bitcoin Basics</span>
