@@ -34,14 +34,12 @@
                 </v-flex>
             </v-layout>
             <v-layout align-center justify-center wrap pa-3>
-                <span><a @click="updateValues">Click here</a> to restore default assumptions </span>
+                <span><a @click="updateValues">Click here</a> to restore default assumption </span>
                 <v-tooltip max-width="400" bottom>
                     <template v-slot:activator="{ on }">
                         <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                     </template>
-                    <span>We use a default average price of 0.05 USD per kWh of electricity. The rationale for these assumptions is explained in the </span><a
-                        href="https://cbeci.org/methodology"><span style="font-weight: 400;">Methodology</span></a><span
-                        style="font-weight: 400;"> section.</span>
+                    <span>The CBECI assumes a constant average electricity price of 0.05 USD per kilowatt-hour (kWh) by default. The rationale for this assumption is explained in the Methodology section.</span>
                 </v-tooltip>
             </v-layout>
         </v-card>
