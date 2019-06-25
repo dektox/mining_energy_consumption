@@ -38,7 +38,7 @@
                     </v-flex>
                     <v-divider />
                     <v-flex mt-3 class="card-description">
-                        <span>Corresponds to an annualised electricity consumption of</span>
+                        <span>Annualised </span>
                         <v-tooltip max-width="400" bottom>
                             <template v-slot:activator="{ on }">
                                 <v-icon style="cursor: pointer" v-on="on">help</v-icon>
