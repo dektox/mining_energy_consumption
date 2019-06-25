@@ -13,7 +13,7 @@
                                 <template v-slot:activator="{ on }">
                                     <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                                 </template>
-                                <span>This variable corresponds to the average price per kWh paid by miners globally (in USD cents). The CBECI uses this variable to model the lifetime of mining hardware in terms of economic profitability.</span>
+                                <span>This variable corresponds to the average price per kWh paid by miners globally (in USD cents). The CBECI uses this parameter to model the economic lifetime of mining hardware in terms of mining revenues and electricity costs.</span>
                             </v-tooltip>
                         </v-toolbar-title>
                     </v-toolbar>
