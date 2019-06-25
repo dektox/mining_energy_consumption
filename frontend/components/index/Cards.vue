@@ -44,11 +44,9 @@
                                 <v-icon style="cursor: pointer" v-on="on">help</v-icon>
                             </template>
                             <span>
-                                The amount of electricity used by the Bitcoin network is derived from the real-time power estimate and is annualised (i.e. calculated over the period of a year).
+                                Bitcoin’s total electricity consumption is annualised assuming constant power usage over the period of one year. A 7-day moving average is applied to the annualised estimate in order to smoothen the impact of short-term hashrate volatility and enable better comparisons with other uses of electricity.
                                 <br><br>
-                                We apply a 7-day moving average to the annualised TWh estimate in order to smoothen the impact of short-term hashrate volatility and make it easier to compare.
-                                <br><br>
-                                More information can be found in the Methodology section under Representation.
+                                More information can be found in the Methodology section under “Representation”.
                             </span>
                         </v-tooltip>
                     </v-flex>
