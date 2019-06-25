@@ -2,7 +2,7 @@
     <v-flex my-4>
         <v-layout align-center justify-center my-4>
             <h2 class="display-1">
-                Country Ranking
+                <n/>Country Ranking
             </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
