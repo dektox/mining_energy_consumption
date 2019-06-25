@@ -34,7 +34,7 @@
                 </v-flex>
             </v-layout>
             <v-layout align-center justify-center wrap pa-3>
-                <span><a @click="updateValues">Click here</a> to restore default assumption </span>
+                <span><a @click="updateValues">Click here</a> to restore the default assumption </span>
                 <v-tooltip max-width="400" bottom>
                     <template v-slot:activator="{ on }">
                         <v-icon style="cursor: pointer" v-on="on">help</v-icon>
