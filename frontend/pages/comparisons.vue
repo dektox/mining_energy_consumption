@@ -1,23 +1,17 @@
 <template>
-    <v-layout column justify-center align-center>
-        <v-layout column align-center justify-center my-3>
-            <v-flex>
-                <span style="font-size: 32px">Comparisons</span>
-            </v-flex>
-            <v-flex>
-                <v-layout align-center justify-center>
-                    <v-flex xs10>
-                        <span style="font-size: 16px"><br />While Terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context.
+    <v-layout id="wrap-container3" justify-center align-center wrap my-4>
+        <v-flex xs10>
+            <v-layout mb-4 justify-center align-center>
+                <h1 class="display-2">Comparisons</h1>
+            </v-layout>
+            <p class="main-text">While Terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context.
 We provide a set of comparisons below to help readers put numbers into perspective.
-All comparisons are based on our best estimate of Bitcoin's total energy consumption
-            </span>
-                    </v-flex>
-                </v-layout>
-            </v-flex>
-        </v-layout>
-        <comparisonsPC />
-        <comparisonsRP />
-        <comparisonsCards />
+All comparisons are based on our best estimate of Bitcoin's total energy consumption</p>
+            <comparisonsPC />
+            <comparisonsRP />
+            <comparisonsCards />
+            <histogram />
+        </v-flex>
     </v-layout>
 </template>
 
@@ -25,7 +19,7 @@ All comparisons are based on our best estimate of Bitcoin's total energy consump
 import countriesCards from '~/components/ComparisonsCards'
 import PC from '~/components/ComparisonsPC'
 import RP from '~/components/ComparisonsRP'
-
+import Histogram from '~/components/Histogram'
 
 export default {
     name: 'comparisons',
@@ -33,6 +27,7 @@ export default {
         comparisonsCards: countriesCards,
         comparisonsPC: PC,
         comparisonsRP: RP,
+        histogram: Histogram
     },
     data() {
         return {}
