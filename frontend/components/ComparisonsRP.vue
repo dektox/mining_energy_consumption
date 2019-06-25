@@ -2,14 +2,14 @@
     <v-flex my-4>
         <v-layout align-center justify-center my-4>
             <h2 class="display-1">
-                Total World Renewables Production
+                <n/>Total World Renewables Production
             </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
             <v-flex xs3 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span><strong>Biofuel &amp; waste electricity generation</strong></span><br/><br/>
+                        <span><strong>Biofuel and waste</strong></span><br/><br/>
                         <img src="~static/images/comparisons/biofuel.png" object-fit="contain" width="30%"><br/>
                         <span><b>577 TWh</b></span><br/><br/>
                         <span>Could power the entire Bitcoin network</span><br/><br/>
