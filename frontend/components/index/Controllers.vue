@@ -8,7 +8,7 @@
                             dense
                     >
                         <v-toolbar-title>
-                            <span class="subheading">Electricity Cost</span>
+                            <span class="subheading">Electricity cost</span>
                             <v-tooltip max-width="400" bottom>
                                 <template v-slot:activator="{ on }">
                                     <v-icon style="cursor: pointer" v-on="on">help</v-icon>
