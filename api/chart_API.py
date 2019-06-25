@@ -45,9 +45,9 @@ def recalculate_data(value):
             # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
         all_prof_eqp.append(prof_eqp)
         try:
-            max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*60*60/3600000000000000
-            min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*60*60/3600000000000000
-            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*60*60/3600000000000000
+            max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
+            min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
         except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
             max_consumption = max_consumption_all[-1]
             min_consumption = min_consumption_all[-1]
