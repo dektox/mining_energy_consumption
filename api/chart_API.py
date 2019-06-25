@@ -94,7 +94,7 @@ def recalculate_max(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        max_consumption = max(prof_eqp)*hashrate*60*60/3600000000000000
+        max_consumption = max(prof_eqp)*hashrate*60*60/3600000000000
     except:
         max_consumption = 'mining is not profitable'
     return jsonify(max_consumption)
@@ -124,7 +124,7 @@ def recalculate_min(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        min_consumption = min(prof_eqp)*hashrate*60*60/3600000000000000
+        min_consumption = min(prof_eqp)*hashrate*60*60/3600000000000
     except:
         min_consumption = 'mining is not profitable'
     return jsonify(min_consumption)
@@ -154,7 +154,7 @@ def recalculate_guess(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashrate*60*60/3600000000000000
+        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashrate*60*60/3600000000000
     except:
         guess_consumption = 'mining is not profitable'
     return jsonify(guess_consumption)
