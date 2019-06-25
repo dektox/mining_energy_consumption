@@ -9,7 +9,7 @@ We provide a set of comparisons below to help readers put numbers into perspecti
             <p class="main-text"></p>
             <p class="main-text">This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
             <p class="main-text"></p>
-            <p class="main-text"><em><strong>Note:<strong/> All comparisons are based on our best-guess estimate of Bitcoin's total electricity consumption.</em></p>
+            <p class="main-text"><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/">best-guess estimate</a> of Bitcoin's total electricity consumption.</em></p>
             <comparisonsPC />
             <comparisonsRP />
             <comparisonsCards />
