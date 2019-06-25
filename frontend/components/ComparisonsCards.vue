@@ -120,6 +120,10 @@
             numbers() {
                 return this.$store.state.numbers
             },
+            numbers2() {
+                const data  = [...this.$store.getters.GET_DATA].pop() || {}
+                return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
+            },
             progress() {
                 return this.$store.state.progress
             },
