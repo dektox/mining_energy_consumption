@@ -38,7 +38,7 @@
                     </v-flex>
                     <v-divider />
                     <v-flex mt-3 class="card-description">
-                        <span>Annualised </span>
+                        <span>Annualised consumption </span>
                         <v-tooltip max-width="400" bottom>
                             <template v-slot:activator="{ on }">
                                 <v-icon style="cursor: pointer" v-on="on">help</v-icon>
