@@ -20,7 +20,7 @@
     <chartLoading v-if="progress"/>
     <chart v-else/>
     <v-layout row align-center my-4>
-      <span>You can adjust the variables that influence CBECI:</span>
+      <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
     <controllers />
   </v-layout>
