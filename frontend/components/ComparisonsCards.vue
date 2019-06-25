@@ -129,15 +129,15 @@
             },
             country() {
                 const arr = this.$store.getters.GET_COUNTRIES
-                if(!this.numbers[0] || _.isEmpty(arr)) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
+                if(!this.numbers2[0] || _.isEmpty(arr)) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
                 const arrsort = arr.map(el => {
                     return {
                         'index': el[0],
-                        'value': Math.abs(el[3] - this.numbers[0])
+                        'value': Math.abs(el[3] - this.numbers2[0])
                     }
                 }).sort((a, b) => a.value - b.value)
                 const index = arrsort[0].index - 1
-                if ((arr[index][3] - this.numbers[0]) < 0) {
+                if ((arr[index][3] - this.numbers2[0]) < 0) {
                     return [arr[index + 1], arr[index], arr[index - 1], arr[index - 2]]
                 } else {
                     return [arr[index + 2], arr[index + 1], arr[index], arr[index - 1]]
