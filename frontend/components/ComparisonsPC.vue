@@ -18,7 +18,7 @@
                             </div>
                         </v-layout><br/>
                         <span>Bitcoin represents</span><br/>
-                        <span style="font-size: 32px"><b>{{ numbers[0]/ 25082 * 100 | decimals | percentage }}</b></span>
+                        <span style="font-size: 32px"><b>{{ numbers2[0]/ 25082 * 100 | decimals | percentage }}</b></span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -34,7 +34,7 @@
                             </div>
                         </v-layout><br/>
                         <span>Bitcoin accounts for</span><br/>
-                        <span style="font-size: 32px"><b>{{ numbers[0] / 21778 * 100 | decimals | percentage }}</b></span>
+                        <span style="font-size: 32px"><b>{{ numbers2[0] / 21778 * 100 | decimals | percentage }}</b></span>
                     </v-flex>
                 </v-card>
             </v-flex>
