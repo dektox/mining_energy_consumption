@@ -52,7 +52,7 @@
                         <br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 54px">
-                            <b>{{ numbers[0] | decimals }}</b>
+                            <b>{{ numbers2[0] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
