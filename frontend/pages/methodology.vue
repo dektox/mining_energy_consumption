@@ -4,6 +4,9 @@
             <v-layout mb-4 justify-center align-center>
                 <h1 class="display-2">Methodology</h1>
             </v-layout>
+            <div style="border: 4px solid red;">
+            <p style="padding-left: 30px;">This is a sample page. To review the methodology section, please, follow this link <a href="http://review.cbeci.org">review.cbeci.org</a></p>
+            </div>
             <h3 class="headline font-weight-bold">What is the CBECI?</h3>
             <v-flex class="main-text" my-3>
                 <p>The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by <a href="http://blog.zorinaq.com/bitcoin-electricity-consumption/" target="_blank">Marc Bevand</a>.</p>
