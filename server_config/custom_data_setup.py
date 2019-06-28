@@ -11,7 +11,7 @@ import pandas as pd
 
 config_path = '../CONFIG.yml'
 if config_path:
-    with open(config_path, encoding='utf8') as fp:
+    with open(config_path) as fp:
         config = yaml.load(fp, yaml.FullLoader)
 else:
     config = {}
