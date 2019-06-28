@@ -1,9 +1,9 @@
 <template>
-    <v-flex mb-3>
-        <v-layout align-center justify-center my-3>
-          <span style="font-size: 24px">
-            <br />Country Ranking
-          </span>
+    <v-flex my-4>
+        <v-layout align-center justify-center my-4>
+            <h2 class="display-1">
+                Country Ranking
+            </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
             <v-flex ma-3>
@@ -52,7 +52,7 @@
                         <br/>
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else style="font-size: 54px">
-                            <b>{{ numbers[0] | decimals }}</b>
+                            <b>{{ numbers2[0] | decimals }}</b>
                         </span>
                         <br/>
                         <span>TWh per year</span>
@@ -118,22 +118,26 @@
         },
         computed: {
             numbers() {
-                return this.$store.getters.GET_NUMBERS || [0, 0, 0]
+                return this.$store.state.numbers
+            },
+            numbers2() {
+                const data  = [...this.$store.getters.GET_DATA].pop() || {}
+                return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
             },
             progress() {
                 return this.$store.state.progress
             },
             country() {
                 const arr = this.$store.getters.GET_COUNTRIES
-                if(!this.numbers[0] || !arr) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
+                if(!this.numbers2[0] || _.isEmpty(arr)) return [[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]]
                 const arrsort = arr.map(el => {
                     return {
                         'index': el[0],
-                        'value': Math.abs(el[3] - this.numbers[0])
+                        'value': Math.abs(el[3] - this.numbers2[0])
                     }
                 }).sort((a, b) => a.value - b.value)
                 const index = arrsort[0].index - 1
-                if ((arr[index][3] - this.numbers[0]) < 0) {
+                if ((arr[index][3] - this.numbers2[0]) < 0) {
                     return [arr[index + 1], arr[index], arr[index - 1], arr[index - 2]]
                 } else {
                     return [arr[index + 2], arr[index + 1], arr[index], arr[index - 1]]

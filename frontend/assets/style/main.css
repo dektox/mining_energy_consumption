@@ -2,6 +2,16 @@ html, body{
     width: 100vw;
 }
 
+.index-text{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.icon-custom{
+    width: 24px;
+    display: block !important;
+}
+
 input.highcharts-range-selector:focus {
     background-color: white;
 }
@@ -77,17 +87,26 @@ input.highcharts-range-selector:focus {
     object-fit: contain;
 }
 
-.card-sm{
+.card-number-sm{
     font-size: 32px
 }
 
-.card-lg{
+.card-number-lg{
     font-size: 54px;
 }
 
-.card-text{
+.card-text-title{
     font-size: 18px;
+    margin-bottom: 20px;
 }
+.card-description{
+    font-size: 12px;
+}
+
+.main-text{
+    font-size: 16px;
+}
+
 .qa-title{
     font-size: 20px;
 }

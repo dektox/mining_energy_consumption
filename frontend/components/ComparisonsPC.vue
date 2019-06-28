@@ -1,9 +1,9 @@
 <template>
-    <v-flex mb-3>
-        <v-layout align-center justify-center my-3>
-          <span style="font-size: 24px">
-            <br />Total World Production & Consumption
-          </span>
+    <v-flex my-4>
+        <v-layout align-center justify-center my-4>
+          <h2 class="display-1">
+            Total World Production & Consumption
+          </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center>
             <v-flex xs4 ma-3 class="text-xs-center">
@@ -18,7 +18,7 @@
                             </div>
                         </v-layout><br/>
                         <span>Bitcoin represents</span><br/>
-                        <span style="font-size: 32px"><b>{{ numbers[0]/ 25082 * 100 | decimals | percentage }}</b></span>
+                        <span style="font-size: 32px"><b>{{ numbers2[0]/ 25082 * 100 | decimals | percentage }}</b></span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -34,7 +34,7 @@
                             </div>
                         </v-layout><br/>
                         <span>Bitcoin accounts for</span><br/>
-                        <span style="font-size: 32px"><b>{{ numbers[0] / 21778 * 100 | decimals | percentage }}</b></span>
+                        <span style="font-size: 32px"><b>{{ numbers2[0] / 21778 * 100 | decimals | percentage }}</b></span>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -63,7 +63,11 @@
         },
         computed: {
             numbers() {
-                return this.$store.getters.GET_NUMBERS || [0, 0, 0]
+                return this.$store.state.numbers
+            },
+            numbers2() {
+                const data  = [...this.$store.getters.GET_DATA].pop() || {}
+                return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
             },
             binding() {
                 const binding = {}

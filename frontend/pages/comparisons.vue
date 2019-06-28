@@ -1,35 +1,36 @@
 <template>
-    <v-layout column justify-center align-center>
-        <v-layout column align-center justify-center my-3>
-            <v-flex>
-                <span style="font-size: 32px">Comparisons</span>
-            </v-flex>
-            <v-flex>
-                <v-layout align-center justify-center>
-                    <v-flex xs10>
-                        <span style="font-size: 16px"><br />While Terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context.
-We provide a set of comparisons below to help readers put numbers into perspective.
-All comparisons are based on our best estimate of Bitcoin's total energy consumption
-            </span>
-                    </v-flex>
-                </v-layout>
-            </v-flex>
-        </v-layout>
-        <comparisonsPC />
-        <comparisonsRP />
-        <comparisonsCards />
+    <v-layout id="wrap-container3" justify-center align-center wrap my-4>
+        <v-flex xs10>
+            <v-layout mb-4 justify-center align-center>
+                <h1 class="display-2">Comparisons</h1>
+            </v-layout>
+            <p class="main-text">While terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context.
+We provide a set of comparisons below to help readers put numbers into perspective.</p>
+            <p class="main-text"></p>
+            <p class="main-text">This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
+            <p class="main-text"></p>
+            <p class="main-text"><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/">best-guess estimate</a> of Bitcoin's total electricity consumption.</em></p>
+            <comparisonsPC />
+            <comparisonsRP />
+            <comparisonsCards />
+            <histogram />
+        </v-flex>
     </v-layout>
 </template>
 
 <script>
-import axios from 'axios'
+import countriesCards from '~/components/ComparisonsCards'
+import PC from '~/components/ComparisonsPC'
+import RP from '~/components/ComparisonsRP'
+import Histogram from '~/components/Histogram'
 
 export default {
     name: 'comparisons',
     components: {
-        comparisonsCards: () => import('~/components/ComparisonsCards'),
-        comparisonsPC: () => import('~/components/ComparisonsPC'),
-        comparisonsRP: () => import('~/components/ComparisonsRP'),
+        comparisonsCards: countriesCards,
+        comparisonsPC: PC,
+        comparisonsRP: RP,
+        histogram: Histogram
     },
     data() {
         return {}
@@ -37,7 +38,6 @@ export default {
     async fetch ({ store }) {
         try {
             await store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', 0.05)
-            await store.commit('SET_PUE', 1.1)
             await store.dispatch('INITIALIZATION')
             store.dispatch('LOAD_COUNTRIES')
         } catch (e) {
