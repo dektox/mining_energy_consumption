@@ -4,33 +4,56 @@ Created on Thu May 16 14:24:16 2019
 
 @author: Anton
 """
-
 from flask import Flask, jsonify
-import sqlite3
+import flask
 import requests
+import time
 from flask_cors import CORS
+import psycopg2
+import yaml
+
+config_path = '../CONFIG.yml'
+if config_path:
+    with open(config_path, encoding='utf8') as fp:
+        config = yaml.load(fp, yaml.FullLoader)
+else:
+    config = {}
+
+def load_data():
+    with psycopg2.connect(**config['blockchain_data']) as conn:
+        c = conn.cursor()
+        c.execute('SELECT * FROM prof_threshold')
+        prof_threshold=c.fetchall()
+        prof_threshold=prof_threshold[500:]   
+        c.execute('SELECT * FROM hash_rate')
+        hash_rate=c.fetchall()
+        hash_rate=hash_rate[500:]
+    with psycopg2.connect(**config['custom_data']) as conn2:   
+        c2 = conn2.cursor()
+        c2.execute('SELECT * FROM miners')
+        miners=c2.fetchall()
+        c2.execute('SELECT * FROM countries')
+        countries=c2.fetchall()
+    return prof_threshold, hash_rate, miners, countries
 
 app = Flask(__name__)
 CORS(app)
 app.config["DEBUG"] = True
+prof_threshold, hash_rate, miners, countries = load_data()
+lastupdate = time.time()
 
+@app.before_request
+def before_request(): 
+    global lastupdate, prof_threshold, hash_rate, miners, countries
+    if time.time() - lastupdate > 3600:
+        prof_threshold, hash_rate, miners, countries =load_data()
+        lastupdate = time.time()
+    
 @app.route('/api/data/<value>')
 def recalculate_data(value):
-    conn = sqlite3.connect('../data.db')
-    conn2 = sqlite3.connect('../miners.db')
-    c = conn.cursor()
-    c2 = conn2.cursor()
-    c.execute('SELECT * FROM prof_threshold')
-    prof_threshold=c.fetchall()
-    prof_threshold=prof_threshold[500:-1]    
-    c.execute('SELECT * FROM hash_rate')
-    hash_rate=c.fetchall()
-    hash_rate=hash_rate[500:-1]
-    c2.execute('SELECT * FROM miners')
-    miners=c2.fetchall()
     
     price = float(value)
-    k = 0.066/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
+    k = 0.05/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
     
     prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
     all_prof_eqp = []  # list of lists of profitable equipment efficiency in all the dates
@@ -45,9 +68,9 @@ def recalculate_data(value):
             # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
         all_prof_eqp.append(prof_eqp)
         try:
-            max_consumption = max(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
-            min_consumption = min(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
-            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*1000*365.25*24*60*60/3600000000000000
+            max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+            min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
         except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
             max_consumption = max_consumption_all[-1]
             min_consumption = min_consumption_all[-1]
@@ -65,28 +88,15 @@ def recalculate_data(value):
                 'timestamp': timestamp,
                 })
         prof_eqp = []
-    conn.close()
-    conn2.close()
     return jsonify(data=response)
 
 
 @app.route("/api/max/<value>")
 def recalculate_max(value):
-
-    conn = sqlite3.connect('../data.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM prof_threshold')
-    prof_threshold=c.fetchall()
-    conn2 = sqlite3.connect('../miners.db')
-    c2 = conn2.cursor()
-    c2.execute('SELECT * FROM miners')
-    miners=c2.fetchall()
-    conn.close()
-    conn2.close()
     
     hashrate = requests.get("https://blockchain.info/q/hashrate").json()
     price = float(value)
-    k = 0.066/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
+    k = 0.05/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
     
     prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
 
@@ -94,7 +104,7 @@ def recalculate_max(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        max_consumption = max(prof_eqp)*hashrate*365.25*24*60*60/3600000000000000
+        max_consumption = max(prof_eqp)*hashrate*1.2/1e9
     except:
         max_consumption = 'mining is not profitable'
     return jsonify(max_consumption)
@@ -102,21 +112,10 @@ def recalculate_max(value):
 
 @app.route("/api/min/<value>")
 def recalculate_min(value):
-
-    conn = sqlite3.connect('../data.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM prof_threshold')
-    prof_threshold=c.fetchall()
-    conn2 = sqlite3.connect('../miners.db')
-    c2 = conn2.cursor()
-    c2.execute('SELECT * FROM miners')
-    miners=c2.fetchall()
-    conn.close()
-    conn2.close()
     
     hashrate = requests.get("https://blockchain.info/q/hashrate").json()
     price = float(value)
-    k = 0.066/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
+    k = 0.05/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
     
     prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
 
@@ -124,7 +123,7 @@ def recalculate_min(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        min_consumption = min(prof_eqp)*hashrate*365.25*24*60*60/3600000000000000
+        min_consumption = min(prof_eqp)*hashrate*1.01/1e9
     except:
         min_consumption = 'mining is not profitable'
     return jsonify(min_consumption)
@@ -132,21 +131,10 @@ def recalculate_min(value):
 
 @app.route("/api/guess/<value>")
 def recalculate_guess(value):
-
-    conn = sqlite3.connect('../data.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM prof_threshold')
-    prof_threshold=c.fetchall()
-    conn2 = sqlite3.connect('../miners.db')
-    c2 = conn2.cursor()
-    c2.execute('SELECT * FROM miners')
-    miners=c2.fetchall()
-    conn.close()
-    conn2.close()
     
     hashrate = requests.get("https://blockchain.info/q/hashrate").json()
     price = float(value)
-    k = 0.066/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
+    k = 0.05/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
     
     prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
 
@@ -154,20 +142,67 @@ def recalculate_guess(value):
         if prof_threshold[-1][0]>miner[1] and prof_threshold[-1][2]*k>miner[2]: prof_eqp.append(miner[2])
         # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
     try:
-        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashrate*365.25*24*60*60/3600000000000000
+        guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashrate*1.10/1e9
     except:
         guess_consumption = 'mining is not profitable'
     return jsonify(guess_consumption)
 
+# =============================================================================
+# @app.route("/api/countries", methods=['GET','POST'])
+# def countries_old():
+#     jsonify(data=countries)
+# =============================================================================
+
 @app.route("/api/countries", methods=['GET','POST'])
-def countries():
-     
-    conn = sqlite3.connect('../countries.db', timeout=1)
-    c3 = conn.cursor()
-    c3.execute('SELECT * FROM countries')
-    countries=c3.fetchall()
-    conn.close()
-    return jsonify(data=countries)
+def countries_btc():
+    
+     prof_eqp = all_prof_eqp = guess_consumption_all = []
+     for i in range(0, len(prof_threshold)):
+         for miner in miners:
+             if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]>miner[2]): prof_eqp.append(miner[2])
+         all_prof_eqp.append(prof_eqp)
+         try:
+             guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24*1.10/1e9
+         except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+             guess_consumption = guess_consumption_all[-1]
+         guess_consumption_all.append(guess_consumption)
+         prof_eqp = []  
+         
+     local = countries
+     local.append(('Bitcoin','BTC',round(guess_consumption_all[-1],2),'logo'))
+     def takeThird(elem):
+         return elem[2]
+     local = sorted(local, key=takeThird, reverse=True)
+     local=list(enumerate(local,1))
+     response = []
+     for item in local:
+         response.append({
+            'X': item[1][0],
+            'Y': item[1][2],        
+            'country_rank': item[0], 
+            'bitcoin_percentage': round(item[1][2]/guess_consumption_all[-1]*100,2),
+            'logo': item[1][3]
+            })
+     return jsonify(response)
+
+@app.route("/api/feedback", methods=['POST'])
+def feedback():
+    content = flask.request.json
+    with psycopg2.connect(**config['custom_data']) as conn:
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS feedback (timestamp INT," 
+                  "name TEXT, organisation TEXT, email TEXT, message TEXT);")
+        insert_sql = "INSERT INTO feedback (timestamp, name, organisation, email, message) VALUES (%s, %s, %s, %s, %s)"
+        name = content['name']
+        organisation = content['organisation']
+        email = content['email']
+        message = content['message']
+        timestamp = int(time.time())
+        try:
+            c.execute(insert_sql, (timestamp, name, organisation, email, message))
+        except Exception as error:
+            return jsonify(data=content,status="fail",error=error.pgcode)
+    return jsonify(data=content,status="success",error="")
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', use_reloader=True)  
