@@ -51,7 +51,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              International Energy Agency <a src="">report</a>, 2016 est.
+              <a src="https://www.nrdc.org/sites/default/files/home-idle-load-IP.pdf">NRDC Issue Report (2015)</a>; own calculations
           </span>
         </v-layout>
         <v-layout align-center justify-center>
@@ -104,7 +104,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              International Energy Agency <a src="">report</a>, 2016 est.
+              <a src="https://www.sciencedirect.com/science/article/pii/S0306261916303579">Murray et al. (2016)</a>, est. 2012; <a src="https://www.research.manchester.ac.uk/portal/files/62970175/Environmental_sustainability_of_kettles.pdf">Fisher et al. (2014);</a> own calculations
           </span>
         </v-layout>
         <v-layout align-center justify-center>
@@ -137,7 +137,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              International Energy Agency <a src="">report</a>, 2016 est.
+              <a src="https://www.environment.admin.cam.ac.uk/facts-figures">University of Cambridge</a>
           </span>
         </v-layout>
     </v-flex>

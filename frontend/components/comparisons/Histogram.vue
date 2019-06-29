@@ -2,7 +2,7 @@
     <v-flex>
         <v-switch
                 v-model="log"
-                label="linear scale"
+                label="LOG"
                 color="#ffb81c"
         ></v-switch>
         <highcharts :constructor-type="'stockChart'" :options="{
@@ -30,10 +30,15 @@
         },
         xAxis: {
             type: 'linear',
+            tickAmount: 60,
             labels: {
+                formatter: function () {
+                    return (isBitcoin(this.value) ? '<b>Bitcoin</b>' : '');
+                },
                 rotation: -45,
+                y: 40,
                 style: {
-                    fontSize: '13px',
+                    fontSize: '14px',
                     fontFamily: 'Verdana, sans-serif'
                 }
             }
@@ -101,6 +106,11 @@ export default {
         }
     },
     methods: {
+        isBitcoin(n) {
+            const country = this.data.find(el => el.x === n)
+            console.log(country)
+            return country.country === 'Bitcoin'
+        }
     }
 }
 </script>

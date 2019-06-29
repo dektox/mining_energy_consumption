@@ -82,7 +82,7 @@
         <v-layout my-3>
           <span>
               <b>Source:</b><br/>
-              International Energy Agency <a src="">report</a>, 2016 est.
+              International Energy Agency <a src="https://www.iea.org/statistics/electricity/">report</a>, 2016 est.
           </span>
         </v-layout>
     </v-flex>
