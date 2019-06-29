@@ -3,3 +3,6 @@ Flask
 Flask-Cors
 gunicorn
 requests
+yaml
+pyyaml
+psycopg2
