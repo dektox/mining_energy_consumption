@@ -28,23 +28,25 @@ def load_data():
         c.execute('SELECT * FROM hash_rate')
         hash_rate=c.fetchall()
         hash_rate=hash_rate[500:]
+        c.execute('SELECT * FROM energy_consumption_ma')
+        cons=c.fetchall()
     with psycopg2.connect(**config['custom_data']) as conn2:   
         c2 = conn2.cursor()
         c2.execute('SELECT * FROM miners')
         miners=c2.fetchall()
         c2.execute('SELECT * FROM countries')
         countries=c2.fetchall()
-    return prof_threshold, hash_rate, miners, countries
+    return prof_threshold, hash_rate, miners, countries, cons
 
 app = Flask(__name__)
 CORS(app)
 app.config["DEBUG"] = True
-prof_threshold, hash_rate, miners, countries = load_data()
+prof_threshold, hash_rate, miners, countries, cons = load_data()
 lastupdate = time.time()
 
 @app.before_request
 def before_request(): 
-    global lastupdate, prof_threshold, hash_rate, miners, countries
+    global lastupdate, prof_threshold, hash_rate, miners, countries, cons
     if time.time() - lastupdate > 3600:
         prof_threshold, hash_rate, miners, countries =load_data()
         lastupdate = time.time()
@@ -53,13 +55,11 @@ def before_request():
 def recalculate_data(value):
     
     price = float(value)
-    k = 0.05/price # that is because basee calculations in the DB is for the price 0.066 USD/KWth
-    
-    prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
-    all_prof_eqp = []  # list of lists of profitable equipment efficiency in all the dates
-    max_consumption_all = []
-    min_consumption_all = []
-    guess_consumption_all = []
+    k = 0.05/price 
+    # that is because base calculation in the DB is for the price 0.05 USD/KWth
+    # temporary vars:
+    prof_eqp = all_prof_eqp = []
+    max_consumption_all = min_consumption_all = guess_consumption_all = []
     response = []
 
     for i in range(0, len(prof_threshold)):
@@ -185,6 +185,8 @@ def countries_btc():
             'bitcoin_percentage': round(item[1][0]/guess_consumption_all[-1]*100,2),
             'logo': item[1][1]
             })
+     for item in response:
+         if (item['country'] == "Bitcoin"): item['color'] = "#ffb81c"
      return jsonify(response)
 
 @app.route("/api/feedback", methods=['POST'])
