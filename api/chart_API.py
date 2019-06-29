@@ -156,32 +156,34 @@ def recalculate_guess(value):
 @app.route("/api/countries", methods=['GET','POST'])
 def countries_btc():
     
-     prof_eqp = all_prof_eqp = guess_consumption_all = []
+     prof_eqp = guess_consumption = guess_consumption_all = []
      for i in range(0, len(prof_threshold)):
          for miner in miners:
              if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]>miner[2]): prof_eqp.append(miner[2])
-         all_prof_eqp.append(prof_eqp)
          try:
              guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24*1.10/1e9
          except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
              guess_consumption = guess_consumption_all[-1]
          guess_consumption_all.append(guess_consumption)
          prof_eqp = []  
-         
-     local = countries
-     local.append(('Bitcoin','BTC',round(guess_consumption_all[-1],2),'logo'))
-     def takeThird(elem):
-         return elem[2]
-     local = sorted(local, key=takeThird, reverse=True)
-     local=list(enumerate(local,1))
+      
+     tup2dict = {a:[c,d] for a,b,c,d in countries}
+     tup2dict['Bitcoin'][0] = round(guess_consumption_all[-1],2)
+     dictsort=sorted(tup2dict.items(), key = lambda i: i[1][0], reverse=True)
+# =============================================================================
+#      def takeThird(elem):
+#          return elem[2]
+#      local = sorted(local, key=takeThird, reverse=True)
+#      local = list(enumerate(local,1))
+# =============================================================================
      response = []
-     for item in local:
+     for item in dictsort:
          response.append({
-            'X': item[1][0],
-            'Y': item[1][2],        
-            'country_rank': item[0], 
-            'bitcoin_percentage': round(item[1][2]/guess_consumption_all[-1]*100,2),
-            'logo': item[1][3]
+            'country': item[0],
+            'y': item[1][0],        
+            'x': dictsort.index(item)+1,
+            'bitcoin_percentage': round(item[1][0]/guess_consumption_all[-1]*100,2),
+            'logo': item[1][1]
             })
      return jsonify(response)
 
