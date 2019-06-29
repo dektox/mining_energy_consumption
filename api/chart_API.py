@@ -30,6 +30,7 @@ def load_data():
         hash_rate=hash_rate[500:]
         c.execute('SELECT * FROM energy_consumption_ma')
         cons=c.fetchall()
+        cons=cons[500:]
     with psycopg2.connect(**config['custom_data']) as conn2:   
         c2 = conn2.cursor()
         c2.execute('SELECT * FROM miners')
@@ -48,7 +49,7 @@ lastupdate = time.time()
 def before_request(): 
     global lastupdate, prof_threshold, hash_rate, miners, countries, cons
     if time.time() - lastupdate > 3600:
-        prof_threshold, hash_rate, miners, countries =load_data()
+        prof_threshold, hash_rate, miners, countries, cons =load_data()
         lastupdate = time.time()
     
 @app.route('/api/data/<value>')
@@ -58,8 +59,11 @@ def recalculate_data(value):
     k = 0.05/price 
     # that is because base calculation in the DB is for the price 0.05 USD/KWth
     # temporary vars:
-    prof_eqp = all_prof_eqp = []
-    max_consumption_all = min_consumption_all = guess_consumption_all = []
+    prof_eqp = []
+    all_prof_eqp = []
+    max_consumption_all = []
+    min_consumption_all = []
+    guess_consumption_all = []
     response = []
 
     for i in range(0, len(prof_threshold)):
@@ -156,7 +160,9 @@ def recalculate_guess(value):
 @app.route("/api/countries", methods=['GET','POST'])
 def countries_btc():
     
-     prof_eqp = guess_consumption = guess_consumption_all = []
+     prof_eqp = []
+     guess_consumption = []
+     guess_consumption_all = []
      for i in range(0, len(prof_threshold)):
          for miner in miners:
              if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]>miner[2]): prof_eqp.append(miner[2])
