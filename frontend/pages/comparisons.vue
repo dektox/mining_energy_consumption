@@ -14,15 +14,17 @@ We provide a set of comparisons below to help readers put numbers into perspecti
             <comparisonsRP />
             <comparisonsCards />
             <histogram />
+            <comparisonsFF />
         </v-flex>
     </v-layout>
 </template>
 
 <script>
-import countriesCards from '~/components/ComparisonsCards'
-import PC from '~/components/ComparisonsPC'
-import RP from '~/components/ComparisonsRP'
-import Histogram from '~/components/Histogram'
+import countriesCards from '~/components/comparisons/Countries'
+import PC from '~/components/comparisons/PC'
+import RP from '~/components/comparisons/RP'
+import FF from '~/components/comparisons/FF'
+import Histogram from '~/components/comparisons/Histogram'
 
 export default {
     name: 'comparisons',
@@ -30,6 +32,7 @@ export default {
         comparisonsCards: countriesCards,
         comparisonsPC: PC,
         comparisonsRP: RP,
+        comparisonsFF: FF,
         histogram: Histogram
     },
     data() {
