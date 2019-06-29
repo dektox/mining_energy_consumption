@@ -1,5 +1,5 @@
 <template>
-    <v-layout v-bind="binding" my-4 px-3 align-center align-content-space-around>
+    <v-layout v-bind="binding" my-4 pa-3 align-center align-content-space-around>
         <v-flex md4 ma-3>
             <v-card elevation="5">
                 <v-flex pa-4 class="text-xs-center">

@@ -32,7 +32,7 @@ export const actions = {
     LOAD_COUNTRIES: async ({ commit }) => {
         try {
             const res = await axios.get(`${api}/countries`)
-            await commit('SET_COUNTRIES', res.data.data)
+            await commit('SET_COUNTRIES', res.data)
         } catch (e) { alert(e) }
     },
 

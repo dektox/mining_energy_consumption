@@ -1,11 +1,11 @@
 <template>
-    <v-flex my-4>
-        <v-layout align-center justify-center my-4>
+    <v-flex my-4 pa-3>
+        <v-layout align-center justify-center>
           <h2 class="display-1">
             Total World Production & Consumption
           </h2>
         </v-layout>
-        <v-layout v-bind="binding" align-center justify-center>
+        <v-layout v-bind="binding" align-center justify-center my-3>
             <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
