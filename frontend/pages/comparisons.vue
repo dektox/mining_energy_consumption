@@ -1,15 +1,14 @@
 <template>
-    <v-layout id="wrap-container3" justify-center align-center wrap my-4>
+    <v-layout id="wrap-container3" justify-center align-center wrap>
         <v-flex xs10>
-            <v-layout mb-4 justify-center align-center>
+            <v-layout my-4 justify-center align-center>
                 <h1 class="display-2">Comparisons</h1>
             </v-layout>
-            <p class="main-text">While terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context.
-We provide a set of comparisons below to help readers put numbers into perspective.</p>
-            <p class="main-text"></p>
-            <p class="main-text">This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
-            <p class="main-text"></p>
-            <p class="main-text"><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/">best-guess estimate</a> of Bitcoin's total electricity consumption.</em></p>
+            <v-flex my-4 pa-3>
+                <p class="main-text">While terawatt-hours (TWh) are a standard unit of energy used to measure energy production and consumption, it can be difficult for laymen to assess without additional context. We provide a set of comparisons below to help readers put numbers into perspective.</p>
+                <p class="main-text">This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
+                <p class="main-text"><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/">best-guess estimate</a> of Bitcoin's total electricity consumption.</em></p>
+            </v-flex>
             <comparisonsPC />
             <comparisonsRP />
             <comparisonsCards />

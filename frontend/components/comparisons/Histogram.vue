@@ -2,7 +2,8 @@
     <v-flex>
         <v-switch
                 v-model="log"
-                :label="log ? 'log scale' : 'linear scale'"
+                label="linear scale"
+                color="#ffb81c"
         ></v-switch>
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
@@ -19,13 +20,16 @@
         },
         tooltip: {
             formatter: function () {
-              return '<b>' + 'Country' + '</b>' + ': ' + this.points[0].key + '<br/>' +
-              '<b>' + 'Consumption' + '</b>' + ': ' + this.y + ' TWh per year';
+              const point = this.points[0]
+              return '<b>' + point.point.country + '</b><br/>' +
+              'Total consumption: ' + point.y + ' TWh<br/>' +
+              'Country rank: ' + point.x + '<br/>' +
+              'Bitcoin percentage: ' + point.point.bitcoin_percentage + '%';
             },
             shared: true
         },
         xAxis: {
-            type: 'category',
+            type: 'linear',
             labels: {
                 rotation: -45,
                 style: {
@@ -56,12 +60,7 @@
           {
             name: 'Country Ranking',
             color: '#a2bdff',
-            data: data,
-          },
-          {
-            name: 'Country Ranking',
-            color: '#ffb81c',
-            data: data2,
+            data: data
           }
         ],
         exporting: {
@@ -79,7 +78,7 @@ import stockInit from 'highcharts/modules/stock'
 stockInit(charts)
 
 export default {
-    name: 'Chart3',
+    name: 'Histogram',
     components: {
         highcharts: Chart,
     },
@@ -91,24 +90,17 @@ export default {
     },
     async mounted() {
         this.containerWidth = document.getElementById("wrap-container3").getBoundingClientRect().width
+        console.log(this.containerWidth)
     },
     computed: {
         charts() {
             return charts
         },
         data() {
-            const data  = this.$store.getters.GET_COUNTRIES || []
-            const bitcoin = [...this.$store.getters.GET_DATA].pop() || {}
-            const arr = data.slice(0, 60).map(el => [el[1], parseInt(el[3])] )
-            const newarr = arr.concat([['Bitcoin', parseInt(bitcoin.guess_consumption.toFixed(2))]])
-            return newarr.sort((a, b) => {
-                return a[1] - b[1]
-            })
-        },
-        data2() {
-            const bitcoin = [...this.$store.getters.GET_DATA].pop() || {}
-            return [['Bitcoin', parseInt(bitcoin.guess_consumption.toFixed(2))]]
+            return this.$store.getters.GET_COUNTRIES.slice(0,60) || []
         }
     },
+    methods: {
+    }
 }
 </script>

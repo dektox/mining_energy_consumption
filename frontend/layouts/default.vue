@@ -20,7 +20,7 @@
               <v-list-tile-content>
                 <v-list-tile-title>
                   <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-                    cbeci
+                    Cbeci
                   </nuxt-link>
                 </v-list-tile-title>
               </v-list-tile-content>
@@ -28,8 +28,8 @@
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/comparisons'}" to="/comparisons">
-                    comparisons
+                  <nuxt-link :class="{'active': $route.path === '/comparisons'}" to="/comparisons/">
+                    Comparisons
                   </nuxt-link>
                 </v-list-tile-title>
               </v-list-tile-content>
@@ -37,26 +37,26 @@
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/methodology'}" to="/methodology">
-                    methodology
+                  <nuxt-link :class="{'active': $route.path === '/methodology'}" to="/methodology/">
+                    Methodology
                   </nuxt-link>
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <!--<v-list-tile v-if="links === 2" :key="i" v-for="(anchor, i) in methodologyAnchors">-->
-              <!--<v-list-tile-content>-->
-                <!--<v-list-tile-title>-->
-                  <!--<nuxt-link class="sub" :class="{'active': $route.path === '/methodology'}" :to="'/methodology' + anchor.link">-->
-                    <!--{{ anchor.text }}-->
-                  <!--</nuxt-link>-->
-                <!--</v-list-tile-title>-->
-              <!--</v-list-tile-content>-->
-            <!--</v-list-tile>-->
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/qanda'}" to="/qanda">
-                    Q&A
+                  <nuxt-link :class="{'active': $route.path === '/faq'}" to="/faq/">
+                    FAQ
+                  </nuxt-link>
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  <nuxt-link :class="{'active': $route.path === '/contact'}" to="/contact/">
+                    Contact
                   </nuxt-link>
                 </v-list-tile-title>
               </v-list-tile-content>
@@ -68,27 +68,27 @@
     <v-layout column class="menu hidden-sm-and-down">
       <v-flex pr-5 class="text-xs-left">
         <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-          cbeci
+          Cbeci
         </nuxt-link>
       </v-flex>
       <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/comparisons'}" to="/comparisons">
-          comparisons
+        <nuxt-link :class="{'active': $route.path === '/comparisons/'}" to="/comparisons/">
+          Comparisons
         </nuxt-link>
       </v-flex>
       <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/methodology'}" to="/methodology">
-          methodology
+        <nuxt-link :class="{'active': $route.path === '/methodology/'}" to="/methodology/">
+          Methodology
         </nuxt-link>
       </v-flex>
-      <!--<v-flex pr-5 class="text-xs-left" v-if="$route.path === '/methodology'" :key="i" v-for="(anchor, i) in methodologyAnchors">-->
-        <!--<nuxt-link class="sub" :class="{'active': $route.path === '/methodology' + anchor.link}" :to="'/methodology' + anchor.link">-->
-          <!--{{ anchor.text }}-->
-        <!--</nuxt-link>-->
-      <!--</v-flex>-->
       <v-flex class="text-xs-left" pr-5>
-        <nuxt-link :class="{'active': $route.path === '/qanda'}" to="/qanda">
+        <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">
           FAQ
+        </nuxt-link>
+      </v-flex>
+      <v-flex class="text-xs-left" pr-5>
+        <nuxt-link :class="{'active': $route.path === '/contact/'}" to="/contact/">
+          Contact
         </nuxt-link>
       </v-flex>
     </v-layout>

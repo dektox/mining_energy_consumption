@@ -1,7 +1,7 @@
 <template>
   <v-layout column justify-center align-center id="wrap-container">
-    <v-layout row align-center my-4>
-      <v-flex pa-3>
+    <v-layout row align-center>
+      <v-flex>
         <img src="~static/live.png" height="40">
       </v-flex>
       <v-flex pa-3>
@@ -11,7 +11,7 @@
             <v-icon class="icon-custom">
               updated
             </v-icon>
-            <span class="index-subtext">updated every 30 seconds</span>
+            <span style="margin-left: 4px" class="index-subtext">updated every 30 seconds</span>
           </v-layout>
         </v-layout>
       </v-flex>

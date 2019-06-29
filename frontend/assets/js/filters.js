@@ -1,6 +1,8 @@
 
 const percentage = num => num + ' %'
 
-const decimals = num => num.toFixed(2)
+const decimals = num => num ? num.toFixed(2) : num
 
-export { percentage, decimals }
+const round = num => Math.round(num)
+
+export { percentage, decimals, round }
