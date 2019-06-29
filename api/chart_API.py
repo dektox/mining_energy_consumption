@@ -168,7 +168,7 @@ def countries_btc():
          prof_eqp = []  
       
      tup2dict = {a:[c,d] for a,b,c,d in countries}
-     tup2dict['Bitcoin'][0] = float(guess_consumption_all[-1])
+     tup2dict['Bitcoin'][0] = round(guess_consumption_all[-1],2)
      dictsort=sorted(tup2dict.items(), key = lambda i: i[1][0], reverse=True)
 # =============================================================================
 #      def takeThird(elem):
