@@ -137,7 +137,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              <a href="https://www.environment.admin.cam.ac.uk/facts-figures" target="_blank">University of Cambridge</a>, 2017/18 est.
+              <a href="https://www.environment.admin.cam.ac.uk/facts-figures" target="_blank">University of Cambridge</a>, 2017/18
           </span>
         </v-layout>
     </v-flex>
