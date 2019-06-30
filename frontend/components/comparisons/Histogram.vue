@@ -2,7 +2,7 @@
     <v-flex>
         <v-switch
                 v-model="log"
-                label="LOG"
+                label="Logarithmic scale"
                 color="#ffb81c"
         ></v-switch>
         <highcharts :constructor-type="'stockChart'" :options="{
