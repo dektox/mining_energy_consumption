@@ -56,7 +56,7 @@
         </v-layout>
         <v-layout align-center justify-center>
             <h3 class="headline font-weight-bold">
-                Boiling tea kettles
+                Tea kettles
             </h3>
         </v-layout>
         <v-layout align-center justify-center my-3>
