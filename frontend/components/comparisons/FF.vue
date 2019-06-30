@@ -37,7 +37,7 @@
                                     </div>
                                 </v-layout>
                                 <v-flex>
-                                    <span>sustain the Bitcoin network for</span>
+                                    <span>power the Bitcoin network for</span>
                                 </v-flex>
                                 <v-flex>
                                     <span style="font-size: 32px"><b>4 years</b></span>
