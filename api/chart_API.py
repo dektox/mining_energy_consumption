@@ -42,7 +42,7 @@ def load_data():
 
 app = Flask(__name__)
 CORS(app)
-app.config["DEBUG"] = True
+app.config["DEBUG"] = False
 prof_threshold, hash_rate, miners, countries, cons = load_data()
 lastupdate = time.time()
 
