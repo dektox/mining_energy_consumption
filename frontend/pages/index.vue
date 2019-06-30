@@ -6,7 +6,7 @@
       </v-flex>
       <v-flex pa-3>
         <v-layout column>
-          <span class="index-text">Bitcoin network power</span>
+          <span class="index-text">&nbsp;Bitcoin network power</span>
           <v-layout row>
             <v-icon class="icon-custom">
               updated

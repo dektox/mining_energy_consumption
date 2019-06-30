@@ -42,7 +42,7 @@
         <v-layout my-3>
           <span>
               <b>Source:</b><br/>
-              Countries data - CIA <a src="">Factbook</a>, 2016 est.
+              Countries data - CIA <a target="_blank" href="https://www.cia.gov/library/publications/resources/the-world-factbook/fields/253rank.html">Factbook</a>, 2016 est.
           </span>
         </v-layout>
     </v-flex>

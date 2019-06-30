@@ -10,7 +10,7 @@
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
                         <v-flex>
-                            <span class="title"><b>Biofuel &amp; waste<br><br></b></span>
+                            <span class="title"><b>Biofuels &amp; waste<br><br></b></span>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/biofuel.png" object-fit="contain" width="30%">
@@ -34,7 +34,7 @@
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
                         <v-flex>
-                            <span class="title"><b>Solar, wind &amp;<br> geothermal</b></span>
+                            <span class="title"><b>Solar, wind &amp;<br> others</b></span>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/alternative.png" object-fit="contain" width="30%">
@@ -82,7 +82,7 @@
         <v-layout my-3>
           <span>
               <b>Source:</b><br/>
-              International Energy Agency <a src="">report</a>, 2016 est.
+              <a href="https://www.iea.org/statistics/electricity/">International Energy Agency</a>, 2016 est.
           </span>
         </v-layout>
     </v-flex>

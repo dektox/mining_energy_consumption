@@ -2,7 +2,7 @@
     <v-layout justify-center align-center wrap>
         <v-flex xs10>
             <v-layout my-4 justify-center align-center>
-                <h1 class="display-2">Contacts</h1>
+                <h1 class="display-2">Contact</h1>
             </v-layout>
             <feedback />
         </v-flex>
