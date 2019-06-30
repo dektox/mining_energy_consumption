@@ -10,7 +10,7 @@
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
                         <v-flex>
-                            <span class="title"><b>Biofuels &amp; waste<br><br></b></span>
+                            <span class="title"><b>Biofuels &amp; waste</b></span>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/biofuel.png" object-fit="contain" width="30%">
