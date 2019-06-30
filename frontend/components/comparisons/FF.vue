@@ -104,7 +104,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              <a href="https://www.sciencedirect.com/science/article/pii/S0306261916303579" target="_blank">Murray et al. (2016)</a>, est. 2012; <a href="https://www.research.manchester.ac.uk/portal/files/62970175/Environmental_sustainability_of_kettles.pdf" target="_blank">Fisher et al. (2014);</a> own calculations
+              <a href="https://www.sciencedirect.com/science/article/pii/S0306261916303579" target="_blank">Murray et al. (2016)</a>, 2012 est.; <a href="https://www.research.manchester.ac.uk/portal/files/62970175/Environmental_sustainability_of_kettles.pdf" target="_blank">Fisher et al. (2014)</a>; own calculations
           </span>
         </v-layout>
         <v-layout align-center justify-center>
@@ -137,7 +137,7 @@
         <v-layout my-4>
           <span>
               <b>Source:</b><br/>
-              <a href="https://www.environment.admin.cam.ac.uk/facts-figures" target="_blank">University of Cambridge</a>
+              <a href="https://www.environment.admin.cam.ac.uk/facts-figures" target="_blank">University of Cambridge</a>, 2017/18 est.
           </span>
         </v-layout>
     </v-flex>
