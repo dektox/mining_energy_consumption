@@ -26,7 +26,7 @@
                     <v-text-field
                             v-model="organization"
                             :counter="10"
-                            label="Organization"
+                            label="Organisation"
                             solo
                     />
                     <v-text-field
