@@ -2,7 +2,7 @@
     <v-flex my-4 pa-3>
         <v-layout align-center justify-center>
           <h2 class="display-1">
-            Fan Facts
+            Fun Facts
           </h2>
         </v-layout>
         <v-layout align-center justify-center>
