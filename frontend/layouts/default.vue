@@ -20,7 +20,7 @@
               <v-list-tile-content>
                 <v-list-tile-title>
                   <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-                    Cbeci
+                    CBECI
                   </nuxt-link>
                 </v-list-tile-title>
               </v-list-tile-content>
@@ -68,7 +68,7 @@
     <v-layout column class="menu hidden-sm-and-down">
       <v-flex pr-5 class="text-xs-left">
         <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-          Cbeci
+          CBECI
         </nuxt-link>
       </v-flex>
       <v-flex pr-5 class="text-xs-left">

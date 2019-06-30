@@ -1,8 +1,5 @@
 <template>
     <v-layout id="wrap-container2" justify-center align-center wrap my-4>
-    <div style="border: 4px solid red;">
-    <h2 style="text-align: center;"><span style="color: #ff0000;">This is a sample page with placeholder text. To see the latest version of the text draft, please visit the "Methodology" section via this link: </span><a href="http://review.cbeci.org" target="_blank">review.cbeci.org</a></h2>
-    </div>
         <v-flex xs10>
             <v-layout mb-4 justify-center align-center>
                 <h1 class="display-2">Methodology</h1>

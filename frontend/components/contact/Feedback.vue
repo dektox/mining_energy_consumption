@@ -17,7 +17,6 @@
                     </v-flex>
                     <v-text-field
                             v-model="name"
-                            :counter="10"
                             :rules="nameRules"
                             label="Name"
                             solo
@@ -25,7 +24,6 @@
                     />
                     <v-text-field
                             v-model="organization"
-                            :counter="10"
                             label="Organisation"
                             solo
                     />
@@ -39,19 +37,19 @@
 
                     <v-textarea
                             v-model="message"
-                            label="Your message ...."
+                            label="Your message ..."
                             required
                             solo
                     />
 
                     <v-flex>
-                        <p class="text-sm-left">How we use your personal information:</p>
-                        <p class="text-sm-left">Cambridge Judge Business School will use your personal information to reply to your enquiry only. Read more about how we handle your personal information and your rights under the data protection legislation <a href="" target="_blank">here</a>.</p>
+                        <p class="text-sm-left"><strong>How we use your personal information:</strong></p>
+                        <p class="text-sm-left">Cambridge Judge Business School will use your personal information to reply to your enquiry only. Read more about how we handle your personal information and your rights under the data protection legislation <a href="https://www.information-compliance.admin.cam.ac.uk/data-protection/general-data" target="_blank">here</a>.</p>
                     </v-flex>
                     <v-checkbox
                             v-model="checkbox"
-                            :rules="[v => !!v || 'You must agree to continue!']"
-                            label="Do you agree?"
+                            :rules="[v => !!v || 'Your consent is required to continue']"
+                            label="I have read and understood the above statement and consent to my personal information being used as described."
                             required
                     />
 
@@ -62,7 +60,7 @@
                             v-else
                             :disabled="!valid"
                             :loading="loading"
-                            color="success"
+                            color="#FFB81C"
                             @click="validate"
                     >
                         Send
