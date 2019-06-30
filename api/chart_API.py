@@ -57,72 +57,74 @@ def before_request():
 def recalculate_data(value):
     
     price = float(value)
-    if price == 0.05:
+# =============================================================================
+#     if price == 0.05:
+#         try:
+#             response = []
+#             for item in cons:
+#                 response.append({
+#                 'date': item[1],
+#                 'guess_consumption': item[4],      
+#                 'max_consumption': item[2],
+#                 'min_consumption': item[3],
+#                 'timestamp': item[0]
+#                 })
+#             return jsonify(data=response)
+#         except:
+#             pass
+#     else:
+# =============================================================================
+    k = 0.05/price 
+    # that is because base calculation in the DB is for the price 0.05 USD/KWth
+    # temporary vars:
+    prof_eqp = []
+    all_prof_eqp = []
+    max_all = []
+    min_all = []
+    ts_all = []
+    date_all = []
+    guess_all = []
+    response = []
+    
+    for i in range(0, len(prof_threshold)):
+        for miner in miners:
+            if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]*k>miner[2]): prof_eqp.append(miner[2])
+            # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
+        all_prof_eqp.append(prof_eqp)
         try:
-            response = []
-            for item in cons:
-                response.append({
-                'date': item[1],
-                'guess_consumption': item[4],      
-                'max_consumption': item[2],
-                'min_consumption': item[3],
-                'timestamp': item[0]
-                })
-            return jsonify(data=response)
-        except:
-            pass
-    else:
-        k = 0.05/price 
-        # that is because base calculation in the DB is for the price 0.05 USD/KWth
-        # temporary vars:
+            max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+            min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+        except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+            max_consumption = max_all[-1]
+            min_consumption = min_all[-1]
+            guess_consumption = guess_all[-1]
+        max_all.append(max_consumption)
+        min_all.append(min_consumption)
+        guess_all.append(guess_consumption)
+        timestamp = prof_threshold[i][0]
+        ts_all.append(timestamp)
+        date = prof_threshold[i][1]
+        date_all.append(date)
         prof_eqp = []
-        all_prof_eqp = []
-        max_all = []
-        min_all = []
-        ts_all = []
-        date_all = []
-        guess_all = []
-        response = []
+
+    energy_df=pd.DataFrame(list(zip(max_all,min_all,guess_all)), index=ts_all, 
+                           columns = ['MAX', 'MIN', 'GUESS'])
+    energy_ma=energy_df.rolling(window=7, min_periods=1).mean()
+    max_ma = list(energy_ma['MAX'])
+    min_ma = list(energy_ma['MIN'])
+    guess_ma = list(energy_ma['GUESS'])
     
-        for i in range(0, len(prof_threshold)):
-            for miner in miners:
-                if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]*k>miner[2]): prof_eqp.append(miner[2])
-                # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
-            all_prof_eqp.append(prof_eqp)
-            try:
-                max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
-                min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
-                guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
-            except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
-                max_consumption = max_all[-1]
-                min_consumption = min_all[-1]
-                guess_consumption = guess_all[-1]
-            max_all.append(max_consumption)
-            min_all.append(min_consumption)
-            guess_all.append(guess_consumption)
-            timestamp = prof_threshold[i][0]
-            ts_all.append(timestamp)
-            date = prof_threshold[i][1]
-            date_all.append(date)
-            prof_eqp = []
-    
-        energy_df=pd.DataFrame(list(zip(max_all,min_all,guess_all)), index=ts_all, 
-                               columns = ['MAX', 'MIN', 'GUESS'])
-        energy_ma=energy_df.rolling(window=7, min_periods=1).mean()
-        max_ma = list(energy_ma['MAX'])
-        min_ma = list(energy_ma['MIN'])
-        guess_ma = list(energy_ma['GUESS'])
-        
-        for day in range(0, len(ts_all)):
-            response.append({
-            'date': date_all[day],
-            'guess_consumption': guess_ma[day],
-            'max_consumption': max_ma[day], 
-            'min_consumption': min_ma[day], 
-            'timestamp': ts_all[day],
-            })
-    
-        return jsonify(data=response)
+    for day in range(0, len(ts_all)):
+        response.append({
+        'date': date_all[day],
+        'guess_consumption': guess_ma[day],
+        'max_consumption': max_ma[day], 
+        'min_consumption': min_ma[day], 
+        'timestamp': ts_all[day],
+        })
+
+    return jsonify(data=response)
 
 @app.route("/api/max/<value>")
 def recalculate_max(value):
