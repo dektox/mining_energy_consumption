@@ -1,5 +1,26 @@
 <template>
   <v-app>
+    <v-navigation-drawer
+            :value="drawer"
+            :permanent="drawer"
+            temporary
+            absolute
+            right
+    >
+      <v-layout column pa-4 mr-4>
+        <v-flex>
+          We use Google Analytics to see how people use our website. This helps us improve it. The data we have is anonymised.
+        </v-flex>
+        <v-flex>
+          <v-btn @click.stop="setCookies">
+            Confirm and continue browsing
+          </v-btn>
+          <v-btn href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
+            Learn more
+          </v-btn>
+        </v-flex>
+      </v-layout>
+    </v-navigation-drawer>
     <v-toolbar fixed app color="#ffb81c" class="header">
       <v-layout align-center row justify-start>
         <v-flex class="pointer logo" @click="gotoMain()">
@@ -97,6 +118,17 @@
         <nuxt />
       </v-container>
     </v-content>
+    <v-footer height="auto">
+      <v-card
+              class="flex"
+              flat
+              tile
+      >
+        <v-card-actions class="grey lighten-3 justify-center">
+          Cambridge Centre for Alternative Finance © 2019
+        </v-card-actions>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -113,10 +145,16 @@ export default {
     }
   },
   computed: {
+      drawer() {
+          return !this.$store.state.cooks
+      }
   },
   methods: {
       gotoMain() {
           this.$router.push('/')
+      },
+      setCookies() {
+          this.$store.commit('SET_COOK', true)
       }
   }
 }

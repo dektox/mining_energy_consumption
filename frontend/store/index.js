@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import _ from 'lodash'
+import Cookies from 'js-cookie'
 
 const api = 'https://cbeci.org/api'
 
@@ -10,7 +11,8 @@ export const state = () => ({
   price: 0.05,
   countries: [],
   progress: true,
-  progress2: true
+  progress2: true,
+  cooks: false
 })
 
 export const getters = {
@@ -25,6 +27,14 @@ export const mutations = {
   SET_COUNTRIES(state, payload) { state.countries = payload},
   SET_PROGRESS(state, payload) { state.progress = payload},
   SET_PROGRESS2(state, payload) { state.progress2 = payload},
+  SET_COOK(state, payload) {
+      state.cooks = payload
+      if(payload) {
+          Cookies.set('CookieControl', {analytics: 'true' }, {
+              expires: 365
+          });
+      }
+  },
 }
 
 export const actions = {

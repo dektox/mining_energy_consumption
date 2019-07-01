@@ -50,6 +50,9 @@ export default {
     { src: '~plugins/katex2js.js', ssr: false },
   ],
 
+  router: {
+      middleware: ['cookies']
+  },
   /*
   ** Nuxt.js modules
   */
