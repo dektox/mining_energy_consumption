@@ -6,6 +6,26 @@
         <h3 class="headline font-weight-bold text-md-left">Limitations of the model</h3>
         <v-flex class="main-text" my-3>
             <p>Every model is an incomplete representation of reality that relies on specific assumptions, some of which may be debatable. As a result, every model has limitations that need to be discussed. In particular, the current CBECI model exhibits the following limitations (the list is non-exhaustive):</p>
+			<ul>
+			<li>
+			<p><strong>Strong dependence on electricity cost estimate:</strong> electricity costs can significantly vary from one country, region, and provider to another. Prices are generally dynamic and adjustable, often according to seasonal circumstances, the quantity of electricity consumed, and other factors. Modifying the default electricity cost assumption can substantially change the model output.</p>
+			</li>
+			<li>
+			<p><strong>Hardware selection:</strong> we may not be aware of new and more efficient hardware that is not yet available on the market. Some have argued that manufacturers are using proprietary equipment to their own benefits before public release.</p>
+			</li>
+			<li>
+			<p><strong>Ignoring other cost factors: </strong>other potential factors that influence the decision of miners to switch off and/or replace existing equipment have not been incorporated into the model (e.g. maintenance and cooling costs).</p>
+			</li>
+			<li>
+			<p><strong>Simplistic weighting of profitable hardware</strong>: assuming that all profitable equipment is equally distributed among miners is unrealistic given that not all hardware is produced in equal quantities and readily available. The exact market share is unknown, although existing data suggests that a few large manufacturers dominate the market. The lack of reliable longitudinal market share data impacts all bottom-up approaches.</p>
+			</li>
+			<li>
+			<p><strong>Hardware specifications may not correspond to real performance:</strong> hardware manufacturers often advertise the performance and energy efficiency of their products using best case scenarios. Furthermore, miners may decide to overclock or underclock their machines for various reasons, which the model does not take into account.&nbsp;</p>
+			</li>
+			<li>
+			<p><strong>Short switching periods: </strong>it is unlikely that miners are able to quickly react to short-term changes in the profitability thresholds: they cannot simply replace all machines of an entire data centre in such a short period of time. While we attempt to smoothen the effect of short-term hashrate variations and price volatility, applying a moving average of 7 days (annualised consumption estimate) and 14 days (profitability threshold), respectively, may not be sufficient.</p>
+			</li>
+			</ul>
             <p>While most limitations do not have a major impact on the performance of the model, we are aware of its imperfections. The CBECI is an ongoing project that is maintained on a continuous basis. The model will be refined in response to changing circumstances, with all changes being transparently highlighted.</p>
             <p>In case you would like to provide suggestions on how we could improve the index, please feel free to send us a message using <nuxt-link to="/contact/">this form</nuxt-link>.</p>
         </v-flex>
@@ -13,7 +33,7 @@
         <v-flex class="main-text" my-3>
             <p>There have been multiple attempts in the past to analyse the electricity consumption of the Bitcoin network and assess its environmental footprint. A list of available studies and articles is presented in <b>Table 2</b>. With the exception of Alex De Vries <a target="_blank" href="https://digiconomist.net/bitcoin-energy-consumption">“Bitcoin Electricity Consumption Index” (BECI)</a>, there is no live index tracking Bitcoin’s electricity load and consumption in real time.</p>
             <v-toolbar flat color="white">
-                <v-toolbar-title>Table 2: Overview of previous studies on Bitcoin’s electricity usage and/or carbon emissions</v-toolbar-title>
+                <v-toolbar-title>Table 2: Overview of previous studies</v-toolbar-title>
             </v-toolbar>
             <v-data-table
                     :headers="headers"
@@ -33,6 +53,7 @@
             </v-data-table>
         </v-flex>
         <v-flex class="main-text" my-3>
+			<p>These studies tend to produce considerably diverging findings along a relatively broad range of possible estimates. This can be explained by the application of different methodologies adopted by the study authors: some use a top-down economic approach, whereas others are based on a bottom-up techno-economic approach (like the CBECI model).</p>
             <p>Each study is based on a set of assumptions that can be put into question. As a result, the design of each study - including our own analysis - has its own pitfalls and limitations. Some papers, however, have been criticised for applying overly simplistic assumptions and containing non-trivial errors such as inappropriate averaging over time periods or simple extrapolations. For a more thorough review of previous studies, see Koomey (2019).</p>
             <p>The CBECI has been designed with the aforementioned studies in mind. We have carefully reviewed the various methodologies and incorporated best practices. This website attempts to provide comprehensive documentation with transparent version control, highlight the model’s dependence on the electricity cost assumption by allowing visitors to adjust the default value, and openly present the uncertainties and limitations of the model. Feedback and suggestions for further improvements can be given <nuxt-link to="/contact/">here</nuxt-link>.
             </p>
@@ -50,7 +71,7 @@ export default {
                 { text: 'Date of publication', sortable: false, value: 'date'},
                 { text: 'Title', sortable: false, value: 'title'},
                 { text: 'Approach', sortable: false, value: 'approach'},
-                { text: 'Link', sortable: false, value: 'link'},
+                { text: 'Source', sortable: false, value: 'link'},
             ],
             items: [
                 {
