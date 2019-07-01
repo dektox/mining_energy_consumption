@@ -9,7 +9,7 @@
           width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
         },
         title: {
-            text: 'Profitability threshold over time, J/Gh',
+            text: 'Figure 2: Profitability threshold of mining equipment at 0.05 USD/kWh',
             align: 'left'
         },
         xAxis: {
@@ -17,7 +17,7 @@
         },
         yAxis: {
             title: {
-                text: null
+                text: 'J/Gh'
             },
             max: 2.5,
             type: 'logarithmic',
@@ -60,7 +60,7 @@
         },
         series: [
           {
-            name: 'Profitability',
+            name: 'Profitability threshold',
             color: '#ffb81c',
             data: data,
           }

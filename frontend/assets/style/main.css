@@ -5,6 +5,21 @@ html, body{
 
 h3{
     width: 100%;
+    margin-top: 30px;
+}
+
+h2{
+    margin-top: 40px;
+}
+
+.title{
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.assumption{
+    border: solid 4px #ffb81c;
+    font-weight: bold;
 }
 
 .index-text{

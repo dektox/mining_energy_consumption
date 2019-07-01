@@ -11,7 +11,7 @@
                     <v-flex pa-4 class="text-xs-center">
                         <img :src="country.logo" class="country-img-large">
                         <br/>
-                        <span>
+                        <span class="title">
                             {{ country.country }}
                         </span>
                         <br/>
@@ -26,7 +26,7 @@
                     <v-flex pa-4 class="text-xs-center">
                         <img :src="country.logo" class="country-img">
                         <br/>
-                        <span>
+                        <span class="title">
                             {{ country.country }}
                         </span>
                         <br/>

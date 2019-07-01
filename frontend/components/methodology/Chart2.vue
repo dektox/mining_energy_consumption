@@ -11,7 +11,7 @@
           zoomType: 'xy'
         },
         title: {
-            text: 'Mining equipment efficiency over time, J/Gh',
+            text: 'Figure 1: Evolution of Bitcoin mining equipment efficiency',
             align: 'left'
         },
         xAxis: {
@@ -29,7 +29,7 @@
         },
         yAxis: {
             title: {
-                text: null
+                text: 'J/Gh'
             },
             max: 0.6,
             opposite: false,

@@ -15,7 +15,7 @@
           type: 'column'
         },
         title: {
-            text: 'Country Ranking',
+            text: 'Country ranking, annual electricity consumption',
             align: 'left'
         },
         tooltip: {
@@ -39,7 +39,8 @@
                 y: 40,
                 style: {
                     fontSize: '14px',
-                    fontFamily: 'Verdana, sans-serif'
+                    fontFamily: 'Verdana, sans-serif',
+                    color: '#ffb81c'
                 }
             }
         },

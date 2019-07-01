@@ -35,14 +35,16 @@ export default {
   */
   css: [
     '~/assets/style/app.styl',
-    '~/assets/style/main.css'
+    '~/assets/style/main.css',
+    'latex2js/lib/latex2js.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/vuetify',
+    '@/plugins/latex2js.js'
   ],
 
   /*
