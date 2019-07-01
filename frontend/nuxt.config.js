@@ -54,7 +54,8 @@ export default {
 
   axios: {
     proxyHeaders: false,
-    credentials: false
+    credentials: false,
+    baseURL: 'https://cbeci.org'
   },
   /*
   ** Build configuration
