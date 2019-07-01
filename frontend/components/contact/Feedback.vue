@@ -23,7 +23,7 @@
                             required
                     />
                     <v-text-field
-                            v-model="organization"
+                            v-model="organisation"
                             label="Organisation"
                             solo
                     />
@@ -52,9 +52,11 @@
                             label="I have read and understood the above statement and consent to my personal information being used as described."
                             required
                     />
-
+                    <v-flex v-if="error">
+                        An error has occurred. Please reload the webpage and try again or directly contact ccaf@jbs.cam.ac.uk.
+                    </v-flex>
                     <v-flex v-if="status">
-                        success
+                        Your message has been sent successfully.
                     </v-flex>
                     <v-btn
                             v-else
@@ -90,10 +92,11 @@
                     v => !!v || 'E-mail is required',
                     v => /.+@.+/.test(v) || 'E-mail must be valid'
                 ],
-                organization: '',
+                organisation: '',
                 message: '',
                 checkbox: false,
-                status: false
+                status: false,
+                error: false
             }
         },
         computed: {
@@ -103,18 +106,24 @@
                 if (this.$refs.form.validate()) {
                     const self = this
                     self.loading = true
-                    this.$axios.post('/user', {
+                    this.$axios.post('/api/feedback', {
                         email: self.email,
                         message: self.message,
                         name: self.name,
                         organisation: self.organisation
-                    })
+                    }, { headers: { 'Access-Control-Allow-Origin': '*' }})
                         .then(function (response) {
+                            if(response.data.status === 'success') {
+                                self.status = true
+                            }
+                            if(response.data.status === 'fail') {
+                                self.error = true
+                            }
                             self.loading = false
-                            self.status = true
                         })
                         .catch(function (error) {
                             self.loading = false
+                            alert(error)
                         });
                 }
             },
