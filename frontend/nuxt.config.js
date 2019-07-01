@@ -36,15 +36,18 @@ export default {
   css: [
     '~/assets/style/app.styl',
     '~/assets/style/main.css',
-    'latex2js/lib/latex2js.css'
-  ],
+    'latex2js/lib/latex2js.css',
+    'katex/dist/katex.min.css'
+],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '@/plugins/vuetify',
-    '@/plugins/latex2js.js'
+    { src: '~plugins/ga.js', ssr: false },
+    { src: '~plugins/latex2js.js', ssr: false },
+    { src: '~plugins/katex2js.js', ssr: false },
   ],
 
   /*

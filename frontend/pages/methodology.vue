@@ -5,7 +5,9 @@
                 <h1 class="display-2">Methodology</h1>
             </v-layout>
             <overview />
-            <model />
+            <keep-alive>
+                <model />
+            </keep-alive>
             <discussion />
         </v-flex>
     </v-layout>
@@ -13,14 +15,14 @@
 
 <script>
 import Overview from '~/components/methodology/Overview'
-import Model from '~/components/methodology/Model'
+// import Model from '~/components/methodology/Model'
 import Discussion from '~/components/methodology/Discussion'
 
 export default {
     name: 'methodology',
     components: {
         overview: Overview,
-        model: Model,
+        model: () => import('~/components/methodology/Model'),
         discussion: Discussion
     },
     data() {

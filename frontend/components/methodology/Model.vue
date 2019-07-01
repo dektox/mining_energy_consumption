@@ -29,10 +29,13 @@
         <v-flex class="main-text" my-3>
             <p>The key idea underlying the CBECI model is that miners will run the equipment as long as it remains profitable in electricity terms. In order to determine the time periods during which a given hardware type is profitable, we model the economic lifetime of each machine by taking into account total miner revenues, total network hashrate, the energy efficiency of the hardware in question, and the average electricity price per kWh that miners have to pay.</p>
             <p>This results in the following mathematical inequality:</p>
-            <latex :content="formula1" /><br><br>
+            <keep-alive>
+                <latex :content="formula1" /><br><br>
+            </keep-alive>
             <p>It is worth noting that <b>profitability</b> in this context exclusively considers electricity costs incurred for running the machines: it does not take into account capital expenditures (e.g. acquisition and amortisation costs) nor other operational expenditures (e.g. cooling, maintenance, and labour costs).</p>
             <p>The profitability threshold (θ) is then calculated as follows:</p>
             <latex :content="formula2" /><br><br>
+            <katex-element :expression="formula2" />
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 1:</u> the global average electricity price is constant over time and corresponds to 0.05 USD/kWh. </span>
             </v-flex>
@@ -113,7 +116,9 @@
             </v-flex>//todo
             <p>We assume that in this scenario, all mining farms have a PUE of 1.20. While still considered efficient by general-purpose data centre standards, it ranges at the higher end of PUE figures reported by miners.</p>
             <p>The upper bound equation can thus be mathematically expressed as follows:</p>
-            <latex :content="formula5" /><br><br>
+            <keep-alive>
+                <latex :content="formula5" /><br><br>
+            </keep-alive>
             <p>The upper bound estimate corresponds to the absolute maximum electricity consumption of the Bitcoin network. While useful for providing a <b>quantifiable ceiling</b>, it is unrealistic for a variety of reasons:</p>
             <ul>
                 <li style="margin-bottom: 20px"><b>Miners demand the most energy-efficient hardware:</b> large miners with industrial-scale data centres compete for gaining early access to the newest ASIC generations that are more energy-efficient.</li>
@@ -161,43 +166,63 @@ export default {
         return {
             menu1: false,
             menu2: false,
-            formula1: String.raw`
-                \\begin{document}
-                \[\vartheta *P_{el}\ \le \ SRev\ ,\]
-                $ \vartheta $ = energy efficiency of mining hardware [J/h]
-
-                $ P_{el}$ = electricity cost per joule [USD/J]
-
-                $ SRev$ = mining revenue per hash [USD/h]
-                \\end{document}
-            `,
             formula2: String.raw`
-                \\begin{document}
-                \[\theta =\frac{SRev}{P_{el}},\]
-                \\end{document}
+                \vartheta *P_{el}\ \le \ SRev \\
+                with\\
+                \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h] \\
+                P_{el}\ -electricity\ cost\ per\ joule\ [USD/J] \\
+                SRev\ -mining\ revenue\ per\ hash\ [USD/h] \\
             `,
             formula3: String.raw`
-                \\begin{document}
+                \begin{document}
                 \[{Eq}_{prof}\left(P_{el}\right)=\{{\vartheta }_1,\ {\vartheta }_2,\dots \},\]
-                $ {Eq}_{prof}\left(P_{el}\right)$ - set of profitable hardware given electricity price $ {\ P}_{el}$
-
-                $ \vartheta $ $ {}_{i} $ - energy efficiency of mining hardware [J/h]}
-                \\end{document}
+                with
+                \[{Eq}_{prof}\left(P_{el}\right)\ -\mathrm{\ }set\ of\ profitable\ hardware\ given\ electricity\ price{\ P}_{el}\]
+                \[{\vartheta }_i\ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\]
+                \end{document}
             `,
             formula4: String.raw`
-                \\begin{document}
-                \[E_{lower}\left(P_{el}\right)={min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16\bullet {10}^7,\]
-                \\end{document}
+                \begin{document}
+                \[E_{lower}\left(P_{el}\right)={min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\]
+                with
+                \[E_{lower}\ -\ lower\ bound\ power\ consumption\ [W]\]
+                \[{min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\ hardware\ [J/h]\]
+                \[{H \ -\ hashrate\ [h/s]\ \ }\]
+                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
+                \end{document}
             `,
             formula5: String.raw`
-                \\begin{document}
-                \[E_{upper}\left(P_{el}\right)={max \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16\bullet {10}^7,\]
-                \\end{document}
+                \begin{document}
+                \[E_{upper}\left(P_{el}\right)={max \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\]
+                with
+                \[E_{upper}\ -\ upper\ bound\ power\ consumption\ [W]\]
+                \[{max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ but\ still\ profitable\ hardware\ [J/h]\ \ }\]
+                \[{H \ -\ hashrate\ [h/s]\ \ }\]
+                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
+                \end{document}
             `,
             formula6: String.raw`
-                \\begin{document}
-                \[E_{estimated}\left(P_{el}\right)=\frac{\sum^N_{i=1}{{\vartheta }_i}}{N}*H*PUE*3.16\bullet {10}^7,\]
-                \\end{document}
+                \begin{document}
+                \[E_{estimated}\left(P_{el}\right)=\frac{\sum^N_{i=1}{{\vartheta }_i}}{N}*H*PUE*3.16* {10}^7,\]
+                with
+                \[E_{estimated}\ -\ best-guess\ power\ consumption\ [W]\]
+                \[\frac{\sum^N_{i\mathrm{=1}}{{\vartheta }_i}}{N}\mathrm{\ }-\mathrm{\ }average\mathrm{\ }energy\mathrm{\ }efficiency\mathrm{\ }of\mathrm{\ }profitable\mathrm{\ }hardware\mathrm{\ [}J\mathrm{/}h\mathrm{]}\]
+                \[{H \ -\ hashrate\ [h/s]\ \ }\]
+                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
+                \end{document}
+            `
+        }
+    },
+    computed: {
+        formula1() {
+            return String.raw`
+                \begin{document}
+                \[\vartheta *P_{el}\ \le \ SRev\ ,\]
+                with
+                \[\vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\]
+                \[P_{el}\ -electricity\ cost\ per\ joule\ [USD/J]\]
+                \[SRev\ -mining\ revenue\ per\ hash\ [USD/h]\]
+                \end{document}
             `
         }
     }
