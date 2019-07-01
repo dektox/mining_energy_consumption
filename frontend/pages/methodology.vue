@@ -6,6 +6,7 @@
             </v-layout>
             <overview />
             <model />
+            <discussion />
         </v-flex>
     </v-layout>
 </template>
@@ -13,12 +14,14 @@
 <script>
 import Overview from '~/components/methodology/Overview'
 import Model from '~/components/methodology/Model'
+import Discussion from '~/components/methodology/Discussion'
 
 export default {
     name: 'methodology',
     components: {
         overview: Overview,
-        model: Model
+        model: Model,
+        discussion: Discussion
     },
     data() {
         return {
