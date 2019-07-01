@@ -15,7 +15,7 @@
             enabled: false
         },
         title: {
-            text: 'Electricity consumption chart, TWh (annualised)',
+            text: 'Bitcoin electricity consumption, TWh (annualised)',
             align: 'left'
         },
         subtitle: {
@@ -111,19 +111,19 @@
         },
         series: [
           {
-            name: 'Lower Bound Consumption',
+            name: 'Lower bound consumption',
             color: '#f2d596',
             data: dataSerieaMIN,
             lineWidth: 1.5
           },
           {
-            name: 'Upper Bound Consumption',
+            name: 'Upper bound consumption',
             color: 'grey',
             data: dataSerieaMAX,
             lineWidth: 1.5
           },
           {
-            name: 'Estimated Consumption',
+            name: 'Estimated consumption',
             color: '#ffb81c',
             data: dataSerieaESTIMATED,
             lineWidth: 2.5

@@ -15,7 +15,7 @@
             enabled: false
         },
         title: {
-            text: 'Energy consumption chart, TWh per year',
+            text: 'Bitcoin electricity consumption, TWh (annualised)',
             align: 'left'
         },
         subtitle: {
