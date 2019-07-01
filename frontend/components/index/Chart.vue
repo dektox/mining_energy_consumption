@@ -27,7 +27,7 @@
         },
         yAxis: {
             title: {
-                text: 'TWh ( annualised )',
+                text: 'TWh (annualised)',
                 style: { fontWeight: 'bold' },
             },
             max: 100,

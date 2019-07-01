@@ -37,7 +37,7 @@
             <latex :content="formula2" /><br><br>
             <katex-element :expression="formula2" />
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 1:</u> the global average electricity price is constant over time and corresponds to 0.05 USD/kWh. </span>
+                <span><u>Assumption 1</u>: the global average electricity price is constant over time and corresponds to 0.05 USD/kWh. </span>
             </v-flex>
             <p>Electricity prices available to miners vary significantly from one region to another for a variety of reasons. We assume that on average, miners face a constant electricity price of 5 USD cents per kilowatt-hour (0.05 USD/kWh). This default value is based on in-depth conversations with miners worldwide and is consistent with estimates used in previous research.
                 <sup @click="menu2 = true" style="text-decoration: underline; cursor: pointer">2</sup>
@@ -61,7 +61,7 @@
             <latex :content="formula3" /><br><br>
             <p>Sometimes, it is possible that no mining equipment is profitable during a certain period. In this case, we use the following assumption:</p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 2:</u> during time periods where no mining equipment is profitable, the model uses the last known profitable equipment.</span>
+                <span><u>Assumption 2</u>: during time periods where no mining equipment is profitable, the model uses the last known profitable equipment.</span>
             </v-flex>
             <p>It is reasonable to assume that miners will not immediately switch off unprofitable equipment as long as the time periods are acceptably short and infrequent. </p>
             <p>The model applies a <b>14-day moving average to the profitability threshold</b> in order to smoothen the switch from one equipment type to another as a result of short-term hashrate variations and price volatility. </p>
@@ -70,11 +70,11 @@
         <v-flex class="main-text" my-3>
             <p>In a best case scenario, every single miner would always use the most energy-efficient equipment that maximises expected profits. The lower bound estimate (E<sub>lower</sub>) is thus based on the following best-case assumption:</p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 3a (lower bound):</u> all miners always run the most efficient hardware available.</span>
+                <span><u>Assumption 3a (lower bound)</u>: all miners always run the most efficient hardware available.</span>
             </v-flex>
             <p>This assumption also implies that miners will rapidly upgrade mining gear as soon as more energy-efficient hardware becomes available on the market.</p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 4a (lower bound):</u> all mining facilities have a PUE of 1.01.</span>
+                <span><u>Assumption 4a (lower bound)</u>: all mining facilities have a PUE of 1.01.</span>
             </v-flex>
             <p>
                 <b>Power usage effectiveness (PUE)</b> is a measure of data centre energy efficiency: data centres generally consume more energy than is required to simply run servers, mostly because of cooling, supporting IT equipment, and other overheads. The higher the ratio, the less efficiently energy is used. Data centres with PUE below 1.2 are generally considered efficient. For reference, <a href="https://www.google.com/about/datacenters/efficiency/internal/" target="_blank">Google’s average PUE</a> is 1.11, whereas the average PUE of most data centres <a href="https://www.datacenterknowledge.com/archives/2011/05/10/uptime-institute-the-average-pue-is-1-8/" target="_blank">corresponds to 1.8</a> or more.
@@ -100,10 +100,10 @@
         <h3 class="headline font-weight-bold text-md-left">Constructing the upper bound estimate</h3>
         <v-flex class="main-text" my-3>
             <p>Calculating the upper bound estimate (E<sub>upper</sub>) is a more difficult task.</p>
-            <p>We could imagine a worst case scenario where every miner uses the least efficient computing device available on the market that is capable of generating cryptographic hashes - a central processing unit (CPU) powering for instance a computer, a tablet, or even a smartphone. However, with the exponential increase of Bitcoin’s network difficulty since 2016, this assumption would quickly lead to a consumption figure that exceeds the world’s total energy production - let alone that miners would need to operate at massive losses. </p> //todo
+            <p>We could imagine a worst case scenario where every miner uses the least efficient computing device available on the market that is capable of generating cryptographic hashes - a central processing unit (CPU) powering for instance a computer, a tablet, or even a smartphone. However, with the exponential increase of Bitcoin’s network difficulty since 2016, this assumption would quickly lead to a consumption figure that exceeds the world’s total energy production - let alone that miners would need to operate at massive losses. </p> 
             <p>We thus adjust the assumption as follows:</p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 3b (upper bound):</u>all miners always use the least efficient hardware available at each time period as long as the equipment is still profitable in terms of electricity costs.</span>
+                <span><u>Assumption 3b (upper bound)</u>: all miners always use the least efficient hardware available at each time period as long as the equipment is still profitable in terms of electricity costs.</span>
             </v-flex>
             <p>
                 As soon as a given equipment type is not profitable anymore, it will be retired and replaced with the next least efficient hardware model that still remains profitable.
@@ -112,8 +112,8 @@
                 It is worth remembering that the profitability threshold for each mining hardware type is calculated strictly in electricity terms and does not take into account capital expenditures nor other operational expenditures.
             </p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 3b (upper bound):</u>all miners always use the least efficient hardware available at each time period as long as the equipment is still profitable in terms of electricity costs.</span>
-            </v-flex>//todo
+                <span><u>Assumption 4b (upper bound)</u>: all mining facilities have a PUE of 1.2</span>
+            </v-flex>
             <p>We assume that in this scenario, all mining farms have a PUE of 1.20. While still considered efficient by general-purpose data centre standards, it ranges at the higher end of PUE figures reported by miners.</p>
             <p>The upper bound equation can thus be mathematically expressed as follows:</p>
             <keep-alive>
@@ -133,7 +133,7 @@
             <p>The difficulty lies in determining a realistic weighting approach for all profitable equipment types on a continuous basis that takes into account changing market and network conditions over time. Analysing the market share evolution of the major mining manufacturers would be a good proxy; however, reliable market share data over multiple periods is unfortunately not available.</p>
             <p>We thus use the following assumption for our best-guess estimate:</p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 3c (best-guess):</u>all miners use an equally-weighted basket of hardware types that are profitable in electricity terms.</span>
+                <span><u>Assumption 3c (best-guess)</u>: all miners use an equally-weighted basket of hardware types that are profitable in electricity terms.</span>
             </v-flex>
             <p>
                 The assumption that all profitable machines are equally distributed among miners may seem very unrealistic at first: many hardware types have not been produced and sold in equal quantities, some equipment may not have been available to everyone at the same time, and other machines may already have been fully retired despite becoming profitable again for a short period of time.
@@ -142,7 +142,7 @@
                 However, when comparing our best-guess estimate to a simulation that uses hardware weighting based on Stoll et al.’s (2019) market share calculations, the resulting electricity consumption values do not differ substantially (Figure 3). This suggests that using the current assumption of equally-weighted profitable equipment is acceptable until further research and analysis on better weighting approaches becomes available.
             </p>
             <v-flex class="assumption" mb-4 pa-3>
-                <span><u>Assumption 4c (best-guess):</u>all mining facilities have a PUE of 1.10.</span>
+                <span><u>Assumption 4c (best-guess)</u>: all mining facilities have a PUE of 1.10.</span>
             </v-flex>
             <p>We assume that all mining farms have a PUE of 1.10 when calculating our best-guess estimate. This figure is slightly more conservative than other estimates but has been confirmed during private conversations with miners and mining experts.</p>
             <p>Our best-guess estimate can be mathematically expressed as follows:</p>
