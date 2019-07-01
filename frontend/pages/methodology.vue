@@ -4,21 +4,8 @@
             <v-layout mb-4 justify-center align-center>
                 <h1 class="display-2">Methodology</h1>
             </v-layout>
-            <h3 class="headline font-weight-bold">What is the CBECI?</h3>
-            <v-flex class="main-text" my-3>
-                <p>The CBECI is an index that attempts to estimate the total energy consumption of the Bitcoin network. It is an adaptation of an approach initially suggested by <a href="http://blog.zorinaq.com/bitcoin-electricity-consumption/" target="_blank">Marc Bevand</a>.</p>
-                <p>The CBECI calculates a range limited by a lower-bound (absolute minimum energy expenditure) and an upper-bound estimate (realistic maximum energy expenditure).</p>
-                <span>Parameters taken into account:</span>
-                <ul>
-                    <li>Hashrate</li>
-                    <li>Difficulty level</li>
-                    <li>Block rewards in $ (subsidy + tx fees)</li>
-                    <li>Different mining equipment types</li>
-                    <li>Electricity cost [adjustable]</li>
-                    <li>Datacentre efficiency: PUE [adjustable]</li>
-                    <li>Mining equipment efficiency (Joules per Gigahash)</li>
-                </ul>
-            </v-flex>
+            <overview />
+
             <h3 class="headline font-weight-bold">Mining equipment efficiency</h3>
             <v-flex class="main-text" my-3>
                 <p>CBECI covers the period from Oct 2014 – when ASICs became popular and displaced CPUs and FPGAs. If the 1000 W device solves 10’000 Gh per second, its efficiency is 0.1 J/Gh (Joules per Gigahash). The mining equipment efficiency over time is given below:</p>
@@ -89,6 +76,16 @@
             <h3 class="headline font-weight-bold">Unprofitable mining</h3>
             <v-flex class="main-text" my-3>
                 <p>During unprofitable periods, the CBECI model returns the last known “profitable” figure assuming that the miners (who stay online) are not changing their equipment.</p>
+                <span>Parameters taken into account:</span>
+                <ul>
+                    <li>Hashrate</li>
+                    <li>Difficulty level</li>
+                    <li>Block rewards in $ (subsidy + tx fees)</li>
+                    <li>Different mining equipment types</li>
+                    <li>Electricity cost [adjustable]</li>
+                    <li>Datacentre efficiency: PUE [adjustable]</li>
+                    <li>Mining equipment efficiency (Joules per Gigahash)</li>
+                </ul>
             </v-flex>
         </v-flex>
     </v-layout>
@@ -97,12 +94,14 @@
 <script>
 import Chart2 from '~/components/Chart2'
 import Chart3 from '~/components/Chart3'
+import Overview from '~/components/methodology/Overview'
 
 export default {
     name: 'methodology',
     components: {
         chart2: Chart2,
-        chart3: Chart3
+        chart3: Chart3,
+        overview: Overview
     },
     data() {
         return {
