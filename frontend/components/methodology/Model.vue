@@ -152,7 +152,7 @@
                 The assumption that all profitable machines are equally distributed among miners may seem very unrealistic at first: many hardware types have not been produced and sold in equal quantities, some equipment may not have been available to everyone at the same time, and other machines may already have been fully retired despite becoming profitable again for a short period of time.
             </p>
             <p>
-                However, when comparing our best-guess estimate to a simulation that uses hardware weighting based on Stoll et al.’s (2019) market share calculations
+                However, when comparing our best-guess estimate to a simulation that uses hardware weighting based on Stoll et al.’s (2019) market share calculations,
                 <sup @click="menu3 = true" style="text-decoration: underline; cursor: pointer">3</sup>
                 <v-dialog v-model="menu3" :max-width="600" offset-x>
                     <v-card>
@@ -161,7 +161,7 @@
                         </v-flex>
                     </v-card>
                 </v-dialog>
-                , the resulting electricity consumption values do not differ substantially (Figure 3).
+                the resulting electricity consumption values do not differ substantially <strong>(Figure 3)</strong>.
                 <sup @click="menu4 = true" style="text-decoration: underline; cursor: pointer">4</sup>
                 <v-dialog v-model="menu4" :max-width="600" offset-x>
                     <v-card>
@@ -224,11 +224,11 @@ export default {
                 SRev\ -mining\ revenue\ per\ hash\ [USD/h]\\
             `,
             formula2: String.raw`
-                \theta =\frac{SRev}{P_{el}},\\
-                \space \\with\\
-                \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h] \\
-                P_{el}\ -electricity\ cost\ per\ joule\ [USD/J] \\
-                SRev\ -mining\ revenue\ per\ hash\ [USD/h] \\
+				\theta =\frac{SRev}{P_{el}},\\
+				\space \\with\\
+				\theta \ -profitability\ threshold\ [J/h]\\
+				P_{el}\ -electricity\ cost\ per\ joule\ [USD/J]\\
+				SRev\ -mining\ revenue\ per\ hash\ [USD/h]\\
             `,
             formula3: String.raw`
                 {Eq}_{prof}\left(P_{el}\right)=\{{\vartheta }_1,\ {\vartheta }_2,\dots \},\\
