@@ -143,6 +143,10 @@ input.highcharts-range-selector:focus {
     height: 120px !important;
 }
 
+.highcharts-credits{
+    opacity: 0;
+}
+
 .logo{
     height: 60px;
 }
