@@ -172,11 +172,11 @@
                 </v-dialog>
                 This suggests that using the current assumption of equally-weighted profitable equipment is acceptable until further research and analysis on better weighting approaches becomes available.
             </p>
+			<chart4/>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 4c (best-guess)</u>: all mining facilities have a PUE of 1.10.</span>
             </v-flex>
         </v-flex>
-        <chart4/>
         <v-flex class="main-text" my-3>
             <p>We assume that all mining farms have a PUE of 1.10 when calculating our best-guess estimate.
                 <sup @click="menu5 = true" style="text-decoration: underline; cursor: pointer">5</sup>
@@ -224,7 +224,7 @@ export default {
                 SRev\ -mining\ revenue\ per\ hash\ [USD/h]\\
             `,
             formula2: String.raw`
-                \vartheta *P_{el}\ \le \ SRev \\
+                \theta =\frac{SRev}{P_{el}},\\
                 \space \\with\\
                 \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h] \\
                 P_{el}\ -electricity\ cost\ per\ joule\ [USD/J] \\
