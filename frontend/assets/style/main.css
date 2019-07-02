@@ -17,6 +17,13 @@ h2{
     font-weight: bold !important;
 }
 
+.v-dialog__container {
+    position: absolute;
+}
+
+.katex { font-size: 1.5em !important; }
+.text .katex {font-size: 1em !important;}
+
 .assumption{
     border: solid 4px #ffb81c;
     font-weight: bold;
