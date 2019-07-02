@@ -45,7 +45,13 @@
                 <v-dialog v-model="menu2" :max-width="600" offset-x>
                     <v-card>
                         <v-flex pa-4>
-                            For instance, see Stoll et al., 2019 (available at: https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7), Digiconomist, 2019 (available at: https://digiconomist.net/bitcoin-energy-consumption), Vorick, 2018 (available at: https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b), de Vries, 2018 (available at: https://www.cell.com/joule/pdf/S2542-4351(18)30177-6.pdf), McCook, 2018 (available at: https://www.academia.edu/37178295/The_Cost_and_Sustainability_of_Bitcoin_August_2018_), and Bevand, 2017 (available at: http://blog.zorinaq.com/bitcoin-electricity-consumption).
+                            For instance, see Stoll et al., 2019 (available at:
+                            <a target="_blank" href="https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7">https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7</a>), Digiconomist, 2019 (available at:
+                            <a target="_blank" href="https://digiconomist.net/bitcoin-energy-consumption">https://digiconomist.net/bitcoin-energy-consumption</a>), Vorick, 2018 (available at:
+                            <a target="_blank" href="https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b">https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b</a>), de Vries, 2018 (available at:
+                            <a target="_blank" href="https://www.cell.com/joule/pdf/S2542-4351(18)30177-6.pdf">https://www.cell.com/joule/pdf/S2542-4351(18)30177-6.pdf</a>), McCook, 2018 (available at:
+                            <a target="_blank" href="https://www.academia.edu/37178295/The_Cost_and_Sustainability_of_Bitcoin_August_2018_">https://www.academia.edu/37178295/The_Cost_and_Sustainability_of_Bitcoin_August_2018_</a>), and Bevand, 2017 (available at:
+                            <a target="_blank" href="http://blog.zorinaq.com/bitcoin-electricity-consumption">http://blog.zorinaq.com/bitcoin-electricity-consumption</a>).
                         </v-flex>
                     </v-card>
                 </v-dialog>
@@ -146,7 +152,25 @@
                 The assumption that all profitable machines are equally distributed among miners may seem very unrealistic at first: many hardware types have not been produced and sold in equal quantities, some equipment may not have been available to everyone at the same time, and other machines may already have been fully retired despite becoming profitable again for a short period of time.
             </p>
             <p>
-                However, when comparing our best-guess estimate to a simulation that uses hardware weighting based on Stoll et al.’s (2019) market share calculations, the resulting electricity consumption values do not differ substantially (Figure 3). This suggests that using the current assumption of equally-weighted profitable equipment is acceptable until further research and analysis on better weighting approaches becomes available.
+                However, when comparing our best-guess estimate to a simulation that uses hardware weighting based on Stoll et al.’s (2019) market share calculations
+                <sup @click="menu3 = true" style="text-decoration: underline; cursor: pointer">3</sup>
+                <v-dialog v-model="menu3" :max-width="600" offset-x>
+                    <v-card>
+                        <v-flex pa-4>
+                            Weighting rationale and calculations are available at: <a target="_blank" href="https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7#secsectitle0150">https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7#secsectitle0150</a> (see Supplemental Information: Data S1. Calculation of Power Consumption and Carbon Emissions - 3.4_IPO filing analysis and 3.2_Best-guess p-consumption).
+                        </v-flex>
+                    </v-card>
+                </v-dialog>
+                , the resulting electricity consumption values do not differ substantially (Figure 3).
+                <sup @click="menu4 = true" style="text-decoration: underline; cursor: pointer">4</sup>
+                <v-dialog v-model="menu4" :max-width="600" offset-x>
+                    <v-card>
+                        <v-flex pa-4>
+                            It should be noted that the market share and energy efficiency parameters from Stoll et. al (2019) are static (calculated for each year) and only the hashrate parameter is dynamic (adjusted daily), which explains in part some of the larger divergences (from 20-30%) between the two estimates. Differences in hardware selection approaches are an additional reason for occasional divergences.
+                        </v-flex>
+                    </v-card>
+                </v-dialog>
+                This suggests that using the current assumption of equally-weighted profitable equipment is acceptable until further research and analysis on better weighting approaches becomes available.
             </p>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 4c (best-guess)</u>: all mining facilities have a PUE of 1.10.</span>
@@ -154,7 +178,16 @@
         </v-flex>
         <chart4/>
         <v-flex class="main-text" my-3>
-            <p>We assume that all mining farms have a PUE of 1.10 when calculating our best-guess estimate. This figure is slightly more conservative than other estimates but has been confirmed during private conversations with miners and mining experts.</p>
+            <p>We assume that all mining farms have a PUE of 1.10 when calculating our best-guess estimate.
+                <sup @click="menu5 = true" style="text-decoration: underline; cursor: pointer">5</sup>
+                <v-dialog v-model="menu5" :max-width="600" offset-x>
+                    <v-card>
+                        <v-flex pa-4>
+                            For instance, <a href="https://www.cell.com/joule/fulltext/S2542-4351(19)30255-7" target="_blank">Stoll et al. (2019)</a> and <a target="_blank" href="http://blog.zorinaq.com/morgan-stanley-bitcoin-research-reports/">Marc Bevand</a> discuss a PUE of 1.05.
+                        </v-flex>
+                    </v-card>
+                </v-dialog>
+                This figure is slightly more conservative than other estimates but has been confirmed during private conversations with miners and mining experts.</p>
             <p>Our best-guess estimate can be mathematically expressed as follows:</p>
             <v-layout align-center justify-center>
                 <katex-element :expression="formula6" display-mode/>
@@ -180,6 +213,9 @@ export default {
         return {
             menu1: false,
             menu2: false,
+            menu3: false,
+            menu4: false,
+            menu5: false,
             formula1: String.raw`
                 \vartheta *P_{el}\ \le \ SRev,\\
                 with\\

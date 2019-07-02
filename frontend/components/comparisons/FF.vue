@@ -6,7 +6,7 @@
           </h2>
         </v-layout>
         <v-layout align-center justify-center>
-            <h3 class="headline font-weight">
+            <h3 class="headline font-weight text-xs-center">
                 Idle home devices
             </h3>
         </v-layout>
@@ -57,7 +57,7 @@
           </span>
         </v-layout>
         <v-layout align-center justify-center>
-            <h3 class="headline font-weight">
+            <h3 class="headline font-weight text-xs-center">
                 Tea kettles
             </h3>
         </v-layout>
@@ -110,7 +110,7 @@
           </span>
         </v-layout>
         <v-layout align-center justify-center>
-            <h3 class="headline font-weight">
+            <h3 class="headline font-weight text-xs-center">
                 University of Cambridge
             </h3>
         </v-layout>

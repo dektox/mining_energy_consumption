@@ -22,6 +22,10 @@ h2{
     font-weight: bold;
 }
 
+.text-orange{
+    color: #ffb81c;
+}
+
 .index-text{
     font-size: 16px;
     font-weight: bold;
@@ -128,7 +132,7 @@ input.highcharts-range-selector:focus {
 }
 
 .qa-title{
-    font-size: 20px;
+    font-size: 18px;
 }
 .v-card__text.qa-text{
     padding: 16px 24px;

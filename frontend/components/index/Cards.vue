@@ -14,7 +14,7 @@
                         <span>GW</span>
                     </v-flex>
                     <v-divider />
-                    <v-flex mt-3 class="card-number-sm font-weight-bold orange--text text--lighten-2">
+                    <v-flex mt-3 class="card-number-sm font-weight-bold text-orange text--lighten-2">
                         <span>{{ numbers2[1] | decimals }}</span>
                     </v-flex>
                     <v-flex class="card-text">
@@ -50,7 +50,7 @@
                             </span>
                         </v-tooltip>
                     </v-flex>
-                    <v-flex class="card-number-lg font-weight-bold orange--text text--lighten-2">
+                    <v-flex class="card-number-lg font-weight-bold text-orange text--lighten-2">
                         <span>{{ numbers2[0] | decimals }}</span>
                     </v-flex>
                     <v-flex class="card-text">
@@ -73,7 +73,7 @@
                         <span>GW</span>
                     </v-flex>
                     <v-divider />
-                    <v-flex mt-3 class="card-number-sm font-weight-bold orange--text text--lighten-2">
+                    <v-flex mt-3 class="card-number-sm font-weight-bold text-orange text--lighten-2">
                         <span>{{ numbers2[2] | decimals }}</span>
                     </v-flex>
                     <v-flex class="card-text">
