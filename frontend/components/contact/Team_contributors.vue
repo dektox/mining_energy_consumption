@@ -11,7 +11,7 @@
                         href="https://twitter.com/ApollineBlandin" target="_blank">Apolline Blandin</a>, and <a
                         href="https://twitter.com/dektox" target="_blank">Anton Dek</a>) at the Cambridge Centre for
                 Alternative Finance, University of Cambridge, Judge Business School.</p>
-            <p class="main-text">Special thanks go to Kyrylo Manakhov for designing the website and Marc Bevand, Lena Klaaßen, and Christian Stoll for reviewing the methodology. The research team would also like to thank Keith Bear, Kieran Garvey, Grigory McKain, Stephen McKeon, Robert Wardrop, and Bryan Zhang for providing valuable feedback and suggestions. Furthermore, we would like to express our gratitude to Alexi Anani, Konstantinos Renios, and Hatim Hussain for their contributions to this project.</p>
+            <p class="main-text">Special thanks go to Kyrylo Manakhov for designing the website and to Marc Bevand, Lena Klaaßen, and Christian Stoll for reviewing the methodology. The research team would also like to thank Keith Bear, Kieran Garvey, Grigory McKain, Stephen McKeon, Robert Wardrop, and Bryan Zhang for providing valuable feedback and suggestions. Furthermore, we would like to express our gratitude to Alexi Anani, Konstantinos Renios, and Hatim Hussain for their contributions to this project.</p>
         </v-flex>
         <v-layout pt-4 align-center justify-center>
             <h3 class="headline font-weight">

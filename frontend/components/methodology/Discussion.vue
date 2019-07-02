@@ -40,7 +40,7 @@
         </v-flex>
         <h3 class="headline font-weight-bold text-md-left">How does the CBECI compare to other estimates?</h3>
         <v-flex class="main-text" my-3>
-            <p>There have been multiple attempts in the past to analyse the electricity consumption of the Bitcoin network and assess its environmental footprint. A list of available studies and articles is presented in <b>Table 2</b>. With the exception of Alex De Vries <a target="_blank" href="https://digiconomist.net/bitcoin-energy-consumption">“Bitcoin Electricity Consumption Index” (BECI)</a>, there is no live index tracking Bitcoin’s electricity load and consumption in real time.</p>
+            <p>There have been multiple attempts in the past to analyse the electricity consumption of the Bitcoin network and assess its environmental footprint. A list of available studies and articles is presented in <b>Table 2</b>. With the exception of Alex De Vries’s <a target="_blank" href="https://digiconomist.net/bitcoin-energy-consumption">“Bitcoin Electricity Consumption Index” (BECI)</a>, there is no live index tracking Bitcoin’s electricity load and consumption in real time.</p>
             <v-toolbar flat color="white">
                 <v-toolbar-title>Table 2: Overview of previous studies</v-toolbar-title>
             </v-toolbar>

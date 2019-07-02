@@ -68,7 +68,7 @@
             <v-layout align-center justify-center>
                 <katex-element :expression="formula3" display-mode/>
             </v-layout>
-            <p>Sometimes, it is possible that no mining equipment is profitable during a certain period. In this case, we use the following assumption:</p>
+            <p><br/>Sometimes, it is possible that no mining equipment is profitable during a certain period. In this case, we use the following assumption:</p>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 2</u>: during time periods where no mining equipment is profitable, the model uses the last known profitable equipment.</span>
             </v-flex>
@@ -99,7 +99,7 @@
                 <katex-element :expression="formula4" display-mode/>
             </v-layout>
             <p>
-                The lower bound estimate corresponds to the absolute minimum electricity consumption of the Bitcoin network. While useful for providing a quantifiable floor, it is unrealistic for a variety of reasons:
+                <br/>The lower bound estimate corresponds to the absolute minimum electricity consumption of the Bitcoin network. While useful for providing a quantifiable floor, it is unrealistic for a variety of reasons:
             </p>
             <ul>
                 <li style="margin-bottom: 20px"><b>Not all miners use the most efficient hardware:</b> old equipment can remain profitable for a considerable time when miners have access to cheap electricity and Bitcoin prices remain high. </li>
@@ -132,7 +132,7 @@
                     <katex-element :expression="formula5" display-mode/>
                 </v-layout>
             </keep-alive>
-            <p>The upper bound estimate corresponds to the absolute maximum electricity consumption of the Bitcoin network. While useful for providing a <b>quantifiable ceiling</b>, it is unrealistic for a variety of reasons:</p>
+            <p><br/>The upper bound estimate corresponds to the absolute maximum electricity consumption of the Bitcoin network. While useful for providing a <b>quantifiable ceiling</b>, it is unrealistic for a variety of reasons:</p>
             <ul>
                 <li style="margin-bottom: 20px"><b>Miners demand the most energy-efficient hardware:</b> large miners with industrial-scale data centres compete for gaining early access to the newest ASIC generations that are more energy-efficient.</li>
                 <li style="margin-bottom: 20px"><b>Old equipment gets replaced:</b> many miners replace old ASIC generations that have remained unprofitable for a long time with new equipment rather than storing old equipment for years hoping for the profitability threshold to increase.</li>
@@ -192,7 +192,7 @@
             <v-layout align-center justify-center>
                 <katex-element :expression="formula6" display-mode/>
             </v-layout>
-            <p>Limitations of this methodology will be discussed in the next section.</p>
+            <p><br/>Limitations of this methodology will be discussed in the next section.</p>
         </v-flex>
     </v-layout>
 </template>
@@ -218,27 +218,27 @@ export default {
             menu5: false,
             formula1: String.raw`
                 \vartheta *P_{el}\ \le \ SRev,\\
-                with\\
+                \space \\with\\
                 \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\\
                 P_{el}\ -electricity\ cost\ per\ joule\ [USD/J]\\
                 SRev\ -mining\ revenue\ per\ hash\ [USD/h]\\
             `,
             formula2: String.raw`
                 \vartheta *P_{el}\ \le \ SRev \\
-                with\\
+                \space \\with\\
                 \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h] \\
                 P_{el}\ -electricity\ cost\ per\ joule\ [USD/J] \\
                 SRev\ -mining\ revenue\ per\ hash\ [USD/h] \\
             `,
             formula3: String.raw`
                 {Eq}_{prof}\left(P_{el}\right)=\{{\vartheta }_1,\ {\vartheta }_2,\dots \},\\
-                with\\
+                \space \\with\\
                 {Eq}_{prof}\left(P_{el}\right)\ -\mathrm{\ }set\ of\ profitable\ hardware\ given\ electricity\ price{\ P}_{el}\\
                 {\vartheta }_i\ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\\
             `,
             formula4: String.raw`
                 E_{lower}\left(P_{el}\right)={min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16*{10}^7,\\
-                with\\
+                \space \\with\\
                 E_{lower}\ -\ lower\ bound\ power\ consumption\ [W]\\
                 {min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\\ hardware\ [J/h]\\
                 {H \ -\ hashrate\ [h/s]\ \ }\\
@@ -246,7 +246,7 @@ export default {
             `,
             formula5: String.raw`
                 E_{upper}\left(P_{el}\right)={max \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\\
-                with\\
+                \space \\with\\
                 E_{upper}\ -\ upper\ bound\ power\ consumption\ [W]\\
                 {max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ but\ still\ profitable\ hardware\ [J/h]\ \ }\\
                 {H \ -\ hashrate\ [h/s]\ \ }\\
@@ -254,11 +254,11 @@ export default {
             `,
             formula6: String.raw`
                 E_{estimated}\left(P_{el}\right)=\frac{\sum^N_{i=1}{{\vartheta }_i}}{N}*H*PUE*3.16*{10}^7,\\
-                with\\
+                \space \\with\\
                 E_{estimated}\ -\ best\ guess\ power\ consumption\ [W]\\
                 \frac{\sum^N_{i\mathrm{=1}}{{\vartheta }_i}}{N}\mathrm{\ }-\mathrm{\ }average\mathrm{\ }energy\mathrm{\ }efficiency\mathrm{\ }of\mathrm{\ }profitable\mathrm{\ }hardware\mathrm{\ [}J\mathrm{/}h\mathrm{]}\\
                 {H \ -\ hashrate\ [h/s]\ \ }\\
-                {PUE \ -\ power\ usage\ effectiveness\ }\\\
+                {PUE \ -\ power\ usage\ effectiveness\ }\\
             `
         }
     },

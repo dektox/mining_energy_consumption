@@ -113,7 +113,7 @@
                 ],
                 second: [
                     {
-                        "title": "Why does Bitcoin consume electicity?",
+                        "title": "Why does Bitcoin consume electricity?",
                         "text": "<p>We mentioned before that PoW mining rests on the premise that a financial cost needs to be attached to the vote. It turns out that this cost primarily comes in the form of electricity that needs to be expended in order to run mining machines. And mining hardware consumes quite a lot of electricity, to say the least!</p><p>The more machines a miner operates, the more likely he is to find the solution to the puzzle. However, more machines also means that more electricity is needed to run and cool the equipment, which in turn results in higher costs for the miner in question. Miners are thus always searching for abundant electricity sources at the lowest possible price.</p><p>While newer ASIC models are substantially more energy-efficient than previous generations, they still consume a significant amount of electricity. Rising bitcoin prices make mining more attractive, as the potential reward increases in value. As a result, new mining hardware will get added to the network and lead to increasing electricity consumption overall.</p><p>The electricity consumption is thus closely linked to total mining revenues (block subsidy and transaction fees), which are a function of the Bitcoin price.</p>"
                     },
                     {
