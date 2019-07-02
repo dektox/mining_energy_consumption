@@ -29,13 +29,14 @@
         <v-flex class="main-text" my-3>
             <p>The key idea underlying the CBECI model is that miners will run the equipment as long as it remains profitable in electricity terms. In order to determine the time periods during which a given hardware type is profitable, we model the economic lifetime of each machine by taking into account total miner revenues, total network hashrate, the energy efficiency of the hardware in question, and the average electricity price per kWh that miners have to pay.</p>
             <p>This results in the following mathematical inequality:</p>
-            <keep-alive>
-                <latex :content="formula1" /><br><br>
-            </keep-alive>
+            <v-layout align-center justify-center>
+                <katex-element :expression="formula1" display-mode/>
+            </v-layout>
             <p>It is worth noting that <b>profitability</b> in this context exclusively considers electricity costs incurred for running the machines: it does not take into account capital expenditures (e.g. acquisition and amortisation costs) nor other operational expenditures (e.g. cooling, maintenance, and labour costs).</p>
             <p>The profitability threshold (θ) is then calculated as follows:</p>
-            <latex :content="formula2" /><br><br>
-            <katex-element :expression="formula2" />
+            <v-layout align-center justify-center>
+                <katex-element :expression="formula2" display-mode/>
+            </v-layout>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 1</u>: the global average electricity price is constant over time and corresponds to 0.05 USD/kWh. </span>
             </v-flex>
@@ -58,7 +59,9 @@
         </v-flex>
         <chart3/>
         <v-flex class="main-text" my-3>
-            <latex :content="formula3" /><br><br>
+            <v-layout align-center justify-center>
+                <katex-element :expression="formula3" display-mode/>
+            </v-layout>
             <p>Sometimes, it is possible that no mining equipment is profitable during a certain period. In this case, we use the following assumption:</p>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 2</u>: during time periods where no mining equipment is profitable, the model uses the last known profitable equipment.</span>
@@ -86,7 +89,9 @@
                 In a best case scenario, mining facilities have optimised data centre operations to a point where there is nearly zero overhead. This scenario is represented by assuming a PUE of 1.01.
             </p>
             <p>The lower bound estimate can be mathematically expressed as follows:</p>
-            <latex :content="formula4" /><br><br>
+            <v-layout align-center justify-center>
+                <katex-element :expression="formula4" display-mode/>
+            </v-layout>
             <p>
                 The lower bound estimate corresponds to the absolute minimum electricity consumption of the Bitcoin network. While useful for providing a quantifiable floor, it is unrealistic for a variety of reasons:
             </p>
@@ -100,7 +105,7 @@
         <h3 class="headline font-weight-bold text-md-left">Constructing the upper bound estimate</h3>
         <v-flex class="main-text" my-3>
             <p>Calculating the upper bound estimate (E<sub>upper</sub>) is a more difficult task.</p>
-            <p>We could imagine a worst case scenario where every miner uses the least efficient computing device available on the market that is capable of generating cryptographic hashes - a central processing unit (CPU) powering for instance a computer, a tablet, or even a smartphone. However, with the exponential increase of Bitcoin’s network difficulty since 2016, this assumption would quickly lead to a consumption figure that exceeds the world’s total energy production - let alone that miners would need to operate at massive losses. </p> 
+            <p>We could imagine a worst case scenario where every miner uses the least efficient computing device available on the market that is capable of generating cryptographic hashes - a central processing unit (CPU) powering for instance a computer, a tablet, or even a smartphone. However, with the exponential increase of Bitcoin’s network difficulty since 2016, this assumption would quickly lead to a consumption figure that exceeds the world’s total energy production - let alone that miners would need to operate at massive losses. </p>
             <p>We thus adjust the assumption as follows:</p>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 3b (upper bound)</u>: all miners always use the least efficient hardware available at each time period as long as the equipment is still profitable in terms of electricity costs.</span>
@@ -117,7 +122,9 @@
             <p>We assume that in this scenario, all mining farms have a PUE of 1.20. While still considered efficient by general-purpose data centre standards, it ranges at the higher end of PUE figures reported by miners.</p>
             <p>The upper bound equation can thus be mathematically expressed as follows:</p>
             <keep-alive>
-                <latex :content="formula5" /><br><br>
+                <v-layout align-center justify-center>
+                    <katex-element :expression="formula5" display-mode/>
+                </v-layout>
             </keep-alive>
             <p>The upper bound estimate corresponds to the absolute maximum electricity consumption of the Bitcoin network. While useful for providing a <b>quantifiable ceiling</b>, it is unrealistic for a variety of reasons:</p>
             <ul>
@@ -144,9 +151,14 @@
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 4c (best-guess)</u>: all mining facilities have a PUE of 1.10.</span>
             </v-flex>
+        </v-flex>
+        <chart4/>
+        <v-flex class="main-text" my-3>
             <p>We assume that all mining farms have a PUE of 1.10 when calculating our best-guess estimate. This figure is slightly more conservative than other estimates but has been confirmed during private conversations with miners and mining experts.</p>
             <p>Our best-guess estimate can be mathematically expressed as follows:</p>
-            <latex :content="formula6" /><br><br>
+            <v-layout align-center justify-center>
+                <katex-element :expression="formula6" display-mode/>
+            </v-layout>
             <p>Limitations of this methodology will be discussed in the next section.</p>
         </v-flex>
     </v-layout>
@@ -155,17 +167,26 @@
 <script>
 import Chart2 from '~/components/methodology/Chart2'
 import Chart3 from '~/components/methodology/Chart3'
+import Chart4 from '~/components/methodology/Chart4'
 
 export default {
     name: 'Model',
     components: {
         chart2: Chart2,
         chart3: Chart3,
+        chart4: Chart4,
     },
     data() {
         return {
             menu1: false,
             menu2: false,
+            formula1: String.raw`
+                \vartheta *P_{el}\ \le \ SRev,\\
+                with\\
+                \vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\\
+                P_{el}\ -electricity\ cost\ per\ joule\ [USD/J]\\
+                SRev\ -mining\ revenue\ per\ hash\ [USD/h]\\
+            `,
             formula2: String.raw`
                 \vartheta *P_{el}\ \le \ SRev \\
                 with\\
@@ -174,57 +195,38 @@ export default {
                 SRev\ -mining\ revenue\ per\ hash\ [USD/h] \\
             `,
             formula3: String.raw`
-                \begin{document}
-                \[{Eq}_{prof}\left(P_{el}\right)=\{{\vartheta }_1,\ {\vartheta }_2,\dots \},\]
-                with
-                \[{Eq}_{prof}\left(P_{el}\right)\ -\mathrm{\ }set\ of\ profitable\ hardware\ given\ electricity\ price{\ P}_{el}\]
-                \[{\vartheta }_i\ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\]
-                \end{document}
+                {Eq}_{prof}\left(P_{el}\right)=\{{\vartheta }_1,\ {\vartheta }_2,\dots \},\\
+                with\\
+                {Eq}_{prof}\left(P_{el}\right)\ -\mathrm{\ }set\ of\ profitable\ hardware\ given\ electricity\ price{\ P}_{el}\\
+                {\vartheta }_i\ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\\
             `,
             formula4: String.raw`
-                \begin{document}
-                \[E_{lower}\left(P_{el}\right)={min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\]
-                with
-                \[E_{lower}\ -\ lower\ bound\ power\ consumption\ [W]\]
-                \[{min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\ hardware\ [J/h]\]
-                \[{H \ -\ hashrate\ [h/s]\ \ }\]
-                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
-                \end{document}
+                E_{lower}\left(P_{el}\right)={min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16*{10}^7,\\
+                with\\
+                E_{lower}\ -\ lower\ bound\ power\ consumption\ [W]\\
+                {min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\\ hardware\ [J/h]\\
+                {H \ -\ hashrate\ [h/s]\ \ }\\
+                {PUE \ -\ power\ usage\ effectiveness\ }\\
             `,
             formula5: String.raw`
-                \begin{document}
-                \[E_{upper}\left(P_{el}\right)={max \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\]
-                with
-                \[E_{upper}\ -\ upper\ bound\ power\ consumption\ [W]\]
-                \[{max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ but\ still\ profitable\ hardware\ [J/h]\ \ }\]
-                \[{H \ -\ hashrate\ [h/s]\ \ }\]
-                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
-                \end{document}
+                E_{upper}\left(P_{el}\right)={max \left({Eq}_{prof}\left(P_{el}\right)\right)\ }*H*PUE*3.16* {10}^7,\\
+                with\\
+                E_{upper}\ -\ upper\ bound\ power\ consumption\ [W]\\
+                {max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ but\ still\ profitable\ hardware\ [J/h]\ \ }\\
+                {H \ -\ hashrate\ [h/s]\ \ }\\
+                {PUE \ -\ power\ usage\ effectiveness\ }\\
             `,
             formula6: String.raw`
-                \begin{document}
-                \[E_{estimated}\left(P_{el}\right)=\frac{\sum^N_{i=1}{{\vartheta }_i}}{N}*H*PUE*3.16* {10}^7,\]
-                with
-                \[E_{estimated}\ -\ best-guess\ power\ consumption\ [W]\]
-                \[\frac{\sum^N_{i\mathrm{=1}}{{\vartheta }_i}}{N}\mathrm{\ }-\mathrm{\ }average\mathrm{\ }energy\mathrm{\ }efficiency\mathrm{\ }of\mathrm{\ }profitable\mathrm{\ }hardware\mathrm{\ [}J\mathrm{/}h\mathrm{]}\]
-                \[{H \ -\ hashrate\ [h/s]\ \ }\]
-                \[{PUE \ -\ power\ usage\ effectiveness\ }\]
-                \end{document}
+                E_{estimated}\left(P_{el}\right)=\frac{\sum^N_{i=1}{{\vartheta }_i}}{N}*H*PUE*3.16*{10}^7,\\
+                with\\
+                E_{estimated}\ -\ best\ guess\ power\ consumption\ [W]\\
+                \frac{\sum^N_{i\mathrm{=1}}{{\vartheta }_i}}{N}\mathrm{\ }-\mathrm{\ }average\mathrm{\ }energy\mathrm{\ }efficiency\mathrm{\ }of\mathrm{\ }profitable\mathrm{\ }hardware\mathrm{\ [}J\mathrm{/}h\mathrm{]}\\
+                {H \ -\ hashrate\ [h/s]\ \ }\\
+                {PUE \ -\ power\ usage\ effectiveness\ }\\\
             `
         }
     },
     computed: {
-        formula1() {
-            return String.raw`
-                \begin{document}
-                \[\vartheta *P_{el}\ \le \ SRev\ ,\]
-                with
-                \[\vartheta \ -energy\ efficiency\ of\ mining\ hardware\ [J/h]\]
-                \[P_{el}\ -electricity\ cost\ per\ joule\ [USD/J]\]
-                \[SRev\ -mining\ revenue\ per\ hash\ [USD/h]\]
-                \end{document}
-            `
-        }
     }
 }
 </script>

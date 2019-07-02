@@ -1,5 +1,8 @@
 <template>
     <v-flex>
+        <v-toolbar flat color="white">
+            <v-toolbar-title>Figure 1: Evolution of Bitcoin mining equipment efficiency</v-toolbar-title>
+        </v-toolbar>
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
           marginBottom: (containerWidth > 400) ? 120 : 0,
@@ -11,7 +14,7 @@
           zoomType: 'xy'
         },
         title: {
-            text: 'Figure 1: Evolution of Bitcoin mining equipment efficiency',
+            text: null,
             align: 'left'
         },
         xAxis: {

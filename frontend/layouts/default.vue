@@ -6,16 +6,20 @@
             temporary
             absolute
             right
+            style="background-color: #FEE9BA"
     >
       <v-layout column pa-4 mr-4>
-        <v-flex>
-          We use Google Analytics to see how people use our website. This helps us improve it. The data we have is anonymised.
+        <h2 class="display-1">
+          This site uses cookies
+        </h2>
+        <v-flex my-4>
+          We use Google Analytics to see how people use our website. This helps us improve the website. The data we have is anonymised.
         </v-flex>
         <v-flex>
-          <v-btn @click.stop="setCookies">
-            Confirm and continue browsing
+          <v-btn dark @click.stop="setCookies">
+            Accept Cookies and Close
           </v-btn>
-          <v-btn href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
+          <v-btn dark href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
             Learn more
           </v-btn>
         </v-flex>
