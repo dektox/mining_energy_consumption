@@ -92,9 +92,9 @@ def recalculate_data(value):
             # ^^current date and date of miner release ^^checks if miner is profitable ^^if yes, adds miner's efficiency to the list
         all_prof_eqp.append(prof_eqp)
         try:
-            max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
-            min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
-            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9
+            max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.2
+            min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.01
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.1
         except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
             max_consumption = max_all[-1]
             min_consumption = min_all[-1]
@@ -118,9 +118,9 @@ def recalculate_data(value):
     for day in range(0, len(ts_all)):
         response.append({
         'date': date_all[day],
-        'guess_consumption': guess_ma[day],
-        'max_consumption': max_ma[day], 
-        'min_consumption': min_ma[day], 
+        'guess_consumption': round(guess_ma[day],2),
+        'max_consumption': round(max_ma[day],2), 
+        'min_consumption': round(min_ma[day],2), 
         'timestamp': ts_all[day],
         })
 
@@ -190,22 +190,8 @@ def recalculate_guess(value):
 
 @app.route("/api/countries", methods=['GET','POST'])
 def countries_btc():
-    
-     prof_eqp = []
-     guess_consumption = []
-     guess_consumption_all = []
-     for i in range(0, len(prof_threshold)):
-         for miner in miners:
-             if (prof_threshold[i][0]>miner[1] and prof_threshold[i][2]>miner[2]): prof_eqp.append(miner[2])
-         try:
-             guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24*1.10/1e9
-         except: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
-             guess_consumption = guess_consumption_all[-1]
-         guess_consumption_all.append(guess_consumption)
-         prof_eqp = []  
-      
      tup2dict = {a:[c,d] for a,b,c,d in countries}
-     tup2dict['Bitcoin'][0] = round(guess_consumption_all[-1],2)
+     tup2dict['Bitcoin'][0] = round(cons[-1][4],2)
      dictsort=sorted(tup2dict.items(), key = lambda i: i[1][0], reverse=True)
 # =============================================================================
 #      def takeThird(elem):
@@ -219,7 +205,7 @@ def countries_btc():
             'country': item[0],
             'y': item[1][0],        
             'x': dictsort.index(item)+1,
-            'bitcoin_percentage': round(item[1][0]/round(guess_consumption_all[-1],2)*100,2),
+            'bitcoin_percentage': round(item[1][0]/round(cons[-1][4],2)*100,2),
             'logo': item[1][1]
             })
      for item in response:

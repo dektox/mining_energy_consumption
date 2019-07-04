@@ -165,7 +165,7 @@ def main(log_level, price):
                 try:
                     max_consumption = max(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.2
                     min_consumption = min(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.01
-                    guess_consumption = sum(prof_eqp)/len(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.1           
+                    guess_consumption = sum(prof_eqp)/len(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.1        
   #====this=is=for=weighting===================================================
   #                 weighted_sum = 0
   #                 eqp_qty_this_day = 0
