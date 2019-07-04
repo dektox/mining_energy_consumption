@@ -235,7 +235,7 @@ def feedback():
                             "fallback": "CBECI feedback recieved",
                             "color": "#36a64f",
                             "author_name": name,
-                            "author_link": email,
+                            "author_link": "mailto:" + email,
                             "title": organisation,
                             "text": message,
                             "footer": "cbeci.org",
