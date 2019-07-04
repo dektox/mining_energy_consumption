@@ -217,7 +217,7 @@ def feedback():
     content = flask.request.json
     with psycopg2.connect(**config['custom_data']) as conn:
         c = conn.cursor()
-        c.execute("CREATE TABLE IF NOT EXISTS feedback (timestamp INT," 
+        c.execute("CREATE TABLE IF NOT EXISTS feedback (timestamp INT PRIMARY KEY," 
                   "name TEXT, organisation TEXT, email TEXT, message TEXT);")
         insert_sql = "INSERT INTO feedback (timestamp, name, organisation, email, message) VALUES (%s, %s, %s, %s, %s)"
         name = content['name']
@@ -227,6 +227,27 @@ def feedback():
         timestamp = int(time.time())
         try:
             c.execute(insert_sql, (timestamp, name, organisation, email, message))
+            try:
+                headers = {'Content-type': 'application/json',}
+                sl_d = {
+                    "attachments": [
+                        {
+                            "fallback": "CBECI feedback recieved",
+                            "color": "#36a64f",
+                            "author_name": name,
+                            "author_link": email,
+                            "title": organisation,
+                            "text": message,
+                            "footer": "cbeci.org",
+                            "footer_icon": "https://i.ibb.co/HPhL1xy/favicon.png",
+                            "ts": timestamp
+                        }
+                    ]
+                }
+                sl_d = str(sl_d)
+                requests.post(config['webhook'], headers=headers, data=sl_d)
+            except:
+                pass
         except Exception as error:
             return jsonify(data=content,status="fail",error=error.pgcode)
     return jsonify(data=content,status="success",error="")
