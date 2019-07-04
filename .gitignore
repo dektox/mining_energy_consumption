@@ -3,3 +3,4 @@ energy.db
 .idea/
 venv/
 CONFIG.yml
+feedback.py
