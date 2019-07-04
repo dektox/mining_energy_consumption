@@ -27,7 +27,7 @@
     </v-navigation-drawer>
     <v-toolbar fixed app color="#ffb81c" class="header">
       <v-layout align-center row justify-start>
-        <v-flex class="pointer logo" @click="gotoMain()">
+        <v-flex class="pointer logo" @click="goToCCAF()">
           <img src="~static/logo.png" class="logo">
         </v-flex>
         <v-divider vertical/>
@@ -157,6 +157,9 @@ export default {
       gotoMain() {
           this.$router.push('/')
       },
+	    goToCCAF() {
+     window.location.href = 'https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/';
+	  },
       setCookies() {
           this.$store.commit('SET_COOK', true)
       }
