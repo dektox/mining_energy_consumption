@@ -1,5 +1,6 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
+import shrinkRay from 'shrink-ray-current'
 
 export default {
   mode: 'spa',
@@ -71,6 +72,9 @@ export default {
   robots: {
       UserAgent: '*',
       Disallow: ''
+  },
+  render: {
+      compressor: shrinkRay()
   },
   axios: {
     proxyHeaders: false,

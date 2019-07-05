@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f401a42-573a-4baf-a942-fbc02398dcee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/assets/style/base.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/js/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/js/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/style/app.styl" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/style/app.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/style/_main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comparisons/Countries.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/comparisons/Countries.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comparisons/FF.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/comparisons/FF.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comparisons/PC.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/comparisons/PC.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comparisons/RP.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/comparisons/RP.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/contact/Feedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/contact/Feedback.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/contact/Team_contributors.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/contact/Team_contributors.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/index/Cards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/index/Cards.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/index/Controllers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/index/Controllers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/methodology/Discussion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/methodology/Discussion.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/methodology/Model.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/methodology/Model.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/methodology/Overview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/methodology/Overview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/comparisons.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/comparisons.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/contact.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/faq.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/faq.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/methodology.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/methodology.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="136">
+              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -55,10 +31,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/nuxt.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/components/index/Chart.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/pages/comparisons.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -67,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/PC.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="33" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
+              <caret line="13" column="33" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -76,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/RP.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="112" column="48" lean-forward="true" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+              <caret line="112" column="48" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#v-flex#2;n#v-layout#0;n#v-card#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#src#0;n#img#0;n#div#0;n#v-layout#1;n#v-layout#0;n#v-card#0;n#v-flex#1;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
@@ -90,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/frontend/assets/style/app.styl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -98,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state relative-caret-position="292">
+              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -110,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Countries.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="39" column="55" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="55" />
+            <state relative-caret-position="278">
+              <caret line="76" column="13" selection-start-line="72" selection-start-column="12" selection-end-line="76" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#1;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
@@ -120,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+            <state relative-caret-position="88">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -133,7 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.info</find>
       <find>toFixed</find>
       <find>roboto</find>
       <find>.application{</find>
@@ -163,6 +159,7 @@
       <find>card-text</find>
       <find>slice</find>
       <find>.country</find>
+      <find>bind</find>
     </findStrings>
     <replaceStrings>
       <replace>static/images/methodology-functions/fu</replace>
@@ -192,7 +189,6 @@
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsPC.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsCards.vue" />
         <option value="$PROJECT_DIR$/frontend/components/ComparisonsRP.vue" />
-        <option value="$PROJECT_DIR$/frontend/components/index/Chart.vue" />
         <option value="$PROJECT_DIR$/frontend/components/Histogram.vue" />
         <option value="$PROJECT_DIR$/frontend/components/contact/feedback.vue" />
         <option value="$PROJECT_DIR$/frontend/pages/index.vue" />
@@ -204,7 +200,6 @@
         <option value="$PROJECT_DIR$/frontend/components/methodology/Chart4.vue" />
         <option value="$PROJECT_DIR$/frontend/components/methodology/Chart2.vue" />
         <option value="$PROJECT_DIR$/frontend/assets/style/main.css" />
-        <option value="$PROJECT_DIR$/frontend/nuxt.config.js" />
         <option value="$PROJECT_DIR$/frontend/package.json" />
         <option value="$PROJECT_DIR$/frontend/components/index/Controllers.vue" />
         <option value="$PROJECT_DIR$/frontend/components/index/Cards.vue" />
@@ -221,12 +216,14 @@
         <option value="$PROJECT_DIR$/frontend/assets/js/filters.js" />
         <option value="$PROJECT_DIR$/frontend/store/index.js" />
         <option value="$PROJECT_DIR$/frontend/pages/comparisons.vue" />
-        <option value="$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue" />
         <option value="$PROJECT_DIR$/frontend/components/comparisons/FF.vue" />
         <option value="$PROJECT_DIR$/frontend/components/comparisons/Countries.vue" />
         <option value="$PROJECT_DIR$/frontend/components/comparisons/RP.vue" />
         <option value="$PROJECT_DIR$/frontend/assets/style/app.styl" />
+        <option value="$PROJECT_DIR$/frontend/components/index/Chart.vue" />
         <option value="$PROJECT_DIR$/frontend/layouts/default.vue" />
+        <option value="$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue" />
+        <option value="$PROJECT_DIR$/frontend/nuxt.config.js" />
       </list>
     </option>
   </component>
@@ -259,13 +256,6 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="methodology" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -333,7 +323,7 @@
       <workItem from="1561160104169" duration="8503000" />
       <workItem from="1561413323260" duration="10362000" />
       <workItem from="1561787239129" duration="70637000" />
-      <workItem from="1562272698118" duration="18883000" />
+      <workItem from="1562272698118" duration="23476000" />
     </task>
     <task id="LOCAL-00001" summary="ads">
       <created>1558309358910</created>
@@ -643,11 +633,25 @@
       <option name="project" value="LOCAL" />
       <updated>1562295999917</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="update 05.07">
+      <created>1562296215005</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1562296215006</updated>
+    </task>
+    <task id="LOCAL-00046" summary="update 05.07">
+      <created>1562299968148</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1562299968148</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211389000" />
+    <option name="totallyTimeSpent" value="215982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -854,16 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/nuxt.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -991,21 +985,14 @@
     <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/PC.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="33" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/index/Chart.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="81" selection-start-line="5" selection-start-column="10" selection-end-line="10" selection-end-column="81" />
+          <caret line="13" column="33" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/pages/comparisons.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1023,28 +1010,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Countries.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#1;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/RP.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="112" column="48" lean-forward="true" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+          <caret line="112" column="48" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#span#0;n#v-flex#2;n#v-layout#0;n#v-card#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#src#0;n#img#0;n#div#0;n#v-layout#1;n#v-layout#0;n#v-card#0;n#v-flex#1;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
@@ -1056,17 +1025,7 @@
     <entry file="file://$PROJECT_DIR$/frontend/assets/style/app.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1093,11 +1052,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="136">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/index/Chart.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Countries.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="76" column="13" selection-start-line="72" selection-start-column="12" selection-end-line="76" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#v-flex#0;n#v-card#1;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/nuxt.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="78" column="4" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/Histogram.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
