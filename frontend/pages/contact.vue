@@ -1,8 +1,8 @@
 <template>
     <v-layout justify-center align-center wrap>
-        <v-layout my-4 justify-center align-center>
-            <h1 class="display-4">Contact</h1>
-        </v-layout>
+        <v-flex xs12 md10 my-4>
+            <h1 class="display-4 text-xs-center">Contact</h1>
+        </v-flex>
         <feedback />
         <team />
     </v-layout>

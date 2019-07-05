@@ -1,107 +1,75 @@
 <template>
     <v-layout justify-center align-center wrap>
-        <v-layout my-4 justify-center align-center>
-            <h1 class="display-4">FAQ</h1>
-        </v-layout>
-        <v-flex mb-4>
-            <v-layout my-3 align-center justify-center>
-                <h2 class="display-3 text-xs-center">
-                    Bitcoin Basics
-                </h2>
-            </v-layout>
-            <v-layout align-center justify-center wrap>
-                <v-flex xs12 md10 my-3>
-                    <v-expansion-panel>
-                        <v-expansion-panel-content
-                                v-for="(item,i) in first"
-                                :key="i"
-                        >
-                            <template v-slot:header>
-                                <h4 class="display-1">{{ item.title }}</h4>
-                            </template>
-                            <v-card>
-                                <v-card-text class="qa-text" v-html="item.text">
-                                </v-card-text>
-                            </v-card>
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-                </v-flex>
-            </v-layout>
+        <v-flex xs12 md10 my-4>
+            <h1 class="display-4 text-xs-center">FAQ</h1>
         </v-flex>
-        <v-flex mb-4>
-            <v-layout my-3 align-center justify-center>
-                <h2 class="display-3 text-xs-center">
-                    Electricity Consumption
-                </h2>
-            </v-layout>
-            <v-layout align-center justify-center wrap>
-                <v-flex xs12 md10 my-3>
-                    <v-expansion-panel>
-                        <v-expansion-panel-content
-                                v-for="(item,i) in second"
-                                :key="i"
-                        >
-                            <template v-slot:header>
-                                <h4 class="display-1">{{ item.title }}</h4>
-                            </template>
-                            <v-card>
-                                <v-card-text class="qa-text" v-html="item.text">
-                                </v-card-text>
-                            </v-card>
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-                </v-flex>
-            </v-layout>
+        <v-flex xs12 md10 my-3 py-3>
+            <h2 class="display-3 text-xs-center">Bitcoin Basics</h2>
+            <v-expansion-panel>
+                <v-expansion-panel-content
+                        v-for="(item,i) in first"
+                        :key="i"
+                >
+                    <template v-slot:header>
+                        <h4 class="display-1">{{ item.title }}</h4>
+                    </template>
+                    <v-card>
+                        <v-card-text class="qa-text" v-html="item.text">
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
         </v-flex>
-        <v-flex mb-4>
-            <v-layout my-3 align-center justify-center>
-                <h2 class="display-3 text-xs-center">
-                    Environmental Impact
-                </h2>
-            </v-layout>
-            <v-layout align-center justify-center wrap>
-                <v-flex xs12 md10 my-3>
-                    <v-expansion-panel>
-                        <v-expansion-panel-content
-                                v-for="(item,i) in third"
-                                :key="i"
-                        >
-                            <template v-slot:header>
-                                <h4 class="display-1">{{ item.title }}</h4>
-                            </template>
-                            <v-card>
-                                <v-card-text class="qa-text" v-html="item.text">
-                                </v-card-text>
-                            </v-card>
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-                </v-flex>
-            </v-layout>
+        <v-flex xs12 md10 my-3 py-3>
+            <h2 class="display-3 text-xs-center">Electricity Consumption</h2>
+            <v-expansion-panel>
+                <v-expansion-panel-content
+                        v-for="(item,i) in second"
+                        :key="i"
+                >
+                    <template v-slot:header>
+                        <h4 class="display-1">{{ item.title }}</h4>
+                    </template>
+                    <v-card>
+                        <v-card-text class="qa-text" v-html="item.text">
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
         </v-flex>
-        <v-flex mb-4>
-            <v-layout my-3 align-center justify-center>
-                <h2 class="display-3 text-xs-center">
-                    Clearing Up Common Misconceptions
-                </h2>
-            </v-layout>
-            <v-layout align-center justify-center wrap>
-                <v-flex my-3 xs12 md10>
-                    <v-expansion-panel style="width: 100%">
-                        <v-expansion-panel-content
-                                v-for="(item,i) in fourth"
-                                :key="i"
-                        >
-                            <template v-slot:header>
-                                <h4 class="display-1">{{ item.title }}</h4>
-                            </template>
-                            <v-card>
-                                <v-card-text class="qa-text" v-html="item.text">
-                                </v-card-text>
-                            </v-card>
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-                </v-flex>
-            </v-layout>
+        <v-flex xs12 md10 my-3 py-3>
+            <h2 class="display-3 text-xs-center">Environmental Impact</h2>
+            <v-expansion-panel>
+                <v-expansion-panel-content
+                        v-for="(item,i) in third"
+                        :key="i"
+                >
+                    <template v-slot:header>
+                        <h4 class="display-1">{{ item.title }}</h4>
+                    </template>
+                    <v-card>
+                        <v-card-text class="qa-text" v-html="item.text">
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
+        </v-flex>
+        <v-flex xs12 md10 my-3 py-3>
+            <h2 class="display-3 text-xs-center">Clearing Up Common Misconceptions</h2>
+            <v-expansion-panel style="width: 100%">
+                <v-expansion-panel-content
+                        v-for="(item,i) in fourth"
+                        :key="i"
+                >
+                    <template v-slot:header>
+                        <h4 class="display-1">{{ item.title }}</h4>
+                    </template>
+                    <v-card>
+                        <v-card-text class="qa-text" v-html="item.text">
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
         </v-flex>
     </v-layout>
 </template>

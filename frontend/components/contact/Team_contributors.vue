@@ -1,10 +1,6 @@
 <template>
-    <v-flex my-4>
-        <v-layout align-center justify-center>
-            <h2 class="display-3 text-xs-center">
-                Research Team &amp; Contributors
-            </h2>
-        </v-layout>
+    <v-flex xs12 md10 my-3 py-3>
+        <h2 class="display-3 text-xs-center">Research Team &amp; Contributors</h2>
         <v-flex my-4>
             <p class="main-text">The CBECI is an ongoing project created and maintained by the Cryptocurrency and
                 Blockchain Programme Team (<a href="https://twitter.com/mrauchs" target="_blank">Michel Rauchs</a>, <a

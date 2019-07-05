@@ -1,72 +1,64 @@
 <template>
-    <v-flex mb-4>
-        <v-layout my-3 align-center justify-center>
-            <h2 class="display-3 text-xs-center">
-                Feedback
-            </h2>
-        </v-layout>
-        <v-layout align-center justify-center wrap>
-            <v-flex xs12 md8>
-                <v-form ref="form" v-model="valid" lazy-validation>
-                    <v-flex>
-                        <p class="text-sm-left">We look forward to receiving feedback, comments, suggestions, and constructive criticism that will help us refine the methodology, add more content, and improve the overall index. Please use the form below to share your thoughts.</p>
-                    </v-flex>
-                    <v-text-field
-                            v-model="name"
-                            :rules="nameRules"
-                            label="Name"
-                            solo
-                            required
-                    />
-                    <v-text-field
-                            v-model="organisation"
-                            label="Organisation"
-                            solo
-                    />
-                    <v-text-field
-                            v-model="email"
-                            :rules="emailRules"
-                            label="E-mail"
-                            required
-                            solo
-                    />
-                    <v-textarea
-                            v-model="message"
-                            :rules="messageRules"
-                            label="Your message ..."
-                            required
-                            solo
-                    />
-
-                    <v-flex>
-                        <p class="text-sm-left"><strong>How we use your personal information:</strong></p>
-                        <p class="text-sm-left">Cambridge Judge Business School will use your personal information to reply to your enquiry only. Read more about how we handle your personal information and your rights under the data protection legislation <a href="https://www.information-compliance.admin.cam.ac.uk/data-protection/general-data" target="_blank">here</a>.</p>
-                    </v-flex>
-                    <v-checkbox
-                            v-model="checkbox"
-                            :rules="[v => !!v || 'Your consent is required to continue']"
-                            label="I have read and understood the above statement and consent to my personal information being used as described."
-                            required
-                    />
-                    <v-flex v-if="error">
-                        An error has occurred. Please reload the webpage and try again or directly contact ccaf@jbs.cam.ac.uk.
-                    </v-flex>
-                    <v-flex v-if="status">
-                        Your message has been sent successfully.
-                    </v-flex>
-                    <v-btn
-                            v-else
-                            :disabled="!valid"
-                            :loading="loading"
-                            color="#FFB81C"
-                            @click="validate"
-                    >
-                        Send
-                    </v-btn>
-
-                </v-form>
+    <v-flex xs12 md10 my-3 py-3>
+        <h2 class="display-3 text-xs-center">Feedback</h2>
+        <v-form ref="form" v-model="valid" lazy-validation>
+            <v-flex>
+                <p class="text-sm-left">We look forward to receiving feedback, comments, suggestions, and constructive criticism that will help us refine the methodology, add more content, and improve the overall index. Please use the form below to share your thoughts.</p>
             </v-flex>
-        </v-layout>
+            <v-text-field
+                    v-model="name"
+                    :rules="nameRules"
+                    label="Name"
+                    solo
+                    required
+            />
+            <v-text-field
+                    v-model="organisation"
+                    label="Organisation"
+                    solo
+            />
+            <v-text-field
+                    v-model="email"
+                    :rules="emailRules"
+                    label="E-mail"
+                    required
+                    solo
+            />
+            <v-textarea
+                    v-model="message"
+                    :rules="messageRules"
+                    label="Your message ..."
+                    required
+                    solo
+            />
+
+            <v-flex>
+                <p class="text-sm-left"><strong>How we use your personal information:</strong></p>
+                <p class="text-sm-left">Cambridge Judge Business School will use your personal information to reply to your enquiry only. Read more about how we handle your personal information and your rights under the data protection legislation <a href="https://www.information-compliance.admin.cam.ac.uk/data-protection/general-data" target="_blank">here</a>.</p>
+            </v-flex>
+            <v-checkbox
+                    v-model="checkbox"
+                    :rules="[v => !!v || 'Your consent is required to continue']"
+                    label="I have read and understood the above statement and consent to my personal information being used as described."
+                    required
+            />
+            <v-flex v-if="error">
+                An error has occurred. Please reload the webpage and try again or directly contact ccaf@jbs.cam.ac.uk.
+            </v-flex>
+            <v-flex v-if="status">
+                Your message has been sent successfully.
+            </v-flex>
+            <v-btn
+                    v-else
+                    :disabled="!valid"
+                    :loading="loading"
+                    color="#FFB81C"
+                    @click="validate"
+            >
+                <b>Send</b>
+            </v-btn>
+
+        </v-form>
     </v-flex>
 </template>
 

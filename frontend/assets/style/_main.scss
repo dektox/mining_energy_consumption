@@ -24,8 +24,12 @@
 
 html, body{
     width: 100vw;
-    font-family: 'Exo 2', sans-serif !important;
+    font-size: 16px;
+    h2{
+        margin-bottom: 20px;
+    }
 }
+
 
 .v-dialog__container {
     position: absolute;
@@ -141,9 +145,6 @@ input.highcharts-range-selector:focus {
     }
 }
 
-.main-text{
-    font-size: 16px;
-}
 
 .v-card__text.qa-text{
     padding: 16px 24px;
@@ -191,6 +192,9 @@ input.highcharts-range-selector:focus {
     }
 }
 @media only screen and (max-width: 960px) {
+    body, html{
+        font-size: 14px;
+    }
     .card-sm{
         font-size: 18px
     }
