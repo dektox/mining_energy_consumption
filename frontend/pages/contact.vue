@@ -1,12 +1,10 @@
 <template>
     <v-layout justify-center align-center wrap>
-        <v-flex xs10>
-            <v-layout my-4 justify-center align-center>
-                <h1 class="display-2">Contact</h1>
-            </v-layout>
-            <feedback />
-			<team />
-        </v-flex>
+        <v-layout my-4 justify-center align-center>
+            <h1 class="display-4">Contact</h1>
+        </v-layout>
+        <feedback />
+        <team />
     </v-layout>
 </template>
 

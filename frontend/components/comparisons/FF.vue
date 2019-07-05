@@ -1,24 +1,24 @@
 <template>
-    <v-flex my-4 pa-3>
-        <v-layout align-center justify-center>
-          <h2 class="display-1">
-            Fun Facts
-          </h2>
+    <v-flex mb-4>
+        <v-layout my-4 align-center justify-center>
+            <h2 class="display-3 text-xs-center">
+                Fun Facts
+            </h2>
         </v-layout>
-        <v-layout align-center justify-center>
-            <h3 class="headline font-weight text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <h3 class="display-2 text-xs-center">
                 Idle home devices
             </h3>
         </v-layout>
-        <v-layout align-center justify-center my-3>
-            <v-flex xs10 ma-3 class="text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <v-flex xs12 md8 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
                         <v-flex>
                             <span>The amount of electricity consumed every year by <b>always-on but inactive home devices in the USA</b> alone could ...</span>
                         </v-flex>
                         <v-layout mt-4>
-                            <v-flex xs12 md6>
+                            <v-flex xs12 md6 class="hidden-xs-only">
                                 <v-flex>
                                     <img src="~static/images/funFacts/idle.png" object-fit="contain" width="15%">
                                 </v-flex>
@@ -50,31 +50,33 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-layout my-4>
-          <span>
+        <v-layout my-4 align-center justify-center wrap>
+            <v-flex xs12 md10>
+                <span>
               <b>Source:</b><br/>
               <a href="https://www.nrdc.org/sites/default/files/home-idle-load-IP.pdf" target="_blank">NRDC Issue Report (2015)</a>; own calculations
           </span>
+            </v-flex>
         </v-layout>
-        <v-layout align-center justify-center>
-            <h3 class="headline font-weight text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <h3 class="display-2 text-xs-center">
                 Tea kettles
             </h3>
         </v-layout>
-        <v-layout align-center justify-center my-3>
-            <v-flex xs10 ma-3 class="text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <v-flex xs12 md8 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
                         <v-flex>
                             <span>The amount of electricity consumed by the Bitcoin network in one year could <b>power all tea kettles used to boil water</b> for ...</span>
                         </v-flex>
                         <v-layout align-center justify-center mt-4>
-                            <v-flex xs3 pa-3>
+                            <v-flex xs3 pa-3 class="hidden-xs-only">
                                 <v-flex>
                                     <img src="~static/images/funFacts/image13.png" object-fit="contain" width="80%">
                                 </v-flex>
                             </v-flex>
-                            <v-flex xs9 pa-3>
+                            <v-flex xs12 md9 pa-3>
                                 <v-layout align-center justify-center mb-3>
                                     <v-flex xs6>
                                         <v-flex>
@@ -103,19 +105,21 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-layout my-4>
-          <span>
+        <v-layout my-4 align-center justify-center wrap>
+            <v-flex xs12 md10>
+                <span>
               <b>Source:</b><br/>
               <a href="https://www.sciencedirect.com/science/article/pii/S0306261916303579" target="_blank">Murray et al. (2016)</a>, 2012 est.; <a href="https://www.research.manchester.ac.uk/portal/files/62970175/Environmental_sustainability_of_kettles.pdf" target="_blank">Fisher et al. (2014)</a>; own calculations
           </span>
+            </v-flex>
         </v-layout>
-        <v-layout align-center justify-center>
-            <h3 class="headline font-weight text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <h3 class="display-2 text-xs-center">
                 University of Cambridge
             </h3>
         </v-layout>
-        <v-layout align-center justify-center my-3>
-            <v-flex xs10 ma-3 class="text-xs-center">
+        <v-layout align-center justify-center my-4>
+            <v-flex xs12 md8 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
                         <v-flex>
@@ -136,11 +140,13 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-layout my-4>
-          <span>
+        <v-layout my-4 align-center justify-center wrap>
+            <v-flex xs12 md10>
+                 <span>
               <b>Source:</b><br/>
               <a href="https://www.environment.admin.cam.ac.uk/facts-figures" target="_blank">University of Cambridge</a>, 2017/18
           </span>
+            </v-flex>
         </v-layout>
     </v-flex>
 </template>
@@ -153,6 +159,11 @@ export default {
         }
     },
     computed: {
+        binding() {
+            const binding = {}
+            if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+            return binding
+        }
     }
 }
 </script>

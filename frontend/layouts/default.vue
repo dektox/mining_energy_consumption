@@ -1,34 +1,11 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-            :value="drawer"
-            :permanent="drawer"
-            temporary
-            absolute
-            right
-            style="background-color: #FEE9BA"
-    >
-      <v-layout column pa-4 mr-4>
-        <h2 class="display-1">
-          This site uses cookies
-        </h2>
-        <v-flex my-4>
-          We use Google Analytics to see how people use our website. This helps us improve the website. The data we have is anonymised.
-        </v-flex>
-        <v-flex>
-          <v-btn dark @click.stop="setCookies">
-            Accept Cookies and Close
-          </v-btn>
-          <v-btn dark href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
-            Learn more
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-navigation-drawer>
     <v-toolbar fixed app color="#ffb81c" class="header">
       <v-layout align-center row justify-start>
-        <v-flex class="pointer logo" @click="goToCCAF()">
-          <img src="~static/logo.png" class="logo">
+        <v-flex class="pointer logo">
+          <a href="https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/" target="_blank">
+            <img src="~static/logo.png" class="logo">
+          </a>
         </v-flex>
         <v-divider vertical/>
         <v-flex mx-4>
@@ -133,6 +110,39 @@
         </v-card-actions>
       </v-card>
     </v-footer>
+    <div class="cookies" :class="{active: cookies}">
+      <div class="cookies__cover"></div>
+      <div class="cookies__panel">
+        <v-layout column pa-4>
+          <v-flex class="hidden-md-and-up" my-4>
+            <h2 class="display-3">
+              This site uses cookies
+            </h2>
+          </v-flex>
+          <v-layout fill-height wrap align-center row justify-start>
+            <v-flex xs12 md8>
+              We use Google Analytics to see how people use our website. This helps us improve the website. The data we have is anonymised.
+            </v-flex>
+            <v-flex class="hidden-md-and-up" xs12 my-4>
+            </v-flex>
+            <v-flex xs12 md4>
+              <v-layout wrap>
+                <v-flex xs12 md6>
+                  <v-btn dark @click.stop="setCookies">
+                    Accept Cookies and Close
+                  </v-btn>
+                </v-flex>
+                <v-flex>
+                  <v-btn dark href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
+                    Learn more
+                  </v-btn>
+                </v-flex>
+              </v-layout>
+            </v-flex>
+          </v-layout>
+        </v-layout>
+      </div>
+    </div>
   </v-app>
 </template>
 
@@ -149,7 +159,7 @@ export default {
     }
   },
   computed: {
-      drawer() {
+      cookies() {
           return !this.$store.state.cooks
       }
   },
@@ -157,9 +167,6 @@ export default {
       gotoMain() {
           this.$router.push('/')
       },
-	    goToCCAF() {
-     window.location.href = 'https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/';
-	  },
       setCookies() {
           this.$store.commit('SET_COOK', true)
       }

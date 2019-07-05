@@ -1,28 +1,26 @@
 <template>
-    <v-layout id="wrap-container2" justify-center align-center wrap my-4>
-        <v-flex xs10>
-            <v-layout justify-center align-center>
-                <h1 class="display-2">Methodology</h1>
-            </v-layout>
-            <overview />
-            <keep-alive>
-                <model />
-            </keep-alive>
-            <discussion />
-        </v-flex>
+    <v-layout id="wrap-container2" justify-center align-center wrap>
+        <v-layout my-4 justify-center align-center>
+            <h1 class="display-4">Methodology</h1>
+        </v-layout>
+        <overview />
+        <keep-alive>
+            <model />
+        </keep-alive>
+        <discussion />
     </v-layout>
 </template>
 
 <script>
 import Overview from '~/components/methodology/Overview'
-// import Model from '~/components/methodology/Model'
+import Model from '~/components/methodology/Model'
 import Discussion from '~/components/methodology/Discussion'
 
 export default {
     name: 'methodology',
     components: {
         overview: Overview,
-        model: () => import('~/components/methodology/Model'),
+        model: Model,
         discussion: Discussion
     },
     data() {

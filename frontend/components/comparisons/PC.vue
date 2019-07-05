@@ -1,15 +1,17 @@
 <template>
-    <v-flex my-4 pa-3>
-        <v-layout align-center justify-center>
-          <h2 class="display-1">
-            Total World Production & Consumption
-          </h2>
+    <v-flex mb-4>
+        <v-layout my-3 align-center justify-center>
+            <h2 class="display-3 text-xs-center">
+                Total World Production & Consumption
+            </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center my-3>
             <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span class="title">Total electricity production</span><br/><br/>
+                        <v-flex mb-4>
+                            <h4 class="display-1">Total electricity production</h4>
+                        </v-flex>
                         <img src="~static/images/comparisons/production.png" object-fit="contain" width="30%"><br/>
                         <span><b>25 082 TWh</b></span><br/><br/>
                         <v-layout align-center justify-center>
@@ -25,7 +27,9 @@
             <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
-                        <span class="title">Total electricity consumption</span><br/><br/>
+                        <v-flex mb-4>
+                            <h4 class="display-1">Total electricity consumption</h4>
+                        </v-flex>
                         <img src="~static/images/comparisons/consumption.png" object-fit="contain" width="30%"><br/>
                         <span><b>20 863 TWh</b></span><br/><br/>
                         <v-layout align-center justify-center>
@@ -39,11 +43,13 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-layout my-3>
-          <span>
-              <b>Source:</b><br/>
-              <a href="https://www.iea.org/statistics/electricity/" target="_blank">International Energy Agency</a> report, 2016 est.
-          </span>
+        <v-layout my-3 align-center justify-center>
+            <v-flex xs12 md10>
+                <span>
+                    <b>Source:</b><br/>
+                    <a href="https://www.iea.org/statistics/electricity/" target="_blank">International Energy Agency</a> report, 2016 est.
+                </span>
+            </v-flex>
         </v-layout>
     </v-flex>
 </template>

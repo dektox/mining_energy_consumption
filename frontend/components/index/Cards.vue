@@ -1,43 +1,43 @@
 <template>
-    <v-layout v-bind="binding" my-4 pa-3 align-center align-content-space-around>
-        <v-flex md4 ma-3>
+    <v-layout v-bind="binding" my-4 align-center align-content-space-around>
+        <v-flex xs12 md4 ma-3>
             <v-card elevation="5">
-                <v-flex pa-4 class="text-xs-center">
-                    <v-flex class="card-text-title font-weight-bold">
-                        <span>Lower bound</span>
+                <v-flex pa-4 class="card text-xs-center">
+                    <v-flex mb-4>
+                        <h4 class="display-1">Lower bound</h4>
                     </v-flex>
-                    <v-flex class="card-number-sm font-weight-bold">
+                    <v-flex class="card__number-sm font-weight-bold">
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else>{{ numbers[1] | decimals }}</span>
                     </v-flex>
-                    <v-flex mb-3 class="card-number-sm">
+                    <v-flex mb-3 class="card__number-sm">
                         <span>GW</span>
                     </v-flex>
                     <v-divider />
-                    <v-flex mt-3 class="card-number-sm font-weight-bold text-orange text--lighten-2">
+                    <v-flex mt-3 class="card__text-orange font-weight-bold">
                         <span>{{ numbers2[1] | decimals }}</span>
                     </v-flex>
-                    <v-flex class="card-text">
+                    <v-flex>
                         <span>TWh</span>
                     </v-flex>
                 </v-flex>
             </v-card>
         </v-flex>
-        <v-flex md4 ma-3>
+        <v-flex xs12 md4 ma-3>
             <v-card elevation="5">
-                <v-flex pa-4 class="text-xs-center">
-                    <v-flex class="card-text-title font-weight-bold">
-                        <span>Estimated</span>
+                <v-flex pa-4 class="card text-xs-center">
+                    <v-flex mb-4>
+                        <h4 class="display-1">Estimated</h4>
                     </v-flex>
-                    <v-flex class="card-number-lg font-weight-bold">
+                    <v-flex class="card__number-lg font-weight-bold">
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else>{{ numbers[0] | decimals }}</span>
                     </v-flex>
-                    <v-flex mb-3 class="card-number-sm">
+                    <v-flex mb-3 class="card__number-sm">
                         <span>GW</span>
                     </v-flex>
                     <v-divider />
-                    <v-flex mt-3 class="card-description">
+                    <v-flex mt-3 class="card__description">
                         <span>Annualised consumption </span>
                         <v-tooltip max-width="400" bottom>
                             <template v-slot:activator="{ on }">
@@ -50,33 +50,33 @@
                             </span>
                         </v-tooltip>
                     </v-flex>
-                    <v-flex class="card-number-lg font-weight-bold text-orange text--lighten-2">
+                    <v-flex class="card__text-orange font-weight-bold">
                         <span>{{ numbers2[0] | decimals }}</span>
                     </v-flex>
-                    <v-flex class="card-text">
+                    <v-flex>
                         <span>TWh</span>
                     </v-flex>
                 </v-flex>
             </v-card>
         </v-flex>
-        <v-flex md4 ma-3>
+        <v-flex xs12 md4 ma-3>
             <v-card elevation="5">
-                <v-flex pa-4 class="text-xs-center">
-                    <v-flex class="card-text-title font-weight-bold">
-                        <span>Upper bound</span>
+                <v-flex pa-4 class="card text-xs-center">
+                    <v-flex mb-4>
+                        <h4 class="display-1">Upper bound</h4>
                     </v-flex>
-                    <v-flex class="card-number-sm font-weight-bold">
+                    <v-flex class="card__number-sm font-weight-bold">
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
                         <span v-else>{{ numbers[2] | decimals }}</span>
                     </v-flex>
-                    <v-flex mb-3 class="card-number-sm">
+                    <v-flex mb-3 class="card__number-sm">
                         <span>GW</span>
                     </v-flex>
                     <v-divider />
-                    <v-flex mt-3 class="card-number-sm font-weight-bold text-orange text--lighten-2">
+                    <v-flex mt-3 class="card__text-orange font-weight-bold">
                         <span>{{ numbers2[2] | decimals }}</span>
                     </v-flex>
-                    <v-flex class="card-text">
+                    <v-flex>
                         <span>TWh</span>
                     </v-flex>
                 </v-flex>

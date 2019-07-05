@@ -1,7 +1,7 @@
 <template>
-    <v-flex my-4 pa-3>
-        <v-layout align-center justify-center>
-            <h2 class="display-1">
+    <v-flex mb-4>
+        <v-layout my-4 align-center justify-center>
+            <h2 class="display-3 text-xs-center">
                 Country Ranking
             </h2>
         </v-layout>
@@ -11,10 +11,9 @@
                     <v-flex pa-4 class="text-xs-center">
                         <img :src="country.logo" class="country-img-large">
                         <br/>
-                        <span class="title">
-                            {{ country.country }}
-                        </span>
-                        <br/>
+                        <v-flex mb-4>
+                            <h4 class="display-1">{{ country.country }}</h4>
+                        </v-flex>
                         <span style="font-size: 54px">
                             <b>{{ country.y | decimals }}</b>
                         </span>
@@ -26,10 +25,9 @@
                     <v-flex pa-4 class="text-xs-center">
                         <img :src="country.logo" class="country-img">
                         <br/>
-                        <span class="title">
-                            {{ country.country }}
-                        </span>
-                        <br/>
+                        <v-flex mb-4>
+                            <h4 class="display-1">{{ country.country }}</h4>
+                        </v-flex>
                         <span style="font-size: 32px">
                             <b>{{ country.y | decimals }}</b>
                         </span>
@@ -39,11 +37,13 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-layout my-3>
-          <span>
+        <v-layout my-4 wrap align-center justify-center>
+            <v-flex xs12 md10>
+                <span>
               <b>Source:</b><br/>
               Countries data - <a target="_blank" href="https://www.cia.gov/library/publications/resources/the-world-factbook/fields/253rank.html">CIA Factbook</a>, 2016 est.
           </span>
+            </v-flex>
         </v-layout>
     </v-flex>
 </template>

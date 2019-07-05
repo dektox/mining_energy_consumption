@@ -1,16 +1,16 @@
 <template>
-    <v-flex my-4 pa-3>
-        <v-layout align-center justify-center>
-            <h2 class="display-1">
+    <v-flex mb-4>
+        <v-layout my-3 align-center justify-center>
+            <h2 class="display-3 text-xs-center">
                 Total World Renewables Production
             </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center my-3>
-            <v-flex xs3 ma-3 class="text-xs-center">
+            <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
-                        <v-flex>
-                            <span class="title"><b>Hydro<br><br></b></span>
+                        <v-flex mb-4>
+                            <h4 class="display-1">Hydro</h4><br>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/hydro.png" object-fit="contain" width="30%">
@@ -30,11 +30,11 @@
                     </v-layout>
                 </v-card>
             </v-flex>
-            <v-flex xs3 ma-3 class="text-xs-center">
+            <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
-                        <v-flex>
-                            <span class="title"><b>Biofuels &amp; waste<br><br></b></span>
+                        <v-flex mb-4>
+                            <h4 class="display-1">Biofuels &amp; Waste</h4><br>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/biofuel.png" object-fit="contain" width="30%">
@@ -54,11 +54,11 @@
                     </v-layout>
                 </v-card>
             </v-flex>
-            <v-flex xs3 ma-3 class="text-xs-center">
+            <v-flex xs4 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-layout pa-4 column align-center justify-center>
-                        <v-flex>
-                            <span class="title"><b>Solar, wind &amp;<br> others</b></span>
+                        <v-flex mb-4>
+                            <h4 class="display-1">Solar, Wind &amp;<br> others</h4>
                         </v-flex>
                         <v-layout column align-center justify-center my-3>
                             <img src="~static/images/comparisons/alternative.png" object-fit="contain" width="30%">
@@ -80,11 +80,13 @@
             </v-flex>
 
         </v-layout>
-        <v-layout my-3>
-          <span>
+        <v-layout my-3 wrap align-center justify-center>
+            <v-flex xs12 md10>
+                <span>
               <b>Source:</b><br/>
               <a href="https://www.iea.org/statistics/electricity/" target="_blank">International Energy Agency</a> report, 2016 est.
           </span>
+            </v-flex>
         </v-layout>
     </v-flex>
 </template>

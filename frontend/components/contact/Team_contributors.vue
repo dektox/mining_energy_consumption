@@ -1,7 +1,7 @@
 <template>
-    <v-flex my-4 pa-3>
+    <v-flex my-4>
         <v-layout align-center justify-center>
-            <h2 class="display-1">
+            <h2 class="display-3 text-xs-center">
                 Research Team &amp; Contributors
             </h2>
         </v-layout>
@@ -13,12 +13,12 @@
                 Alternative Finance, University of Cambridge, Judge Business School.</p>
             <p class="main-text">Special thanks go to Kyrylo Manakhov for designing the website and to Marc Bevand, Lena Klaaßen, and Christian Stoll for reviewing the methodology. The research team would also like to thank Keith Bear, Kieran Garvey, Grigory McKain, Stephen McKeon, Robert Wardrop, and Bryan Zhang for providing valuable feedback and suggestions. Furthermore, we would like to express our gratitude to Alexi Anani, Konstantinos Renios, and Hatim Hussain for their contributions to this project.</p>
         </v-flex>
-        <v-layout pt-4 align-center justify-center>
-            <h3 class="headline font-weight">
+        <v-layout pt-4>
+            <h3 class="display-2 text-xs-left">
                 About the Cambridge Centre for Alternative Finance
             </h3>
         </v-layout>
-        <v-layout my-4 align-center justify-center>
+        <v-layout v-bind="binding" my-4 align-center justify-center>
             <v-flex xs8 pr-4>
                 <p class="main-text">The <a
                         href="https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/" target="_blank">Cambridge
@@ -73,3 +73,20 @@
         </v-layout>
     </v-flex>
 </template>
+
+<script>
+    export default {
+        name: 'team',
+        data() {
+            return {
+            }
+        },
+        computed: {
+            binding() {
+                const binding = {}
+                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                return binding
+            }
+        }
+    }
+</script>

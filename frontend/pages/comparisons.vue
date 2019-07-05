@@ -1,20 +1,24 @@
 <template>
     <v-layout id="wrap-container3" justify-center align-center wrap>
-        <v-flex xs10>
-            <v-layout my-4 justify-center align-center>
-                <h1 class="display-2">Comparisons</h1>
+        <v-layout my-4 justify-center align-center>
+            <h1 class="display-4">Comparisons</h1>
+        </v-layout>
+        <v-flex mb-4>
+            <v-layout align-center justify-center wrap>
+                <v-flex xs12 md10 class="main-text">
+                    <p>While terawatt-hours (TWh) are a standard unit used to measure electricity consumption, it can be difficult for some to put these figures into perspective without additional context.</p>
+                    <p>This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
+                    <p><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/" target="_blank">best-guess estimate</a> of Bitcoin's total electricity consumption. The listed comparisons are for illustrative purposes only and do not suggest that one type of electricity consumption can or should be substituted for another.</em></p>
+                </v-flex>
             </v-layout>
-            <v-flex my-4 pa-3>
-                <p class="main-text">While terawatt-hours (TWh) are a standard unit used to measure electricity consumption, it can be difficult for some to put these figures into perspective without additional context.</p>
-                <p class="main-text">This section attempts to provide an unbiased and objective ground for helping visitors to independently assess the magnitude of Bitcoin’s electricity consumption and compare it to other uses of electricity.</p>
-                <p class="main-text"><em><strong>Note:</strong> All comparisons are based on our <a href="https://cbeci.org/" target="_blank">best-guess estimate</a> of Bitcoin's total electricity consumption. The listed comparisons are for illustrative purposes only and do not suggest that one type of electricity consumption can or should be substituted for another.</em></p>
-            </v-flex>
-            <comparisonsPC />
-            <comparisonsRP />
-            <comparisonsCards />
-            <histogram />
-            <comparisonsFF />
         </v-flex>
+        <comparisonsPC />
+        <comparisonsRP />
+        <comparisonsCards />
+        <v-layout mb-4 align-center justify-center wrap>
+            <histogram />
+        </v-layout>
+        <comparisonsFF />
     </v-layout>
 </template>
 

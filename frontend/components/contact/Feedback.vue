@@ -1,17 +1,13 @@
 <template>
-    <v-flex my-4 pa-3>
-        <v-layout align-center justify-center>
-          <h2 class="display-1">
-            Feedback
-          </h2>
+    <v-flex mb-4>
+        <v-layout my-3 align-center justify-center>
+            <h2 class="display-3 text-xs-center">
+                Feedback
+            </h2>
         </v-layout>
-        <v-layout align-center justify-center my-3>
-            <v-flex xs10 ma-3 class="text-xs-center">
-                <v-form
-                        ref="form"
-                        v-model="valid"
-                        lazy-validation
-                >
+        <v-layout align-center justify-center wrap>
+            <v-flex xs12 md8>
+                <v-form ref="form" v-model="valid" lazy-validation>
                     <v-flex>
                         <p class="text-sm-left">We look forward to receiving feedback, comments, suggestions, and constructive criticism that will help us refine the methodology, add more content, and improve the overall index. Please use the form below to share your thoughts.</p>
                     </v-flex>
@@ -34,9 +30,9 @@
                             required
                             solo
                     />
-
                     <v-textarea
                             v-model="message"
+                            :rules="messageRules"
                             label="Your message ..."
                             required
                             solo
@@ -70,7 +66,6 @@
 
                 </v-form>
             </v-flex>
-
         </v-layout>
     </v-flex>
 </template>
@@ -85,12 +80,15 @@
                 name: '',
                 nameRules: [
                     v => !!v || 'Name is required',
-                    v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+                    v => (v && v.length <= 30) || 'Name must be less than 30 characters'
                 ],
                 email: '',
                 emailRules: [
                     v => !!v || 'E-mail is required',
                     v => /.+@.+/.test(v) || 'E-mail must be valid'
+                ],
+                messageRules: [
+                    v => (v && v.length <= 360) || 'Message must be less than 360 characters'
                 ],
                 organisation: '',
                 message: '',
@@ -100,6 +98,11 @@
             }
         },
         computed: {
+            binding() {
+                const binding = {}
+                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                return binding
+            }
         },
         methods: {
             validate () {

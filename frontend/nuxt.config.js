@@ -21,6 +21,16 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Exo+2:300,400,500,700|Material+Icons'
+      },
+      {
+          rel: 'stylesheet',
+          href:
+              'https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Material+Icons'
+      },
+      {
+          rel: 'stylesheet',
+          href:
+              'https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap'
       }
     ]
   },
@@ -35,8 +45,7 @@ export default {
   */
   css: [
     '~/assets/style/app.styl',
-    '~/assets/style/main.css',
-    'latex2js/lib/latex2js.css',
+    '~/assets/style/base.scss',
     'katex/dist/katex.min.css'
 ],
 
@@ -58,8 +67,12 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/robots'
   ],
-
+  robots: {
+      UserAgent: '*',
+      Disallow: '/'
+  },
   axios: {
     proxyHeaders: false,
     credentials: false,

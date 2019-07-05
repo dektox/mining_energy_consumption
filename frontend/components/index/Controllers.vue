@@ -1,12 +1,9 @@
 <template>
     <v-layout my-4>
         <v-card elevation="5">
-            <v-layout v-bind="binding" align-center justify-center wrap>
+            <v-layout v-bind="binding" align-center justify-center>
                 <v-flex>
-                    <v-toolbar
-                            card
-                            dense
-                    >
+                    <v-toolbar card dense>
                         <v-toolbar-title>
                             <span class="subheading">Electricity cost</span>
                             <v-tooltip max-width="400" bottom>

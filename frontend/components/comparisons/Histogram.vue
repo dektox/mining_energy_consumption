@@ -1,5 +1,5 @@
 <template>
-    <v-flex>
+    <v-flex xs12 md10>
         <v-switch
                 v-model="log"
                 label="Logarithmic scale"
@@ -7,11 +7,12 @@
         ></v-switch>
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
-          marginBottom: (containerWidth > 400) ? 120 : 0,
-          marginLeft: (containerWidth > 400) ? 100 : 0,
-          marginRight: (containerWidth > 400) ? 100 : 0,
-          height: (containerWidth > 400) ? '56%' : 300,
-          width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth,
+          marginBottom: (containerWidth > 1000) ? 100 : 100,
+          reflow: false,
+          marginLeft: (containerWidth > 1000) ? 100 : 30,
+          marginRight: (containerWidth > 1000) ? 100 : 30,
+          height: (containerWidth > 1000) ? '56%' : 400,
+          width: (containerWidth > 1000) ? containerWidth * 0.9 : containerWidth,
           type: 'column'
         },
         title: {
@@ -28,9 +29,14 @@
             },
             shared: true
         },
+        plotOptions: {
+            pointWidth: (containerWidth > 1000) ? 40 : 30
+        },
         xAxis: {
             type: 'linear',
             tickAmount: 60,
+            min: 1,
+            max: 60,
             labels: {
                 formatter: function () {
                     return (isBitcoin(this.value) ? '<b>Bitcoin</b>' : '');
@@ -96,7 +102,6 @@ export default {
     },
     async mounted() {
         this.containerWidth = document.getElementById("wrap-container3").getBoundingClientRect().width
-        console.log(this.containerWidth)
     },
     computed: {
         charts() {
@@ -109,7 +114,7 @@ export default {
     methods: {
         isBitcoin(n) {
             const country = this.data.find(el => el.x === n)
-            console.log(country)
+            if (!country) return ''
             return country.country === 'Bitcoin'
         }
     }

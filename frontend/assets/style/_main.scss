@@ -1,20 +1,30 @@
+.cookies{
+    &.active{
+        display: block;
+    }
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    &__cover{
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        opacity: 0.4;
+    }
+    &__panel{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+        background-color: #FEE9BA;
+    }
+}
+
+
 html, body{
     width: 100vw;
     font-family: 'Exo 2', sans-serif !important;
-}
-
-h3{
-    width: 100%;
-    margin-top: 30px;
-}
-
-h2{
-    margin-top: 40px;
-}
-
-.title{
-    font-size: 18px !important;
-    font-weight: bold !important;
 }
 
 .v-dialog__container {
@@ -29,9 +39,6 @@ h2{
     font-weight: bold;
 }
 
-.text-orange{
-    color: #ffb81c;
-}
 
 .index-text{
     font-size: 16px;
@@ -118,29 +125,26 @@ input.highcharts-range-selector:focus {
     object-fit: contain;
 }
 
-.card-number-sm{
-    font-size: 32px
-}
-
-.card-number-lg{
-    font-size: 54px;
-}
-
-.card-text-title{
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-.card-description{
-    font-size: 12px;
+.card {
+    &__number-sm{
+        font-size: 32px
+    }
+    &__number-lg{
+        font-size: 54px;
+    }
+    &__description{
+        font-size: 12px;
+    }
+    &__text-orange{
+        font-size: 32px;
+        color: #ffb81c;
+    }
 }
 
 .main-text{
     font-size: 16px;
 }
 
-.qa-title{
-    font-size: 18px;
-}
 .v-card__text.qa-text{
     padding: 16px 24px;
     font-size: 18px;
@@ -190,9 +194,6 @@ input.highcharts-range-selector:focus {
     .card-sm{
         font-size: 18px
     }
-    .card-text{
-        font-size: 14px
-    }
     .card-lg{
         font-size: 24px;
     }
@@ -202,6 +203,8 @@ input.highcharts-range-selector:focus {
     .qa-text{
         font-size: 14px;
     }
+    .katex { font-size: 0.9em !important; }
+    .text .katex {font-size: 0.5em !important;}
 }
 
 @media only screen and (min-width: 960px) {
