@@ -29,5 +29,9 @@
     "stylus-loader": "^3.0.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0"
+  },
+  "optionalDependencies": {
+    "iltorb": "~2.0.0",
+    "node-zopfli-es": "~1.0.3"
   }
 }
