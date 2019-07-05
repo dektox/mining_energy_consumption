@@ -1,5 +1,5 @@
 <template>
-    <v-flex my-4 pa-3>
+    <v-flex my-4>
         <!--<v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>-->
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {

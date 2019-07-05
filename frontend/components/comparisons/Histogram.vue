@@ -10,7 +10,7 @@
           marginBottom: (containerWidth > 1000) ? 100 : 100,
           reflow: false,
           marginLeft: (containerWidth > 1000) ? 100 : 30,
-          marginRight: (containerWidth > 1000) ? 100 : 30,
+          marginRight: (containerWidth > 1000) ? 100 : 0,
           height: (containerWidth > 1000) ? '56%' : 400,
           width: (containerWidth > 1000) ? containerWidth * 0.9 : containerWidth,
           type: 'column'
@@ -29,14 +29,11 @@
             },
             shared: true
         },
-        plotOptions: {
-            pointWidth: (containerWidth > 1000) ? 40 : 30
-        },
         xAxis: {
-            type: 'linear',
+            type: 'categories',
             tickAmount: 60,
-            min: 1,
-            max: 60,
+            min: 0,
+            max: 59,
             labels: {
                 formatter: function () {
                     return (isBitcoin(this.value) ? '<b>Bitcoin</b>' : '');
@@ -72,7 +69,8 @@
           {
             name: 'Country Ranking',
             color: '#a2bdff',
-            data: data
+            data: data,
+            type: 'column',
           }
         ],
         exporting: {

@@ -119,25 +119,24 @@
               This site uses cookies
             </h2>
           </v-flex>
-          <v-layout fill-height wrap align-center row justify-start>
-            <v-flex xs12 md8>
-              We use Google Analytics to see how people use our website. This helps us improve the website. The data we have is anonymised.
+          <v-layout :v-bind="binding" fill-height wrap align-center row justify-start>
+            <v-flex xs6>
+              <div>
+                We use Google Analytics to see how people use our website. This helps us improve the website. The data we have is anonymised.
+              </div>
             </v-flex>
             <v-flex class="hidden-md-and-up" xs12 my-4>
             </v-flex>
-            <v-flex xs12 md4>
-              <v-layout wrap>
-                <v-flex xs12 md6>
-                  <v-btn dark @click.stop="setCookies">
-                    Accept Cookies and Close
-                  </v-btn>
-                </v-flex>
-                <v-flex>
-                  <v-btn dark href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
-                    Learn more
-                  </v-btn>
-                </v-flex>
-              </v-layout>
+            <v-spacer />
+            <v-flex>
+              <v-btn dark @click.stop="setCookies">
+                Accept Cookies and Close
+              </v-btn>
+            </v-flex>
+            <v-flex>
+              <v-btn dark href="https://www.jbs.cam.ac.uk/about-this-site/cookies/" target="_blank">
+                Learn more
+              </v-btn>
             </v-flex>
           </v-layout>
         </v-layout>
@@ -169,6 +168,11 @@ export default {
       },
       setCookies() {
           this.$store.commit('SET_COOK', true)
+      },
+      binding() {
+          const binding = {}
+          if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+          return binding
       }
   }
 }

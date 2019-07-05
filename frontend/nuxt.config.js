@@ -70,7 +70,7 @@ export default {
   ],
   robots: {
       UserAgent: '*',
-      Disallow: '/'
+      Disallow: ''
   },
   axios: {
     proxyHeaders: false,
