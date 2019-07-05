@@ -41,7 +41,7 @@
                                         <span>power the Bitcoin network for</span>
                                     </v-flex>
                                     <v-flex>
-                                        <span style="font-size: 32px"><b>4 years</b></span>
+                                        <span style="font-size: 32px"><b>{{219 / numbers2[0]| one_dec}} years</b></span>
                                     </v-flex>
                                 </v-layout>
                             </v-flex>
@@ -85,7 +85,7 @@
                                         <img src="~static/images/funFacts/UK_flag.jpg" object-fit="contain" width="60%">
                                     </v-flex>
                                     <v-flex xs6>
-                                        <span style="font-size: 32px"><b>11 years</b></span>
+                                        <span style="font-size: 32px"><b>{{numbers2[0] / 4.49 | round}} years</b></span>
                                     </v-flex>
                                 </v-layout>
                                 <v-layout align-center justify-center>
@@ -96,7 +96,7 @@
                                         <img src="~static/images/funFacts/EU_flag.png" object-fit="contain" width="60%">
                                     </v-flex>
                                     <v-flex xs6>
-                                        <span style="font-size: 32px"><b>1.5 years</b></span>
+                                        <span style="font-size: 32px"><b>{{numbers2[0] / 29.88 | one_dec}} years</b></span>
                                     </v-flex>
                                 </v-layout>
                             </v-flex>
@@ -133,7 +133,7 @@
                                 </v-flex>
                             </v-flex>
                             <v-flex xs6 pa-3>
-                                <span style="font-size: 32px"><b>365 years</b></span>
+                                <span style="font-size: 32px"><b>{{numbers2[0] / 0.176 | round}} years</b></span>
                             </v-flex>
                         </v-layout>
                     </v-flex>
@@ -152,8 +152,15 @@
 </template>
 
 <script>
+import {percentage, decimals, one_dec, round} from '~/assets/js/filters.js'
 export default {
     name: 'FunFacts',
+	filters: {
+		percentage,
+		decimals,
+		one_dec,
+		round
+	},
     data() {
         return {
         }
@@ -163,7 +170,11 @@ export default {
             const binding = {}
             if (this.$vuetify.breakpoint.xsOnly) binding.column = true
             return binding
-        }
+        },
+		numbers2() {
+			const data  = [...this.$store.getters.GET_DATA].pop() || {}
+			return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
+		}
     }
 }
 </script>
