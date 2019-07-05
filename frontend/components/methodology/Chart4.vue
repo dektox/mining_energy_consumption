@@ -3,7 +3,7 @@
         <v-toolbar flat color="white">
             <v-toolbar-title>Figure 3: Comparison of different weighting approaches for best-guess estimate</v-toolbar-title>
         </v-toolbar>
-        <highcharts :constructor-type="'stockChart'" :options="{
+        <highcharts :options="{
         chart: {
           marginBottom: (containerWidth > 400) ? 120 : 0,
           marginLeft: (containerWidth > 400) ? 100 : 0,
@@ -30,9 +30,9 @@
             formatter: function () {
               const point = this.points[0]
               const point2 = this.points[1]
-              return charts.dateFormat('%Y-%m-%d', this.x) + '<br/>' +
-              '<b>' + point.series.name + '</b>' + ': ' + charts.numberFormat(point.y, 2) + ' TWh' + '<br/>' +
-              '<b>' + point2.series.name + '</b>' + ': ' + charts.numberFormat(point2.y, 2) + ' TWh' + '<br/>';
+              return Highcharts.dateFormat('%Y-%m-%d', this.x) + '<br/>' +
+              '<b>' + point.series.name + '</b>' + ': ' + Highcharts.numberFormat(point.y, 2) + ' TWh' + '<br/>' +
+              '<b>' + point2.series.name + '</b>' + ': ' + Highcharts.numberFormat(point2.y, 2) + ' TWh' + '<br/>';
             },
             shared: true
         },
@@ -83,10 +83,12 @@
 
 <script>
     import {Chart} from 'highcharts-vue'
-    import charts from 'highcharts'
-    import stockInit from 'highcharts/modules/stock'
+    import Highcharts from 'highcharts'
+    import exportingInit from 'highcharts/modules/exporting'
 
-    stockInit(charts)
+    if (typeof Highcharts === 'object') {
+        exportingInit(Highcharts)
+    }
 
     export default {
         name: 'Chart4',
@@ -3388,8 +3390,8 @@
             this.containerWidth = document.getElementById("wrap-container2").getBoundingClientRect().width
         },
         computed: {
-            charts() {
-                return charts
+            Highcharts() {
+                return Highcharts
             },
         },
         methods: {

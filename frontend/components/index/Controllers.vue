@@ -22,7 +22,7 @@
                                 max="20"
                                 color="#ffb81c"
                                 thumb-label="always"
-                                @end="changePrice"
+                                @change="changePrice"
                         >
                             <template v-slot:prepend>1 ¢</template>
                             <template v-slot:append>20 ¢</template>
@@ -54,7 +54,9 @@
         computed: {
             binding() {
                 const binding = {}
-                if (this.$vuetify.breakpoint.smAndDown) binding.column = true
+                if (process.BROWSER_BUILD) {
+                    if (!this.$vuetify.breakpoint.xsOnly) binding.column = true
+                }
                 return binding
             }
         },

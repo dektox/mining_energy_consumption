@@ -159,7 +159,8 @@ export default {
   },
   computed: {
       cookies() {
-          return !this.$store.state.cooks
+          if (this.$store.state.cooks) return false
+          return this.$cookies.get('CookieControl') ? this.$cookies.get('CookieControl').analytics !== 'true' : true
       }
   },
   methods: {
@@ -171,7 +172,9 @@ export default {
       },
       binding() {
           const binding = {}
-          if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+          if (process.BROWSER_BUILD) {
+              if (!this.$vuetify.breakpoint.xsOnly) binding.column = true
+          }
           return binding
       }
   }

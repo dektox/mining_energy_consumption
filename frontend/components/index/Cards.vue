@@ -118,7 +118,9 @@
             },
             binding() {
                 const binding = {}
-                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                if (process.BROWSER_BUILD) {
+                    if (!this.$vuetify.breakpoint.xsOnly) binding.column = true
+                }
                 return binding
             }
         },

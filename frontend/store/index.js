@@ -2,7 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import _ from 'lodash'
 import Cookies from 'js-cookie'
-
 const api = 'https://cbeci.org/api'
 
 export const state = () => ({
@@ -43,14 +42,14 @@ export const actions = {
         try {
             const res = await axios.get(`${api}/countries`)
             await commit('SET_COUNTRIES', res.data)
-        } catch (e) { alert(e) }
+        } catch (e) { console.log(e) }
     },
 
     LOAD_DATA: async ({ commit }, price) => {
         try {
             const res = await axios.get(`${api}/data/${price}`)
             await commit('SET_DATA', res.data)
-        } catch (e) { alert(e) }
+        } catch (e) { console.log(e) }
     },
 
     LOAD_NUMBERS: async ({ commit, state }, price) => {
@@ -64,7 +63,7 @@ export const actions = {
             ])
             await commit('SET_NUMBERS', [estimated.data, min.data, max.data])
             await commit('SET_PROGRESS', false)
-        } catch (e) { alert(e) }
+        } catch (e) { console.log(e) }
     },
 
     INITIALIZATION: async ({ commit, dispatch, state }) => {
@@ -76,7 +75,7 @@ export const actions = {
                 dispatch('LOAD_NUMBERS', state.price)
             ])
             await commit('SET_PROGRESS2', false)
-        } catch (e) { alert(e) }
+        } catch (e) { console.log(e) }
     },
 
     UPDATE_DATA_AFTER_PRICE_CHANGE: ({ commit, dispatch }, price) => {
@@ -85,7 +84,7 @@ export const actions = {
             dispatch('LOAD_DATA', price)
             dispatch('LOAD_NUMBERS', price)
         } catch (e) {
-            alert(e)
+            console.log(e)
         }
     }
 }

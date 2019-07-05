@@ -3,10 +3,10 @@
         <v-toolbar flat color="white">
             <v-toolbar-title>Figure 2: Profitability threshold of mining equipment at 0.05 USD/kWh</v-toolbar-title>
         </v-toolbar>
-        <highcharts :constructor-type="'stockChart'" :options="{
+        <highcharts :options="{
         chart: {
           marginBottom: (containerWidth > 400) ? 120 : 0,
-          marginLeft: (containerWidth > 400) ? 100 : 0,
+          marginLeft: (containerWidth > 400) ? 100 : 30,
           marginRight: (containerWidth > 400) ? 100 : 0,
           height: (containerWidth > 400) ? '56%' : 300,
           width: (containerWidth > 400) ? containerWidth * 0.9 : containerWidth
@@ -29,8 +29,8 @@
         tooltip: {
             formatter: function () {
               const point = this.points[0]
-              return charts.dateFormat('%B %Y', this.x) + '<br/>' +
-              '<b>' + point.series.name + '</b>' + ': ' + charts.numberFormat(point.y, 2) + ' J/Gh' + '<br/>';
+              return Highcharts.dateFormat('%B %Y', this.x) + '<br/>' +
+              '<b>' + point.series.name + '</b>' + ': ' + Highcharts.numberFormat(point.y, 2) + ' J/Gh' + '<br/>';
               // '<b>' + 'BTC price' + '</b>' + ': $' + point.nameBtc;
             },
             shared: true
@@ -77,10 +77,11 @@
 
 <script>
     import {Chart} from 'highcharts-vue'
-    import charts from 'highcharts'
-    import stockInit from 'highcharts/modules/stock'
-
-    stockInit(charts)
+    import Highcharts from 'highcharts'
+    import exportingInit from 'highcharts/modules/exporting'
+    if (typeof Highcharts === 'object') {
+        exportingInit(Highcharts)
+    }
 
     export default {
         name: 'Chart3',
@@ -1739,8 +1740,8 @@
             this.containerWidth = document.getElementById("wrap-container2").getBoundingClientRect().width
         },
         computed: {
-            charts() {
-                return charts
+            Highcharts() {
+                return Highcharts
             },
         },
         methods: {

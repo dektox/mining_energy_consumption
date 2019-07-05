@@ -17,8 +17,8 @@
       </v-flex>
     </v-layout>
     <cards />
-    <chartLoading v-if="progress"/>
-    <chart v-else/>
+    <!--<chartLoading v-if="progress"/>-->
+    <chart />
     <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
@@ -40,19 +40,17 @@ export default {
     chartLoading: ChartLoading,
     chart: Chart
   },
+  async fetch ({ store }) {
+      await store.dispatch('INITIALIZATION')
+  },
   data() {
     return {
     }
   },
-    computed: {
-        progress() {
-            return this.$store.state.progress2
-        },
-    },
-  fetch ({ store }) {
-      store.dispatch('INITIALIZATION')
-  },
-  methods: {
+  computed: {
+      progress() {
+          return this.$store.state.progress2
+      }
   }
 }
 </script>
