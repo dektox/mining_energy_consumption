@@ -4,7 +4,7 @@
             <v-card elevation="5">
                 <v-flex pa-4 class="card text-xs-center">
                     <v-flex mb-4>
-                        <h4 class="display-1">Lower bound</h4>
+                        <h4 class="display-1">Theoretical <br/>lower bound</h4>
                     </v-flex>
                     <v-flex class="card__number-sm font-weight-bold">
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
@@ -63,7 +63,7 @@
             <v-card elevation="5">
                 <v-flex pa-4 class="card text-xs-center">
                     <v-flex mb-4>
-                        <h4 class="display-1">Upper bound</h4>
+                        <h4 class="display-1">Theoretical <br/>upper bound</h4>
                     </v-flex>
                     <v-flex class="card__number-sm font-weight-bold">
                         <v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>
