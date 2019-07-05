@@ -2,13 +2,13 @@
   <v-app>
     <v-toolbar fixed app color="#ffb81c" class="header">
       <v-layout align-center row justify-start>
-        <v-flex class="pointer logo">
+        <v-flex mr-4 shrink class="pointer logo1">
           <a href="https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/" target="_blank">
             <img src="~static/logo.png" class="logo">
           </a>
         </v-flex>
         <v-divider vertical/>
-        <v-flex mx-4>
+        <v-flex mx-3 shrink>
           <img src="~static/logo2.png" class="logo2">
         </v-flex>
         <v-spacer />
@@ -105,7 +105,7 @@
               flat
               tile
       >
-        <v-card-actions class="grey lighten-3 justify-center">
+        <v-card-actions class="footer justify-center">
           Cambridge Centre for Alternative Finance © 2019
         </v-card-actions>
       </v-card>
@@ -172,8 +172,8 @@ export default {
       },
       binding() {
           const binding = {}
-          if (process.BROWSER_BUILD) {
-              if (!this.$vuetify.breakpoint.xsOnly) binding.column = true
+          if (!process.server) {
+              if (this.$vuetify.breakpoint.xsOnly) binding.column = true
           }
           return binding
       }

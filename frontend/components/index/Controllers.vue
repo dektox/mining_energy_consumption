@@ -1,35 +1,33 @@
 <template>
     <v-layout my-4>
         <v-card elevation="5">
-            <v-layout v-bind="binding" align-center justify-center>
-                <v-flex>
-                    <v-toolbar card dense>
-                        <v-toolbar-title>
-                            <span class="subheading">Electricity cost</span>
-                            <v-tooltip max-width="400" bottom>
-                                <template v-slot:activator="{ on }">
-                                    <v-icon style="cursor: pointer" v-on="on">help</v-icon>
-                                </template>
-                                <span>This variable corresponds to the average price per kWh paid by miners globally (in USD cents). The CBECI uses this parameter to model the economic lifetime of mining hardware in terms of mining revenues and electricity costs.</span>
-                            </v-tooltip>
-                        </v-toolbar-title>
-                    </v-toolbar>
-                    <v-flex pa-3>
-                        <v-slider
-                                v-model="price"
-                                min="1"
-                                step="0.1"
-                                max="20"
-                                color="#ffb81c"
-                                thumb-label="always"
-                                @change="changePrice"
-                        >
-                            <template v-slot:prepend>1 ¢</template>
-                            <template v-slot:append>20 ¢</template>
-                        </v-slider>
-                    </v-flex>
+            <v-flex>
+                <v-toolbar card dense>
+                    <v-toolbar-title>
+                        <span class="subheading">Electricity cost</span>
+                        <v-tooltip max-width="400" bottom>
+                            <template v-slot:activator="{ on }">
+                                <v-icon style="cursor: pointer" v-on="on">help</v-icon>
+                            </template>
+                            <span>This variable corresponds to the average price per kWh paid by miners globally (in USD cents). The CBECI uses this parameter to model the economic lifetime of mining hardware in terms of mining revenues and electricity costs.</span>
+                        </v-tooltip>
+                    </v-toolbar-title>
+                </v-toolbar>
+                <v-flex pa-3>
+                    <v-slider
+                            v-model="price"
+                            min="1"
+                            step="0.1"
+                            max="20"
+                            color="#ffb81c"
+                            thumb-label="always"
+                            @change="changePrice"
+                    >
+                        <template v-slot:prepend>1 ¢</template>
+                        <template v-slot:append>20 ¢</template>
+                    </v-slider>
                 </v-flex>
-            </v-layout>
+            </v-flex>
             <v-layout align-center justify-center wrap pa-3>
                 <span><a @click="updateValues">Click here</a> to restore the default assumption </span>
                 <v-tooltip max-width="400" bottom>
@@ -54,8 +52,8 @@
         computed: {
             binding() {
                 const binding = {}
-                if (process.BROWSER_BUILD) {
-                    if (!this.$vuetify.breakpoint.xsOnly) binding.column = true
+                if (!process.server) {
+                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
                 }
                 return binding
             }
