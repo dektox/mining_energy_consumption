@@ -55,7 +55,6 @@ export default {
   plugins: [
     '@/plugins/vuetify',
     { src: '~plugins/ga.js', ssr: false },
-    { src: '~plugins/latex2js.js', ssr: false },
     { src: '~plugins/katex2js.js', ssr: false },
   ],
 

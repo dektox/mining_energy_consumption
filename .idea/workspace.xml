@@ -42,46 +42,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/components/methodology/Model.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="8" />
-              <folding>
-                <element signature="n#style#0;n#sup#0;n#p#1;n#v-flex#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#sup#0;n#p#4;n#v-flex#2;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#3;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#sup#0;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#sup#1;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#sup#0;n#p#0;n#v-flex#9;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/assets/style/_main.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="207" column="1" selection-start-line="207" selection-start-column="1" selection-end-line="207" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -127,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="135" column="93" lean-forward="true" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
+            <state relative-caret-position="153">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -238,7 +206,6 @@
         <option value="$PROJECT_DIR$/frontend/assets/style/main.css" />
         <option value="$PROJECT_DIR$/frontend/nuxt.config.js" />
         <option value="$PROJECT_DIR$/frontend/package.json" />
-        <option value="$PROJECT_DIR$/frontend/layouts/default.vue" />
         <option value="$PROJECT_DIR$/frontend/components/index/Controllers.vue" />
         <option value="$PROJECT_DIR$/frontend/components/index/Cards.vue" />
         <option value="$PROJECT_DIR$/frontend/components/contact/Feedback.vue" />
@@ -259,6 +226,7 @@
         <option value="$PROJECT_DIR$/frontend/components/comparisons/Countries.vue" />
         <option value="$PROJECT_DIR$/frontend/components/comparisons/RP.vue" />
         <option value="$PROJECT_DIR$/frontend/assets/style/app.styl" />
+        <option value="$PROJECT_DIR$/frontend/layouts/default.vue" />
       </list>
     </option>
   </component>
@@ -290,7 +258,14 @@
               <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="layouts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="mining_energy_consumption" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="methodology" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -358,7 +333,7 @@
       <workItem from="1561160104169" duration="8503000" />
       <workItem from="1561413323260" duration="10362000" />
       <workItem from="1561787239129" duration="70637000" />
-      <workItem from="1562272698118" duration="18654000" />
+      <workItem from="1562272698118" duration="18883000" />
     </task>
     <task id="LOCAL-00001" summary="ads">
       <created>1558309358910</created>
@@ -661,17 +636,23 @@
       <option name="project" value="LOCAL" />
       <updated>1562032643052</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="update 05.07">
+      <created>1562295999917</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1562295999917</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211160000" />
+    <option name="totallyTimeSpent" value="211389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -683,7 +664,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.22205882" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.22205882" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -733,7 +714,8 @@
     <MESSAGE value="update 30.06" />
     <MESSAGE value="update 01.07" />
     <MESSAGE value="update 02.07" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 02.07" />
+    <MESSAGE value="update 05.07" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 05.07" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
@@ -1006,41 +988,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/components/comparisons/PC.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="33" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/components/methodology/Model.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="8" />
-          <folding>
-            <element signature="n#style#0;n#sup#0;n#p#1;n#v-flex#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#sup#0;n#p#4;n#v-flex#2;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#3;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#sup#0;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#sup#1;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#sup#0;n#p#0;n#v-flex#9;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1111,10 +1062,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/layouts/default.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="135" column="93" lean-forward="true" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
+        <state relative-caret-position="153">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#span#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/components/methodology/Model.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1626">
+          <caret line="7" selection-start-line="7" selection-end-line="8" />
+          <folding>
+            <element signature="n#style#0;n#sup#0;n#p#1;n#v-flex#0;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#p#4;n#v-flex#2;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#ul#0;n#v-flex#6;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#v-flex#7;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#1;n#p#5;n#v-flex#8;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#p#0;n#v-flex#9;n#v-flex#0;n#v-layout#1;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
