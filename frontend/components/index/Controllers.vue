@@ -50,13 +50,6 @@
             }
         },
         computed: {
-            binding() {
-                const binding = {}
-                if (!process.server) {
-                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-                }
-                return binding
-            }
         },
         methods: {
             changePrice() {

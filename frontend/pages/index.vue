@@ -16,7 +16,9 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <cards />
+    <no-ssr>
+      <cards />
+    </no-ssr>
     <!--<chartLoading v-if="progress"/>-->
     <chart />
     <v-layout row align-center my-4>
@@ -28,7 +30,7 @@
 
 <script>
 import Controllers from '~/components/index/Controllers'
-import Cards from '~/components/index/Cards'
+// import Cards from '~/components/index/Cards'
 import ChartLoading from '~/components/index/ChartLoading'
 import Chart from '~/components/index/Chart'
 
@@ -36,7 +38,7 @@ export default {
   name: 'index',
   components: {
     controllers: Controllers,
-    cards: Cards,
+    cards: () => import('~/components/index/Cards'),
     chartLoading: ChartLoading,
     chart: Chart
   },

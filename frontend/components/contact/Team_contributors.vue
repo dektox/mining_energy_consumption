@@ -75,14 +75,13 @@
         name: 'team',
         data() {
             return {
+                binding: {}
             }
         },
+        mounted: function() {
+          this.binding = (this.$vuetify.breakpoint.xsOnly) ? {column: true} : {}
+        },
         computed: {
-            binding() {
-                const binding = {}
-                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-                return binding
-            }
         }
     }
 </script>

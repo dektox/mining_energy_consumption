@@ -62,6 +62,13 @@
             }
         },
         computed: {
+            binding() {
+                const binding = {}
+                if (!process.server) {
+                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                }
+                return binding
+            },
             progress() {
                 return this.$store.state.progress
             },
@@ -69,13 +76,6 @@
                 const arr = this.$store.getters.GET_COUNTRIES
                 const i = arr.findIndex(el => el.country === 'Bitcoin')
                 return [arr[i+2] || {}, arr[i+1] || {}, arr[i] || {}, arr[i-1] || {}, arr[i-2] || {}]
-            },
-            binding() {
-                const binding = {}
-                if (!process.server) {
-                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-                }
-                return binding
             }
         }
     }
