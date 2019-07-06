@@ -68,7 +68,7 @@ export default {
   ],
   robots: {
       UserAgent: '*',
-      Disallow: ''
+      Allow: '/'
   },
   render: {
       compressor: shrinkRay()
