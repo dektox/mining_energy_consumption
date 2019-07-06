@@ -159,11 +159,13 @@ export default {
   },
   computed: {
       cookies() {
-          if (this.$cookies.get('CookieControl')) {
-              if (this.$cookies.get('CookieControl').analytics !== 'true')
+          if (!process.server) {
+              if (this.$cookies.get('CookieControl')) {
+                  if (this.$cookies.get('CookieControl').analytics !== 'true')
+                      this.$store.commit('SET_COOK', false)
+              } else {
                   this.$store.commit('SET_COOK', false)
-          } else {
-              this.$store.commit('SET_COOK', false)
+              }
           }
           return !this.$store.state.cooks
       }
