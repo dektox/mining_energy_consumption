@@ -115,9 +115,9 @@
       <div class="cookies__panel">
         <v-layout column pa-4>
           <v-flex class="hidden-md-and-up" my-4>
-            <h2 class="display-3">
+            <h3 class="display-2">
               This site uses cookies
-            </h2>
+            </h3>
           </v-flex>
           <v-layout :v-bind="binding" fill-height wrap align-center row justify-start>
             <v-flex xs6>
