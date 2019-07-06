@@ -24,7 +24,9 @@
     <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
-    <controllers />
+    <no-ssr>
+      <controllers />
+    </no-ssr>
   </v-layout>
 </template>
 
