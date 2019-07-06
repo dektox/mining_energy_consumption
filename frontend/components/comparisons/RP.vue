@@ -95,7 +95,7 @@
     import {percentage, decimals, round} from '~/assets/js/filters.js'
 
     export default {
-        name: 'ComparisonsCards',
+        name: 'RP',
         filters: {
             percentage,
             decimals,

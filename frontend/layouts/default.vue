@@ -115,9 +115,9 @@
       <div class="cookies__panel">
         <v-layout column pa-4>
           <v-flex class="hidden-md-and-up" my-4>
-            <h2 class="display-3">
+            <h3 class="display-2">
               This site uses cookies
-            </h2>
+            </h3>
           </v-flex>
           <v-layout :v-bind="binding" fill-height wrap align-center row justify-start>
             <v-flex xs6>
@@ -159,8 +159,15 @@ export default {
   },
   computed: {
       cookies() {
-          if (this.$store.state.cooks) return false
-          return this.$cookies.get('CookieControl') ? this.$cookies.get('CookieControl').analytics !== 'true' : true
+          if (!process.server) {
+              if (this.$cookies.get('CookieControl')) {
+                  if (this.$cookies.get('CookieControl').analytics !== 'true')
+                      this.$store.commit('SET_COOK', false)
+              } else {
+                  this.$store.commit('SET_COOK', false)
+              }
+          }
+          return !this.$store.state.cooks
       }
   },
   methods: {

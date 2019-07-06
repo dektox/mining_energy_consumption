@@ -11,7 +11,7 @@ export const state = () => ({
   countries: [],
   progress: true,
   progress2: true,
-  cooks: false
+  cooks: true
 })
 
 export const getters = {

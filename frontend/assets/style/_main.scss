@@ -54,7 +54,11 @@ html, body{
     display: block !important;
 }
 
+input.highcharts-range-selector {
+    opacity: 0;
+}
 input.highcharts-range-selector:focus {
+    opacity: 1;
     background-color: white;
 }
 

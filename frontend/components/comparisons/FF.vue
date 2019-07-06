@@ -159,11 +159,6 @@ export default {
         }
     },
     computed: {
-        binding() {
-            const binding = {}
-            if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-            return binding
-        }
     }
 }
 </script>

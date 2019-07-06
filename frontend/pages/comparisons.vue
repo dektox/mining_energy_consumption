@@ -12,9 +12,11 @@
                 </v-flex>
             </v-layout>
         </v-flex>
-        <comparisonsPC />
-        <comparisonsRP />
-        <comparisonsCards />
+        <no-ssr>
+            <comparisonsPC />
+            <comparisonsRP />
+            <comparisonsCards />
+        </no-ssr>
         <v-layout mb-4 align-center justify-center wrap>
             <histogram />
         </v-layout>

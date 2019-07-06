@@ -16,19 +16,23 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <cards />
+    <no-ssr>
+      <cards />
+    </no-ssr>
     <!--<chartLoading v-if="progress"/>-->
     <chart />
     <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
-    <controllers />
+    <no-ssr>
+      <controllers />
+    </no-ssr>
   </v-layout>
 </template>
 
 <script>
 import Controllers from '~/components/index/Controllers'
-import Cards from '~/components/index/Cards'
+// import Cards from '~/components/index/Cards'
 import ChartLoading from '~/components/index/ChartLoading'
 import Chart from '~/components/index/Chart'
 
@@ -36,7 +40,7 @@ export default {
   name: 'index',
   components: {
     controllers: Controllers,
-    cards: Cards,
+    cards: () => import('~/components/index/Cards'),
     chartLoading: ChartLoading,
     chart: Chart
   },
