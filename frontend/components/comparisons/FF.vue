@@ -166,15 +166,10 @@ export default {
         }
     },
     computed: {
-        binding() {
-            const binding = {}
-            if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-            return binding
-        },
-		numbers2() {
-			const data  = [...this.$store.getters.GET_DATA].pop() || {}
-			return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
-		}
+      numbers2() {
+        const data  = [...this.$store.getters.GET_DATA].pop() || {}
+        return [data.guess_consumption || 0, data.min_consumption || 0, data.max_consumption || 0]
+      }
     }
 }
 </script>

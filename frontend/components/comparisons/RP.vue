@@ -95,7 +95,7 @@
     import {percentage, decimals, round} from '~/assets/js/filters.js'
 
     export default {
-        name: 'ComparisonsCards',
+        name: 'RP',
         filters: {
             percentage,
             decimals,
@@ -115,7 +115,9 @@
             },
             binding() {
                 const binding = {}
-                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                if (!process.server) {
+                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                }
                 return binding
             }
         }

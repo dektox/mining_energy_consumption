@@ -1,7 +1,6 @@
 <template>
     <v-flex style="position: relative">
         <v-layout class="loading" justify-center align-center><v-flex>Loading data ...</v-flex></v-layout>
-        <!--<v-progress-circular v-if="progress" indeterminate :size="50" :width="5"/>-->
         <highcharts :constructor-type="'stockChart'" :options="{
         chart: {
           marginBottom: (containerWidth > 1000) ? 100 : 20,
@@ -36,10 +35,10 @@
         tooltip: {
             formatter: function () {
               const point = this.points[0]
-              return charts.dateFormat('%A %B %e %Y', this.x) + '<br/>' +
-              '<b>' + this.points[1].series.name + '</b>' + ': ' + charts.numberFormat(this.points[1].y, 2) + '<br/>' +
-              '<b>' + this.points[2].series.name + '</b>' + ': ' + charts.numberFormat(this.points[2].y, 2) + '<br/>' +
-              '<b>' + this.points[0].series.name + '</b>' + ': ' + charts.numberFormat(this.points[0].y, 2);
+              return Highcharts.dateFormat('%A %B %e %Y', this.x) + '<br/>' +
+              '<b>' + this.points[1].series.name + '</b>' + ': ' + Highcharts.numberFormat(this.points[1].y, 2) + '<br/>' +
+              '<b>' + this.points[2].series.name + '</b>' + ': ' + Highcharts.numberFormat(this.points[2].y, 2) + '<br/>' +
+              '<b>' + this.points[0].series.name + '</b>' + ': ' + Highcharts.numberFormat(this.points[0].y, 2);
             },
             shared: true
         },
@@ -137,10 +136,11 @@
 
 <script>
     import {Chart} from 'highcharts-vue'
-    import charts from 'highcharts'
-    import stockInit from 'highcharts/modules/stock'
-
-    stockInit(charts)
+    import Highcharts from 'highcharts'
+    import exportingInit from 'highcharts/modules/exporting'
+    if (typeof Highcharts === 'object') {
+        exportingInit(Highcharts)
+    }
 
     export default {
         name: 'Loading',
@@ -180,11 +180,8 @@
                 })
                 return res
             },
-            charts() {
-                return charts
-            },
-            progress() {
-                return this.$store.state.progress2
+            Highcharts() {
+                return Highcharts
             }
         }
     }

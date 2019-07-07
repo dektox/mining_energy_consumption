@@ -54,7 +54,11 @@ html, body{
     display: block !important;
 }
 
+input.highcharts-range-selector {
+    opacity: 0;
+}
 input.highcharts-range-selector:focus {
+    opacity: 1;
     background-color: white;
 }
 
@@ -68,10 +72,6 @@ input.highcharts-range-selector:focus {
 
 .pointer {
     cursor: pointer;
-}
-
-.logo{
-    max-width: 230px !important;
 }
 
 .menu{
@@ -159,7 +159,7 @@ input.highcharts-range-selector:focus {
     opacity: 0;
 }
 
-.logo{
+.logo1 img{
     height: 60px;
 }
 
@@ -184,7 +184,7 @@ input.highcharts-range-selector:focus {
     .v-content{
         padding: 80px 0 0 !important;
     }
-    .logo{
+    .logo1 img{
         height: 30px;
     }
     .logo2{
@@ -192,6 +192,18 @@ input.highcharts-range-selector:focus {
     }
 }
 @media only screen and (max-width: 960px) {
+    .header .v-toolbar__content{
+        height: 80px !important;
+    }
+    .v-content{
+        padding: 80px 0 0 !important;
+    }
+    .logo1 img{
+        height: 30px;
+    }
+    .logo2{
+        height: 50px;
+    }
     body, html{
         font-size: 14px;
     }
@@ -254,6 +266,11 @@ input.highcharts-range-selector:focus {
     font-size: 34px;
     color: white;
     text-align: center;
+}
+
+.footer{
+    background-color: #292829;
+    color: #fff;
 }
 
 .image-cropper {

@@ -12,9 +12,11 @@
                 </v-flex>
             </v-layout>
         </v-flex>
-        <comparisonsPC />
-        <comparisonsRP />
-        <comparisonsCards />
+        <no-ssr>
+            <comparisonsPC />
+            <comparisonsRP />
+            <comparisonsCards />
+        </no-ssr>
         <v-layout mb-4 align-center justify-center wrap>
             <histogram />
         </v-layout>
@@ -43,9 +45,11 @@ export default {
     },
     async fetch ({ store }) {
         try {
-            await store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', 0.05)
-            await store.dispatch('INITIALIZATION')
-            store.dispatch('LOAD_COUNTRIES')
+            await store.commit('SET_PRICE', 0.05)
+            await Promise.all([
+                store.dispatch('INITIALIZATION'),
+                store.dispatch('LOAD_COUNTRIES')
+            ])
         } catch (e) {
             alert(e)
         }

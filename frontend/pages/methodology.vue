@@ -4,9 +4,7 @@
             <h1 class="display-4 text-xs-center">Methodology</h1>
         </v-flex>
         <overview />
-        <keep-alive>
-            <model />
-        </keep-alive>
+        <model />
         <discussion />
     </v-layout>
 </template>

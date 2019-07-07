@@ -141,7 +141,10 @@ import {Chart} from 'highcharts-vue'
 import charts from 'highcharts'
 import stockInit from 'highcharts/modules/stock'
 
-stockInit(charts)
+
+if (typeof charts === 'object') {
+    stockInit(charts)
+}
 
 export default {
     name: 'Chart',

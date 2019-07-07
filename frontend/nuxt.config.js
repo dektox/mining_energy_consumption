@@ -3,7 +3,7 @@ import pkg from './package'
 import shrinkRay from 'shrink-ray-current'
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
 
   /*
   ** Headers of the page
@@ -39,7 +39,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  // loading: '~/components/loading.vue',
 
   /*
   ** Global CSS
@@ -58,20 +58,17 @@ export default {
     { src: '~plugins/ga.js', ssr: false },
     { src: '~plugins/katex2js.js', ssr: false },
   ],
-
-  router: {
-      middleware: ['cookies']
-  },
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    'cookie-universal-nuxt'
   ],
   robots: {
       UserAgent: '*',
-      Disallow: ''
+      Allow: '/'
   },
   render: {
       compressor: shrinkRay()

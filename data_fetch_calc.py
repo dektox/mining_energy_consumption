@@ -16,8 +16,8 @@ else:
 
 DEFAULT_LOG_LEVEL = 'INFO'
 DEFAULT_ELECTRICITY_PRICE = 0.05
-
 LOGGER = logging.getLogger()
+
 
 def crawl(endpoint):
     # Showing message that the scrapping started
@@ -29,6 +29,7 @@ def crawl(endpoint):
     LOGGER.debug(f"{endpoint}: Response:\n\n{pformat(data)}\n\n")
     return [(int(row['x']), row['y']) for row in data['values']]
 
+
 def save_values(values, connection, table_name):
     # Creating cursor to work with DB
     cursor = connection.cursor()
@@ -36,7 +37,8 @@ def save_values(values, connection, table_name):
     cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name}"
                    f" (timestamp INT PRIMARY KEY, date TEXT, value REAL);")
     # Template of the query to paste a row to a table
-    insert_sql = f"INSERT INTO {table_name} (timestamp, date, value) VALUES (%s, %s, %s) ON CONFLICT ON CONSTRAINT {table_name}_pkey DO NOTHING;"
+    insert_sql = f"INSERT INTO {table_name} (timestamp, date, value) " \
+                 f"VALUES (%s, %s, %s) ON CONFLICT ON CONSTRAINT {table_name}_pkey DO NOTHING;"
     # Taking 'values' from the API reply and inputting rows one by one
     for timestamp, value in values:
         # The second column is going to be date in readable format
@@ -51,11 +53,11 @@ def save_values(values, connection, table_name):
         finally:
             connection.commit()
 
+
 # this is to change parameters from CLI
 @click.command()
 @click.option('--price', '-p', default=DEFAULT_ELECTRICITY_PRICE)
 @click.option('--log-level', '-l', default=DEFAULT_LOG_LEVEL)
-
 def main(log_level, price):
     # Logging
     LOGGER.setLevel(log_level.upper())
@@ -72,9 +74,9 @@ def main(log_level, price):
     with psycopg2.connect(**config['blockchain_data']) as connection:
         for endpoint in ['difficulty', 'hash-rate', 'market-price', 
                          'miners-revenue']:
-            #if you need more data, just list it here
+            # if you need more data, just list it here
             values = crawl(endpoint)
-            #this is because table name can't contain hyphens
+            # this is because table name can't contain hyphens
             table_name = endpoint.replace('-', '_') 
             save_values(values, connection, table_name)
             for timestamp, value in values:
@@ -83,7 +85,7 @@ def main(log_level, price):
                 except KeyError:
                     all_data[timestamp] = {endpoint: value}
                     
-#==============================================================================
+# =============================================================================
 #        # This is to create block reward time series
 #        for timestamp, data in all_data.items():
 #            # 0 <= timestamp < 28 November 2012
@@ -101,7 +103,7 @@ def main(log_level, price):
 #        save_values(((timestamp, data['block-reward']) for timestamp, 
 #                        data in all_data.items()),
 #                    connection, 'block_reward')
-#==============================================================================
+# =============================================================================
 #        # Profitability threshold calculation -- block rewards only (bro)
 #        for timestamp, data in all_data.items():
 #            try:
@@ -116,9 +118,9 @@ def main(log_level, price):
 #                    for timestamp, data
 #                     in all_data.items() if 'thresh-bro' in data),
 #                    connection, 'prof_threshold_block_reward_only')    
-#==============================================================================       
+# =============================================================================
                     
-        # Profitability threshold calculation based on the miners revenue estimate by blockchain.info (block rewards + comissions)
+        # Profitability threshold calculation based on the miners revenue est.
         LOGGER.info(f"prof-threshold: as of {datetime.utcnow().isoformat()}")
         for timestamp, data in all_data.items():
             try:
@@ -135,16 +137,21 @@ def main(log_level, price):
                     connection, 'prof_threshold')    
         
         # Calculating energy consumption
-        LOGGER.info(f"energy-consumpt: as of {datetime.utcnow().isoformat()}")    
+        LOGGER.info(f"energy-consumption: as of {datetime.utcnow().isoformat()}")
         with connection.cursor() as c:
             # Creating table. timestamp is a PRIMARY KEY, values are unique
-            c.execute("CREATE TABLE IF NOT EXISTS energy_consumption (timestamp INT PRIMARY KEY, date TEXT, max_consumption REAL, min_consumption REAL, guess_consumption REAL, all_prof_eqp TEXT, all_prof_eqp_qty TEXT);")
+            c.execute("CREATE TABLE IF NOT EXISTS energy_consumption (timestamp "
+                      "INT PRIMARY KEY, date TEXT, max_consumption REAL, min_consumption REAL, "
+                      "guess_consumption REAL, all_prof_eqp TEXT, all_prof_eqp_qty TEXT);")
             # Template of the query to paste a row to a table
-            insert_sql = "INSERT INTO energy_consumption (timestamp, date, max_consumption, min_consumption, guess_consumption, all_prof_eqp, all_prof_eqp_qty) VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT ON CONSTRAINT energy_consumption_pkey DO NOTHING;"
-            prof_eqp = []   # temprorary var for the list of profitable equipment efficiency at any given moment
-            prof_eqp_all = []  # list of lists of profitable equipment efficiency [for all dates]
-            prof_eqp_qty = []  # temprorary var for the list of profitable equipment qty -- neded for weighting
-            prof_eqp_qty_all = [] # list of lists of profitable equipment qty [for all dates]
+            insert_sql = "INSERT INTO energy_consumption (timestamp, date, max_consumption, " \
+                         "min_consumption, guess_consumption, all_prof_eqp, all_prof_eqp_qty) " \
+                         "VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT ON CONSTRAINT " \
+                         "energy_consumption_pkey DO NOTHING;"
+            prof_eqp = []   # temp var for list of profit. eqp efficiency
+            prof_eqp_all = []  # list of lists of profit. eqp efficiency 
+            prof_eqp_qty = []  # temp var for the list of profit. eqp qty
+            prof_eqp_qty_all = [] # list of lists of profitable equipment qty
             max_all = []
             min_all = []
             guess_all = []
@@ -156,8 +163,8 @@ def main(log_level, price):
             for timestamp, data in all_data.items():
                 for miner in miners:
                     if timestamp>miner[1] and data_ma['prof-threshold'][timestamp]>miner[2]:
-                    # ^^current date and date of miner release ^^checks if miner is profitable; 
-                    # if yes, adds miner's efficiency and qty to the lists:
+                        # ^^current date and date of miner release ^^checks if miner is profitable;
+                        # if yes, adds miner's efficiency and qty to the lists:
                         prof_eqp.append(miner[2])
                         prof_eqp_qty.append(miner[3])
                 prof_eqp_qty_all.append(prof_eqp_qty)
@@ -166,16 +173,16 @@ def main(log_level, price):
                     max_consumption = max(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.2
                     min_consumption = min(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.01
                     guess_consumption = sum(prof_eqp)/len(prof_eqp)*data['hash-rate']*365.25*24/1e+9*1.1        
-  #====this=is=for=weighting===================================================
-  #                 weighted_sum = 0
-  #                 eqp_qty_this_day = 0
-  #                 # calculating the guess_consumption using the weighted average of prof_eqp efficiencies:   
-  #                 for j in range(0, len(prof_eqp)):
-  #                     weighted_sum = weighted_sum + prof_eqp[j]*prof_eqp_qty[j]
-  #                     eqp_qty_this_day = eqp_qty_this_day + prof_eqp_qty[j]
-  #                 guess_consumption = weighted_sum/eqp_qty_this_day*hash_rate[i][2]*365.25*24/1e+9*1.05           
-  #============================================================================
-                except Exception as error: #in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+# ====this=is=for=weighting===================================================
+#                 weighted_sum = 0
+#                 eqp_qty_this_day = 0
+#                 # calculating the guess_consumption using the weighted average of prof_eqp efficiencies:
+#                 for j in range(0, len(prof_eqp)):
+#                     weighted_sum = weighted_sum + prof_eqp[j]*prof_eqp_qty[j]
+#                     eqp_qty_this_day = eqp_qty_this_day + prof_eqp_qty[j]
+#                 guess_consumption = weighted_sum/eqp_qty_this_day*hash_rate[i][2]*365.25*24/1e+9*1.05
+# ===========================================================================
+                except Exception as error:  # in case if mining is not profitable (impossible to find MAX of empty list)
                     LOGGER.warning(f"Mining was unprofitable at timestamp={timestamp}: '{error}'")
                     max_consumption = max_all[-1]
                     min_consumption = min_all[-1]
@@ -185,7 +192,7 @@ def main(log_level, price):
                 guess_all.append(guess_consumption)
                 ts_all.append(timestamp)
                 date = datetime.utcfromtimestamp(timestamp).isoformat()
-                prof_eqp = str(prof_eqp).strip('[]') #making str from prof_eqp
+                prof_eqp = str(prof_eqp).strip('[]')  # making str from prof_eqp
                 prof_eqp_qty = str(prof_eqp_qty).strip('[]')
                 try:
                     c.execute(insert_sql, (timestamp, date, max_consumption, 
@@ -205,8 +212,11 @@ def main(log_level, price):
                               index=ts_all, columns = ['MAX', 'MIN', 'GUESS'])
             energy_ma=energy_df.rolling(window=7, min_periods=1).mean()
             
-            c.execute("CREATE TABLE IF NOT EXISTS energy_consumption_ma (timestamp INT PRIMARY KEY, date TEXT, max_consumption REAL, min_consumption REAL, guess_consumption REAL);")
-            insert_sql = "INSERT INTO energy_consumption_ma (timestamp, date, max_consumption, min_consumption, guess_consumption) VALUES (%s, %s, %s, %s, %s) ON CONFLICT ON CONSTRAINT energy_consumption_ma_pkey DO NOTHING;"
+            c.execute("CREATE TABLE IF NOT EXISTS energy_consumption_ma (timestamp INT PRIMARY KEY, "
+                      "date TEXT, max_consumption REAL, min_consumption REAL, guess_consumption REAL);")
+            insert_sql = "INSERT INTO energy_consumption_ma (timestamp, date, max_consumption, " \
+                         "min_consumption, guess_consumption) VALUES (%s, %s, %s, %s, %s) " \
+                         "ON CONFLICT ON CONSTRAINT energy_consumption_ma_pkey DO NOTHING;"
     
             max_ma = list(energy_ma['MAX'])
             min_ma = list(energy_ma['MIN'])
@@ -221,12 +231,12 @@ def main(log_level, price):
                 try:
                     c.execute(insert_sql, item)
                 except Exception as error:
-                    LOGGER.warning(f"Energy consump MA saving err: {error}'")
+                    LOGGER.warning(f"Energy consumption MA saving err: {error}'")
                     pass
 # =============================================================================
 #             from sqlalchemy import create_engine
 #             eng = create_engine('postgresql://user:pass@localhost:5432/db')
-#             energy_ma.to_sql('energy_ma', eng, if_exists='replace')   
+#             energy_ma.to_sql('energy_ma', eng, if_exists='replace')
 # =============================================================================
 
 

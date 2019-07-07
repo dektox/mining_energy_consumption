@@ -106,6 +106,13 @@
             }, 30000)
         },
         computed: {
+            binding() {
+                const binding = {}
+                if (!process.server) {
+                    if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+                }
+                return binding
+            },
             numbers() {
                 return this.$store.state.numbers
             },
@@ -115,11 +122,6 @@
             },
             progress() {
                 return this.$store.state.progress
-            },
-            binding() {
-                const binding = {}
-                if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-                return binding
             }
         },
         methods: {

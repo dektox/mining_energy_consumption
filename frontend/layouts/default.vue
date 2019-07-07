@@ -2,13 +2,13 @@
   <v-app>
     <v-toolbar fixed app color="#ffb81c" class="header">
       <v-layout align-center row justify-start>
-        <v-flex class="pointer logo">
+        <v-flex mr-4 shrink class="pointer logo1">
           <a href="https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/" target="_blank">
             <img src="~static/logo.png" class="logo">
           </a>
         </v-flex>
         <v-divider vertical/>
-        <v-flex mx-4>
+        <v-flex mx-3 shrink>
           <img src="~static/logo2.png" class="logo2">
         </v-flex>
         <v-spacer />
@@ -105,7 +105,7 @@
               flat
               tile
       >
-        <v-card-actions class="grey lighten-3 justify-center">
+        <v-card-actions class="footer justify-center">
           Cambridge Centre for Alternative Finance © 2019
         </v-card-actions>
       </v-card>
@@ -115,9 +115,9 @@
       <div class="cookies__panel">
         <v-layout column pa-4>
           <v-flex class="hidden-md-and-up" my-4>
-            <h2 class="display-3">
+            <h3 class="display-2">
               This site uses cookies
-            </h2>
+            </h3>
           </v-flex>
           <v-layout :v-bind="binding" fill-height wrap align-center row justify-start>
             <v-flex xs6>
@@ -159,6 +159,14 @@ export default {
   },
   computed: {
       cookies() {
+          if (!process.server) {
+              if (this.$cookies.get('CookieControl')) {
+                  if (this.$cookies.get('CookieControl').analytics !== 'true')
+                      this.$store.commit('SET_COOK', false)
+              } else {
+                  this.$store.commit('SET_COOK', false)
+              }
+          }
           return !this.$store.state.cooks
       }
   },
@@ -171,7 +179,9 @@ export default {
       },
       binding() {
           const binding = {}
-          if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+          if (!process.server) {
+              if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+          }
           return binding
       }
   }

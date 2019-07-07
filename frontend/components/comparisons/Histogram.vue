@@ -5,7 +5,7 @@
                 label="Logarithmic scale"
                 color="#ffb81c"
         ></v-switch>
-        <highcharts :constructor-type="'stockChart'" :options="{
+        <highcharts :options="{
         chart: {
           marginBottom: (containerWidth > 1000) ? 100 : 100,
           reflow: false,
@@ -82,10 +82,11 @@
 
 <script>
 import {Chart} from 'highcharts-vue'
-import charts from 'highcharts'
-import stockInit from 'highcharts/modules/stock'
-
-stockInit(charts)
+import Highcharts from 'highcharts'
+import exportingInit from 'highcharts/modules/exporting'
+if (typeof Highcharts === 'object') {
+    exportingInit(Highcharts)
+}
 
 export default {
     name: 'Histogram',
@@ -102,9 +103,6 @@ export default {
         this.containerWidth = document.getElementById("wrap-container3").getBoundingClientRect().width
     },
     computed: {
-        charts() {
-            return charts
-        },
         data() {
             return this.$store.getters.GET_COUNTRIES.slice(0,60) || []
         }
