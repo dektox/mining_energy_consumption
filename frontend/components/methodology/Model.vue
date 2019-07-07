@@ -262,7 +262,7 @@ export default {
             formula4: String.raw`
                 with\\
                 E_{lower}\ -\ lower\ bound\ power\ consumption\ [W]\\
-                {min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\\ hardware\ [J/h]\\
+                {min \left({Eq}_{prof}\left(P_{el}\right)\right)\ }\ -\ energy\ efficiency\ of\ the\ most\ efficient\ hardware\ [J/h]\\
                 {H \ -\ hashrate\ [h/s]\ \ }\\
                 {PUE \ -\ power\ usage\ effectiveness\ }\\
             `,
@@ -272,7 +272,8 @@ export default {
             formula5: String.raw`
                 with\\
                 E_{upper}\ -\ upper\ bound\ power\ consumption\ [W]\\
-                {max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ but\ still\ profitable\ hardware\ [J/h]\ \ }\\
+                {max \left({Eq}_{prof}\left(P_{el}\right)\right)\ -\ energy\ efficiency\ of\ the\ least\ efficient\ }\\
+                {but\ still\ profitable\ hardware\ [J/h]\ \ }\\
                 {H \ -\ hashrate\ [h/s]\ \ }\\
                 {PUE \ -\ power\ usage\ effectiveness\ }\\
             `,

@@ -35,8 +35,8 @@ html, body{
     position: absolute;
 }
 
-.katex { font-size: 1.5em !important; }
-.text .katex {font-size: 1em !important;}
+.katex { font-size: 1.6em !important; }
+.text .katex {font-size: 1.1em !important;}
 
 .assumption{
     border: solid 4px #ffb81c;
@@ -220,7 +220,7 @@ input.highcharts-range-selector:focus {
         font-size: 14px;
     }
     .katex { font-size: 0.9em !important; }
-    .text .katex {font-size: 0.5em !important;}
+    .text .katex {font-size: 0.6em !important;}
 }
 
 @media only screen and (min-width: 960px) {
