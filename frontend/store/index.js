@@ -2,7 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import _ from 'lodash'
 import Cookies from 'js-cookie'
-const api = 'https://cbeci.org/api'
 
 export const state = () => ({
   data: [],
@@ -20,7 +19,7 @@ export const getters = {
 }
 
 export const mutations = {
-  SET_DATA(state, payload) { state.data = payload.data },
+  SET_DATA(state, payload) { state.data = payload },
   SET_NUMBERS(state, [estimated, min, max]) { state.numbers = [estimated, min, max]},
   SET_PRICE(state, payload) { state.price = payload },
   SET_COUNTRIES(state, payload) { state.countries = payload},
@@ -38,30 +37,30 @@ export const mutations = {
 
 export const actions = {
 
-    LOAD_COUNTRIES: async ({ commit }) => {
+    async LOAD_COUNTRIES({ commit }) {
         try {
-            const res = await axios.get(`${api}/countries`)
-            await commit('SET_COUNTRIES', res.data)
+            const res = await this.$axios.$get('/countries')
+            await commit('SET_COUNTRIES', res)
         } catch (e) { console.log(e) }
     },
 
-    LOAD_DATA: async ({ commit }, price) => {
+    async LOAD_DATA ({ commit }, price) {
         try {
-            const res = await axios.get(`${api}/data/${price}`)
+            const res = await this.$axios.$get(`/data/${price}`)
             await commit('SET_DATA', res.data)
         } catch (e) { console.log(e) }
     },
 
-    LOAD_NUMBERS: async ({ commit, state }, price) => {
+    async LOAD_NUMBERS ({ commit, state }, price) {
         try {
             if (!price) price = state.price
             await commit('SET_PROGRESS', true)
             const [estimated, min, max] = await Promise.all([
-                axios.get(`${api}/guess/${price}`),
-                axios.get(`${api}/min/${price}`),
-                axios.get(`${api}/max/${price}`)
+                this.$axios.$get(`/guess/${price}`),
+                this.$axios.$get(`/min/${price}`),
+                this.$axios.$get(`/max/${price}`)
             ])
-            await commit('SET_NUMBERS', [estimated.data, min.data, max.data])
+            await commit('SET_NUMBERS', [estimated, min, max])
             await commit('SET_PROGRESS', false)
         } catch (e) { console.log(e) }
     },
@@ -71,8 +70,8 @@ export const actions = {
         try {
             await commit('SET_PROGRESS2', true)
             await Promise.all([
-                dispatch('LOAD_DATA', state.price),
-                dispatch('LOAD_NUMBERS', state.price)
+                dispatch('LOAD_DATA', state.price || 0.05),
+                dispatch('LOAD_NUMBERS', state.price || 0.05)
             ])
             await commit('SET_PROGRESS2', false)
         } catch (e) { console.log(e) }
@@ -83,8 +82,6 @@ export const actions = {
             commit('SET_PRICE', price)
             dispatch('LOAD_DATA', price)
             dispatch('LOAD_NUMBERS', price)
-        } catch (e) {
-            console.log(e)
-        }
+        } catch (e) { console.log(e) }
     }
 }
