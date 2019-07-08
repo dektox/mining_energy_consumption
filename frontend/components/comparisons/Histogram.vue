@@ -104,7 +104,8 @@ export default {
     },
     computed: {
         data() {
-            return this.$store.getters.GET_COUNTRIES.slice(0,60) || []
+            console.log(this.$store.state.countries)
+            return this.$store.state.countries
         }
     },
     methods: {

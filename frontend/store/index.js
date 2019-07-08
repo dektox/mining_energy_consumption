@@ -19,7 +19,7 @@ export const getters = {
 }
 
 export const mutations = {
-  SET_DATA(state, payload) { state.data = payload.data },
+  SET_DATA(state, payload) { state.data = payload },
   SET_NUMBERS(state, [estimated, min, max]) { state.numbers = [estimated, min, max]},
   SET_PRICE(state, payload) { state.price = payload },
   SET_COUNTRIES(state, payload) { state.countries = payload},
@@ -37,10 +37,10 @@ export const mutations = {
 
 export const actions = {
 
-    LOAD_COUNTRIES: async ({ commit }) => {
+    async LOAD_COUNTRIES({ commit }) {
         try {
-            const res = await axios.get('/countries')
-            await commit('SET_COUNTRIES', res.data)
+            const res = await this.$axios.$get('/countries')
+            await commit('SET_COUNTRIES', res)
         } catch (e) { console.log(e) }
     },
 
@@ -60,7 +60,7 @@ export const actions = {
                 this.$axios.$get(`/min/${price}`),
                 this.$axios.$get(`/max/${price}`)
             ])
-            await commit('SET_NUMBERS', [estimated.data, min.data, max.data])
+            await commit('SET_NUMBERS', [estimated, min, max])
             await commit('SET_PROGRESS', false)
         } catch (e) { console.log(e) }
     },

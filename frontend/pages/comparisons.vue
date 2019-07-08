@@ -16,10 +16,11 @@
             <comparisonsPC />
             <comparisonsRP />
             <comparisonsCards />
+            <v-layout mb-4 align-center justify-center wrap>
+                <histogram />
+            </v-layout>
         </no-ssr>
-        <v-layout mb-4 align-center justify-center wrap>
-            <histogram />
-        </v-layout>
+
         <comparisonsFF />
     </v-layout>
 </template>
