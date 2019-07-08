@@ -96,12 +96,12 @@
                 if (this.$refs.form.validate()) {
                     const self = this
                     self.loading = true
-                    this.$axios.post('/api/feedback', {
+                    this.$axios.post('/feedback', {
                         email: self.email,
                         message: self.message,
                         name: self.name,
                         organisation: self.organisation
-                    }, { headers: { 'Access-Control-Allow-Origin': '*' }})
+                    })
                         .then(function (response) {
                             if(response.data.status === 'success') {
                                 self.status = true
