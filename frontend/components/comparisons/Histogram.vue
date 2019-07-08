@@ -104,7 +104,6 @@ export default {
     },
     computed: {
         data() {
-            console.log(this.$store.state.countries)
             return this.$store.state.countries
         }
     },
