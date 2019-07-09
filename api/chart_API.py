@@ -76,22 +76,27 @@ def before_request():
             lastupdate = time.time()
         except Exception as err:
             app.logger.exception(f"Getting data from DB err: {str(err)}")
-            send_err_to_slack(err,'DB')
+            send_err_to_slack(err, 'DB')
     if time.time() - lastupdate_power > 45:
         try:
             # if executed properly, answer should be int
-            hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
+            hashrate = int(requests.get("https://blockchain.info/q/hashdrate").json())
             lastupdate_power = time.time()
-        except Exception:
-            try:
-                # in case it is not int, for example str saying us something:
-                err = requests.get("https://blockchain.info/q/hashrate").json()
-                app.logger.error(f"Fetching HASHRATE failed. It unexpectedly returned {str(err)[0:140]}")
-                send_err_to_slack(err, 'HASHRATE')
-            except Exception as err:
+        except Exception as err:
+# =============================================================================
+#             try:
+#                 # in case it is not int, for example str saying us something:
+#                 err = requests.get("https://blockchain.info/q/hashrate").json()
+#                 app.logger.error(f"Fetching HASHRATE failed. It unexpectedly returned {str(err)[0:140]}")
+#                 send_err_to_slack(err, 'HASHRATE')
+#                 lastupdate_power = time.time()
+#             except Exception as err:
+# =============================================================================
                 # in all other cases, e.g. unreachable endpoint:
-                app.logger.exception(str(err))
-                send_err_to_slack(err, 'HASHRATE')
+            app.logger.exception(str(err))
+            send_err_to_slack(err, 'HASHRATE')
+            lastupdate_power = time.time()
+            pass
             
             
 @app.route('/api/data/<value>')
