@@ -50,7 +50,10 @@ app.config["DEBUG"] = False
 # initialisation of cache vars:
 prof_threshold, hash_rate, miners, countries, cons = load_data()
 lastupdate = time.time()
-hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
+try:
+    hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
+except:
+    hashrate = 0
 lastupdate_power = time.time()
 cache = {}
 
