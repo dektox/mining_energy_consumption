@@ -80,7 +80,7 @@ def before_request():
     if time.time() - lastupdate_power > 45:
         try:
             # if executed properly, answer should be int
-            hashrate = int(requests.get("https://blockchain.info/q/hashdrate").json())
+            hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
             lastupdate_power = time.time()
         except Exception as err:
 # =============================================================================
