@@ -50,9 +50,19 @@ app.config["DEBUG"] = False
 # initialisation of cache vars:
 prof_threshold, hash_rate, miners, countries, cons = load_data()
 lastupdate = time.time()
-hashrate = requests.get("https://blockchain.info/q/hashrate").json()
+hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
 lastupdate_power = time.time()
 cache = {}
+
+
+def send_err_to_slack(err, name):
+    try: 
+        headers = {'Content-type': 'application/json',}
+        data = {"text":""}
+        data["text"] = f"Getting {name} failed. It unexpectedly returned: " + str(err)[0:140]
+        requests.post(config['webhook_err'], headers=headers, data=str(data))
+    except:
+        pass
 
 
 # cache:
@@ -60,16 +70,33 @@ cache = {}
 def before_request():
     global lastupdate, lastupdate_power, prof_threshold, hash_rate, miners, countries, cons, hashrate, cache
     if time.time() - lastupdate > 3600:
-        prof_threshold, hash_rate, miners, countries, cons = load_data()
-        cache = {}
-        lastupdate = time.time()
+        try:
+            prof_threshold, hash_rate, miners, countries, cons = load_data()
+            cache = {}
+            lastupdate = time.time()
+        except Exception as err:
+            app.logger.exception(f"Getting data from DB err: {str(err)}")
+            send_err_to_slack(err,'DB')
     if time.time() - lastupdate_power > 45:
-        hashrate = requests.get("https://blockchain.info/q/hashrate").json()
-
-
+        try:
+            # if executed properly, answer should be int
+            hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
+            lastupdate_power = time.time()
+        except Exception:
+            try:
+                # in case it is not int, for example str saying us something:
+                err = requests.get("https://blockchain.info/q/hashrate").json()
+                app.logger.error(f"Fetching HASHRATE failed. It unexpectedly returned {str(err)[0:140]}")
+                send_err_to_slack(err, 'HASHRATE')
+            except Exception as err:
+                # in all other cases, e.g. unreachable endpoint:
+                app.logger.exception(str(err))
+                send_err_to_slack(err, 'HASHRATE')
+            
+            
 @app.route('/api/data/<value>')
 def recalculate_data(value):
-    
+        
     price = float(value)
 
     if price in cache:
@@ -250,88 +277,90 @@ def teardown_request(_: Exception):
             app.logger.exception(str(error))
 
 
-# ====== test endpoints ahead =========================================
-@app.route('/api/new/data/<value>')
-def recalculate_data_new(value):
-    price = float(value)
-
-#    if price in cache:
-#        return cache[price]
-
-    k = 0.05 / price
-    # that is because base calculation in the DB is for the price 0.05 USD/KWth
-    # temporary vars:
-    prof_eqp = []
-    all_prof_eqp = []
-    max_all = []
-    min_all = []
-    ts_all = []
-    date_all = []
-    guess_all = []
-    response = []
-
-    for i in range(0, len(prof_threshold)):
-        for miner in miners:
-            if prof_threshold[i][0] > miner[1] and prof_threshold[i][2] * k > miner[2]:
-                prof_eqp.append(miner[2])
-            # ^^current date miner release date ^^checks if miner is profit. ^^adds miner's efficiency to the list
-        all_prof_eqp.append(prof_eqp)
-        try:
-            max_consumption = max(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.2
-            min_consumption = min(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.01
-            guess_consumption = sum(prof_eqp) / len(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.1
-        except:  # in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
-            max_consumption = max_all[-1]
-            min_consumption = min_all[-1]
-            guess_consumption = guess_all[-1]
-        max_all.append(max_consumption)
-        min_all.append(min_consumption)
-        guess_all.append(guess_consumption)
-        timestamp = prof_threshold[i][0]
-        ts_all.append(timestamp)
-        date = prof_threshold[i][1]
-        date_all.append(date)
-        prof_eqp = []
-
-    energy_df = pd.DataFrame(list(zip(max_all, min_all, guess_all)), index=ts_all, columns=['MAX', 'MIN', 'GUESS'])
-    energy_ma = energy_df.rolling(window=7, min_periods=1).mean()
-    max_ma = list(energy_ma['MAX'])
-    min_ma = list(energy_ma['MIN'])
-    guess_ma = list(energy_ma['GUESS'])
-
-    for day in range(0, len(ts_all)):
-        response.append({
-            'g': round(guess_ma[day], 2),
-            'x': round(max_ma[day], 2),
-            'n': round(min_ma[day], 2),
-            't': ts_all[day],
-        })
-
-#    value = jsonify(data=response)
-#    cache[price] = value
-#    return value
-    return jsonify(data=response)
-
-
-@app.route("/api/new/countries", methods=['GET', 'POST'])
-def countries_btc_new():
-    tup2dict = {a: [c, d, b] for a, b, c, d in countries}
-    tup2dict['Bitcoin'][0] = round(cons[-1][4],2)
-    dictsort = sorted(tup2dict.items(), key=lambda i: i[1][0], reverse=True)
-    response = []
-    for item in dictsort:
-         response.append({
-            'c': item[0],
-            'y': item[1][0],
-            'x': dictsort.index(item)+1,
-            'p': round(item[1][0]/round(cons[-1][4], 2)*100, 2),
-            'l': item[1][2]
-            })
-    for item in response:
-        if item['c'] == "Bitcoin":
-            item['color'] = "#ffb81c"
-    return jsonify(response)
-
+# =============================================================================
+# # ====== test endpoints ahead =========================================
+# @app.route('/api/new/data/<value>')
+# def recalculate_data_new(value):
+#     price = float(value)
+# 
+# #    if price in cache:
+# #        return cache[price]
+# 
+#     k = 0.05 / price
+#     # that is because base calculation in the DB is for the price 0.05 USD/KWth
+#     # temporary vars:
+#     prof_eqp = []
+#     all_prof_eqp = []
+#     max_all = []
+#     min_all = []
+#     ts_all = []
+#     date_all = []
+#     guess_all = []
+#     response = []
+# 
+#     for i in range(0, len(prof_threshold)):
+#         for miner in miners:
+#             if prof_threshold[i][0] > miner[1] and prof_threshold[i][2] * k > miner[2]:
+#                 prof_eqp.append(miner[2])
+#             # ^^current date miner release date ^^checks if miner is profit. ^^adds miner's efficiency to the list
+#         all_prof_eqp.append(prof_eqp)
+#         try:
+#             max_consumption = max(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.2
+#             min_consumption = min(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.01
+#             guess_consumption = sum(prof_eqp) / len(prof_eqp) * hash_rate[i][2] * 365.25 * 24 / 1e9 * 1.1
+#         except:  # in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+#             max_consumption = max_all[-1]
+#             min_consumption = min_all[-1]
+#             guess_consumption = guess_all[-1]
+#         max_all.append(max_consumption)
+#         min_all.append(min_consumption)
+#         guess_all.append(guess_consumption)
+#         timestamp = prof_threshold[i][0]
+#         ts_all.append(timestamp)
+#         date = prof_threshold[i][1]
+#         date_all.append(date)
+#         prof_eqp = []
+# 
+#     energy_df = pd.DataFrame(list(zip(max_all, min_all, guess_all)), index=ts_all, columns=['MAX', 'MIN', 'GUESS'])
+#     energy_ma = energy_df.rolling(window=7, min_periods=1).mean()
+#     max_ma = list(energy_ma['MAX'])
+#     min_ma = list(energy_ma['MIN'])
+#     guess_ma = list(energy_ma['GUESS'])
+# 
+#     for day in range(0, len(ts_all)):
+#         response.append({
+#             'g': round(guess_ma[day], 2),
+#             'x': round(max_ma[day], 2),
+#             'n': round(min_ma[day], 2),
+#             't': ts_all[day],
+#         })
+# 
+# #    value = jsonify(data=response)
+# #    cache[price] = value
+# #    return value
+#     return jsonify(data=response)
+# 
+# 
+# @app.route("/api/new/countries", methods=['GET', 'POST'])
+# def countries_btc_new():
+#     tup2dict = {a: [c, d, b] for a, b, c, d in countries}
+#     tup2dict['Bitcoin'][0] = round(cons[-1][4],2)
+#     dictsort = sorted(tup2dict.items(), key=lambda i: i[1][0], reverse=True)
+#     response = []
+#     for item in dictsort:
+#          response.append({
+#             'c': item[0],
+#             'y': item[1][0],
+#             'x': dictsort.index(item)+1,
+#             'p': round(item[1][0]/round(cons[-1][4], 2)*100, 2),
+#             'l': item[1][2]
+#             })
+#     for item in response:
+#         if item['c'] == "Bitcoin":
+#             item['color'] = "#ffb81c"
+#     return jsonify(response)
+# 
+# =============================================================================
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', use_reloader=True)  
+    app.run(host='0.0.0.0', use_reloader=True)
