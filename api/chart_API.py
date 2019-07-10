@@ -65,7 +65,6 @@ lastupdate_power = time.time()
 cache = {}
 try:
     hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
-    raise Exception('I am test exsepshn la-la-la')
 except Exception as err:
     hashrate = 0
     logging.exception(str(err))
