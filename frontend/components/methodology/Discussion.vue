@@ -100,7 +100,7 @@ export default {
                     link: 'https://www.cell.com/action/showPdf?pii=S2542-4351%2819%2930255-7'
                 },
 				{
-                    author: 'Zade, M,. Myklebost, J., Tzscheutschler, P., and Wagner, U.',
+                    author: 'Zade, M., Myklebost, J., Tzscheutschler, P., and Wagner, U.',
                     date: 'March 2019',
                     title: 'Is Bitcoin the Only Problem? A Scenario Model for the Power Demand of Blockchains',
                     approach: 'Bottom-up',
