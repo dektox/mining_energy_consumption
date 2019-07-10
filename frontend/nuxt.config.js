@@ -58,6 +58,10 @@ export default {
     { src: '~plugins/ga.js', ssr: false },
     { src: '~plugins/katex2js.js', ssr: false },
   ],
+
+  server: {
+      port: 7776, // default: 3000
+  },
   /*
   ** Nuxt.js modules
   */
