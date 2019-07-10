@@ -124,7 +124,7 @@
                 ],
                 fourth: [
                     {
-                        "title": "Bitcoin needs to become efficient",
+                        "title": "“Bitcoin needs to become efficient”",
                         "text": "<p>An often misunderstood criticism of Bitcoin relates to the inefficiencies inherent in the system. However, in order to preserve its decentralised nature, and as a result its censorship resistance, Bitcoin precisely needs to be inefficient in order prevent a single entity or colluding group of actors to easily gain control and dominate the network.&nbsp;</p><p>These inefficiencies are manifested in a variety of ways: every fully-validating node needs to first download every single transaction and block, then verify every single transaction and block, and then store every single transaction and block forever. This massive duplication and redundancy is necessary to allow anyone to independently verify the state of the network and ledger without having to trust anyone else.</p><p>Similarly, Bitcoin&rsquo;s network security depends on PoW mining being expensive: if mining a block is sufficiently difficult &mdash; and thus costly in financial terms, malicious actors will find it much harder to successfully perform an ongoing attack on the blockchain (e.g. perform double-spends, mine empty blocks, or reorganise the blockchain and reverse old transactions). Doing so would force attackers to spend significant resources in the form of specialised mining equipment and electricity ex-ante.&nbsp;</p>"
                     },
                     {

@@ -8,6 +8,7 @@ from flask import Flask, jsonify
 import pandas as pd
 import flask
 import requests
+import logging
 import time
 from flask_cors import CORS
 import psycopg2
@@ -19,7 +20,7 @@ if config_path:
         config = yaml.load(fp, yaml.FullLoader)
 else:
     config = {}
-
+    
 
 # loading data in cache of each worker:
 def load_data():
@@ -43,21 +44,6 @@ def load_data():
     return prof_threshold, hash_rate, miners, countries, cons
 
 
-app = Flask(__name__)
-CORS(app)
-app.config["DEBUG"] = False
-
-# initialisation of cache vars:
-prof_threshold, hash_rate, miners, countries, cons = load_data()
-lastupdate = time.time()
-try:
-    hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
-except:
-    hashrate = 0
-lastupdate_power = time.time()
-cache = {}
-
-
 def send_err_to_slack(err, name):
     try: 
         headers = {'Content-type': 'application/json',}
@@ -65,8 +51,25 @@ def send_err_to_slack(err, name):
         data["text"] = f"Getting {name} failed. It unexpectedly returned: " + str(err)[0:140]
         requests.post(config['webhook_err'], headers=headers, data=str(data))
     except:
-        pass
+        pass # not the best practice but we want API working even if Slack msg failed for any reason
 
+
+app = Flask(__name__)
+CORS(app)
+app.config["DEBUG"] = False
+
+# initialisation of cache vars:
+prof_threshold, hash_rate, miners, countries, cons = load_data()
+lastupdate = time.time()
+lastupdate_power = time.time()
+cache = {}
+try:
+    hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+    raise Exception('I am test exsepshn la-la-la')
+except Exception as err:
+    hashrate = 0
+    logging.exception(str(err))
+    send_err_to_slack(err, 'INIT HASHRATE')
 
 # cache:
 @app.before_request
@@ -75,31 +78,21 @@ def before_request():
     if time.time() - lastupdate > 3600:
         try:
             prof_threshold, hash_rate, miners, countries, cons = load_data()
-            cache = {}
-            lastupdate = time.time()
         except Exception as err:
             app.logger.exception(f"Getting data from DB err: {str(err)}")
             send_err_to_slack(err, 'DB')
+        else:
+            cache = {}
+            lastupdate = time.time()
     if time.time() - lastupdate_power > 45:
         try:
             # if executed properly, answer should be int
-            hashrate = int(requests.get("https://blockchain.info/q/hashrate").json())
-            lastupdate_power = time.time()
+            hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
         except Exception as err:
-# =============================================================================
-#             try:
-#                 # in case it is not int, for example str saying us something:
-#                 err = requests.get("https://blockchain.info/q/hashrate").json()
-#                 app.logger.error(f"Fetching HASHRATE failed. It unexpectedly returned {str(err)[0:140]}")
-#                 send_err_to_slack(err, 'HASHRATE')
-#                 lastupdate_power = time.time()
-#             except Exception as err:
-# =============================================================================
-                # in all other cases, e.g. unreachable endpoint:
             app.logger.exception(str(err))
             send_err_to_slack(err, 'HASHRATE')
+        finally:
             lastupdate_power = time.time()
-            pass
             
             
 @app.route('/api/data/<value>')
