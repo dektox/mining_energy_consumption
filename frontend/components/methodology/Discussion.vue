@@ -94,13 +94,20 @@ export default {
             items: [
                 {
                     author: 'Stoll, C., Klaaßen, L., and Gallersdorfer, U.',
-                    date: '2019',
+                    date: 'June 2019',
                     title: 'The Carbon Footprint of Bitcoin',
                     approach: 'Bottom-up',
                     link: 'https://www.cell.com/action/showPdf?pii=S2542-4351%2819%2930255-7'
                 },
+				{
+                    author: 'Zade, M,. Myklebost, J., Tzscheutschler, P., and Wagner, U.',
+                    date: 'March 2019',
+                    title: 'Is Bitcoin the Only Problem? A Scenario Model for the Power Demand of Blockchains',
+                    approach: 'Bottom-up',
+                    link: 'https://www.frontiersin.org/articles/10.3389/fenrg.2019.00021/full'
+                },
                 {
-                    author: 'Krause, M. J., and Tolaymat, T',
+                    author: 'Krause, M. J., and Tolaymat, T.',
                     date: 'November 2018',
                     title: 'Quantification of energy and carbon costs for mining cryptocurrencies',
                     approach: 'Bottom-up',
@@ -110,7 +117,7 @@ export default {
                     author: 'Mora, C., Rollins, R.L., Taladay, K., Kantar, M.B., Chock, M.K., Shimada, M., and Franklin, E.C.',
                     date: 'October 2018',
                     title: 'Bitcoin emissions alone could push global warming above 2°C',
-                    approach: 'Top-down (relies on Digiconomist’s estimate)',
+                    approach: 'Top-down',
                     link: 'https://www.nature.com/articles/s41558-018-0321-8.pdf'
                 },
                 {
@@ -151,9 +158,9 @@ export default {
                 {
                     author: 'O’Dwyer, K.L., and Malone, D.',
                     date: 'September 2014',
-                    title: '“Bitcoin Mining and its Energy Footprint',
-                    approach: 'Top-down',
-                    link: 'https://doi.org/10.1049/cp.2014.0699'
+                    title: 'Bitcoin Mining and its Energy Footprint',
+                    approach: 'Bottom-up',
+                    link: 'http://karlodwyer.com/publications/pdf/bitcoin_KJOD_2014.pdf'
                 },
             ]
         }
