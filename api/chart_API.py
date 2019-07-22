@@ -6,6 +6,7 @@ Created on Thu May 16 14:24:16 2019
 """
 from flask import Flask, jsonify
 import pandas as pd
+from datetime import datetime
 import flask
 import requests
 import logging
@@ -114,16 +115,23 @@ def recalculate_data(value):
     guess_all = []
     response = []
     
-    for i in range(0, len(prof_threshold)):
+    prof_th=pd.DataFrame(prof_threshold)
+    prof_th=prof_th.drop(1, axis=1).set_index(0)
+    prof_th_ma=prof_th.rolling(window=14, min_periods=1).mean()
+    
+    hashra=pd.DataFrame(hash_rate)
+    hashra=hashra.drop(1, axis=1).set_index(0)
+    
+    for timestamp, row in prof_th_ma.iterrows():
         for miner in miners:
-            if prof_threshold[i][0]>miner[1] and prof_threshold[i][2]*k > miner[2]:
+            if timestamp>miner[1] and row[2]*k > miner[2]:
                 prof_eqp.append(miner[2])
             # ^^current date miner release date ^^checks if miner is profit. ^^adds miner's efficiency to the list
         all_prof_eqp.append(prof_eqp)
         try:
-            max_consumption = max(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.2
-            min_consumption = min(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.01
-            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hash_rate[i][2]*365.25*24/1e9*1.1
+            max_consumption = max(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.2
+            min_consumption = min(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.01
+            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.1
         except:  # in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
             max_consumption = max_all[-1]
             min_consumption = min_all[-1]
@@ -131,9 +139,8 @@ def recalculate_data(value):
         max_all.append(max_consumption)
         min_all.append(min_consumption)
         guess_all.append(guess_consumption)
-        timestamp = prof_threshold[i][0]
         ts_all.append(timestamp)
-        date = prof_threshold[i][1]
+        date = datetime.utcfromtimestamp(timestamp).isoformat()
         date_all.append(date)
         prof_eqp = []
 
