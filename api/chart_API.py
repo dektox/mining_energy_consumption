@@ -257,7 +257,7 @@ def feedback():
             sl_d = {
                 "attachments": [
                     {
-                        "fallback": "CBECI feedback recieved",
+                        "fallback": "CBECI feedback received",
                         "color": "#36a64f",
                         "author_name": name,
                         "author_link": "mailto:" + email,
