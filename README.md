@@ -19,3 +19,9 @@ If something changes to frontend, make first
 then in the /frontend directory execute 
 > npm run build
 
+To run jenkins ufter reload
+> cd /home/ci/jenkins
+> docker-compose up -d
+
+To run pm2 after reload
+> pm2 start pm2.config.js
