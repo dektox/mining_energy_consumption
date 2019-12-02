@@ -18,6 +18,7 @@ DEFAULT_LOG_LEVEL = 'INFO'
 DEFAULT_ELECTRICITY_PRICE = 0.05
 LOGGER = logging.getLogger()
 
+# comment
 
 def crawl(endpoint):
     # Showing message that the scrapping started
