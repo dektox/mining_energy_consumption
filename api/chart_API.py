@@ -4,7 +4,7 @@ Created on Thu May 16 14:24:16 2019
 
 @author: Anton
 """
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 import pandas as pd
 from datetime import datetime
 import flask
@@ -14,6 +14,8 @@ import time
 from flask_cors import CORS
 import psycopg2
 import yaml
+import csv
+import io
 
 config_path = '../CONFIG.yml'
 if config_path:
@@ -284,6 +286,22 @@ def teardown_request(_: Exception):
             app.logger.exception(str(error))
 
 
+@app.route('/api/csv', methods=['GET'])
+def download_report():
+        with psycopg2.connect(**config['blockchain_data']) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM energy_consumption_ma')
+        rows = c.fetchall()
+        rows = rows[500:]
+        si = io.StringIO()
+        cw = csv.writer(si)
+        line = ['Timestamp', 'Date and Time', 'MAX', 'MIN', 'GUESS']
+        cw.writerow(line)
+        cw.writerows(rows)
+        output = make_response(si.getvalue())
+        output.headers["Content-Disposition"] = "attachment; filename=export.csv"
+        output.headers["Content-type"] = "text/csv"
+        return output
 # =============================================================================
 # # ====== test endpoints ahead =========================================
 # @app.route('/api/new/data/<value>')
