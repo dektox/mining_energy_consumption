@@ -22,6 +22,9 @@
     <!--<chartLoading v-if="progress"/>-->
     <chart />
     <v-layout row align-center my-4>
+      <a href="https://cbeci.org/api/csv" target="_blank">Download data in CSV format</a>
+    </v-layout>
+    <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
     <no-ssr>
