@@ -271,8 +271,36 @@ def feedback():
                     }
                 ]
             }
+
+            date_for_ms = datetime.utcfromtimestamp(timestamp).isoformat()
+            ms_d = {
+                "summary": "CBECI feedback received",
+                "themeColor": "FFB81C",
+                "title": "CBECI feedback received",
+                "sections": [
+                    {
+                        "activityTitle": name,
+                        "activitySubtitle": date_for_ms,
+                        "activityImage": "https://i.ibb.co/0B6NSnK/user.jpg",
+                        "facts": [
+                            {
+                                "name": "Organisation:",
+                                "value": organisation
+                            },
+                            {
+                                "name": "Email:",
+                                "value": email
+                            }
+                        ],
+                        "text": message
+                    }
+                ]
+            }
+
             sl_d = str(sl_d)
+            ms_d = str(ms_d)
             flask.g.slackmsg = (sl_d, headers)
+            flask.g.msmsg = (ms_d, headers)
     return jsonify(data=content, status="success", error="")
 
 
@@ -282,6 +310,12 @@ def teardown_request(_: Exception):
         try:
             sl_d, headers = flask.g.slackmsg
             requests.post(config['webhook'], headers=headers, data=sl_d)
+        except Exception as error:
+            app.logger.exception(str(error))
+    if hasattr(flask.g, 'msmsg'):
+        try:
+            ms_d, headers = flask.g.msmsg
+            requests.post(config['webhook_ms'], headers=headers, data=ms_d)
         except Exception as error:
             app.logger.exception(str(error))
 
