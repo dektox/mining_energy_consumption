@@ -37,7 +37,7 @@
 
 <script>
 export default {
-    name: 'Overview',
+    name: 'Overview2',
     data() {
         return {
             headers: [

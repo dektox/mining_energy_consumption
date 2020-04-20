@@ -4,13 +4,13 @@
         background-position: center;
         background-size: contain;
         &.slide-1 {
-            background-image:url('/images/logo/photo_2020-04-20 17.37.34.jpeg')
+            background-image:url('/images/logo/BTCcom.png')
         }
         &.slide-2 {
-            background-image:url('/images/logo/photo_2020-04-20 17.37.40.jpeg')
+            background-image:url('/images/logo/Poolin.png')
         }
         &.slide-3 {
-            background-image:url('/images/logo/photo_2020-04-20 17.37.43.jpeg')
+            background-image:url('/images/logo/ViaBTC.png')
         }
     }
 }
@@ -20,7 +20,7 @@
 
     .swiper-slide {
         width: 200px;
-        background-color: white;
+        //background-color: white;
         display: flex;
         justify-content: center;
         align-items: center;

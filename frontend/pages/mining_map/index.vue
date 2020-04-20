@@ -3,7 +3,6 @@
     <v-flex xs12 md10 my-4>
       <h1 class="display-4 text-xs-center">Bitcoin Mining Map</h1>
     </v-flex>
-    <overview />
     <v-layout row align-center justify-center>
       <v-flex xs12 md10 my-4>
         <div style="width: 100%">
@@ -26,13 +25,13 @@
     <v-layout  row align-center justify-center>
       <v-flex ma-4>
         <swiper class="swiper" :options="swiperOption">
-          <swiper-slide class="slide-1">
+          <swiper-slide class="slide-1" :style="{width: containerWidth/5 + 'px'}">
             <a href="https://pool.btc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
           </swiper-slide>
-          <swiper-slide class="slide-2">
+          <swiper-slide class="slide-2" :style="{width: containerWidth/5 + 'px'}">
             <a href="https://www.poolin.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
           </swiper-slide>
-          <swiper-slide class="slide-3">
+          <swiper-slide class="slide-3" :style="{width: containerWidth/5 + 'px'}">
             <a href="https://www.viabtc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
           </swiper-slide>
 <!--          <div class="swiper-button-prev" slot="button-prev"></div>-->
@@ -83,13 +82,14 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
-      containerWidth: 0
+      containerWidth: null
     }
   },
   mounted() {
     this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
   },
-  computed: {
+  watch() {
+
   }
 }
 </script>
