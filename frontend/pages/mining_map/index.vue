@@ -12,7 +12,7 @@
     </v-layout>
     <v-layout row align-center>
       <v-flex>
-        <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 15" src="https://app.powerbi.com/view?r=eyJrIjoiOTgyODdiZTAtNDgzYS00YWRiLTg1MmMtZDI3ZGViMzA4OGFhIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+        <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 15" src="https://app.powerbi.com/view?r=eyJrIjoiNDMyY2FlOTgtYTU3Mi00Y2RmLWI5MGItZGE1YjliMWJmOGQyIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
       </v-flex>
     </v-layout>
     <v-layout row align-center justify-center>
