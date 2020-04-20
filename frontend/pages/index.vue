@@ -52,6 +52,7 @@ export default {
   },
   data() {
     return {
+      containerWidth: 0
     }
   },
   computed: {

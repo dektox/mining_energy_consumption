@@ -1,5 +1,9 @@
 <template>
   <v-layout column justify-center align-center id="wrap-container">
+    <v-flex xs12 md10 my-4>
+      <h1 class="display-4 text-xs-center">Bitcoin Mining Map</h1>
+    </v-flex>
+    <overview />
     <v-layout row align-center justify-center>
       <v-flex xs12 md10 my-4>
         <div style="width: 100%">
@@ -9,7 +13,7 @@
     </v-layout>
     <v-layout row align-center>
       <v-flex>
-        <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiOTgyODdiZTAtNDgzYS00YWRiLTg1MmMtZDI3ZGViMzA4OGFhIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+        <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 15" src="https://app.powerbi.com/view?r=eyJrIjoiOTgyODdiZTAtNDgzYS00YWRiLTg1MmMtZDI3ZGViMzA4OGFhIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
       </v-flex>
     </v-layout>
     <v-layout row align-center justify-center>
@@ -23,13 +27,13 @@
       <v-flex ma-4>
         <swiper class="swiper" :options="swiperOption">
           <swiper-slide class="slide-1">
-            <a href="https://www.viabtc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
-          </swiper-slide>
-          <swiper-slide class="slide-2">
             <a href="https://pool.btc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
           </swiper-slide>
-          <swiper-slide class="slide-3">
+          <swiper-slide class="slide-2">
             <a href="https://www.poolin.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
+          </swiper-slide>
+          <swiper-slide class="slide-3">
+            <a href="https://www.viabtc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%" />
           </swiper-slide>
 <!--          <div class="swiper-button-prev" slot="button-prev"></div>-->
 <!--          <div class="swiper-button-next" slot="button-next"></div>-->
@@ -78,8 +82,12 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         }
-      }
+      },
+      containerWidth: 0
     }
+  },
+  mounted() {
+    this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
   },
   computed: {
   }

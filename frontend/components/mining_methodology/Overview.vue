@@ -1,13 +1,9 @@
 <template>
     <v-flex xs12 md10 my-3 py-3>
-        <h2 class="display-3 text-xs-center">Overview</h2>
         <h3 class="display-2 text-md-left">Calculating Average Country and Provincial Hashrate Share</h3>
         <v-flex class="main-text" my-3>
             <p>All together, data contributed by participating pools amounts to approximately 35% of Bitcoin’s total hashrate. To build this mining map, the research team assumes that the geographic distribution of participating pools’ hashrate is representative of the geographic distribution of Bitcoin’s total hashrate.</p>
             <p>Variables collected from mining pools are described in the Table below. </p>
-            <v-toolbar flat color="white">
-                <v-toolbar-title>Table 1: mining pools</v-toolbar-title>
-            </v-toolbar>
             <v-data-table
                     :headers="headers"
                     :items="items"

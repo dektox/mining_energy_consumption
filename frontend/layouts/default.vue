@@ -97,35 +97,41 @@
     </v-toolbar>
     <v-layout column class="menu hidden-sm-and-down">
       <v-flex pr-5 class="text-xs-left">
-        <span>
+        <nuxt-link :class="{'active': $route.path === '/'}" to="/">
           CBECI
-        </span>
-        <v-flex px-5 class="text-xs-left">
+        </nuxt-link>
+<!--        <span>-->
+<!--          CBECI-->
+<!--        </span>-->
+        <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/'}" to="/">
             Index
           </nuxt-link>
         </v-flex>
-        <v-flex px-5 class="text-xs-left">
+        <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">
             Methodology
           </nuxt-link>
         </v-flex>
-        <v-flex px-5 class="text-xs-left">
+        <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">
             Comparisons
           </nuxt-link>
         </v-flex>
       </v-flex>
       <v-flex pr-5 class="text-xs-left">
-        <span>
+        <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
           MINING MAP
-        </span>
-        <v-flex px-5 class="text-xs-left">
+        </nuxt-link>
+<!--        <span>-->
+<!--          MINING MAP-->
+<!--        </span>-->
+        <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
             Visualisation
           </nuxt-link>
         </v-flex>
-        <v-flex px-5 class="text-xs-left">
+        <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
             Methodology
           </nuxt-link>
