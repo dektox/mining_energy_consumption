@@ -18,33 +18,61 @@
         <v-menu class="hidden-md-and-up">
           <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
           <v-list>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-                    CBECI
-                  </nuxt-link>
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/comparisons'}" to="/comparisons/">
-                    Comparisons
-                  </nuxt-link>
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/methodology'}" to="/methodology/">
-                    Methodology
-                  </nuxt-link>
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+            <v-list-group value="true">
+              <template v-slot:activator>
+                <v-list-tile-title>CBECI</v-list-tile-title>
+              </template>
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    <nuxt-link :class="{'active': $route.path === '/'}" to="/">
+                      INDEX
+                    </nuxt-link>
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">
+                      Methodology
+                    </nuxt-link>
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">
+                      Comparisons
+                    </nuxt-link>
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list-group>
+            <v-list-group value="true">
+              <template v-slot:activator>
+                <v-list-tile-title>Mining Map</v-list-tile-title>
+              </template>
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
+                      Visualisation
+                    </nuxt-link>
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title>
+                    <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
+                      Methodology
+                    </nuxt-link>
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list-group>
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-title>
@@ -69,20 +97,50 @@
     </v-toolbar>
     <v-layout column class="menu hidden-sm-and-down">
       <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/'}" to="/">
+        <span>
           CBECI
-        </nuxt-link>
+        </span>
+        <v-flex px-5 class="text-xs-left">
+          <nuxt-link :class="{'active': $route.path === '/'}" to="/">
+            Index
+          </nuxt-link>
+        </v-flex>
+        <v-flex px-5 class="text-xs-left">
+          <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">
+            Methodology
+          </nuxt-link>
+        </v-flex>
+        <v-flex px-5 class="text-xs-left">
+          <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">
+            Comparisons
+          </nuxt-link>
+        </v-flex>
       </v-flex>
       <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/comparisons/'}" to="/comparisons/">
-          Comparisons
-        </nuxt-link>
+        <span>
+          MINING MAP
+        </span>
+        <v-flex px-5 class="text-xs-left">
+          <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
+            Visualisation
+          </nuxt-link>
+        </v-flex>
+        <v-flex px-5 class="text-xs-left">
+          <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
+            Methodology
+          </nuxt-link>
+        </v-flex>
       </v-flex>
-      <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/methodology/'}" to="/methodology/">
-          Methodology
-        </nuxt-link>
-      </v-flex>
+<!--      <v-flex pr-5 class="text-xs-left">-->
+<!--        <nuxt-link :class="{'active': $route.path === '/comparisons/'}" to="/comparisons/">-->
+<!--          Comparisons-->
+<!--        </nuxt-link>-->
+<!--      </v-flex>-->
+<!--      <v-flex pr-5 class="text-xs-left">-->
+<!--        <nuxt-link :class="{'active': $route.path === '/methodology/'}" to="/methodology/">-->
+<!--          Methodology-->
+<!--        </nuxt-link>-->
+<!--      </v-flex>-->
       <v-flex class="text-xs-left" pr-5>
         <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">
           FAQ
@@ -106,7 +164,7 @@
               tile
       >
         <v-card-actions class="footer justify-center">
-          Cambridge Centre for Alternative Finance © 2019
+          Cambridge Centre for Alternative Finance © {{ new Date().getFullYear() }}
         </v-card-actions>
       </v-card>
     </v-footer>

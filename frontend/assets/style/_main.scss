@@ -1,3 +1,33 @@
+.swiper {
+    height: 360px;
+    .swiper-slide {
+        background-position: center;
+        background-size: contain;
+        &.slide-1 {
+            background-image:url('/images/logo/photo_2020-04-20 17.37.34.jpeg')
+        }
+        &.slide-2 {
+            background-image:url('/images/logo/photo_2020-04-20 17.37.40.jpeg')
+        }
+        &.slide-3 {
+            background-image:url('/images/logo/photo_2020-04-20 17.37.43.jpeg')
+        }
+    }
+}
+.swiper {
+    height: 40px;
+    width: 100%;
+
+    .swiper-slide {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
 .cookies{
     &.active{
         display: block;
