@@ -50,29 +50,29 @@
                 </v-list-tile-content>
               </v-list-tile>
             </v-list-group>
-            <v-list-group value="true">
-              <template v-slot:activator>
-                <v-list-tile-title>Mining Map</v-list-tile-title>
-              </template>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
-                      Visualisation
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
-                      Methodology
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list-group>
+<!--            <v-list-group value="true">-->
+<!--              <template v-slot:activator>-->
+<!--                <v-list-tile-title>Mining Map</v-list-tile-title>-->
+<!--              </template>-->
+<!--              <v-list-tile>-->
+<!--                <v-list-tile-content>-->
+<!--                  <v-list-tile-title>-->
+<!--                    <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
+<!--                      Visualisation-->
+<!--                    </nuxt-link>-->
+<!--                  </v-list-tile-title>-->
+<!--                </v-list-tile-content>-->
+<!--              </v-list-tile>-->
+<!--              <v-list-tile>-->
+<!--                <v-list-tile-content>-->
+<!--                  <v-list-tile-title>-->
+<!--                    <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">-->
+<!--                      Methodology-->
+<!--                    </nuxt-link>-->
+<!--                  </v-list-tile-title>-->
+<!--                </v-list-tile-content>-->
+<!--              </v-list-tile>-->
+<!--            </v-list-group>-->
             <v-list-tile>
               <v-list-tile-content>
                 <v-list-tile-title>
@@ -100,9 +100,6 @@
         <nuxt-link :class="{'active': $route.path === '/'}" to="/">
           CBECI
         </nuxt-link>
-<!--        <span>-->
-<!--          CBECI-->
-<!--        </span>-->
         <v-flex px-3 class="text-xs-left">
           <nuxt-link :class="{'active': $route.path === '/'}" to="/">
             Index
@@ -119,33 +116,20 @@
           </nuxt-link>
         </v-flex>
       </v-flex>
-      <v-flex pr-5 class="text-xs-left">
-        <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
-          MINING MAP
-        </nuxt-link>
-<!--        <span>-->
+<!--      <v-flex pr-5 class="text-xs-left">-->
+<!--        <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
 <!--          MINING MAP-->
-<!--        </span>-->
-        <v-flex px-3 class="text-xs-left">
-          <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
-            Visualisation
-          </nuxt-link>
-        </v-flex>
-        <v-flex px-3 class="text-xs-left">
-          <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
-            Methodology
-          </nuxt-link>
-        </v-flex>
-      </v-flex>
-<!--      <v-flex pr-5 class="text-xs-left">-->
-<!--        <nuxt-link :class="{'active': $route.path === '/comparisons/'}" to="/comparisons/">-->
-<!--          Comparisons-->
 <!--        </nuxt-link>-->
-<!--      </v-flex>-->
-<!--      <v-flex pr-5 class="text-xs-left">-->
-<!--        <nuxt-link :class="{'active': $route.path === '/methodology/'}" to="/methodology/">-->
-<!--          Methodology-->
-<!--        </nuxt-link>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
+<!--            Visualisation-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">-->
+<!--            Methodology-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
 <!--      </v-flex>-->
       <v-flex class="text-xs-left" pr-5>
         <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">
