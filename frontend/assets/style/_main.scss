@@ -111,42 +111,38 @@ input.highcharts-range-selector:focus {
     max-width: 300px;
     top: 200px;
     z-index: 100;
-}
-
-.menu a{
-    text-decoration: none;
     color: #666;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding-left: 10px;
+    a{
+        text-decoration: none;
+        color: #666;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding-left: 10px;
+    }
+    a.active, .menu a.active:hover{
+        opacity: 1;
+        font-weight: bold;
+        color: #ffb81c;
+        border-left: 3px solid #ffb81c; /* Параметры линии */
+    }
+    a.sub{
+        margin-left: 30px;
+    }
+    a:hover{
+        opacity: 0.5;
+        color: #ffb81c;
+        border-left: 2px solid #ffb81c; /* Параметры линии */
+    }
+    div {
+        padding-top: 20px;
+    }
+    .demo {
+        div {
+            padding-top: 0px;
+        }
+    }
 }
 
-.menu div {
-    padding-top: 20px;
-}
-
-.menu a.active, .menu a.active:hover{
-    opacity: 1;
-    font-weight: bold;
-    color: #ffb81c;
-    border-left: 3px solid #ffb81c; /* Параметры линии */
-}
-
-.menu a.sub{
-    margin-left: 30px;
-}
-.menu a.active.sub{
-    opacity: 1;
-    color: #ffb81c;
-    margin-left: 30px;
-    border-left: 2px solid #ffb81c; /* Параметры линии */
-}
-
-.menu a:hover{
-    opacity: 0.5;
-    color: #ffb81c;
-    border-left: 2px solid #ffb81c; /* Параметры линии */
-}
 
 .country-img{
     width: 90px;
