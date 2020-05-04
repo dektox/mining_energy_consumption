@@ -10,12 +10,17 @@ export const state = () => ({
   countries: [],
   progress: true,
   progress2: true,
-  cooks: true
+  cooks: true,
+  authenticated: false
 })
 
 export const getters = {
   GET_DATA: state => state.data,
-  GET_COUNTRIES: state => state.countries
+  GET_COUNTRIES: state => state.countries,
+  authenticated: state => {
+    console.log(state.authenticated || (Cookies.get('authenticated') ? JSON.parse(Cookies.get('authenticated')).value === 'true' : false))
+    return state.authenticated || (Cookies.get('authenticated') ? JSON.parse(Cookies.get('authenticated')).value === 'true' : false)
+  }
 }
 
 export const mutations = {
@@ -28,15 +33,27 @@ export const mutations = {
   SET_COOK(state, payload) {
       state.cooks = payload
       if(payload) {
-          Cookies.set('CookieControl', {analytics: 'true' }, {
+          Cookies.set('CookieControl', {analytics:'true'}, {
               expires: 365
           });
       }
   },
+  SET_AUTH(state, payload) {
+    state.authenticated = payload
+    if(payload) {
+      Cookies.set('authenticated', {value:'true'}, {
+        expires: 365
+      });
+    }
+  }
 }
 
 export const actions = {
-
+    signInWithEmail({ commit }, pass) {
+      if (pass === 'qr3Vd2ehS3ei1') {
+        commit('SET_AUTH', true)
+      }
+    },
     async LOAD_COUNTRIES({ commit }) {
         try {
             const res = await this.$axios.$get('/countries')
