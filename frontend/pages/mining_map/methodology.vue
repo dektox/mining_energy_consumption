@@ -14,9 +14,6 @@
     name: 'methodology',
     layout: 'demo',
     mounted() {
-      if (!this.$store.getters.authenticated) {
-        return this.$router.push('/login')
-      }
     },
     components: {
       overview: Overview,

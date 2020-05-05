@@ -1,7 +1,7 @@
 .swiper {
     height: 360px;
     .swiper-slide {
-        background-position: center;
+        //background-position: center;
         background-size: contain;
         &.slide-1 {
             background-image:url('/images/logo/BTCcom.png')
@@ -112,6 +112,9 @@ input.highcharts-range-selector:focus {
     top: 200px;
     z-index: 100;
     color: #666;
+    .v-list__group {
+        padding-left: 10px;
+    }
     a{
         text-decoration: none;
         color: #666;
@@ -137,6 +140,7 @@ input.highcharts-range-selector:focus {
         padding-top: 20px;
     }
     .demo {
+        background-color: #fafafa !important;
         div {
             padding-top: 0px;
         }
