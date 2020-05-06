@@ -9,14 +9,17 @@
           <div style="width: 100%">
             The Bitcoin Mining Map visualises the approximate geographic distribution of global Bitcoin hashrate. The average hashrate share by country is available for display in monthly intervals starting from September 2019. In addition, a second map with an exclusive focus on China’s hashrate distribution by province is provided.
           </div>
-          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiY2M3Mzg4NDYtNTQwNi00MzIxLWJhNzQtMDQ1MmFlZjhmZTM5IiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiYTg4NTNlZDAtNmIzNS00OWQyLWExNmQtNDY5MTAzNTM3YjIyIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
           <v-flex my-4>
             <div style="width: 100%">
               <p style="text-align: center"><b>Disclaimer:</b> <i>past periods may be adjusted when additional data becomes available.</i></p>
-              <p>The chart below shows the average monthly hashrate breakdown by country (and Chinese provinces, if selected) in descending order.</p>
+              <p style="text-align: center"><i>All changes will be listed in the change log, which will be published soon.</i></p>
+              <v-flex mt-5>
+                <p>The chart below shows the average monthly hashrate breakdown by country (and Chinese provinces, if selected) in descending order.</p>
+              </v-flex>
             </div>
           </v-flex>
-          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiZTEwYjU0YmYtMmEzOS00ZjhhLTk5YWQtMjk0NWFlYWJhOWMwIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiZGNhNjMyYjgtNDk4Zi00OTRjLThhMWItNjUwMDRlZWY1NmFiIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
           <v-flex xs12 md10 my-4>
             <div style="width: 100%">
               The map is based on geo-location data (i.e. IP addresses) of hashers connecting to the Bitcoin mining pools BTC.com, Poolin, and ViaBTC, who have kindly agreed to share aggregate-level data for research purposes.
@@ -89,14 +92,14 @@
 <!--        </swiper>-->
 <!--      </v-flex>-->
 <!--    </v-layout>-->
-    <v-layout row align-center justify-center style="width: 100%">
+    <v-layout row align-center justify-center style="width: 100%;">
       <v-flex xs12 md10 my-4>
-        <div style="width: 100%; font-style: italic">
-          If you are a mining pool operator and would like to contribute, please
+        <div style="width: 100%; font-style: italic; text-align: center">
+          <span>If you are a mining pool operator and would like to contribute, please
           <nuxt-link to="/contact">
             <span>get in touch</span>
           </nuxt-link>
-          !
+            !</span>
         </div>
       </v-flex>
     </v-layout>
