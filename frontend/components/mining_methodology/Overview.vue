@@ -6,13 +6,15 @@
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 1</u>: geo-location data of hashers collected by mining pools provides an accurate picture of global hashrate location. </span>
             </v-flex>
-            <p>Aggregate data contributed by participating mining pools represents approximately 37% of Bitcoin’s total hashrate for the period from September 2019 to April 2020 included. We use this data as a proxy for the geographic distribution of Bitcoin’s total hashrate, assuming that it is representative of the total hashrate distribution (please see the next section for a discussion on the limitations of this approach).</p>
+            <p>Aggregate data from participating mining pools represents approximately 37% of Bitcoin’s total hashrate for the period from September 2019 to April 2020 included. We use this data as a proxy for the geographic distribution of Bitcoin’s total hashrate, assuming that it is representative of the total hashrate distribution (please see the next section for a discussion on the limitations of this approach).</p>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 2</u>: data provided by participating mining pools constitutes a representative sample of Bitcoin’s total geographic hashrate distribution. </span>
             </v-flex>
-            <p>Participating mining pools provide the average monthly geographic distribution of their respective hashrate. This data is then aggregated by CCAF and used to extrapolate the global hashrate distribution.</p>
-            <p>With the exception of China, hashrate data is currently only available at the country level. We hope that we can add further granularity in the future to better represent regions with significant hashing activities (e.g. Siberia in Russia, Washington and New York States in the United States of America, or Québec and Alberta in Canada).</p>
-
+            <p>Participating mining pools provide the average monthly geographic distribution of their respective hashrate. This data is then aggregated by CCAF and used to extrapolate the global hashrate distribution. With the exception of China, hashrate data is currently only available at the country level. We hope that we can add further granularity in the future to better represent regions with significant hashing activities (e.g. Siberia in Russia, Washington and New York States in the United States of America, or Québec and Alberta in Canada).</p>
+            <p>Two of the three mining pools provide data on Chinese provinces. An average of these distributions is applied to the third pool for which no province-level data is available.</p>
+            <v-flex class="assumption" mb-4 pa-3>
+                <span><u>Assumption 3</u>: the available sample of Chinese province data is representative of the total hashrate distribution within China.</span>
+            </v-flex>
             <!--            <v-data-table-->
 <!--                    :headers="headers"-->
 <!--                    :items="items"-->
