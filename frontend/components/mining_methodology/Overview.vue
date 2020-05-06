@@ -47,7 +47,8 @@
                 </li>
                 <li>
                     <p><strong>Usage of VPNs or proxy services by miners</strong>
-                    <p>It is no secret in the industry that hashers in certain locations use virtual private networks (VPNs) or proxy services to hide their IP address and thus location. Such behaviour may distort the overall geographic distribution and result in an overestimation of hashrate in some provinces or countries. However, through our data analysis and discussions with pool operators and hashers, we found that the distortion effect was minimal and did not affect the final output.</p>
+                    <p>It is no secret in the industry that hashers in certain locations use virtual private networks (VPNs) or proxy services to hide their IP address and thus location. Such behaviour may distort the overall geographic distribution and result in an overestimation of hashrate in some provinces or countries.</p>
+                    <p>For one of the three pools, this effect was particularly visible in the Chinese province of Zhejiang. To mitigate this effect, we have divided the hashrate of Zhejiang province proportionally among other Chinese provinces listed in the pool’s dataset.</p>
                 </li>
             </ul>
 
