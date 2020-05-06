@@ -12,7 +12,7 @@
           <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiY2M3Mzg4NDYtNTQwNi00MzIxLWJhNzQtMDQ1MmFlZjhmZTM5IiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
           <v-flex my-4>
             <div style="width: 100%">
-              <p><b>Disclaimer:</b> <i>past periods may be adjusted when additional data becomes available.</i></p>
+              <p style="text-align: center"><b>Disclaimer:</b> <i>past periods may be adjusted when additional data becomes available.</i></p>
               <p>The chart below shows the average monthly hashrate breakdown by country (and Chinese provinces, if selected) in descending order.</p>
             </div>
           </v-flex>
@@ -89,7 +89,7 @@
 <!--        </swiper>-->
 <!--      </v-flex>-->
 <!--    </v-layout>-->
-    <v-layout row align-center justify-center>
+    <v-layout row align-center justify-center style="width: 100%">
       <v-flex xs12 md10 my-4>
         <div style="width: 100%; font-style: italic">
           If you are a mining pool operator and would like to contribute, please

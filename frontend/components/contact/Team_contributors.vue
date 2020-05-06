@@ -5,7 +5,8 @@
             <p class="main-text">The CBECI is an ongoing project created and maintained by the Cryptocurrency and
                 Blockchain Programme Team (<a href="https://twitter.com/mrauchs" target="_blank">Michel Rauchs</a>, <a
                         href="https://twitter.com/ApollineBlandin" target="_blank">Apolline Blandin</a>, <a
-                        href="https://twitter.com/dektox" target="_blank">Anton Dek</a>, and Yue Wu) at the Cambridge Centre for
+                        href="https://twitter.com/dektox" target="_blank">Anton Dek</a>, and <a
+                        href="https://twitter.com/ClaireYueWu1" target="_blank">Yue Wu</a>) at the Cambridge Centre for
                 Alternative Finance, University of Cambridge, Judge Business School.</p>
             <p class="main-text">Special thanks go to Kyrylo Manakhov for designing the website and to Marc Bevand, Lena Klaaßen, and Christian Stoll for reviewing the methodology. The research team would also like to thank Keith Bear, Kieran Garvey, Grigory McKain, Stephen McKeon, Robert Wardrop, and Bryan Zhang for providing valuable feedback and suggestions. Furthermore, we would like to express our gratitude to Alexi Anani, and Hatim Hussain for their contributions to this project.</p>
         </v-flex>
