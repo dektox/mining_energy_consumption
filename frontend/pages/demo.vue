@@ -41,6 +41,12 @@ import Chart from '~/components/index/Chart'
 
 export default {
   name: 'index',
+  layout: 'demo',
+  mounted() {
+    if (!this.$store.getters.authenticated) {
+      return this.$router.push('/login')
+    }
+  },
   components: {
     controllers: Controllers,
     cards: () => import('~/components/index/Cards'),

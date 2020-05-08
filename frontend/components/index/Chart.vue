@@ -30,7 +30,7 @@
                 text: 'TWh (annualised)',
                 style: { fontWeight: 'bold' },
             },
-            max: 100,
+            // max: 100,
             maxZoom: 0.1,
             opposite: false,
             tickInterval: 20

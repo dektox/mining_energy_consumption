@@ -155,51 +155,51 @@
           </nuxt-link>
         </v-list-tile>
       </v-list>
-      <!--      <v-flex pr-5 class="text-xs-left">-->
-      <!--        <nuxt-link :class="{'active': $route.path === '/'}" to="/">-->
-      <!--          CBECI-->
-      <!--        </nuxt-link>-->
-      <!--        <v-flex px-3 class="text-xs-left">-->
-      <!--          <nuxt-link :class="{'active': $route.path === '/'}" to="/">-->
-      <!--            Index-->
-      <!--          </nuxt-link>-->
-      <!--        </v-flex>-->
-      <!--        <v-flex px-3 class="text-xs-left">-->
-      <!--          <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">-->
-      <!--            Methodology-->
-      <!--          </nuxt-link>-->
-      <!--        </v-flex>-->
-      <!--        <v-flex px-3 class="text-xs-left">-->
-      <!--          <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">-->
-      <!--            Comparisons-->
-      <!--          </nuxt-link>-->
-      <!--        </v-flex>-->
-      <!--      </v-flex>-->
-      <!--      <v-flex pr-5 class="text-xs-left">-->
-      <!--        <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
-      <!--          MINING MAP-->
-      <!--        </nuxt-link>-->
-      <!--        <v-flex px-3 class="text-xs-left">-->
-      <!--          <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
-      <!--            Visualisation-->
-      <!--          </nuxt-link>-->
-      <!--        </v-flex>-->
-      <!--        <v-flex px-3 class="text-xs-left">-->
-      <!--          <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">-->
-      <!--            Methodology-->
-      <!--          </nuxt-link>-->
-      <!--        </v-flex>-->
-      <!--      </v-flex>-->
-      <!--      <v-flex class="text-xs-left" pr-5>-->
-      <!--        <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">-->
-      <!--          FAQ-->
-      <!--        </nuxt-link>-->
-      <!--      </v-flex>-->
-      <!--      <v-flex class="text-xs-left" pr-5>-->
-      <!--        <nuxt-link :class="{'active': $route.path === '/contact/'}" to="/contact/">-->
-      <!--          Contact-->
-      <!--        </nuxt-link>-->
-      <!--      </v-flex>-->
+<!--      <v-flex pr-5 class="text-xs-left">-->
+<!--        <nuxt-link :class="{'active': $route.path === '/'}" to="/">-->
+<!--          CBECI-->
+<!--        </nuxt-link>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/'}" to="/">-->
+<!--            Index-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">-->
+<!--            Methodology-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">-->
+<!--            Comparisons-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--      </v-flex>-->
+<!--      <v-flex pr-5 class="text-xs-left">-->
+<!--        <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
+<!--          MINING MAP-->
+<!--        </nuxt-link>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">-->
+<!--            Visualisation-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--        <v-flex px-3 class="text-xs-left">-->
+<!--          <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">-->
+<!--            Methodology-->
+<!--          </nuxt-link>-->
+<!--        </v-flex>-->
+<!--      </v-flex>-->
+<!--      <v-flex class="text-xs-left" pr-5>-->
+<!--        <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">-->
+<!--          FAQ-->
+<!--        </nuxt-link>-->
+<!--      </v-flex>-->
+<!--      <v-flex class="text-xs-left" pr-5>-->
+<!--        <nuxt-link :class="{'active': $route.path === '/contact/'}" to="/contact/">-->
+<!--          Contact-->
+<!--        </nuxt-link>-->
+<!--      </v-flex>-->
     </v-layout>
     <v-content>
       <v-container>
@@ -253,44 +253,44 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
+export default {
+  data() {
+    return {
         methodologyAnchors: [
-          {text: '1', link: ''},
-          {text: '2', link: '/#1'},
-          {text: '3', link: '/#2'},
-          {text: '4', link: '/#3'},
+            {text: '1', link: ''},
+            {text: '2', link: '/#1'},
+            {text: '3', link: '/#2'},
+            {text: '4', link: '/#3'},
         ]
-      }
-    },
-    computed: {
+    }
+  },
+  computed: {
       cookies() {
-        if (!process.server) {
-          if (this.$cookies.get('CookieControl')) {
-            if (this.$cookies.get('CookieControl').analytics !== 'true')
-              this.$store.commit('SET_COOK', false)
-          } else {
-            this.$store.commit('SET_COOK', false)
+          if (!process.server) {
+              if (this.$cookies.get('CookieControl')) {
+                  if (this.$cookies.get('CookieControl').analytics !== 'true')
+                      this.$store.commit('SET_COOK', false)
+              } else {
+                  this.$store.commit('SET_COOK', false)
+              }
           }
-        }
-        return !this.$store.state.cooks
+          return !this.$store.state.cooks
       }
-    },
-    methods: {
+  },
+  methods: {
       gotoMain() {
-        this.$router.push('/')
+          this.$router.push('/')
       },
       setCookies() {
-        this.$store.commit('SET_COOK', true)
+          this.$store.commit('SET_COOK', true)
       },
       binding() {
-        const binding = {}
-        if (!process.server) {
-          if (this.$vuetify.breakpoint.xsOnly) binding.column = true
-        }
-        return binding
+          const binding = {}
+          if (!process.server) {
+              if (this.$vuetify.breakpoint.xsOnly) binding.column = true
+          }
+          return binding
       }
-    }
   }
+}
 </script>
