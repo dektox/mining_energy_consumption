@@ -73,8 +73,20 @@ def main(log_level, price):
     all_data = {}
     # Opening DB. When the 'with' block ends, connection will be closed
     with psycopg2.connect(**config['blockchain_data']) as connection:
-        for endpoint in ['difficulty', 'hash-rate', 'market-price', 
-                         'miners-revenue']:
+        for endpoint in ['market-price']:
+            # if you need more data, just list it here
+            values = crawl(endpoint)
+            values = values[:-1]
+            # this is because table name can't contain hyphens
+            table_name = endpoint.replace('-', '_') 
+            save_values(values, connection, table_name)
+            for timestamp, value in values:
+                try:
+                    all_data[timestamp][endpoint] = value
+                except KeyError:
+                    all_data[timestamp] = {endpoint: value}
+        
+        for endpoint in ['difficulty', 'hash-rate', 'miners-revenue']:
             # if you need more data, just list it here
             values = crawl(endpoint)
             # this is because table name can't contain hyphens
