@@ -4,7 +4,7 @@ Created on Thu May 16 14:24:16 2019
 
 @author: Anton
 """
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, request
 import pandas as pd
 from datetime import datetime
 import flask
@@ -95,8 +95,81 @@ def before_request():
             send_err_to_slack(err, 'HASHRATE')
         finally:
             lastupdate_power = time.time()
-            
-            
+
+
+@app.route('/api/data')
+def recalculate_data_param():
+    try:
+        value = request.args.get('p')
+        price = float(value)
+    except:
+        return "Welcome to the CBECI API data endpoint. To get bitcoin electricity consumption estimate timeseries, specify electricity price parameter 'p' (in USD), for example /api/data?p=0.05"
+
+
+    if price in cache:
+        return cache[price]
+
+    k = 0.05 / price
+    # that is because base calculation in the DB is for the price 0.05 USD/KWth
+    # temporary vars:
+    prof_eqp = []
+    all_prof_eqp = []
+    max_all = []
+    min_all = []
+    ts_all = []
+    date_all = []
+    guess_all = []
+    response = []
+
+    prof_th = pd.DataFrame(prof_threshold)
+    prof_th = prof_th.drop(1, axis=1).set_index(0)
+    prof_th_ma = prof_th.rolling(window=14, min_periods=1).mean()
+
+    hashra = pd.DataFrame(hash_rate)
+    hashra = hashra.drop(1, axis=1).set_index(0)
+
+    for timestamp, row in prof_th_ma.iterrows():
+        for miner in miners:
+            if timestamp > miner[1] and row[2] * k > miner[2]:
+                prof_eqp.append(miner[2])
+            # ^^current date miner release date ^^checks if miner is profit. ^^adds miner's efficiency to the list
+        all_prof_eqp.append(prof_eqp)
+        try:
+            max_consumption = max(prof_eqp) * hashra[2][timestamp] * 365.25 * 24 / 1e9 * 1.2
+            min_consumption = min(prof_eqp) * hashra[2][timestamp] * 365.25 * 24 / 1e9 * 1.01
+            guess_consumption = sum(prof_eqp) / len(prof_eqp) * hashra[2][timestamp] * 365.25 * 24 / 1e9 * 1.1
+        except:  # in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
+            max_consumption = max_all[-1]
+            min_consumption = min_all[-1]
+            guess_consumption = guess_all[-1]
+        max_all.append(max_consumption)
+        min_all.append(min_consumption)
+        guess_all.append(guess_consumption)
+        ts_all.append(timestamp)
+        date = datetime.utcfromtimestamp(timestamp).isoformat()
+        date_all.append(date)
+        prof_eqp = []
+
+    energy_df = pd.DataFrame(list(zip(max_all, min_all, guess_all)), index=ts_all, columns=['MAX', 'MIN', 'GUESS'])
+    energy_ma = energy_df.rolling(window=7, min_periods=1).mean()
+    max_ma = list(energy_ma['MAX'])
+    min_ma = list(energy_ma['MIN'])
+    guess_ma = list(energy_ma['GUESS'])
+
+    for day in range(0, len(ts_all)):
+        response.append({
+            'date': date_all[day],
+            'guess_consumption': round(guess_ma[day], 2),
+            'max_consumption': round(max_ma[day], 2),
+            'min_consumption': round(min_ma[day], 2),
+            'timestamp': ts_all[day],
+        })
+
+    value = jsonify(data=response)
+    cache[price] = value
+    return value
+
+
 @app.route('/api/data/<value>')
 def recalculate_data(value):
         
