@@ -15,21 +15,6 @@
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 3</u>: the available sample of Chinese province data is representative of the total hashrate distribution within China.</span>
             </v-flex>
-            <!--            <v-data-table-->
-<!--                    :headers="headers"-->
-<!--                    :items="items"-->
-<!--                    item-key="name"-->
-<!--                    hide-actions-->
-<!--            >-->
-<!--                <template v-slot:items="props">-->
-<!--                    <tr>-->
-<!--                        <td>{{ props.item.parameter }}</td>-->
-<!--                        <td>{{ props.item.description }}</td>-->
-<!--                        <td>{{ props.item.unit }}</td>-->
-<!--                        <td>{{ props.item.source }}</td>-->
-<!--                    </tr>-->
-<!--                </template>-->
-<!--            </v-data-table>-->
         </v-flex>
         <h3 class="display-2 text-md-left">Limitations</h3>
         <v-flex class="main-text" my-3>
