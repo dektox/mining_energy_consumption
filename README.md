@@ -4,7 +4,7 @@ Calculation and visualization of energy consumed by Bitcoin mining
 First run hash_rate_scrapper.py, it will create Data.db with the Difficulty, Hashrate, Price, Miners_profirs and calculated Mining Profitability Threshold for default price. Then run energy_calculation.py, it will calculate MIN, MAX, and GUESSED energy consumption rate and store it to Energy.db
 OR you can make it cron:
 
-> 15 * * * * cd /home/YOUR_PATH && $(which python3) hash_rate_scrapper.py --price 0.066 >> ~cron_hash.log 2>&1
+> 15 * * * * cd /home/YOUR_PATH && $(which python3) hash_rate_scrapper.py --price 0.05 >> ~cron_hash.log 2>&1
 > 16 * * * * cd /home/YOUR_PATH && $(which python3) energy_calculation.py >> ~cron_energy.log 2>&1
 
 /api folder contains chart_API.py which is Flask app for API. 
