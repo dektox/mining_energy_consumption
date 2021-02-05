@@ -18,7 +18,6 @@ export const getters = {
   GET_DATA: state => state.data,
   GET_COUNTRIES: state => state.countries,
   authenticated: state => {
-    console.log(state.authenticated || (Cookies.get('authenticated') ? JSON.parse(Cookies.get('authenticated')).value === 'true' : false))
     return state.authenticated || (Cookies.get('authenticated') ? JSON.parse(Cookies.get('authenticated')).value === 'true' : false)
   }
 }

@@ -15,84 +15,46 @@
         <span class="hidden-sm-and-down" style="font-size: 26px">
           Cambridge Bitcoin Electricity Consumption Index
         </span>
-        <v-menu class="hidden-md-and-up">
-          <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
-          <v-list>
-            <v-list-group value="true">
-              <template v-slot:activator>
-                <v-list-tile-title>CBECI</v-list-tile-title>
-              </template>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/'}" to="/">
-                      INDEX
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/cbeci/methodology'}" to="/cbeci/methodology">
-                      Methodology
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/cbeci/comparisons'}" to="/cbeci/comparisons">
-                      Comparisons
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list-group>
-            <v-list-group value="true">
-              <template v-slot:activator>
-                <v-list-tile-title>Mining Map</v-list-tile-title>
-              </template>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/mining_map'}" to="/mining_map">
-                      Visualisation
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <nuxt-link :class="{'active': $route.path === '/mining_map/methodology'}" to="/mining_map/methodology">
-                      Methodology
-                    </nuxt-link>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list-group>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/faq'}" to="/faq/">
-                    FAQ
-                  </nuxt-link>
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  <nuxt-link :class="{'active': $route.path === '/contact'}" to="/contact/">
-                    Contact
-                  </nuxt-link>
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
+        <v-dialog v-model="dialog">
+          <template v-slot:activator="{ on }">
+            <v-toolbar-side-icon slot="hidden-md-and-up" v-on="on" />
+          </template>
+          <v-card>
+            <v-layout class="mobile-menu">
+              <v-flex>
+                <v-layout align-center justify-center style="height: 60px; font-size: 20px; font-weight: bold;">
+                  CBECI
+                </v-layout>
+                <v-btn nuxt link flat exact to="/" style="width: 100%" @click="dialog=false">
+                  Index
+                </v-btn>
+                <v-btn nuxt link flat exact to="/cbeci/methodology" style="width: 100%" @click="dialog=false">
+                  Methodology
+                </v-btn>
+                <v-btn nuxt link flat exact to="/cbeci/comparisons" style="width: 100%" @click="dialog=false">
+                  Comparisons
+                </v-btn>
+                <v-divider />
+                <v-layout align-center justify-center style="height: 60px; font-size: 20px; font-weight: bold;">
+                  MINING MAP
+                </v-layout>
+                <v-btn nuxt link flat exact to="/mining_map" style="width: 100%" @click="dialog=false">
+                  Visualisation
+                </v-btn>
+                <v-btn nuxt link flat exact to="/mining_map/methodology" style="width: 100%" @click="dialog=false">
+                  Methodology
+                </v-btn>
+                <v-divider />
+                <v-btn nuxt link flat exact to="/faq" style="width: 100%" @click="dialog=false">
+                  FAQ
+                </v-btn>
+                <v-btn nuxt link flat exact to="/contact" style="width: 100%" @click="dialog=false">
+                  Contact
+                </v-btn>
+              </v-flex>
+            </v-layout>
+          </v-card>
+        </v-dialog>
       </v-layout>
     </v-toolbar>
     <v-layout column class="menu hidden-sm-and-down">
@@ -256,12 +218,13 @@
 export default {
   data() {
     return {
-        methodologyAnchors: [
-            {text: '1', link: ''},
-            {text: '2', link: '/#1'},
-            {text: '3', link: '/#2'},
-            {text: '4', link: '/#3'},
-        ]
+      dialog: false,
+      methodologyAnchors: [
+          {text: '1', link: ''},
+          {text: '2', link: '/#1'},
+          {text: '3', link: '/#2'},
+          {text: '4', link: '/#3'},
+      ]
     }
   },
   computed: {
@@ -294,3 +257,20 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .mobile-menu{
+    a {
+      margin: 0;
+      border-radius: 0 !important;
+      background-color: #FFFFFF !important;
+      height: 40px !important;
+      text-transform: none !important;
+      font-family: 'MyriadProSemiBold', sans-serif;
+      &.v-btn--active {
+        background-color: black !important;
+        color: white !important;
+      }
+    }
+  }
+</style>

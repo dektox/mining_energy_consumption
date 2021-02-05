@@ -131,7 +131,6 @@ export default {
     }
   },
   mounted() {
-    console.log('aa')
     this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
   }
 }

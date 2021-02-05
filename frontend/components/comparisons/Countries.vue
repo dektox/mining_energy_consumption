@@ -81,7 +81,6 @@
         },
         methods: {
           showFlags() {
-            console.log(flags)
           },
           getFlag(country) {
             const flag = flags.find(item => item.name === country)
