@@ -47,6 +47,10 @@ def load_data():
     return prof_threshold, hash_rate, miners, countries, cons
 
 
+def get_hashrate():
+    return int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+
+
 def send_err_to_slack(err, name):
     try: 
         headers = {'Content-type': 'application/json',}
@@ -67,7 +71,7 @@ lastupdate = time.time()
 lastupdate_power = time.time()
 cache = {}
 try:
-    hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+    hashrate = get_hashrate()
 except Exception as err:
     hashrate = 0
     logging.exception(str(err))
@@ -89,7 +93,7 @@ def before_request():
     if time.time() - lastupdate_power > 45:
         try:
             # if executed properly, answer should be int
-            hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+            hashrate = get_hashrate()
         except Exception as err:
             app.logger.exception(str(err))
             send_err_to_slack(err, 'HASHRATE')
