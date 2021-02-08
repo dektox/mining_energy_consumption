@@ -58,8 +58,8 @@
       </v-layout>
     </v-toolbar>
     <v-layout column class="menu hidden-sm-and-down">
-      <v-list class="demo">
-        <v-list-group>
+      <v-list class="demo" expand>
+        <v-list-group :value="true">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-content>
@@ -85,7 +85,7 @@
             </nuxt-link>
           </v-list-tile>
         </v-list-group>
-        <v-list-group>
+        <v-list-group :value="true">
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-content>
