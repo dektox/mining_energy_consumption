@@ -5,5 +5,5 @@ venv/
 CONFIG.yml
 feedback.py
 .venv/
-*/__pycache__/*
+__pycache__/
 .env
