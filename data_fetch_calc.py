@@ -2,10 +2,9 @@ import logging
 import psycopg2
 import pandas as pd
 from datetime import datetime
-from pprint import pformat
-import requests as rq
 import click
 import yaml
+from api.data_source.coinmetrics import CoinMetrics
 
 config_path = 'CONFIG.yml'
 if config_path:
@@ -14,21 +13,9 @@ if config_path:
 else:
     config = {}
 
-DEFAULT_LOG_LEVEL = 'INFO'
+DEFAULT_LOG_LEVEL = logging.INFO
 DEFAULT_ELECTRICITY_PRICE = 0.05
 LOGGER = logging.getLogger()
-
-# comment
-
-def crawl(endpoint):
-    # Showing message that the scrapping started
-    LOGGER.info(f"{endpoint}: Scrapping as of {datetime.utcnow().isoformat()}")
-    # Querying data from DATA_API_URL
-    re=rq.get(f"https://api.blockchain.info/charts/{endpoint}?timespan=6years")
-    # Transforming reply into the object of 'dict' type
-    data = re.json()
-    LOGGER.debug(f"{endpoint}: Response:\n\n{pformat(data)}\n\n")
-    return [(int(row['x']), row['y']) for row in data['values']]
 
 
 def save_values(values, connection, table_name):
@@ -54,14 +41,14 @@ def save_values(values, connection, table_name):
         finally:
             connection.commit()
 
-
 # this is to change parameters from CLI
 @click.command()
 @click.option('--price', '-p', default=DEFAULT_ELECTRICITY_PRICE)
 @click.option('--log-level', '-l', default=DEFAULT_LOG_LEVEL)
 def main(log_level, price):
     # Logging
-    LOGGER.setLevel(log_level.upper())
+    level = log_level.upper() if isinstance(log_level, str) else log_level
+    LOGGER.setLevel(level)
     # Console outputs
     LOGGER.addHandler(logging.StreamHandler())
     
@@ -73,30 +60,21 @@ def main(log_level, price):
     all_data = {}
     # Opening DB. When the 'with' block ends, connection will be closed
     with psycopg2.connect(**config['blockchain_data']) as connection:
-        for endpoint in ['market-price']:
-            # if you need more data, just list it here
-            values = crawl(endpoint)
-            values = values[:-1]
-            # this is because table name can't contain hyphens
-            table_name = endpoint.replace('-', '_') 
-            save_values(values, connection, table_name)
-            for timestamp, value in values:
-                try:
-                    all_data[timestamp][endpoint] = value
-                except KeyError:
-                    all_data[timestamp] = {endpoint: value}
-        
-        for endpoint in ['difficulty', 'hash-rate', 'miners-revenue']:
-            # if you need more data, just list it here
-            values = crawl(endpoint)
-            # this is because table name can't contain hyphens
-            table_name = endpoint.replace('-', '_') 
-            save_values(values, connection, table_name)
-            for timestamp, value in values:
-                try:
-                    all_data[timestamp][endpoint] = value
-                except KeyError:
-                    all_data[timestamp] = {endpoint: value}
+        data = CoinMetrics().get_values()
+        for item in data:
+            for metric in ['difficulty', 'hash-rate', 'miners-revenue', 'market-price']:
+                if metric in item:
+                    # this is because table name can't contain hyphens
+                    table_name = metric.replace('-', '_')
+                    value = item[metric]
+                    timestamp = item['timestamp']
+
+                    save_values([(timestamp, value)], connection, table_name)
+
+                    if timestamp not in all_data:
+                        all_data[timestamp] = {}
+
+                    all_data[timestamp][metric] = value
                     
 # =============================================================================
 #        # This is to create block reward time series

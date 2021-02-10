@@ -1,16 +1,20 @@
 import requests
+import logging
 from datetime import datetime
 import dateutil.parser
+from pprint import pformat
 from typing import List
 from urllib.parse import urljoin
 from .base import DataSource, Values
+
+LOGGER = logging.getLogger()
 
 
 class CoinMetrics(DataSource):
 
     def __init__(self, url='https://community-api.coinmetrics.io/v4/', assets='btc'):
         super().__init__(url, assets)
-        self.start_date = None
+        self.start_date = '2014-05-28'
 
     @staticmethod
     def _to_item(values) -> dict:
@@ -35,11 +39,11 @@ class CoinMetrics(DataSource):
         return item
 
     def get_values(self, values=None, assets=None) -> List[dict]:
-        metrics_values = self.get_metrics_values(values=values, assets=assets)
+        metrics_data = self.get_metrics_data(values=values, assets=assets)
 
-        return [self._to_item(values) for values in metrics_values['data']]
+        return [self._to_item(values) for values in metrics_data['data']]
 
-    def get_metrics_values(self, values=None, start_date=None, assets=None) -> dict:
+    def get_metrics_data(self, values=None, start_date=None, assets=None) -> dict:
         if assets is None:
             assets = self.assets
         if values is None:
@@ -72,7 +76,14 @@ class CoinMetrics(DataSource):
             # Start of the time interval in ISO 8601 format
             params['start_time'] = datetime.strptime(start_date, '%Y-%m-%d').isoformat()
 
+        metrics_str = ', '.join(value.value for value in values)
+        LOGGER.info(f"{metrics_str}: Scrapping as of {datetime.utcnow().isoformat()}")
+
         # sending request to api and get json response
-        return requests.get(
+        response = requests.get(
             urljoin(self.base_url, 'timeseries/asset-metrics'), params=params
         ).json()
+
+        LOGGER.debug(f"{metrics_str}: Response:\n\n{pformat(response)}\n\n")
+
+        return response
