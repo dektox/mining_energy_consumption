@@ -97,15 +97,19 @@
         },
         data() {
             return {
+              interval: {}
             }
         },
         created() {
             const self = this
-            setInterval(function () {
+            this.interval = setInterval(function () {
                 self.getNewData()
             }, 30000)
         },
-        computed: {
+      beforeDestroy() {
+          clearInterval(this.interval)
+      },
+      computed: {
             binding() {
                 const binding = {}
                 if (!process.server) {
@@ -126,7 +130,7 @@
         },
         methods: {
             async getNewData() {
-                await this.$store.dispatch('LOAD_NUMBERS')
+              await this.$store.dispatch('LOAD_NUMBERS')
             }
         }
     }
