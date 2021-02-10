@@ -9,7 +9,7 @@
           <div style="width: 100%">
             The Bitcoin Mining Map visualises the approximate geographic distribution of global Bitcoin hashrate. The average hashrate share by country is available for display in monthly intervals starting from September 2019. In addition, a second map with an exclusive focus on China’s hashrate distribution by province is provided.
           </div>
-          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiYTg4NTNlZDAtNmIzNS00OWQyLWExNmQtNDY5MTAzNTM3YjIyIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+          <iframe :width="containerWidth" :height="containerWidth / 32 * 22" src="https://app.powerbi.com/view?r=eyJrIjoiYTg4NTNlZDAtNmIzNS00OWQyLWExNmQtNDY5MTAzNTM3YjIyIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
           <v-flex my-4>
             <div style="width: 100%">
               <p style="text-align: center"><b>Disclaimer:</b> <i>past periods may be adjusted when additional data becomes available.</i></p>
@@ -19,7 +19,7 @@
               </v-flex>
             </div>
           </v-flex>
-          <iframe :width="containerWidth / 12 * 10" :height="containerWidth / 32 * 17" src="https://app.powerbi.com/view?r=eyJrIjoiZGNhNjMyYjgtNDk4Zi00OTRjLThhMWItNjUwMDRlZWY1NmFiIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
+          <iframe :width="containerWidth" :height="containerWidth / 32 * 22" src="https://app.powerbi.com/view?r=eyJrIjoiZGNhNjMyYjgtNDk4Zi00OTRjLThhMWItNjUwMDRlZWY1NmFiIiwidCI6IjAwYzliM2IxLTAzMTItNGMzMy1hZTdmLTgwZjNhNzU5ZGVjMSIsImMiOjh9" frameborder="0" allowFullScreen="true" />
           <v-flex xs12 md10 my-4>
             <div style="width: 100%">
               The map is based on geo-location data (i.e. IP addresses) of hashers connecting to the Bitcoin mining pools BTC.com, Poolin, and ViaBTC, who have kindly agreed to share aggregate-level data for research purposes.
@@ -75,23 +75,6 @@
         </a>
       </v-flex>
     </v-layout>
-<!--    <v-layout row>-->
-<!--      <v-flex ma-4>-->
-<!--        <swiper class="swiper" :options="swiperOption">-->
-<!--          <swiper-slide class="slide-1">-->
-<!--            <a href="https://pool.btc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%;" />-->
-<!--          </swiper-slide>-->
-<!--          <swiper-slide class="slide-2">-->
-<!--            <a href="https://www.poolin.com" target="_blank" style="display: inline-block; width: 100%; height: 100%;" />-->
-<!--          </swiper-slide>-->
-<!--          <swiper-slide class="slide-3">-->
-<!--            <a href="https://www.viabtc.com" target="_blank" style="display: inline-block; width: 100%; height: 100%;" />-->
-<!--          </swiper-slide>-->
-<!--&lt;!&ndash;          <div class="swiper-button-prev" slot="button-prev"></div>&ndash;&gt;-->
-<!--&lt;!&ndash;          <div class="swiper-button-next" slot="button-next"></div>&ndash;&gt;-->
-<!--        </swiper>-->
-<!--      </v-flex>-->
-<!--    </v-layout>-->
     <v-layout row align-center justify-center style="width: 100%;">
       <v-flex xs12 md10 my-4>
         <div style="width: 100%; font-style: italic; text-align: center">
@@ -107,15 +90,10 @@
 </template>
 
 <script>
-// import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-// import 'swiper/css/swiper.css'
-
 export default {
   name: 'index',
   layout: 'demo',
   components: {
-    // Swiper,
-    // SwiperSlide
   },
   async fetch ({ store }) {
   },
@@ -131,7 +109,9 @@ export default {
     }
   },
   mounted() {
-    this.containerWidth = document.getElementById("wrap-container").getBoundingClientRect().width
+    this.containerWidth = this.$vuetify.breakpoint.smAndDown
+      ? document.getElementById("wrap-container").getBoundingClientRect().width
+      : document.getElementById("wrap-container").getBoundingClientRect().width / 12 * 10
   }
 }
 </script>
