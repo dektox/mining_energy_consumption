@@ -52,6 +52,15 @@
     }
 }
 
+@media only screen and (max-width: 960px) {
+    .cookies{
+        &__panel{
+            width: 80vw;
+            bottom: 20vh;
+            left: 10vw;
+        }
+    }
+}
 
 html, body{
     width: 100vw;
