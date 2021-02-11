@@ -41,7 +41,8 @@
             <v-flex xs12 md10>
                 <span>
               <b>Source:</b><br/>
-              Countries data - <a target="_blank" href="https://www.cia.gov/library/publications/resources/the-world-factbook/fields/253rank.html">CIA Factbook</a>, 2016 est.
+              Countries data - <a target="_blank" href="https://www.eia.gov/international/data/world/electricity/electricity-consumption?pd=2&p=0000002&u=0&f=A&v=mapbubble&a=-&i=none&vo=value&t=C&g=00000000000000000000000000000000000000000000000001&l=249-ruvvvvvfvtvnvv1vrvvvvfvvvvvvfvvvou20evvvvvvvvvvnvvvs0008&s=315532800000&e=1546300800000&">U.S. Energy Information Administration
+                </a>
           </span>
             </v-flex>
         </v-layout>
