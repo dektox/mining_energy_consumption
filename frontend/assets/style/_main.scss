@@ -52,6 +52,15 @@
     }
 }
 
+@media only screen and (max-width: 960px) {
+    .cookies{
+        &__panel{
+            width: 80vw;
+            bottom: 20vh;
+            left: 10vw;
+        }
+    }
+}
 
 html, body{
     width: 100vw;
@@ -151,7 +160,7 @@ input.highcharts-range-selector:focus {
 .country-img{
     width: 90px;
     height: 60px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .country-img-large{

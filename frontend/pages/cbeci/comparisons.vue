@@ -22,6 +22,7 @@
         </no-ssr>
 
         <comparisonsFF />
+<!--        <mask-mars />-->
     </v-layout>
 </template>
 
@@ -31,6 +32,7 @@ import PC from '~/components/comparisons/PC'
 import RP from '~/components/comparisons/RP'
 import FF from '~/components/comparisons/FF'
 import Histogram from '~/components/comparisons/Histogram'
+// import MaskMars from '~/components/comparisons/MaskMars'
 
 export default {
     name: 'comparisons',
@@ -40,19 +42,36 @@ export default {
         comparisonsRP: RP,
         comparisonsFF: FF,
         histogram: Histogram
+        // maskMars: MaskMars
     },
     data() {
-        return {}
+        return {
+          interval: {}
+        }
+    },
+    created() {
+        const self = this
+        this.interval = setInterval(function () {
+          self.getNewData()
+        }, 30000)
+    },
+    beforeDestroy() {
+        clearInterval(this.interval)
     },
     async fetch ({ store }) {
         try {
-            await store.commit('SET_PRICE', 0.05)
+            await store.dispatch('UPDATE_DATA_AFTER_PRICE_CHANGE', 0.05)
             await Promise.all([
                 store.dispatch('INITIALIZATION'),
                 store.dispatch('LOAD_COUNTRIES')
             ])
         } catch (e) {
             alert(e)
+        }
+    },
+    methods: {
+        async getNewData() {
+          await this.$store.dispatch('LOAD_NUMBERS')
         }
     }
 }
