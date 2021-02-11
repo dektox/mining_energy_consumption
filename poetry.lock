@@ -54,6 +54,19 @@ Flask = ">=0.9"
 Six = "*"
 
 [[package]]
+name = "flask-limiter"
+version = "1.4"
+description = "Rate limiting for flask applications"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = ">=0.8"
+limits = "*"
+six = ">=1.4.1"
+
+[[package]]
 name = "idna"
 version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -82,6 +95,17 @@ MarkupSafe = ">=0.23"
 
 [package.extras]
 i18n = ["Babel (>=0.8)"]
+
+[[package]]
+name = "limits"
+version = "1.5.1"
+description = "Rate limiting utilities"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = ">=1.4.1"
 
 [[package]]
 name = "markupsafe"
@@ -215,7 +239,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "cac9ac794d1635cbc1199cc37fe0e7d41231f035c98014f155fb83a5bf1ef3da"
+content-hash = "fbcfaa48e72345c0c686df1ce30b2d3bd8379f28e4d782ba3d088951a725418e"
 
 [metadata.files]
 certifi = [
@@ -238,6 +262,11 @@ flask-cors = [
     {file = "Flask-Cors-3.0.10.tar.gz", hash = "sha256:b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de"},
     {file = "Flask_Cors-3.0.10-py2.py3-none-any.whl", hash = "sha256:74efc975af1194fc7891ff5cd85b0f7478be4f7f59fe158102e91abb72bb4438"},
 ]
+flask-limiter = [
+    {file = "Flask-Limiter-1.4.tar.gz", hash = "sha256:021279c905a1e24f181377ab3be711be7541734b494f4e6db2b8edeba7601e48"},
+    {file = "Flask_Limiter-1.4-py3-none-any.whl", hash = "sha256:f8a65a7874f48ff8df2ea5e86d5b85b48fcbae065ebeb5271b317fe68fcfa979"},
+    {file = "Flask_Limiter-1.4-py3.7.egg", hash = "sha256:055a388a89f4d5768c64025443f1f41e3babcbbbf315c728413c27b4975af239"},
+]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
     {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
@@ -249,6 +278,10 @@ itsdangerous = [
 jinja2 = [
     {file = "Jinja2-2.11.3-py2.py3-none-any.whl", hash = "sha256:03e47ad063331dd6a3f04a43eddca8a966a26ba0c5b7207a9a9e4e08f1b29419"},
     {file = "Jinja2-2.11.3.tar.gz", hash = "sha256:a6d58433de0ae800347cab1fa3043cebbabe8baa9d29e668f1c768cb87a333c6"},
+]
+limits = [
+    {file = "limits-1.5.1-py2-none-any.whl", hash = "sha256:0e5f8b10f18dd809eb2342f5046eb9aa5e4e69a0258567b5f4aa270647d438b3"},
+    {file = "limits-1.5.1.tar.gz", hash = "sha256:f0c3319f032c4bfad68438ed1325c0fac86dac64582c7c25cddc87a0b658fa20"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},

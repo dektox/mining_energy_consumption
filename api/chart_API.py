@@ -4,14 +4,16 @@ Created on Thu May 16 14:24:16 2019
 
 @author: Anton
 """
-from flask import Flask, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request, has_request_context
+from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import pandas as pd
 from datetime import datetime
 import flask
 import requests
 import logging
 import time
-from flask_cors import CORS
 import psycopg2
 import yaml
 import csv
@@ -62,8 +64,32 @@ def send_err_to_slack(err, name):
 
 
 app = Flask(__name__)
+
+file_handler = logging.FileHandler("error.log")
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        if has_request_context():
+            record.url = request.url
+            record.remote_addr = request.remote_addr
+        else:
+            record.url = None
+            record.remote_addr = None
+
+        return super().format(record)
+
+formatter = RequestFormatter(
+    '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+    '%(levelname)s in %(module)s: %(message)s'
+)
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
+
 CORS(app)
-app.config["DEBUG"] = False
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["24000 per day", "600 per 10 minutes", "300 per 10 seconds"]
+)
 
 # initialisation of cache vars:
 prof_threshold, hash_rate, miners, countries, cons = load_data()
@@ -76,6 +102,14 @@ except Exception as err:
     hashrate = 0
     logging.exception(str(err))
     send_err_to_slack(err, 'INIT HASHRATE')
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    app.logger.info(f"{str(e)} - IP: {get_remote_address()}") # @todo: tmp
+    return make_response(
+        jsonify(error="Too many requests from your IP, try again later")
+        , 429
+    )
 
 # cache:
 @app.before_request

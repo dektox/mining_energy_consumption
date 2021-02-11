@@ -13,6 +13,7 @@ Flask-Cors = "^3.0.10"
 psycopg2 = "^2.8.6"
 PyYAML = "^5.4.1"
 python-dotenv = "^0.15.0"
+Flask-Limiter = "^1.4"
 
 [tool.poetry.dev-dependencies]
 
