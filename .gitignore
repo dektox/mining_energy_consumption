@@ -7,4 +7,3 @@ feedback.py
 .venv/
 __pycache__/
 .env
-*.log

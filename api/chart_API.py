@@ -8,6 +8,7 @@ from flask import Flask, jsonify, make_response, request, has_request_context
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from logging.handlers import RotatingFileHandler
 import pandas as pd
 from datetime import datetime
 import flask
@@ -18,6 +19,7 @@ import psycopg2
 import yaml
 import csv
 import io
+import platform
 
 config_path = '../CONFIG.yml'
 if config_path:
@@ -65,24 +67,33 @@ def send_err_to_slack(err, name):
 
 app = Flask(__name__)
 
-file_handler = logging.FileHandler("error.log")
-class RequestFormatter(logging.Formatter):
-    def format(self, record):
-        if has_request_context():
-            record.url = request.url
-            record.remote_addr = request.remote_addr
-        else:
-            record.url = None
-            record.remote_addr = None
+def get_file_handler(filename):
+    if platform.system() == "Windows":
+        file_handler = RotatingFileHandler(filename, maxBytes=10 * 1024 * 1024, backupCount=5)  # mb * kb * b
+    else:
+        file_handler = logging.FileHandler(filename)
+    file_handler.setLevel(logging.INFO)
 
-        return super().format(record)
+    class RequestFormatter(logging.Formatter):
+        def format(self, record):
+            if has_request_context():
+                record.url = request.url
+                record.remote_addr = request.remote_addr
+            else:
+                record.url = None
+                record.remote_addr = None
 
-formatter = RequestFormatter(
-    '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
-    '%(levelname)s in %(module)s: %(message)s'
-)
-file_handler.setFormatter(formatter)
-app.logger.addHandler(file_handler)
+            return super().format(record)
+
+    formatter = RequestFormatter(
+        '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+        '%(levelname)s in %(module)s: %(message)s'
+    )
+    file_handler.setFormatter(formatter)
+
+    return file_handler
+
+app.logger.addHandler(get_file_handler("./logs/errors.log"))
 
 CORS(app)
 limiter = Limiter(
