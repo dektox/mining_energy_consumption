@@ -6,6 +6,7 @@
         <overview />
         <model />
         <discussion />
+        <change-log />
     </v-layout>
 </template>
 
@@ -13,13 +14,15 @@
 import Overview from '~/components/methodology/Overview'
 import Model from '~/components/methodology/Model'
 import Discussion from '~/components/methodology/Discussion'
+import ChangeLog from '~/components/methodology/ChangeLog'
 
 export default {
     name: 'methodology',
     components: {
         overview: Overview,
         model: Model,
-        discussion: Discussion
+        discussion: Discussion,
+        changeLog: ChangeLog
     },
     data() {
         return {
