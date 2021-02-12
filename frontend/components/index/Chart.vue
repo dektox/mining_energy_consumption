@@ -118,9 +118,9 @@
           },
           {
             name: 'Upper bound consumption',
-            color: 'grey',
+            color: '#bcbcbc',
             data: dataSerieaMAX,
-            lineWidth: 1.5
+            lineWidth: 1
           },
           {
             name: 'Estimated consumption',
