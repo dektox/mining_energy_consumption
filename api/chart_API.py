@@ -19,7 +19,6 @@ import psycopg2
 import yaml
 import csv
 import io
-import platform
 
 config_path = '../CONFIG.yml'
 if config_path:
@@ -68,10 +67,7 @@ def send_err_to_slack(err, name):
 app = Flask(__name__)
 
 def get_file_handler(filename):
-    if platform.system() == "Windows":
-        file_handler = RotatingFileHandler(filename, maxBytes=10 * 1024 * 1024, backupCount=5)  # mb * kb * b
-    else:
-        file_handler = logging.FileHandler(filename)
+    file_handler = RotatingFileHandler(filename, maxBytes=10 * 1024 * 1024, backupCount=5)  # mb * kb * b
     file_handler.setLevel(logging.INFO)
 
     class RequestFormatter(logging.Formatter):
@@ -116,7 +112,7 @@ except Exception as err:
 
 @app.errorhandler(429)
 def ratelimit_handler(e):
-    app.logger.info(f"{str(e)} - IP: {get_remote_address()}") # @todo: tmp
+    app.logger.info(f"{str(e)} - IP: {get_remote_address()}")
     return make_response(
         jsonify(error="Too many requests from your IP, try again later")
         , 429
@@ -272,7 +268,7 @@ def recalculate_guess(value):
 # =============================================================================
 
 
-@app.route("/api/countries", methods=['GET', 'POST'])
+@app.route("/api/countries")
 def countries_btc():
     tup2dict = {a:[c,d] for a,b,c,d in countries}
     tup2dict['Bitcoin'][0] = round(cons[-1][4],2)
