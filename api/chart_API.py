@@ -26,6 +26,8 @@ if config_path:
         config = yaml.load(fp, yaml.FullLoader)
 else:
     config = {}
+
+LOG_LEVEL = logging.INFO
     
 
 # loading data in cache of each worker:
@@ -63,9 +65,6 @@ def send_err_to_slack(err, name):
     except:
         pass # not the best practice but we want API working even if Slack msg failed for any reason
 
-
-app = Flask(__name__)
-
 def get_file_handler(filename):
     file_handler = RotatingFileHandler(filename, maxBytes=10 * 1024 * 1024, backupCount=5)  # mb * kb * b
     file_handler.setLevel(logging.INFO)
@@ -89,6 +88,8 @@ def get_file_handler(filename):
 
     return file_handler
 
+app = Flask(__name__)
+app.logger.setLevel(LOG_LEVEL)
 app.logger.addHandler(get_file_handler("./logs/errors.log"))
 
 CORS(app)
@@ -266,7 +267,6 @@ def recalculate_guess(value):
 # def countries_old():
 #     jsonify(data=countries)
 # =============================================================================
-
 
 @app.route("/api/countries")
 def countries_btc():
