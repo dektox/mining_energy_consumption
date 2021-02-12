@@ -6,7 +6,6 @@
         <overview />
         <model />
         <discussion />
-        <change-log />
     </v-layout>
 </template>
 
@@ -21,8 +20,7 @@ export default {
     components: {
         overview: Overview,
         model: Model,
-        discussion: Discussion,
-        changeLog: ChangeLog
+        discussion: Discussion
     },
     data() {
         return {
