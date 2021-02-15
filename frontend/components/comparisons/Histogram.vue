@@ -49,7 +49,7 @@
         },
         yAxis: {
             title: { text: 'TWh per year' },
-            max: 6000,
+            max: 7000,
             opposite: false,
             type: log ? 'logarithmic' : ''
         },

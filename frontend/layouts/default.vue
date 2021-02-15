@@ -48,6 +48,9 @@
                 <v-btn nuxt link flat exact to="/faq" style="width: 100%" @click="dialog=false">
                   FAQ
                 </v-btn>
+                <v-btn nuxt link flat exact to="/change-log" style="width: 100%" @click="dialog=false">
+                  Change Log
+                </v-btn>
                 <v-btn nuxt link flat exact to="/contact" style="width: 100%" @click="dialog=false">
                   Contact
                 </v-btn>
@@ -109,6 +112,11 @@
         <v-list-tile>
           <nuxt-link :class="{'active': $route.path === '/faq/'}" to="/faq/">
             FAQ
+          </nuxt-link>
+        </v-list-tile>
+        <v-list-tile>
+          <nuxt-link :class="{'active': $route.path === '/change-log/'}" to="/change-log/">
+            Change Log
           </nuxt-link>
         </v-list-tile>
         <v-list-tile>

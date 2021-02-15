@@ -1,12 +1,12 @@
 <template>
-    <v-flex mb-4>
+    <v-flex mb-4 md10>
         <v-layout my-3 align-center justify-center>
             <h2 class="display-3 text-xs-center">
                 Total World Production & Consumption
             </h2>
         </v-layout>
         <v-layout v-bind="binding" align-center justify-center my-3>
-            <v-flex xs4 ma-3 class="text-xs-center">
+            <v-flex xs5 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
                         <v-flex mb-4>
@@ -24,7 +24,7 @@
                     </v-flex>
                 </v-card>
             </v-flex>
-            <v-flex xs4 ma-3 class="text-xs-center">
+            <v-flex xs5 ma-3 class="text-xs-center">
                 <v-card elevation="5">
                     <v-flex pa-4>
                         <v-flex mb-4>
@@ -44,7 +44,7 @@
             </v-flex>
         </v-layout>
         <v-layout my-3 align-center justify-center>
-            <v-flex xs12 md10>
+            <v-flex xs12>
                 <span>
                     <b>Source:</b><br/>
                     <a href="https://www.iea.org/statistics/electricity/" target="_blank">International Energy Agency</a> report, 2016 est.
