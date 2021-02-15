@@ -12,3 +12,6 @@ custom_data:
     port: 5432
 webhook: "https://yourwebhookurl.com"
 webhook_err: "https://yourwebhookurl.com"
+
+api_eia_gov:
+  api_key: "api key"
