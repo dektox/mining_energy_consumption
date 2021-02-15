@@ -12,9 +12,8 @@ LOGGER = logging.getLogger()
 
 class CoinMetrics(DataSource):
 
-    def __init__(self, url='https://community-api.coinmetrics.io/v4/', assets='btc'):
-        super().__init__(url, assets)
-        self.start_date = '2014-05-28'
+    def __init__(self, url='https://community-api.coinmetrics.io/v4/', assets='btc', start_date='2014-05-28'):
+        super().__init__(url=url, assets=assets, start_date=start_date)
 
     @staticmethod
     def _to_item(values) -> dict:
@@ -38,8 +37,8 @@ class CoinMetrics(DataSource):
 
         return item
 
-    def get_values(self, values=None, assets=None) -> List[dict]:
-        metrics_data = self.get_metrics_data(values=values, assets=assets)
+    def get_values(self, values=None, assets=None, start_date=None) -> List[dict]:
+        metrics_data = self.get_metrics_data(values=values, assets=assets, start_date=start_date)
 
         return [self._to_item(values) for values in metrics_data['data']]
 
@@ -48,7 +47,9 @@ class CoinMetrics(DataSource):
             assets = self.assets
         if values is None:
             values = list(Values)
-        if start_date is None and self.start_date is not None:
+        if start_date is not None:
+            start_date = datetime.strptime(start_date, '%Y-%m-%d')
+        elif start_date is None and self.start_date is not None:
             start_date = self.start_date
 
         # Choosing the requested metrics
@@ -74,11 +75,11 @@ class CoinMetrics(DataSource):
         }
         if start_date:
             # Start of the time interval in ISO 8601 format
-            params['start_time'] = datetime.strptime(start_date, '%Y-%m-%d').isoformat()
+            params['start_time'] = start_date.isoformat()
 
         metrics_str = ', '.join(value.value for value in values)
         LOGGER.info(f"{metrics_str}: Scrapping as of {datetime.utcnow().isoformat()}")
-
+        
         # sending request to api and get json response
         response = requests.get(
             urljoin(self.base_url, 'timeseries/asset-metrics'), params=params

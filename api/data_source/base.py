@@ -1,3 +1,4 @@
+from datetime import datetime
 from enum import Enum, auto
 
 
@@ -13,9 +14,10 @@ class Values(Enum):
 
 class DataSource:
 
-    def __init__(self, url, assets='btc'):
+    def __init__(self, url, assets='btc', start_date='2014-05-28'):
         self.base_url = url
         self.assets = assets
+        self.start_date = datetime.strptime(start_date, '%Y-%m-%d')
 
     def get_values(self, *args, **kwargs):
         raise NotImplementedError

@@ -60,7 +60,7 @@ def main(log_level, price):
     all_data = {}
     # Opening DB. When the 'with' block ends, connection will be closed
     with psycopg2.connect(**config['blockchain_data']) as connection:
-        data = CoinMetrics().get_values()
+        data = CoinMetrics().get_values(start_date='2021-02-15')
         for item in data:
             for metric in ['difficulty', 'hash-rate', 'miners-revenue', 'market-price']:
                 if metric in item:
