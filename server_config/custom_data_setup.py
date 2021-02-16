@@ -15,15 +15,19 @@ if config_path:
         config = yaml.load(fp, yaml.FullLoader)
 else:
     config = {}
+
+def empty_string_to_none(data):
+    return list(map(lambda x: None if pd.isna(x) else x, data))
     
 conn = psycopg2.connect(**config['custom_data'])
 c = conn.cursor()
 
-data = pd.read_csv("countries.csv") 
+data = pd.read_csv("countries.csv")
 country = list(data['country'])
 code = list(data['code'])
 electricity_consumption = list(data['electricity_consumption'])
-country_flag = list(data['country_flag'])
+country_flag = empty_string_to_none(list(data['country_flag']))
+series_id = empty_string_to_none(list(data['series_id']))
 
 data2 = pd.read_csv("miners.csv") 
 miner_name = list(data2['Miner_name'])
@@ -31,12 +35,12 @@ unix_date_of_release = list(data2['UNIX_date_of_release'])
 efficiency_j_gh = list(data2['Efficiency_J_Gh'])
 qty = list(data2['Qty'])
 
-c.execute("CREATE TABLE IF NOT EXISTS countries (country TEXT PRIMARY KEY, code TEXT, electricity_consumption REAL, country_flag TEXT);")
+c.execute("CREATE TABLE IF NOT EXISTS countries (country TEXT PRIMARY KEY, code TEXT, electricity_consumption REAL, country_flag TEXT, series_id TEXT, year INTEGER);")
 c.execute("CREATE TABLE IF NOT EXISTS miners (miner_name TEXT PRIMARY KEY, unix_date_of_release INT, efficiency_j_gh REAL, qty INT);")
-insert_sql = "INSERT INTO countries (country, code, electricity_consumption, country_flag) VALUES (%s, %s, %s, %s);"
+insert_sql = "INSERT INTO countries (country, code, electricity_consumption, country_flag, series_id) VALUES (%s, %s, %s, %s, %s);"
 insert_sql2 = "INSERT INTO miners (miner_name, unix_date_of_release, efficiency_j_gh, qty) VALUES (%s, %s, %s, %s);"
 
-for item in zip(country, code, electricity_consumption, country_flag):
+for item in zip(country, code, electricity_consumption, country_flag, series_id):
     c.execute(insert_sql, item)
     
 for item in zip(miner_name, unix_date_of_release, efficiency_j_gh, qty):
