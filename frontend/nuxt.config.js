@@ -89,7 +89,7 @@ export default {
   axios: {
     proxyHeaders: false,
     credentials: false,
-    baseURL: 'https://cbeci.org/api'
+    baseURL: process.env.BASE_URL || 'https://cbeci.org/api'
   },
   /*
   ** Build configuration
