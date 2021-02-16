@@ -1,3 +1,4 @@
+require('dotenv').config()
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
 import shrinkRay from 'shrink-ray-current'
@@ -60,15 +61,23 @@ export default {
   ],
 
   server: {
-      port: 7776, // default: 3000
+      port: process.env.PORT || 7776, // default: 3000
   },
+  /*
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/dotenv'
+  ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/robots',
-    'cookie-universal-nuxt'
+    'cookie-universal-nuxt',
+    '@nuxtjs/dotenv'
   ],
   robots: {
       UserAgent: '*',
