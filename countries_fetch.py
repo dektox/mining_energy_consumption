@@ -83,7 +83,7 @@ def save_country_value(country, electricity_consumption, year):
 
 
 def update_country_ec(country):
-    LOGGER.info('update_country_electricity_consumption: %s' % country['country'])
+    # LOGGER.info('update_country_electricity_consumption: %s' % country['country'])
     json = get_ec_from_api(country['series_id'])
     data = json['series'][0]['data']
     year, value = get_latest_data(data)
