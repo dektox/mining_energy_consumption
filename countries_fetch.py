@@ -4,6 +4,7 @@ import logging
 import requests
 from pprint import pformat
 from config import config
+from datetime import datetime
 
 DEFAULT_LOG_LEVEL = logging.INFO
 LOGGER = logging.getLogger()
@@ -98,6 +99,7 @@ def main(log_level):
     # Console outputs
     LOGGER.addHandler(logging.StreamHandler())
 
+    LOGGER.info(f"countires electricity_consumption: as of {datetime.utcnow().isoformat()}")
     countries = get_countries()
     for country in countries:
         if country['series_id'] is not None:
