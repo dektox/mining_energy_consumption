@@ -96,7 +96,7 @@ CORS(app)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["24000 per day", "600 per 10 minutes", "300 per 10 seconds"]
+    default_limits=["240000 per day", "6000 per 10 minutes", "3000 per 10 seconds"]
 )
 
 # initialisation of cache vars:
