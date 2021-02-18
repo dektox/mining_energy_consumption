@@ -1,3 +1,4 @@
+require('dotenv').config()
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
 import shrinkRay from 'shrink-ray-current'
@@ -80,7 +81,7 @@ export default {
   axios: {
     proxyHeaders: false,
     credentials: false,
-    baseURL: 'https://cbeci.org/api'
+    baseURL: process.env.BASE_URL || 'https://cbeci.org/api'
   },
   /*
   ** Build configuration
