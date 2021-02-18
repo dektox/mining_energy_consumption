@@ -20,7 +20,7 @@ If something changes to frontend, make first
 then in the /frontend directory execute 
 > npm run build
 
-To run jenkins ufter reload
+To run jenkins after reload
 > cd /home/ci/jenkins
 > docker-compose up -d
 

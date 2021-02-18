@@ -4,14 +4,17 @@ Created on Thu May 16 14:24:16 2019
 
 @author: Anton
 """
-from flask import Flask, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request, has_request_context
+from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from logging.handlers import RotatingFileHandler
 import pandas as pd
 from datetime import datetime
 import flask
 import requests
 import logging
 import time
-from flask_cors import CORS
 import psycopg2
 import yaml
 import csv
@@ -23,6 +26,8 @@ if config_path:
         config = yaml.load(fp, yaml.FullLoader)
 else:
     config = {}
+
+LOG_LEVEL = logging.INFO
     
 
 # loading data in cache of each worker:
@@ -47,6 +52,10 @@ def load_data():
     return prof_threshold, hash_rate, miners, countries, cons
 
 
+def get_hashrate():
+    return int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+
+
 def send_err_to_slack(err, name):
     try: 
         headers = {'Content-type': 'application/json',}
@@ -56,10 +65,39 @@ def send_err_to_slack(err, name):
     except:
         pass # not the best practice but we want API working even if Slack msg failed for any reason
 
+def get_file_handler(filename):
+    file_handler = RotatingFileHandler(filename, maxBytes=10 * 1024 * 1024, backupCount=5)  # mb * kb * b
+    file_handler.setLevel(logging.INFO)
+
+    class RequestFormatter(logging.Formatter):
+        def format(self, record):
+            if has_request_context():
+                record.url = request.url
+                record.remote_addr = request.remote_addr
+            else:
+                record.url = None
+                record.remote_addr = None
+
+            return super().format(record)
+
+    formatter = RequestFormatter(
+        '[%(asctime)s] %(remote_addr)s requested %(url)s\n'
+        '%(levelname)s in %(module)s: %(message)s'
+    )
+    file_handler.setFormatter(formatter)
+
+    return file_handler
 
 app = Flask(__name__)
+app.logger.setLevel(LOG_LEVEL)
+app.logger.addHandler(get_file_handler("./logs/errors.log"))
+
 CORS(app)
-app.config["DEBUG"] = False
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["240000 per day", "6000 per 10 minutes", "3000 per 10 seconds"]
+)
 
 # initialisation of cache vars:
 prof_threshold, hash_rate, miners, countries, cons = load_data()
@@ -67,11 +105,19 @@ lastupdate = time.time()
 lastupdate_power = time.time()
 cache = {}
 try:
-    hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+    hashrate = get_hashrate()
 except Exception as err:
     hashrate = 0
     logging.exception(str(err))
     send_err_to_slack(err, 'INIT HASHRATE')
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    app.logger.info(f"{str(e)} - IP: {get_remote_address()}")
+    return make_response(
+        jsonify(error="Too many requests from your IP, try again later")
+        , 429
+    )
 
 # cache:
 @app.before_request
@@ -89,7 +135,7 @@ def before_request():
     if time.time() - lastupdate_power > 45:
         try:
             # if executed properly, answer should be int
-            hashrate = int(requests.get("https://blockchain.info/q/hashrate", timeout=3).json())
+            hashrate = get_hashrate()
         except Exception as err:
             app.logger.exception(str(err))
             send_err_to_slack(err, 'HASHRATE')
@@ -98,9 +144,11 @@ def before_request():
 
 
 @app.route('/api/data')
-def recalculate_data_param():
+@app.route('/api/data/<value>')
+def recalculate_data(value=None):
     try:
-        value = request.args.get('p')
+        if value is None:
+            value = request.args.get('p')
         price = float(value)
     except:
         return "Welcome to the CBECI API data endpoint. To get bitcoin electricity consumption estimate timeseries, specify electricity price parameter 'p' (in USD), for example /api/data?p=0.05"
@@ -170,75 +218,6 @@ def recalculate_data_param():
     return value
 
 
-@app.route('/api/data/<value>')
-def recalculate_data(value):
-        
-    price = float(value)
-
-    if price in cache:
-        return cache[price]
-
-    k = 0.05/price 
-    # that is because base calculation in the DB is for the price 0.05 USD/KWth
-    # temporary vars:
-    prof_eqp = []
-    all_prof_eqp = []
-    max_all = []
-    min_all = []
-    ts_all = []
-    date_all = []
-    guess_all = []
-    response = []
-    
-    prof_th=pd.DataFrame(prof_threshold)
-    prof_th=prof_th.drop(1, axis=1).set_index(0)
-    prof_th_ma=prof_th.rolling(window=14, min_periods=1).mean()
-    
-    hashra=pd.DataFrame(hash_rate)
-    hashra=hashra.drop(1, axis=1).set_index(0)
-    
-    for timestamp, row in prof_th_ma.iterrows():
-        for miner in miners:
-            if timestamp>miner[1] and row[2]*k > miner[2]:
-                prof_eqp.append(miner[2])
-            # ^^current date miner release date ^^checks if miner is profit. ^^adds miner's efficiency to the list
-        all_prof_eqp.append(prof_eqp)
-        try:
-            max_consumption = max(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.2
-            min_consumption = min(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.01
-            guess_consumption = sum(prof_eqp)/len(prof_eqp)*hashra[2][timestamp]*365.25*24/1e9*1.1
-        except:  # in case if mining is not profitable (it is impossible to find MIN or MAX of empty list)
-            max_consumption = max_all[-1]
-            min_consumption = min_all[-1]
-            guess_consumption = guess_all[-1]
-        max_all.append(max_consumption)
-        min_all.append(min_consumption)
-        guess_all.append(guess_consumption)
-        ts_all.append(timestamp)
-        date = datetime.utcfromtimestamp(timestamp).isoformat()
-        date_all.append(date)
-        prof_eqp = []
-
-    energy_df = pd.DataFrame(list(zip(max_all, min_all, guess_all)), index=ts_all, columns=['MAX', 'MIN', 'GUESS'])
-    energy_ma = energy_df.rolling(window=7, min_periods=1).mean()
-    max_ma = list(energy_ma['MAX'])
-    min_ma = list(energy_ma['MIN'])
-    guess_ma = list(energy_ma['GUESS'])
-    
-    for day in range(0, len(ts_all)):
-        response.append({
-            'date': date_all[day],
-            'guess_consumption': round(guess_ma[day], 2),
-            'max_consumption': round(max_ma[day], 2),
-            'min_consumption': round(min_ma[day], 2),
-            'timestamp': ts_all[day],
-        })
-
-    value = jsonify(data=response)
-    cache[price] = value
-    return value
-
-
 @app.route("/api/max/<value>")
 def recalculate_max(value):
     price = float(value)
@@ -289,10 +268,9 @@ def recalculate_guess(value):
 #     jsonify(data=countries)
 # =============================================================================
 
-
-@app.route("/api/countries", methods=['GET', 'POST'])
+@app.route("/api/countries")
 def countries_btc():
-    tup2dict = {a:[c,d] for a,b,c,d in countries}
+    tup2dict = {a:[c,d] for a,b,c,d,e,f in countries}
     tup2dict['Bitcoin'][0] = round(cons[-1][4],2)
     dictsort = sorted(tup2dict.items(), key = lambda i: i[1][0], reverse=True)
     response = []
