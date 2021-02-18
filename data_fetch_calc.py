@@ -62,6 +62,8 @@ def main(log_level, price):
     with psycopg2.connect(**config['blockchain_data']) as connection:
         data = CoinMetrics().get_values(start_date='2021-02-15')
         for item in data:
+            if any(item[metric] is None for metric in ['difficulty', 'hash-rate', 'miners-revenue', 'market-price']):
+                continue
             for metric in ['difficulty', 'hash-rate', 'miners-revenue', 'market-price']:
                 if metric in item:
                     # this is because table name can't contain hyphens
