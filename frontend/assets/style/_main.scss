@@ -76,7 +76,11 @@ html, body{
 }
 
 .katex { font-size: 1.6em !important; }
-.text .katex {font-size: 1.1em !important;}
+.text .katex { font-size: 1.1em !important;}
+
+span.text {
+    text-align: center;
+}
 
 .assumption{
     border: solid 4px #ffb81c;

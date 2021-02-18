@@ -11,7 +11,12 @@ export const state = () => ({
   progress: true,
   progress2: true,
   cooks: true,
-  authenticated: false
+  authenticated: false,
+  error: {
+    status: false,
+    message: '',
+    blocks: []
+  }
 })
 
 export const getters = {
@@ -23,6 +28,14 @@ export const getters = {
 }
 
 export const mutations = {
+  SET_ERROR(state, payload) {
+    if (state.error.blocks.length > 10) {
+      state.error.block = []
+    }
+    state.error.status = payload.status
+    state.error.message = payload.message
+    state.error.blocks.push(payload.blocks)
+  },
   SET_DATA(state, payload) { state.data = payload },
   SET_NUMBERS(state, [estimated, min, max]) { state.numbers = [estimated, min, max]},
   SET_PRICE(state, payload) { state.price = payload },
@@ -63,8 +76,10 @@ export const actions = {
     async LOAD_DATA ({ commit }, price) {
         try {
             const res = await this.$axios.$get(`/data/${price}`)
-            await commit('SET_DATA', res.data)
-        } catch (e) { console.log(e) }
+          await commit('SET_DATA', res.data)
+        } catch (e) {
+          commit('SET_ERROR', {status: true, message: 'Data is not available now', blocks: 'chart'})
+        }
     },
 
     async LOAD_NUMBERS ({ commit, state }, price) {
@@ -76,9 +91,11 @@ export const actions = {
                 this.$axios.$get(`/min/${price}`),
                 this.$axios.$get(`/max/${price}`)
             ])
-            await commit('SET_NUMBERS', [estimated, min, max])
+          await commit('SET_NUMBERS', [estimated, min, max])
             await commit('SET_PROGRESS', false)
-        } catch (e) { console.log(e) }
+        } catch (e) {
+          commit('SET_ERROR', {status:true, message: 'Too many requests from your IP address, please try again later.'})
+        }
     },
 
     INITIALIZATION: async ({ commit, dispatch, state }) => {

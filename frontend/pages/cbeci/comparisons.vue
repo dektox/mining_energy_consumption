@@ -12,17 +12,15 @@
                 </v-flex>
             </v-layout>
         </v-flex>
-        <no-ssr>
+        <client-only>
             <comparisonsPC />
             <comparisonsRP />
             <comparisonsCards />
             <v-layout mb-4 align-center justify-center wrap>
                 <histogram />
             </v-layout>
-        </no-ssr>
-
+        </client-only>
         <comparisonsFF />
-<!--        <mask-mars />-->
     </v-layout>
 </template>
 
@@ -32,7 +30,6 @@ import PC from '~/components/comparisons/PC'
 import RP from '~/components/comparisons/RP'
 import FF from '~/components/comparisons/FF'
 import Histogram from '~/components/comparisons/Histogram'
-// import MaskMars from '~/components/comparisons/MaskMars'
 
 export default {
     name: 'comparisons',

@@ -1,5 +1,19 @@
 <template>
   <v-layout column justify-center align-center id="wrap-container">
+    <v-snackbar
+            v-model="error.status"
+            top
+            :timeout="0"
+    >
+      {{ error.message }}
+      <v-btn
+              color="pink"
+              flat
+              @click="error = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     <v-layout row align-center>
       <v-flex>
         <img src="~static/live.png" height="40">
@@ -16,20 +30,25 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <no-ssr>
+    <client-only>
       <cards />
-    </no-ssr>
+    </client-only>
+    <template v-if="!error.blocks.includes('chart')">
+      <chart />
+    </template>
+    <template v-else>
+      <v-progress-circular indeterminate :size="50" :width="5" />
+    </template>
     <!--<chartLoading v-if="progress"/>-->
-    <chart />
     <v-layout row align-center my-4>
       <a href="https://cbeci.org/api/csv" target="_blank">Download data in CSV format</a>
     </v-layout>
     <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
-    <no-ssr>
+    <client-only>
       <controllers />
-    </no-ssr>
+    </client-only>
   </v-layout>
 </template>
 
@@ -58,7 +77,15 @@ export default {
   computed: {
       progress() {
           return this.$store.state.progress2
+      },
+    error: {
+      get () {
+        return this.$store.state.error
+      },
+      set () {
+        this.$store.commit('SET_ERROR', {status: false, message: ''})
       }
+    }
   }
 }
 </script>
