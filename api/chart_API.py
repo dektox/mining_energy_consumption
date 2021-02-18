@@ -31,7 +31,7 @@ else:
 LOG_LEVEL = logging.INFO
 
 def get_limiter_flag():
-    val = os.environ.get("LIMITER_ENABLED")
+    val = os.environ.get("LIMITER_ENABLED", "")
 
     return val.lower() not in ("0", "false", "no")
 
@@ -99,7 +99,7 @@ app.logger.addHandler(get_file_handler("./logs/errors.log"))
 
 CORS(app)
 if get_limiter_flag():
-    limiter = Limiter(
+    Limiter(
         app,
         key_func=get_remote_address,
         default_limits=["240000 per day", "6000 per 10 minutes", "3000 per 10 seconds"]
