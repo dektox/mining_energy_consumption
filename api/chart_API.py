@@ -19,6 +19,7 @@ import psycopg2
 import yaml
 import csv
 import io
+import os
 
 config_path = '../CONFIG.yml'
 if config_path:
@@ -28,7 +29,11 @@ else:
     config = {}
 
 LOG_LEVEL = logging.INFO
-    
+
+def get_limiter_flag():
+    val = os.environ.get("LIMITER_ENABLED")
+
+    return val.lower() not in ("0", "false", "no")
 
 # loading data in cache of each worker:
 def load_data():
@@ -93,11 +98,12 @@ app.logger.setLevel(LOG_LEVEL)
 app.logger.addHandler(get_file_handler("./logs/errors.log"))
 
 CORS(app)
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["240000 per day", "6000 per 10 minutes", "3000 per 10 seconds"]
-)
+if get_limiter_flag():
+    limiter = Limiter(
+        app,
+        key_func=get_remote_address,
+        default_limits=["240000 per day", "6000 per 10 minutes", "3000 per 10 seconds"]
+    )
 
 # initialisation of cache vars:
 prof_threshold, hash_rate, miners, countries, cons = load_data()
