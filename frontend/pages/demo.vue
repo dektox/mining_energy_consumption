@@ -16,9 +16,9 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <no-ssr>
+    <client-only>
       <cards />
-    </no-ssr>
+    </client-only>
     <!--<chartLoading v-if="progress"/>-->
     <chart />
     <v-layout row align-center my-4>
@@ -27,9 +27,9 @@
     <v-layout row align-center my-4>
       <span>You can adjust the electricity cost parameter below to explore how the model reacts.</span>
     </v-layout>
-    <no-ssr>
+    <client-only>
       <controllers />
-    </no-ssr>
+    </client-only>
   </v-layout>
 </template>
 

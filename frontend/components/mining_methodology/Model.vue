@@ -28,18 +28,18 @@
             <p>The key idea underlying the CBECI model is that miners will run the equipment as long as it remains profitable in electricity terms. In order to determine the time periods during which a given hardware type is profitable, we model the economic lifetime of each machine by taking into account total miner revenues, total network hashrate, the energy efficiency of the hardware in question, and the average electricity price per kWh that miners have to pay.</p>
             <p>This results in the following mathematical inequality:</p>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula1t" display-mode/>
+                <katex-element :expression="formula1t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula1" display-mode class="text"/>
+                <katex-element :expression="formula1"  class="text"/>
             </v-layout>
             <p>It is worth noting that <b>profitability</b> in this context exclusively considers electricity costs incurred for running the machines: it does not take into account capital expenditures (e.g. acquisition and amortisation costs) nor other operational expenditures (e.g. cooling, maintenance, and labour costs).</p>
             <p>The profitability threshold (θ) is then calculated as follows:</p>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula2t" display-mode/>
+                <katex-element :expression="formula2t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula2" display-mode class="text"/>
+                <katex-element :expression="formula2"  class="text"/>
             </v-layout>
             <v-flex class="assumption" mb-4 pa-3>
                 <span><u>Assumption 1</u>: the global average electricity price is constant over time and corresponds to 0.05 USD/kWh. </span>
@@ -70,10 +70,10 @@
         <chart3/>
         <v-flex class="main-text" my-3>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula3t" display-mode/>
+                <katex-element :expression="formula3t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula3" display-mode class="text"/>
+                <katex-element :expression="formula3"  class="text"/>
             </v-layout>
             <p><br/>Sometimes, it is possible that no mining equipment is profitable during a certain period. In this case, we use the following assumption:</p>
             <v-flex class="assumption" mb-4 pa-3>
@@ -103,10 +103,10 @@
             </p>
             <p>The lower bound estimate can be mathematically expressed as follows:</p>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula4t" display-mode/>
+                <katex-element :expression="formula4t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula4" display-mode class="text"/>
+                <katex-element :expression="formula4"  class="text"/>
             </v-layout>
             <p>
                 <br/>The lower bound estimate corresponds to the absolute minimum electricity consumption of the Bitcoin network. While useful for providing a quantifiable floor, it is unrealistic for a variety of reasons:
@@ -138,10 +138,10 @@
             <p>We assume that in this scenario, all mining farms have a PUE of 1.20. While still considered efficient by general-purpose data centre standards, it ranges at the higher end of PUE figures reported by miners.</p>
             <p>The upper bound equation can thus be mathematically expressed as follows:</p>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula5t" display-mode/>
+                <katex-element :expression="formula5t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula5" display-mode class="text"/>
+                <katex-element :expression="formula5"  class="text"/>
             </v-layout>
             <p><br/>The upper bound estimate corresponds to the absolute maximum electricity consumption of the Bitcoin network. While useful for providing a <b>quantifiable ceiling</b>, it is unrealistic for a variety of reasons:</p>
             <ul>
@@ -201,10 +201,10 @@
                 This figure is slightly more conservative than other estimates but has been confirmed during private conversations with miners and mining experts.</p>
             <p>Our best-guess estimate can be mathematically expressed as follows:</p>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula6t" display-mode/>
+                <katex-element :expression="formula6t" />
             </v-layout>
             <v-layout align-center justify-center>
-                <katex-element :expression="formula6" display-mode class="text"/>
+                <katex-element :expression="formula6"  class="text"/>
             </v-layout>
             <p><br/>Limitations of this methodology will be discussed in the next section.</p>
         </v-flex>

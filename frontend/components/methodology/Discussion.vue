@@ -11,13 +11,6 @@
                 <li>
                     <p><strong>Hardware selection:</strong> we may not be aware of new and more efficient hardware that is not yet available on the market. Some have argued that manufacturers are using proprietary equipment to their own benefits before public release.
                         <sup @click="menu6 = true" style="text-decoration: underline; cursor: pointer">6</sup>
-                        <v-dialog v-model="menu6" :max-width="600" offset-x>
-                            <v-card>
-                                <v-flex pa-4>
-                                    Vorick, D. (2018) The State of Cryptocurrency Mining. Available at: <a target="_blank" href="https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b">https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b</a>
-                                </v-flex>
-                            </v-card>
-                        </v-dialog>
                     </p>
                 </li>
                 <li>
@@ -35,6 +28,13 @@
             </ul>
             <p>While most limitations do not have a major impact on the performance of the model, we are aware of its imperfections. The CBECI is an ongoing project that is maintained on a continuous basis. The model will be refined in response to changing circumstances, with all changes being transparently highlighted.</p>
             <p>In case you would like to provide suggestions on how we could improve the index, please feel free to send us a message using <nuxt-link to="/contact/">this form</nuxt-link>.</p>
+            <v-dialog v-model="menu6" :max-width="600" offset-x>
+                <v-card>
+                    <v-flex pa-4>
+                        Vorick, D. (2018) The State of Cryptocurrency Mining. Available at: <a target="_blank" href="https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b">https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b</a>
+                    </v-flex>
+                </v-card>
+            </v-dialog>
         </v-flex>
         <h3 class="display-2 text-md-left">How does the CBECI compare to other estimates?</h3>
         <v-flex class="main-text" my-3>
@@ -63,16 +63,17 @@
             <p>These studies tend to produce considerably diverging findings along a relatively broad range of possible estimates. This can be explained by the application of different methodologies adopted by the study authors: some use a top-down economic approach, whereas others are based on a bottom-up techno-economic approach (like the CBECI model).</p>
             <p>Each study is based on a set of assumptions that can be put into question. As a result, the design of each study - including our own analysis - has its own pitfalls and limitations. Some papers, however, have been criticised for applying overly simplistic assumptions and containing non-trivial errors such as inappropriate averaging over time periods or simple extrapolations. For a more thorough review of previous studies, see Koomey (2019).
                 <sup @click="menu7 = true" style="text-decoration: underline; cursor: pointer">7</sup>
-                <v-dialog v-model="menu7" :max-width="600" offset-x>
-                    <v-card>
-                        <v-flex pa-4>
-                            Koomey, J. (2019) Estimating Bitcoin Electricity Use: A Beginner’s Guide. Coin Center Report. Available at: <a target="_blank" href="https://coincenter.org/files/estimating-bitcoin-electricity-use.pdf">https://coincenter.org/files/estimating-bitcoin-electricity-use.pdf</a>.
-                        </v-flex>
-                    </v-card>
-                </v-dialog>
             </p>
-            <p>The CBECI has been designed with the aforementioned studies in mind. We have carefully reviewed the various methodologies and incorporated best practices. This website attempts to provide comprehensive documentation with transparent version control, highlight the model’s dependence on the electricity cost assumption by allowing visitors to adjust the default value, and openly present the uncertainties and limitations of the model. Feedback and suggestions for further improvements can be given <nuxt-link to="/contact/">here</nuxt-link>.
+            <p>
+                The CBECI has been designed with the aforementioned studies in mind. We have carefully reviewed the various methodologies and incorporated best practices. This website attempts to provide comprehensive documentation with transparent version control, highlight the model’s dependence on the electricity cost assumption by allowing visitors to adjust the default value, and openly present the uncertainties and limitations of the model. Feedback and suggestions for further improvements can be given <nuxt-link to="/contact/">here</nuxt-link>.
             </p>
+            <v-dialog v-model="menu7" :max-width="600" offset-x>
+                <v-card>
+                    <v-flex pa-4>
+                        Koomey, J. (2019) Estimating Bitcoin Electricity Use: A Beginner’s Guide. Coin Center Report. Available at: <a target="_blank" href="https://coincenter.org/files/estimating-bitcoin-electricity-use.pdf">https://coincenter.org/files/estimating-bitcoin-electricity-use.pdf</a>.
+                    </v-flex>
+                </v-card>
+            </v-dialog>
         </v-flex>
     </v-flex>
 </template>
