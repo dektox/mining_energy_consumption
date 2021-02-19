@@ -31,9 +31,9 @@ else:
 LOG_LEVEL = logging.INFO
 
 def get_limiter_flag():
-    val = os.environ.get("LIMITER_ENABLED", "")
+    val = os.environ.get("LIMITER_ENABLED")
 
-    return val.lower() not in ("0", "false", "no")
+    return val is not None and val.lower() not in ("0", "false", "no")
 
 # loading data in cache of each worker:
 def load_data():
