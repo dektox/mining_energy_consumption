@@ -20,6 +20,9 @@ import yaml
 import csv
 import io
 import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 config_path = '../CONFIG.yml'
 if config_path:
@@ -105,7 +108,7 @@ if get_limiter_flag():
     Limiter(
         app,
         key_func=get_request_ip,
-        default_limits=["48000 per day", "2400 per 10 minutes", "30 per 10 seconds"]
+        default_limits=["24000 per day", "600 per 10 minutes", "30 per 10 seconds"]
     )
 
 # initialisation of cache vars:
@@ -122,7 +125,7 @@ except Exception as err:
 
 @app.errorhandler(429)
 def ratelimit_handler(e):
-    app.logger.info(f"{str(e)} - IP: {get_remote_address()}")
+    app.logger.info(f"{str(e)} - IP: {get_request_ip()}")
     return make_response(
         jsonify(error="Too many requests from your IP, try again later")
         , 429
