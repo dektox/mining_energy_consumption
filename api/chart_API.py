@@ -108,7 +108,7 @@ if get_limiter_flag():
     Limiter(
         app,
         key_func=get_request_ip,
-        default_limits=["24000 per day", "600 per 10 minutes", "30 per 10 seconds"]
+        default_limits=["12000 per day", "300 per 10 minutes", "15 per 10 seconds"]
     )
 
 # initialisation of cache vars:
