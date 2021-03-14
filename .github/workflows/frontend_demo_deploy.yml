@@ -28,7 +28,7 @@ jobs:
           rm -rf releases/$SHA
           mkdir releases/$SHA
           cd releases/$SHA
-          ssh-agent bash -c 'ssh-add /home/cbeci/.ssh/id_rsa_mining_energy_consumption; git clone git@github.com:dektox/cbeci.git .'
+          ssh-agent bash -c 'ssh-add /home/cbeci/.ssh/id_rsa_mining_energy_consumption; git clone git@github.com:dektox/mining_energy_consumption.git .'
           git checkout $SHA
           cd frontend
           npm i
