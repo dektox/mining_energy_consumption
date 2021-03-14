@@ -22,6 +22,10 @@ jobs:
         script_stop: true
         key:  ${{ secrets.DEMO_CBECI_USER_KEY }}
         script: |
+          export PATH="/home/cbeci/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+          source $HOME/.poetry/env
           cd ${{ secrets.DEMO_API_PROJECT_PATH }}
           rm -rf releases/$SHA
           mkdir releases/$SHA
