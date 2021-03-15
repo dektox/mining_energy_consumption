@@ -2,7 +2,7 @@ name: Cbeci FRONTEND demo server deploy
 on: 
   push:
     branches:
-      - github_actions
+      - develop
     paths:
       - 'frontend/*'
 jobs:
