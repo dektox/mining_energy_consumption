@@ -2,7 +2,7 @@ name: Cbeci API demo server deploy
 on: 
   push:
     branches:
-      - github_actions
+      - develop
     paths-ignore:
       - 'frontend/*'
 jobs:
