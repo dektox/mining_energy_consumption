@@ -2,7 +2,7 @@ name: Cbeci frontend production server deploy
 on: 
   push:
     branches:
-      - github_actions
+      - master
 jobs:
   deploy:
     environment:
