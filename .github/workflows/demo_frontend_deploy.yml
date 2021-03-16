@@ -35,4 +35,4 @@ jobs:
           ln -s ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/.env .env
           npm run generate
           rm -rf ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/actual
-          ln -s ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/releases/$SHA/dist ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/actual
+          ln -s ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/releases/$SHA/frontend/dist ${{ secrets.DEMO_FRONTEND_PROJECT_PATH }}/actual
