@@ -35,7 +35,7 @@ jobs:
           cp ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/.env .env
 
           ssh cbeci@${{ secrets.PRODUCTION_SERVER_HOST }} "rm -rf ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/releases/$SHA;"
-          scp -r ${{ secrets.PRODUCTION_BUILD_PATH }}/releases/$SHA cbeci@${{ secrets.PRODUCTION_SERVER_HOST }}:${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/releases/
+          scp -r ${{ secrets.PRODUCTION_BUILD_PATH }}/releases/$SHA cbeci@${{ secrets.PRODUCTION_SERVER_HOST }}:/home/cbeci/production_build/frontend.mining_energy_consumption/releases/
     - uses: actions/checkout@v1
     - name: CLI commands for launch built project on live server
       uses: appleboy/ssh-action@master
