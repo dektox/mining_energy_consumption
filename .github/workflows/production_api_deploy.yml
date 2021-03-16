@@ -2,7 +2,7 @@ name: Cbeci API production server deploy
 on: 
   push:
     branches:
-      - github_actions
+      - master
     paths-ignore:
       - 'frontend/*'
 jobs:
