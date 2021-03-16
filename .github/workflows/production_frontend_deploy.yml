@@ -34,8 +34,8 @@ jobs:
 
           cp ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/.env .env
 
-          ssh cbeci@${{ secrets.PRODUCTION_SERVER_HOST }} "rm -rf ${{ secrets.PRODUCTION_FRONTEND_PROJECT_PATH }}/releases/$SHA;"
-          scp -r ${{ secrets.PRODUCTION_BUILD_PATH }}/releases/$SHA cbeci@${{ secrets.PRODUCTION_SERVER_HOST }}:${{ secrets.PRODUCTION_FRONTEND_PROJECT_PATH }}/releases/
+          ssh cbeci@${{ secrets.PRODUCTION_SERVER_HOST }} "rm -rf ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/releases/$SHA;"
+          scp -r ${{ secrets.PRODUCTION_BUILD_PATH }}/releases/$SHA cbeci@${{ secrets.PRODUCTION_SERVER_HOST }}:${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/releases/
     - uses: actions/checkout@v1
     - name: CLI commands for launch built project on live server
       uses: appleboy/ssh-action@master
@@ -51,6 +51,6 @@ jobs:
         script: |
           export NVM_DIR=~/.nvm
           source ~/.nvm/nvm.sh
-          cd ${{ secrets.PRODUCTION_FRONTEND_PROJECT_PATH }}
+          cd ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}
           rm -rf actual
-          ln -s ${{ secrets.PRODUCTION_FRONTEND_PROJECT_PATH }}/releases/$SHA ${{ secrets.PRODUCTION_FRONTEND_PROJECT_PATH }}/actual
+          ln -s ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/releases/$SHA ${{ secrets.PRODUCTION_FRONTEND_BUILD_PATH }}/actual
